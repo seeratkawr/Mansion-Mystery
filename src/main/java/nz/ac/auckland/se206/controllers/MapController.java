@@ -1,32 +1,21 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import nz.ac.auckland.se206.App;
 
 // nz.ac
 // nz.ac.auckland.se206.controllers.MapController
 public class MapController {
-  @FXML ImageView exit_button;
+  @FXML Button exit_button;
 
   @FXML
-  private void onExitClicked(MouseEvent event) {
+  private void onExitClicked(ActionEvent event) {
     try {
-      // Load the new FXML file
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/crimescene.fxml"));
-      Parent root = loader.load();
-
-      // Get the current stage and set the new scene
-      Scene scene = new Scene(root);
-      Stage stage = (Stage) exit_button.getScene().getWindow();
-      stage.setScene(scene);
-      stage.show();
-
+      // Open the crime scene view
+      App.openCrimeScene(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
