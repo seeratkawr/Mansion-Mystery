@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
+// this is a test comment to test github flows
+
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
