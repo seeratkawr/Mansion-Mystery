@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 // this is a test comment to test github flows
 
@@ -64,8 +63,8 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
     Parent root = loader.load();
 
-    ChatController chatController = loader.getController();
-    chatController.setProfession(profession);
+    //ChatController chatController = loader.getController();
+    //chatController.setProfession(profession);
 
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     scene = new Scene(root);
