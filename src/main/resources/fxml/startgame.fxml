@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartGameController">
+   <children>
+      <ImageView fitHeight="439.0" fitWidth="636.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+           <Image url="@../images/Mansion.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startButton" layoutX="251.0" layoutY="276.0" mnemonicParsing="false" onAction="#onStartGame" opacity="0.0" prefHeight="51.0" prefWidth="128.0" />
+   </children>
+</AnchorPane>
