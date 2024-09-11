@@ -14,7 +14,8 @@ public class StartGameController {
   private void onStartGame(ActionEvent event) {
     System.out.println("Game started!");
     try {
-      App.startGame(event);
+      // Open the crime scene view
+      App.openCrimeScene(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
