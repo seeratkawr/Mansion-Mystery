@@ -3,11 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import nz.ac.auckland.se206.App;
 
 public class StartGameController {
 
@@ -17,16 +14,7 @@ public class StartGameController {
   private void onStartGame(ActionEvent event) {
     System.out.println("Game started!");
     try {
-      // Load the new FXML file
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/crimescene.fxml"));
-      Parent root = loader.load();
-
-      // Get the current stage and set the new scene
-      Scene scene = new Scene(root);
-      Stage stage = (Stage) startButton.getScene().getWindow();
-      stage.setScene(scene);
-      stage.show();
-
+      App.startGame(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
