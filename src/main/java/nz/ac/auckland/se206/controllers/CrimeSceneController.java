@@ -1,29 +1,30 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
-import javafx.event.ActionEvent;
+import java.io.IOException; // Add this import statement
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class StartGameController {
+public class CrimeSceneController {
 
-  @FXML private Button startButton;
+  // set the game state to game started
+  @FXML ImageView map;
 
   @FXML
-  private void onStartGame(ActionEvent event) {
-    System.out.println("Game started!");
+  private void onMapClicked(MouseEvent event) {
     try {
       // Load the new FXML file
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/crimescene.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/map.fxml"));
       Parent root = loader.load();
 
       // Get the current stage and set the new scene
       Scene scene = new Scene(root);
-      Stage stage = (Stage) startButton.getScene().getWindow();
+      Stage stage = (Stage) map.getScene().getWindow();
+
       stage.setScene(scene);
       stage.show();
 
