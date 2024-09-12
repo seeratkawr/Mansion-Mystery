@@ -13,9 +13,10 @@ public class CrimeSceneController {
 
   @FXML
   private void onMapClicked(MouseEvent event) {
+
     try {
       // Open the map view
-      App.openMap(event);
+      App.openMap(event, "/images/Study.png");
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();

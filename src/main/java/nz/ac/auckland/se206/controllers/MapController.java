@@ -14,6 +14,9 @@ public class MapController {
   @FXML private Button exit_button;
   @FXML private ImageView background;
 
+  public void changeBackground(String path) {
+    background.setImage(new Image(path));
+  }
   @FXML
   private void onExitClicked(ActionEvent event) {
     try {

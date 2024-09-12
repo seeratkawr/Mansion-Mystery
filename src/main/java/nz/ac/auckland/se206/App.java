@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -94,11 +95,14 @@ public class App extends Application {
     stage.show();
   }
 
-  public static void openMap(MouseEvent event) throws IOException {
+  public static void openMap(MouseEvent event, String path) throws IOException {
 
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/map.fxml"));
-
     Parent root = loader.load();
+
+    MapController mapController = loader.getController();
+    mapController.changeBackground(path);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
