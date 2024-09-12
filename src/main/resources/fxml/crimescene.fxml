@@ -3,8 +3,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
+<AnchorPane fx:id="crimeScenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
       <ImageView fitHeight="603.0" fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,5 +17,6 @@
             <Image url="@../images/map.png" />
          </image>
       </ImageView>
+      <Rectangle fx:id="laptopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutX="422.0" layoutY="319.0" onMouseClicked="#onLaptopClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="78.0" />
    </children>
 </AnchorPane>

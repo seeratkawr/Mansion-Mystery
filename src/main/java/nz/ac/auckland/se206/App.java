@@ -8,12 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
-// this is a test comment to test github flows
 
+// this is a test comment to test github flows
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -113,5 +114,19 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void openLaptopClue(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
+    Parent laptopClueView = loader.load();
+    AnchorPane crimeScenePane =
+        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
+    crimeScenePane.getChildren().add(laptopClueView);
+  }
+
+  public static void closeClue(ActionEvent event) throws IOException {
+    AnchorPane crimeScenePane =
+        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
+    crimeScenePane.getChildren().remove(crimeScenePane.getChildren().size() - 1);
   }
 }
