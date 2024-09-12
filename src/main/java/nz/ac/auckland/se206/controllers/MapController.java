@@ -4,12 +4,15 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 
 // nz.ac
 // nz.ac.auckland.se206.controllers.MapController
 public class MapController {
-  @FXML Button exit_button;
+  @FXML private Button exit_button;
+  @FXML private ImageView background;
 
   @FXML
   private void onExitClicked(ActionEvent event) {
