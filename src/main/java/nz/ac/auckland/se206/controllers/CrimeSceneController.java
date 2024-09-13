@@ -22,4 +22,15 @@ public class CrimeSceneController {
       e.printStackTrace();
     }
   }
+
+  @FXML
+  private void onDrawersClicked(MouseEvent event) {
+    try {
+      // Open the drawer view
+      App.openDrawer(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
 }

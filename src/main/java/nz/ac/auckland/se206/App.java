@@ -12,8 +12,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
-// this is a test comment to test github flows
 
+// this is a test comment to test github flows
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -105,6 +105,16 @@ public class App extends Application {
     MapController mapController = loader.getController();
     mapController.changeBackground(path);
 
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void openDrawer(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
+    Parent root = loader.load();
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
