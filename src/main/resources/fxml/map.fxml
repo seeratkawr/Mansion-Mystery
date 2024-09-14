@@ -24,6 +24,6 @@
          </image>
       </ImageView>
       <Button fx:id="exit_button" layoutX="778.0" layoutY="21.0" mnemonicParsing="false" onAction="#onExitClicked" opacity="0.0" prefHeight="46.0" prefWidth="46.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="106.0" layoutX="338.0" layoutY="241.0" onMouseClicked="#onKitchenClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="104.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="106.0" layoutX="337.0" layoutY="240.0" onMouseClicked="#onKitchenClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="106.0" />
    </children>
 </AnchorPane>
