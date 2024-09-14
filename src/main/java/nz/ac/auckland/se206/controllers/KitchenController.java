@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -20,6 +21,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class KitchenController {
@@ -47,12 +49,26 @@ public class KitchenController {
   }
 
   @FXML
+  private void onMapClicked(MouseEvent event) {
+    try {
+      App.openMap(event, "/images/Kitchen.png");
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    System.out.println("Map clicked");
+  }
+
+  @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     System.out.println("Send message clicked");
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
+
+    // Clear the chat before sending new message
+    clearChat();
 
     txtInput.clear();
     ChatMessage userMessage = new ChatMessage("user", message);
@@ -82,7 +98,7 @@ public class KitchenController {
 
   public void setProfession(String profession) {
     this.profession = profession;
-    clearChat();
+    clearChat(); // Clear chat initially
 
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -92,13 +108,24 @@ public class KitchenController {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
+
+      // Show loading indicator before fetching system prompt
+      loadingIndicator.setVisible(true);
+      translateTransition.play(); // Start the animation
+
       Task<Void> task =
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
               ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
               ChatMessage response = runGpt(systemMessage);
-              Platform.runLater(() -> appendChatMessage(response));
+              Platform.runLater(
+                  () -> {
+                    appendChatMessage(response);
+                    loadingIndicator.setVisible(
+                        false); // Hide loading indicator after system message
+                    translateTransition.stop(); // Stop the animation
+                  });
               return null;
             }
           };

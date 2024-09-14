@@ -16,7 +16,7 @@
       </ImageView>
       <TextArea fx:id="txtaChat" layoutX="14.0" layoutY="121.0" prefHeight="283.0" prefWidth="324.0" />
       <TextField fx:id="txtInput" layoutX="14.0" layoutY="411.0" prefHeight="25.0" prefWidth="262.0" />
-      <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="750.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="750.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
          </image>

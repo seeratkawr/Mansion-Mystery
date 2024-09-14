@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,8 +13,14 @@ import nz.ac.auckland.se206.App;
 // nz.ac
 // nz.ac.auckland.se206.controllers.MapController
 public class MapController {
+
   @FXML private Button exit_button;
   @FXML private ImageView background;
+  private Scene lastScene; // Field to store the last scene
+
+  public void setLastScene(Scene scene) {
+    this.lastScene = scene;
+  }
 
   public void changeBackground(String path) {
     background.setImage(new Image(path));
@@ -22,12 +29,12 @@ public class MapController {
   @FXML
   private void onExitClicked(ActionEvent event) {
     try {
-      // Open the crime scene view
+      // Navigate back to the last scene
       App.openCrimeScene(event);
     } catch (IOException e) {
-      // Print stack trace for debugging in case of error
       e.printStackTrace();
     }
+    System.out.println("Exit Map clicked");
   }
 
   @FXML
