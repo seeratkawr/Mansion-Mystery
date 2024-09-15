@@ -8,12 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
-// this is a test comment to test github flows
 
+// this is a test comment to test github flows
 
 /**
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
@@ -111,7 +113,73 @@ public class App extends Application {
     stage.show();
   }
 
+  public static void openDrawer(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goLastPage(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg3.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goMiddlePage(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg2.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goFirstPage(MouseEvent event) throws IOException {
+    ;
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg1.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goToDrawers(ActionEvent event) throws IOException {
+    ;
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void playSound(String soundFileName) {
+    try {
+      // Construct the file path to your sound file
+      String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
+
+      // Create a Media object with the sound file
+      Media sound = new Media(soundPath);
+
+      // Create a MediaPlayer to play the sound
+      MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+      // Play the sound
+      mediaPlayer.play();
+    } catch (Exception e) {
+      System.out.println("Error loading sound file: " + e.getMessage());
+    }
   }
 }

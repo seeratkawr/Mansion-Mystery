@@ -16,7 +16,20 @@ public class CrimeSceneController {
 
     try {
       // Open the map view
+      App.playSound("mapunfolding.mp3");
       App.openMap(event, "/images/Study.png");
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void onDrawersClicked(MouseEvent event) {
+    try {
+      // Open the drawer view
+      App.playSound("draweropen.mp3");
+      App.openDrawer(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
