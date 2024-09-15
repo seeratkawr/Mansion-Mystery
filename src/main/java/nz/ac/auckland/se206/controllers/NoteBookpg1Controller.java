@@ -1,0 +1,24 @@
+package nz.ac.auckland.se206.controllers;
+
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.App;
+
+public class NoteBookpg1Controller {
+
+  @FXML
+  private void onGoRightPage(MouseEvent event) throws IOException {
+    App.playSound("pageflip.mp3");
+    App.goMiddlePage(event);
+    System.out.println("Go right page");
+  }
+
+  @FXML
+  private void onExitBook(ActionEvent event) throws IOException {
+    System.out.println("Go back");
+    // if the back button is clicked, set the bookpane to be invisible
+    App.goToDrawers(event);
+  }
+}

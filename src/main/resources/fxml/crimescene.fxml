@@ -18,5 +18,6 @@
          </image>
       </ImageView>
       <Rectangle fx:id="laptopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutX="422.0" layoutY="319.0" onMouseClicked="#onLaptopClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="78.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="28.0" layoutX="424.0" layoutY="438.0" onMouseClicked="#onDrawersClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="111.0" />
    </children>
 </AnchorPane>
