@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NotebookController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NotebookController">
    <children>
       <Pane fx:id="mainPane" prefHeight="657.0" prefWidth="857.0">
          <children>
@@ -17,7 +17,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="151.0" layoutX="229.0" layoutY="89.0" onMouseClicked="#onClickedBook" stroke="TRANSPARENT" strokeType="INSIDE" width="163.0" />
-            <Button layoutX="703.0" layoutY="39.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="65.0" prefWidth="109.0" text="Go back" />
+            <Button layoutX="703.0" layoutY="39.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
          </children>
       </Pane>
    </children>

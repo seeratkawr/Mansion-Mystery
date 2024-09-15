@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NoteBookpg1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NoteBookpg1Controller">
    <children>
       <Pane fx:id="bookPane" prefHeight="653.0" prefWidth="849.0" style="-fx-background-color: black;">
          <children>
@@ -24,18 +24,18 @@
                   <Image url="@../images/opennotebook-removebg-preview.png" />
                </image>
             </ImageView>
-            <Polygon fx:id="rightPage" fill="#8b5e51" layoutX="738.0" layoutY="296.0" onMouseClicked="#onGoRightPage" points="0.0, 11.66668701171875, 46.16668701171875, -25.333343505859375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
-            <Button layoutX="329.0" layoutY="528.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="51.0" prefWidth="149.0" text="Go back" />
-            <Label layoutX="152.0" layoutY="144.0" prefHeight="291.0" prefWidth="260.0" text="The cleaner,  Alex is struggling to pay for her sons    th year of university. I hope we can help out somehow. " wrapText="true">
+            <Polygon fx:id="triangle" fill="#8b5e51" layoutX="738.0" layoutY="296.0" onMouseClicked="#onGoRightPage" points="0.0, 11.66668701171875, 46.16668701171875, -25.333343505859375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+            <Label layoutX="164.0" layoutY="144.0" prefHeight="291.0" prefWidth="248.0" text="The cleaner,  Alex is struggling to pay for her sons       th year of university. I hope we can help out somehow. " wrapText="true">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <Text layoutX="315.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+            <Text layoutX="290.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
+            <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
          </children>
       </Pane>
    </children>

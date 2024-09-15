@@ -27,6 +27,7 @@ public class CrimeSceneController {
   private void onDrawersClicked(MouseEvent event) {
     try {
       // Open the drawer view
+      App.playSound("draweropen.mp3");
       App.openDrawer(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
