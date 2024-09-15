@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
@@ -161,5 +163,23 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void playSound(String soundFileName) {
+    try {
+      // Construct the file path to your sound file
+      String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
+
+      // Create a Media object with the sound file
+      Media sound = new Media(soundPath);
+
+      // Create a MediaPlayer to play the sound
+      MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+      // Play the sound
+      mediaPlayer.play();
+    } catch (Exception e) {
+      System.out.println("Error loading sound file: " + e.getMessage());
+    }
   }
 }

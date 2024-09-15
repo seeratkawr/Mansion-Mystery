@@ -14,6 +14,7 @@ public class Notebookpg2Controller {
 
   @FXML
   private void onGoLastPage(MouseEvent event) throws IOException {
+    App.playSound("pageflip.mp3");
     System.out.println("Go last page");
     App.goLastPage(event);
   }
@@ -40,6 +41,7 @@ public class Notebookpg2Controller {
 
   @FXML
   private void onGoFirstPage(MouseEvent event) throws IOException {
+    App.playSound("pageflip.mp3");
     System.out.println("Go first page");
     App.goFirstPage(event);
   }
