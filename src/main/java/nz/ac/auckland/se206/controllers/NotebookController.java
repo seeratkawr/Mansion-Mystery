@@ -9,8 +9,8 @@ import nz.ac.auckland.se206.App;
 
 public class NotebookController {
 
-  @FXML private Pane bookPane;
-  @FXML private Pane mainPane;
+  @FXML Pane bookPane;
+  @FXML Pane mainPane;
 
   // initially set the bookpane to be invisible
   public void initialize() {
@@ -27,13 +27,9 @@ public class NotebookController {
   }
 
   @FXML
-  private void onGoRightPage(MouseEvent event) {
+  private void onGoRightPage(MouseEvent event) throws IOException {
+    App.goMiddlePage(event);
     System.out.println("Go right page");
-  }
-
-  @FXML
-  private void onGoLeftPage(MouseEvent event) {
-    System.out.println("Go left page");
   }
 
   @FXML
@@ -45,7 +41,7 @@ public class NotebookController {
   }
 
   @FXML
-  private void onGoBackCrimeSeceen(ActionEvent event) throws IOException {
+  private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     System.out.println("Go back to crime scene");
     // if the back button is clicked, set the bookpane to be invisible
     App.openCrimeScene(event);
