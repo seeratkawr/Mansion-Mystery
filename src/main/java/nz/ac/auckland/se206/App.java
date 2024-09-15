@@ -118,15 +118,33 @@ public class App extends Application {
 
   public static void openLaptopClue(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
+    Parent root = loader.load();
+
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    // Parent laptopClueView = loader.load();
+    // AnchorPane crimeScenePane =
+    //    (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
+    // crimeScenePane.getChildren().add(laptopClueView);
+  }
+
+  public static void closeLaptopClue(ActionEvent event) throws IOException {
+    AnchorPane laptopPane =
+        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
+    laptopPane.getChildren().remove(laptopPane.getChildren().size() - 1);
+  }
+
+  public static void openLaptopClue(MouseEvent event, String path) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
-    AnchorPane crimeScenePane =
-        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
-    crimeScenePane.getChildren().add(laptopClueView);
+    AnchorPane laptopPane =
+        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
+    laptopPane.getChildren().add(laptopClueView);
   }
 
   public static void closeClue(ActionEvent event) throws IOException {
-    AnchorPane crimeScenePane =
-        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
-    crimeScenePane.getChildren().remove(crimeScenePane.getChildren().size() - 1);
+    openCrimeScene(event);
   }
 }
