@@ -16,6 +16,7 @@ public class CrimeSceneController {
 
     try {
       // Open the map view
+      App.playSound("mapunfolding.mp3");
       App.openMap(event, "/images/Study.png");
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
