@@ -19,11 +19,8 @@ public class Notebookpg3Controller {
   }
 
   @FXML
-  private void onExitBook(ActionEvent event) {
-    System.out.println("Go back");
-    // if the back button is clicked, set the bookpane to be invisible
-    bookPane.setVisible(false);
-    mainPane.setVisible(true);
+  private void onExitBook(ActionEvent event) throws IOException {
+    App.goToDrawers(event);
   }
 
   @FXML

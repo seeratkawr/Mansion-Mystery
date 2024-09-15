@@ -12,32 +12,9 @@ public class NotebookController {
   @FXML Pane bookPane;
   @FXML Pane mainPane;
 
-  // initially set the bookpane to be invisible
-  public void initialize() {
-    mainPane.setVisible(true);
-    bookPane.setVisible(false);
-  }
-
   @FXML
-  private void onClickedBook(MouseEvent event) {
-    System.out.println("Book clicked");
-    // if the book is clicked, set the bookpane to be visible
-    bookPane.setVisible(true);
-    mainPane.setVisible(false);
-  }
-
-  @FXML
-  private void onGoRightPage(MouseEvent event) throws IOException {
-    App.goMiddlePage(event);
-    System.out.println("Go right page");
-  }
-
-  @FXML
-  private void onExitBook(ActionEvent event) {
-    System.out.println("Go back");
-    // if the back button is clicked, set the bookpane to be invisible
-    bookPane.setVisible(false);
-    mainPane.setVisible(true);
+  private void onClickedBook(MouseEvent event) throws IOException {
+    App.goFirstPage(event);
   }
 
   @FXML

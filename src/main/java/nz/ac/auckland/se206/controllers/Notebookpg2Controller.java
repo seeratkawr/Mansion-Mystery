@@ -27,11 +27,8 @@ public class Notebookpg2Controller {
   }
 
   @FXML
-  private void onExitBook(ActionEvent event) {
-    System.out.println("Go back");
-    // if the back button is clicked, set the bookpane to be invisible
-    bookPane.setVisible(false);
-    mainPane.setVisible(true);
+  private void onExitBook(ActionEvent event) throws IOException {
+    App.goToDrawers(event);
   }
 
   @FXML
@@ -44,6 +41,6 @@ public class Notebookpg2Controller {
   @FXML
   private void onGoFirstPage(MouseEvent event) throws IOException {
     System.out.println("Go first page");
-    App.GoFirstPage(event);
+    App.goFirstPage(event);
   }
 }
