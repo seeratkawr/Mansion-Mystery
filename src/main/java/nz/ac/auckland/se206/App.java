@@ -130,12 +130,6 @@ public class App extends Application {
     // crimeScenePane.getChildren().add(laptopClueView);
   }
 
-  public static void closeLaptopClue(ActionEvent event) throws IOException {
-    AnchorPane laptopPane =
-        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
-    laptopPane.getChildren().remove(laptopPane.getChildren().size() - 1);
-  }
-
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
