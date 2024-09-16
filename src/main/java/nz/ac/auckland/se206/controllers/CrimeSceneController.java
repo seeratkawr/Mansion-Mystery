@@ -35,6 +35,7 @@ public class CrimeSceneController {
     }
   }
 
+  @FXML
   private void onDrawersClicked(MouseEvent event) {
     try {
       // Open the drawer view
