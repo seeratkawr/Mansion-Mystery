@@ -190,6 +190,7 @@ public class App extends Application {
 
   public static void closeClue(ActionEvent event) throws IOException {
     openCrimeScene(event);
+  }
 
   public static void playSound(String soundFileName) {
     try {
