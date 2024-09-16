@@ -12,6 +12,7 @@ public class CrimeSceneController {
   // set the game state to game started
   @FXML private ImageView map;
   @FXML private Rectangle laptopRectangle;
+  @FXML private Rectangle bookshelfSafeRectangle;
 
   @FXML
   private void onMapClicked(MouseEvent event) {
@@ -45,5 +46,15 @@ public class CrimeSceneController {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
     }
+  }
+
+  /** 
+   * This method is called when the user clicks the bookshelf safe.
+   * 
+   * @param event the event that triggered this method
+   */
+  @FXML
+  private void onBookshelfSafeClicked(MouseEvent event) {
+    
   }
 }

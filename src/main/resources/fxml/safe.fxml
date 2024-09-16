@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane fx:id="safePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SafeController">
+   <children>
+      <ImageView fitHeight="906.0" fitWidth="906.0" layoutX="-61.0" layoutY="-193.0">
+         <image>
+            <Image url="@../images/safe.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="77.0" layoutX="356.0" layoutY="104.0" onMouseClicked="#onClickedFingerprint" stroke="TRANSPARENT" strokeType="INSIDE" width="224.0" />
+   </children>
+</AnchorPane>
