@@ -1,11 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import nz.ac.auckland.se206.App;
 
 public class SafeKeypadController {
 
@@ -82,9 +84,16 @@ public class SafeKeypadController {
 
     }
 
+    /**
+     * This method is called when the user clicks the go back button. It returns users to the safe scene.
+     *
+     * @param event the event that triggered this method
+     * @throws IOException if the FXML file is not found
+     */
     @FXML
-    void onGoBackCrimeScene(ActionEvent event) {
-
+    void onGoBackCrimeScene(MouseEvent event) throws IOException {
+        System.out.println("Go back to safe closed");
+        App.openSafe(event);
     }
 
 }

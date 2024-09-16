@@ -55,6 +55,10 @@ public class CrimeSceneController {
    */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
-    
+    try {
+      App.openSafe(event);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }

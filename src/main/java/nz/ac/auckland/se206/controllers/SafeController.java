@@ -30,7 +30,7 @@ public class SafeController {
     void initialize() {
         assert safePane != null : "fx:id=\"crimeScenePane\" was not injected: check your FXML file 'Safe.fxml'.";
     }
-
+    
     /**
      * This method is called when the user clicks the fingerprint.
      *
@@ -49,7 +49,8 @@ public class SafeController {
      */
     @FXML
     void onGoBackCrimeScene(ActionEvent event) throws IOException {
-
+        System.out.println("Go back to crime scene");
+        App.openCrimeScene(event);
     }
 
 }

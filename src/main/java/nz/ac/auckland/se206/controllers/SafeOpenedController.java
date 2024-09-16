@@ -27,7 +27,7 @@ public class SafeOpenedController {
         assert safePane != null : "fx:id=\"safePane\" was not injected: check your FXML file 'safeOpened.fxml'.";
 
     }
-
+    
     /**
      * This method is called when the user clicks the go back button. It returns users to the safe scene.
      *
@@ -36,7 +36,8 @@ public class SafeOpenedController {
      */
     @FXML
     void onGoBackSafe(MouseEvent event) throws IOException {
-
+        System.out.println("Go back to safe closed");
+        App.openSafe(event);
     }
 
 }
