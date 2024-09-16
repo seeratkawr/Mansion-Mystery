@@ -1,7 +1,9 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException; // Add this import statement
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -13,6 +15,7 @@ public class CrimeSceneController {
   @FXML private ImageView map;
   @FXML private Rectangle laptopRectangle;
   @FXML private Rectangle bookshelfSafeRectangle;
+  @FXML private Button guessingButton;
 
   @FXML
   private void onMapClicked(MouseEvent event) {
@@ -59,9 +62,9 @@ public class CrimeSceneController {
     }
   }
 
-  /** 
+  /**
    * This method is called when the user clicks the bookshelf safe.
-   * 
+   *
    * @param event the event that triggered this method
    */
   @FXML
@@ -71,5 +74,10 @@ public class CrimeSceneController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  @FXML
+  private void onGuessClicked(ActionEvent event) {
+    System.out.println("Guessing button clicked");
   }
 }
