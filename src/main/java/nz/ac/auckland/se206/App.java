@@ -181,6 +181,36 @@ public class App extends Application {
     stage.show();
   }
 
+  public static void openSafe(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safe.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void openSafeOpened(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeOpened.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void openSafeKeypad(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeKeypad.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
   public static void openKitchen(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
     Parent root = loader.load();
