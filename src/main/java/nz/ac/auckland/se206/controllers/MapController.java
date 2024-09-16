@@ -62,6 +62,17 @@ public class MapController {
   }
 
   @FXML
+  private void onCleanerClicked(MouseEvent event) {
+    try {
+      // Open the cleaner view
+      App.openSuspectCleaner(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
   private void onStudyClicked(ActionEvent event) {
     try {
       // Open the study view
