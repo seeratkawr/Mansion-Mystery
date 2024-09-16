@@ -28,9 +28,20 @@ public class CrimeSceneController {
   }
 
   @FXML
+  private void onKitchenClicked(MouseEvent event) {
+    try {
+      // Open the kitchen view
+      App.openKitchen(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
   private void onLaptopClicked(MouseEvent event) {
     try {
-      App.openLaptopClue(event);
+      App.openLaptop(event);
     } catch (IOException e) {
       e.printStackTrace();
     }

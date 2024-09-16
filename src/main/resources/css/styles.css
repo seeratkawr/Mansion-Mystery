@@ -61,3 +61,65 @@
   -fx-font-size: 16px; /* Increased font size for better readability */
   -fx-text-fill: #4B2E39;
 }
+
+/* Root settings for the entire scene */
+.root {
+  -fx-background-color: #f0f0f0;
+  -fx-font-family: "Arial", sans-serif;
+  -fx-font-size: 12px;
+}
+
+/* TextArea styling for chat display */
+#txtaChat {
+  -fx-background-color: #fff;
+  -fx-border-color: #c0c0c0;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-padding: 10px;
+  -fx-font-size: 13px;
+  -fx-font-family: "Courier New", monospace;
+  -fx-text-fill: #333;
+  -fx-control-inner-background: #fdfdfd;
+}
+
+/* TextField styling for chat input */
+#txtInput {
+  -fx-background-color: #eaeaea;
+  -fx-border-color: #b0b0b0;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-padding: 5px;
+  -fx-font-size: 14px;
+  -fx-text-fill: #555;
+}
+
+/* Button styling for send button */
+#btnSend {
+  -fx-background-color: #87ceeb; /* Light blue */
+  -fx-text-fill: #fff;
+  -fx-font-weight: bold;
+  -fx-border-radius: 6px;
+  -fx-background-radius: 6px;
+  -fx-border-color: #87ceeb;
+  -fx-cursor: hand;
+}
+
+#btnSend:hover {
+  -fx-background-color: #1e90ff; /* Darker blue on hover */
+  -fx-border-color: #1e90ff;
+}
+
+#btnSend:pressed {
+  -fx-background-color: #4682b4;
+  -fx-border-color: #4682b4;
+}
+
+/* Styling for the loading indicator */
+#loadingIndicator {
+  -fx-opacity: 0.8;
+}
+
+/* Image styling for the map icon */
+.image-view {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
+}
