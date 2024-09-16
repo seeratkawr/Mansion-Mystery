@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 
 // nz.ac
@@ -22,6 +23,17 @@ public class MapController {
     try {
       // Open the crime scene view
       App.openCrimeScene(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void onDaughterClicked(MouseEvent event) {
+    try {
+      // Open the daughter view
+      App.openSuspectDaughter(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();

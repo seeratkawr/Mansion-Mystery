@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MapController">
    <children>
@@ -23,5 +24,6 @@
          </image>
       </ImageView>
       <Button fx:id="exit_button" layoutX="778.0" layoutY="21.0" mnemonicParsing="false" onAction="#onExitClicked" opacity="0.0" prefHeight="46.0" prefWidth="46.0" />
+      <Rectangle fx:id="daughterRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="185.0" layoutY="77.0" onMouseClicked="#onDaughterClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="101.0" />
    </children>
 </AnchorPane>
