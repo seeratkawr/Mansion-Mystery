@@ -48,4 +48,15 @@ public class MapController {
       e.printStackTrace();
     }
   }
+
+  @FXML
+  private void onDaughterClicked(MouseEvent event) {
+    try {
+      // Open the daughter view
+      App.openSuspectDaughter(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
 }
