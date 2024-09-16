@@ -272,4 +272,13 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
   }
+
+  public static void openSuspectCleaner(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
 }
