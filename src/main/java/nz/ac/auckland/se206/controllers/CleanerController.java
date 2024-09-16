@@ -25,9 +25,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class CleanerController {
-    @FXML private Button sendButton;
+    @FXML private Button btnSend;
     @FXML private TextField textInput;
-    @FXML private TextArea cleanerText;
+    @FXML private TextArea txtaChat;
     @FXML private ImageView loadingIndicator;
 
     private String profession;
@@ -42,8 +42,8 @@ public class CleanerController {
         translateTransition.setToX(250);
         translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
         translateTransition.setAutoReverse(true);
-        cleanerText.setEditable(false);
-        cleanerText.setWrapText(true);
+        txtaChat.setEditable(false);
+        txtaChat.setWrapText(true);
 
         setProfession("Cleaner");
     }
@@ -126,7 +126,7 @@ public class CleanerController {
     }
 
     private void appendChatMessage(ChatMessage msg) {
-        cleanerText.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+        txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
     }
 
     private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
@@ -143,7 +143,7 @@ public class CleanerController {
     }
 
     private void clearChat() {
-        cleanerText.clear();
+        txtaChat.clear();
     }
 
     private String getSystemPrompt() {
