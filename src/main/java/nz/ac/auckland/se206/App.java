@@ -133,11 +133,11 @@ public class App extends Application {
   public static void openKitchen(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
     Parent root = loader.load();
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-    sceneStack.push(scene);
   }
 
   private void handleWindowClose(WindowEvent event) {
