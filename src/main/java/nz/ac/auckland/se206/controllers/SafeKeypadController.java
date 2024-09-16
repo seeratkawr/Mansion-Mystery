@@ -83,17 +83,18 @@ public class SafeKeypadController {
     void onClickedZero(MouseEvent event) {
 
     }
-
+    
     /**
-     * This method is called when the user clicks the go back button. It returns users to the safe scene.
+     * This method is called when the user clicks the go back button. It returns
+     * users to the safe scene.
      *
      * @param event the event that triggered this method
      * @throws IOException if the FXML file is not found
      */
     @FXML
-    void onGoBackCrimeScene(MouseEvent event) throws IOException {
-        System.out.println("Go back to safe closed");
-        App.openSafe(event);
+    void onGoBackCrimeScene(ActionEvent event) throws IOException {
+        System.out.println("Go back to crimescene");
+        App.openCrimeScene(event);
     }
 
 }

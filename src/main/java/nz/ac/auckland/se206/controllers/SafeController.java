@@ -41,6 +41,19 @@ public class SafeController {
         System.out.println("Fingerprint clicked");
     }
 
+
+    /**
+     * This method is called when the user clicks the keypad.
+     *
+     * @param event the event that triggered this method
+     * @throws IOException 
+     */
+    @FXML
+    void onClickedKeypad(MouseEvent event) throws IOException {
+        System.out.println("Keypad clicked");
+        App.openSafeKeypad(event);
+    }
+
     /**
      * This method is called when the user clicks the back button. It returns users to the crime scene.
      *
