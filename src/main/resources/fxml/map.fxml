@@ -5,14 +5,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MapController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MapController">
    <children>
       <ImageView fx:id="background" fitHeight="648.0" fitWidth="844.5" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Study.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="648.0" fitWidth="890.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="603.0" fitWidth="603.0" layoutX="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
          </image>
