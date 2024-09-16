@@ -28,7 +28,8 @@ public class App extends Application {
 
   private static Scene scene;
   private static Scene currentScene;
-  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer
+      mediaPlayer; // media play stored at class level to prevent garbage collection
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -227,6 +228,15 @@ public class App extends Application {
     FreeTextToSpeech.deallocateSynthesizer();
   }
 
+  public static void openGuess(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/guessingscene.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
   public static void openLaptop(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
     Parent root = loader.load();
@@ -252,10 +262,11 @@ public class App extends Application {
     try {
 
       // Create a background task to play the sound to prevent blocking the application thread
-      Task<Void> backgroundTask = new Task<>() {
-          @Override
-          protected Void call() {
-              
+      Task<Void> backgroundTask =
+          new Task<>() {
+            @Override
+            protected Void call() {
+
               // Construct the file path to your sound file
               String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
 
@@ -268,8 +279,8 @@ public class App extends Application {
               // Play the sound
               mediaPlayer.play();
               return null;
-          }
-      };
+            }
+          };
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
