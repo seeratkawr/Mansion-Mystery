@@ -13,7 +13,7 @@
             <Image url="@../images/safeKeypad.png" />
          </image>
       </ImageView>
-      <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
+      <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="475.0" layoutY="195.0" onMouseClicked="#onClickedOne" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="555.0" layoutY="195.0" onMouseClicked="#onClickedTwo" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="634.0" layoutY="195.0" onMouseClicked="#onClickedThree" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />

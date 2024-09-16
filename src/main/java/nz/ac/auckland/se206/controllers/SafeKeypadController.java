@@ -43,9 +43,9 @@ public class SafeKeypadController {
      * @throws IOException if the FXML file is not found
      */
     @FXML
-    void onGoBackCrimeScene(ActionEvent event) throws IOException {
+    void onGoBackSafe(MouseEvent event) throws IOException {
         System.out.println("Go back to crimescene");
-        App.openCrimeScene(event);
+        App.openSafe(event);
     }
 
     /**
