@@ -16,6 +16,7 @@ public class MapController {
 
   @FXML private Button exit_button;
   @FXML private ImageView background;
+  @FXML private Button btnToStudy;
   private Scene lastScene; // Field to store the last scene
 
   public void setLastScene(Scene scene) {
@@ -65,6 +66,17 @@ public class MapController {
     try {
       // Open the cleaner view
       App.openSuspectCleaner(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void onStudyClicked(ActionEvent event) {
+    try {
+      // Open the study view
+      App.openCrimeScene(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
