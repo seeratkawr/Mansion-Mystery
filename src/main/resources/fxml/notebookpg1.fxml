@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NoteBookpg1Controller">
+   <children>
+      <Pane fx:id="bookPane" prefHeight="653.0" prefWidth="849.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="661.0" fitWidth="851.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/closeupdesk.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="480.0" fitWidth="710.0" layoutX="68.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/opennotebook-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Polygon fx:id="triangle" fill="#8b5e51" layoutX="738.0" layoutY="296.0" onMouseClicked="#onGoRightPage" points="0.0, 11.66668701171875, 46.16668701171875, -25.333343505859375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+            <Label layoutX="164.0" layoutY="144.0" prefHeight="291.0" prefWidth="248.0" text="The cleaner,  Alex is struggling to pay for her sons       th year of university. I hope we can help out somehow. " wrapText="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Text layoutX="290.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

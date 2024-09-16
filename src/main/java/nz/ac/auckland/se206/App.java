@@ -9,6 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
@@ -130,6 +133,54 @@ public class App extends Application {
     stage.show();
   }
 
+  public static void openDrawer(MouseEvent event) throws IOException {
+
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goLastPage(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg3.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goMiddlePage(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg2.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goFirstPage(MouseEvent event) throws IOException {
+    ;
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebookpg1.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void goToDrawers(ActionEvent event) throws IOException {
+    ;
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
   public static void openKitchen(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
     Parent root = loader.load();
@@ -142,5 +193,49 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void openLaptopClue(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
+    Parent root = loader.load();
+
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    // Parent laptopClueView = loader.load();
+    // AnchorPane crimeScenePane =
+    //    (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
+    // crimeScenePane.getChildren().add(laptopClueView);
+  }
+
+  public static void openLaptopClue(MouseEvent event, String path) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
+    Parent laptopClueView = loader.load();
+    AnchorPane laptopPane =
+        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
+    laptopPane.getChildren().add(laptopClueView);
+  }
+
+  public static void closeClue(ActionEvent event) throws IOException {
+    openCrimeScene(event);
+  }
+
+  public static void playSound(String soundFileName) {
+    try {
+      // Construct the file path to your sound file
+      String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
+
+      // Create a Media object with the sound file
+      Media sound = new Media(soundPath);
+
+      // Create a MediaPlayer to play the sound
+      MediaPlayer mediaPlayer = new MediaPlayer(sound);
+
+      // Play the sound
+      mediaPlayer.play();
+    } catch (Exception e) {
+      System.out.println("Error loading sound file: " + e.getMessage());
+    }
   }
 }

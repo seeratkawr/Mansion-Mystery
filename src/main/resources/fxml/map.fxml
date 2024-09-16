@@ -13,7 +13,7 @@
             <Image url="@../images/Study.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="603.0" fitWidth="630.0" layoutX="123.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="603.0" fitWidth="603.0" layoutX="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
          </image>
