@@ -59,4 +59,15 @@ public class MapController {
       e.printStackTrace();
     }
   }
+
+  @FXML
+  private void onCleanerClicked(MouseEvent event) {
+    try {
+      // Open the cleaner view
+      App.openSuspectCleaner(event);
+    } catch (IOException e) {
+      // Print stack trace for debugging in case of error
+      e.printStackTrace();
+    }
+  }
 }
