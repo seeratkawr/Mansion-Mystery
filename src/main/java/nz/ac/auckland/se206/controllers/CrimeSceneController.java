@@ -40,7 +40,7 @@ public class CrimeSceneController {
   @FXML
   private void onLaptopClicked(MouseEvent event) {
     try {
-      App.openLaptopClue(event);
+      App.openLaptop(event);
     } catch (IOException e) {
       e.printStackTrace();
     }

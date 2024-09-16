@@ -195,18 +195,13 @@ public class App extends Application {
     FreeTextToSpeech.deallocateSynthesizer();
   }
 
-  public static void openLaptopClue(MouseEvent event) throws IOException {
+  public static void openLaptop(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
     Parent root = loader.load();
-
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-    // Parent laptopClueView = loader.load();
-    // AnchorPane crimeScenePane =
-    //    (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
-    // crimeScenePane.getChildren().add(laptopClueView);
   }
 
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
