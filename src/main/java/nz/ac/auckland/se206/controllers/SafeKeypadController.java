@@ -68,16 +68,9 @@ public class SafeKeypadController {
             // play the sound of the safe opening in a background thread when the correct
             // code is entered to prevent blocking the UI thread when switching scenes
             if (code.equals(password)) {
-                Task<Void> backgroundTask = new Task<>() {
-                    @Override
-                    protected Void call() {
-                        App.playSound("safeOpen.mp3");
-                        return null;
-                    }
-                };
-                Thread backgroundThread = new Thread(backgroundTask);
-                backgroundThread.setDaemon(true);
-                backgroundThread.start();
+                
+                App.playSound("safeOpen.mp3");
+         
 
                 System.out.println("Correct code entered");
                 App.openSafeOpened(event);
