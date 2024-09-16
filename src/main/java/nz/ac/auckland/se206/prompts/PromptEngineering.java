@@ -17,7 +17,7 @@ public class PromptEngineering {
   /**
    * Retrieves a prompt template, fills it with the provided data, and returns the filled prompt.
    *
-   * @param promptId the ID of the prompt template to load
+   * @param promptFileName the name of the prompt template file to load
    * @param data the data to fill into the template
    * @return the filled prompt
    * @throws IllegalArgumentException if there is an error loading or filling the template
@@ -27,6 +27,9 @@ public class PromptEngineering {
       // Load the prompt template file from resources
       URL resourceUrl =
           PromptEngineering.class.getClassLoader().getResource("prompts/" + promptFileName);
+      if (resourceUrl == null) {
+        throw new IllegalArgumentException("Prompt file not found: " + promptFileName);
+      }
       String template = loadTemplate(resourceUrl.toURI());
       // Fill the template with the provided data
       return fillTemplate(template, data);
@@ -36,25 +39,10 @@ public class PromptEngineering {
     }
   }
 
-  /**
-   * Loads the content of a template file from the specified file path.
-   *
-   * @param filePath the URI of the file to load
-   * @return the content of the template file as a string
-   * @throws IOException if there is an error reading the file
-   */
   private static String loadTemplate(URI filePath) throws IOException {
     return new String(Files.readAllBytes(Paths.get(filePath)));
   }
 
-  /**
-   * Fills a template string with the provided data. Replaces placeholders in the template with
-   * corresponding values from the data map.
-   *
-   * @param template the template string to fill
-   * @param data the data to fill into the template
-   * @return the filled template string
-   */
   private static String fillTemplate(String template, Map<String, String> data) {
     for (Map.Entry<String, String> entry : data.entrySet()) {
       template = template.replace("{" + entry.getKey() + "}", entry.getValue());

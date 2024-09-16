@@ -5,15 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MapController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MapController">
    <children>
       <ImageView fx:id="background" fitHeight="648.0" fitWidth="844.5" opacity="0.4" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Study.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="648.0" fitWidth="890.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="603.0" fitWidth="603.0" layoutX="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
          </image>
@@ -24,6 +25,7 @@
          </image>
       </ImageView>
       <Button fx:id="exit_button" layoutX="778.0" layoutY="21.0" mnemonicParsing="false" onAction="#onExitClicked" opacity="0.0" prefHeight="46.0" prefWidth="46.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="102.0" layoutX="341.0" layoutY="242.0" onMouseClicked="#onKitchenClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="101.0" />
       <Rectangle fx:id="daughterRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="185.0" layoutY="77.0" onMouseClicked="#onDaughterClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="101.0" />
    </children>
 </AnchorPane>
