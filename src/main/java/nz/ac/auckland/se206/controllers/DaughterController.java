@@ -39,8 +39,8 @@ public class DaughterController {
     loadingIndicator.setVisible(false);
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/bear.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
-    translateTransition.setFromX(383);
-    translateTransition.setToX(642);
+    translateTransition.setFromX(0);
+    translateTransition.setToX(250);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
     daughterText.setEditable(false);
@@ -103,7 +103,7 @@ public class DaughterController {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(100);
+              .setMaxTokens(30);
 
       loadingIndicator.setVisible(true);
       translateTransition.play();

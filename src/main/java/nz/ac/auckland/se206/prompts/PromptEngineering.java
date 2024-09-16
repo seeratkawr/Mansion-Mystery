@@ -22,10 +22,11 @@ public class PromptEngineering {
    * @return the filled prompt
    * @throws IllegalArgumentException if there is an error loading or filling the template
    */
-  public static String getPrompt(String promptId, Map<String, String> data) {
+  public static String getPrompt(String promptFileName, Map<String, String> data) {
     try {
       // Load the prompt template file from resources
-      URL resourceUrl = PromptEngineering.class.getClassLoader().getResource("prompts/chat.txt");
+      URL resourceUrl =
+          PromptEngineering.class.getClassLoader().getResource("prompts/" + promptFileName);
       String template = loadTemplate(resourceUrl.toURI());
       // Fill the template with the provided data
       return fillTemplate(template, data);
