@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.Stack;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,9 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static Scene currentScene;
+
+  private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
   /**
    * The main method that launches the JavaFX application.
@@ -81,14 +85,28 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-
+    // Initialize the static stage variable
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startgame.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
     root.requestFocus();
+    sceneStack.push(scene);
   }
+
+  // public static void openScene(MouseEvent event, String fxml) throws IOException {
+  //   // Save the current scene to the stack
+  //   sceneStack.push(currentScene);
+
+  //   // Load and set the new scene
+  //   FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
+  //   Parent root = loader.load();
+  //   currentScene = new Scene(root);
+  //   Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+  //   stage.setScene(currentScene);
+  //   stage.show();
+  // }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
@@ -98,6 +116,7 @@ public class App extends Application {
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+    sceneStack.push(scene);
   }
 
   public static void openMap(MouseEvent event, String path) throws IOException {
@@ -162,22 +181,27 @@ public class App extends Application {
     stage.show();
   }
 
-  private void handleWindowClose(WindowEvent event) {
-    FreeTextToSpeech.deallocateSynthesizer();
-  }
-
-  public static void openLaptopClue(MouseEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
+  public static void openKitchen(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
     Parent root = loader.load();
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-    // Parent laptopClueView = loader.load();
-    // AnchorPane crimeScenePane =
-    //    (AnchorPane) ((Node) event.getSource()).getScene().lookup("#crimeScenePane");
-    // crimeScenePane.getChildren().add(laptopClueView);
+  }
+
+  private void handleWindowClose(WindowEvent event) {
+    FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void openLaptop(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
   }
 
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
