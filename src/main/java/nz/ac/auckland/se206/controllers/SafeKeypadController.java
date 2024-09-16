@@ -21,8 +21,8 @@ public class SafeKeypadController {
     @FXML private AnchorPane safePane;
 
     List<Integer> code = new ArrayList<>();
-    List<Integer> password = new ArrayList<>(Arrays.asList(1, 4, 2, 8)); // the password to open the safe
-    int codeLength = 4; // the length of the code
+    List<Integer> password = new ArrayList<>(Arrays.asList(5,3,1)); // the password to open the safe
+    int codeLength = password.size(); // the length of the code
 
     /**
      * This method initializes the controller.
