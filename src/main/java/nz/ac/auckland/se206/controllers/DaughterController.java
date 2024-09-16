@@ -52,7 +52,7 @@ public class DaughterController {
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
-      App.openMap(event, "/images/bedroom.png");
+      App.openMap(event, "/images/bedroom.jpg");
     } catch (IOException e) {
       e.printStackTrace();
     }
