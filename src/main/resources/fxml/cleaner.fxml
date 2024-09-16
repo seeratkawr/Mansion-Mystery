@@ -21,13 +21,13 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <TextArea fx:id="cleanerText" layoutX="81.0" layoutY="118.0" prefHeight="88.0" prefWidth="260.0" />
+      <TextArea fx:id="cleanerText" layoutX="61.0" layoutY="118.0" prefHeight="125.0" prefWidth="292.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="746.0" layoutY="15.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="65.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="51.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/broom.png" />
          </image>
