@@ -123,7 +123,8 @@ public class App extends Application {
   }
 
   public static void openMap(MouseEvent event, String path) throws IOException {
-
+    
+    App.playSound("mapunfolding.mp3");
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/map.fxml"));
     Parent root = loader.load();
 
