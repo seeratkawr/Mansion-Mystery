@@ -35,7 +35,8 @@ public class App extends Application {
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
   private static Stage primaryStage;
-  private boolean isFirstTime;
+  private static boolean timerStarted = false;
+  private static TimerUtility timer;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -97,8 +98,6 @@ public class App extends Application {
             mediaPlayer.dispose();
           }
         });
-    
-    isFirstTime = true;
   }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
@@ -112,10 +111,17 @@ public class App extends Application {
     sceneStack.push(scene);
 
     CrimeSceneController controller = loader.getController();
-    TimerUtility timer = new TimerUtility(300, controller.getTimerLabel());
+
+    Label timerLabel = controller.getTimerLabel();
+    timer = new TimerUtility(300, timerLabel);
     controller.setTimer(timer);
 
-    timer.start();
+    if (!timerStarted) {
+      timer.start();
+      timerStarted = true;
+    } else {
+      timerLabel.textProperty().bind(timer.timeSecondsProperty().asString());
+    }
   }
 
   public static void openMap(MouseEvent event, String path) throws IOException {
@@ -127,10 +133,14 @@ public class App extends Application {
     MapController mapController = loader.getController();
     mapController.changeBackground(path);
 
+    mapController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
+
+    timer.setTimerLabel(mapController.getTimerLabel());
   }
 
   public static void openDrawer(MouseEvent event) throws IOException {

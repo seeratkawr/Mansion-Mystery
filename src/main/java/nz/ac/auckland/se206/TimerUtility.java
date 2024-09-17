@@ -39,7 +39,7 @@ public class TimerUtility {
     timeline.getKeyFrames().add(keyFrame);
   }
 
-  private String formatTime(int totalSeconds) {
+  public String formatTime(int totalSeconds) {
     int minutes = totalSeconds / 60;
     int seconds = totalSeconds % 60;
     return String.format("%02d:%02d", minutes, seconds);
@@ -61,5 +61,9 @@ public class TimerUtility {
 
   public IntegerProperty timeSecondsProperty() {
     return timeSeconds;
+  }
+
+  public void setTimerLabel(Label timerLabel) {
+    this.timerLabel = timerLabel;
   }
 }
