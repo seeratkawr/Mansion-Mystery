@@ -103,7 +103,7 @@ public class DaughterController {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(30);
+              .setMaxTokens(50);
 
       loadingIndicator.setVisible(true);
       translateTransition.play();
