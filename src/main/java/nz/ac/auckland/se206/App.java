@@ -311,7 +311,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to verify if the player is allowed to guess
+   * This method is called to verify if the player is allowed to guess.
+   * The player can guess if they have talked to all suspects and viewed at least one clue.
    *
    * @return true if the player can guess, false otherwise
    */
@@ -333,6 +334,11 @@ public class App extends Application {
     System.out.println(suspectsTalkedTo);
   }
   
+  /**
+   * This method is called to add a clue to the list of clues viewed
+   *
+   * @param clue the clue to add to the list
+   */
   public static void addCluesViewed(String clue) {
     cluesViewed.add(clue);
     System.out.println(suspectsTalkedTo);

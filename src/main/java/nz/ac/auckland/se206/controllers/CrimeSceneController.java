@@ -56,6 +56,7 @@ public class CrimeSceneController {
 
   @FXML
   private void onLaptopClicked(MouseEvent event) {
+    App.addCluesViewed("laptop");
     try {
       App.openLaptop(event);
     } catch (IOException e) {
@@ -65,6 +66,7 @@ public class CrimeSceneController {
 
   @FXML
   private void onDrawersClicked(MouseEvent event) {
+    App.addCluesViewed("drawer");
     try {
       // Open the drawer view
       App.playSound("draweropen.mp3");
@@ -82,6 +84,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
+    App.addCluesViewed("safe");
     try {
       App.openSafe(event);
     } catch (IOException e) {
