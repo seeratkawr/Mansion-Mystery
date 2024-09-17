@@ -25,140 +25,158 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class CleanerController {
-    @FXML private Button btnSend;
-    @FXML private TextField txtInput;
-    @FXML private TextArea txtaChat;
-    @FXML private ImageView loadingIndicator;
+  @FXML private Button btnSend;
+  @FXML private TextField txtInput;
+  @FXML private TextArea txtaChat;
+  @FXML private ImageView loadingIndicator;
 
-    private String profession;
-    private ChatCompletionRequest chatCompletionRequest;
-    private TranslateTransition translateTransition;
+  private String profession;
+  private ChatCompletionRequest chatCompletionRequest;
+  private TranslateTransition translateTransition;
 
-    public void initialize() {
-        loadingIndicator.setVisible(false);
-        loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/broom.png")));
-        translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
-        translateTransition.setFromX(0);
-        translateTransition.setToX(250);
-        translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
-        translateTransition.setAutoReverse(true);
-        txtaChat.setEditable(false);
-        txtaChat.setWrapText(true);
+  public void initialize() {
+    loadingIndicator.setVisible(false);
+    loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/broom.png")));
+    translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
+    translateTransition.setFromX(0);
+    translateTransition.setToX(250);
+    translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
+    translateTransition.setAutoReverse(true);
+    txtaChat.setEditable(false);
+    txtaChat.setWrapText(true);
 
-        setProfession("Cleaner");
+    setProfession("Cleaner");
+
+    // Add event handler for the Enter key to send the message
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSend.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
+  }
+
+  @FXML
+  private void onMapClicked(MouseEvent event) {
+    try {
+      App.openMap(event, "/images/cleaner.png");
+      MapController.setLastScene("cleaner");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void onSendMessage(ActionEvent event) {
+    App.addSuspectTalkedTo(profession);
+    String message = txtInput.getText().trim();
+    if (message.isEmpty()) {
+      return;
     }
 
-    @FXML
-    private void onMapClicked(MouseEvent event) {
-        try {
-            App.openMap(event, "/images/cleaner.png");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    clearChat();
 
-    @FXML
-    private void onSendMessage(ActionEvent event) {
-        App.addSuspectTalkedTo(profession);
-        String message = txtInput.getText().trim();
-        if (message.isEmpty()) {
-            return;
-        }
+    txtInput.clear();
+    ChatMessage userMessage = new ChatMessage("user", message);
+    appendChatMessage(userMessage);
 
-        clearChat();
+    loadingIndicator.setVisible(true);
+    translateTransition.play();
 
-        txtInput.clear();
-        ChatMessage userMessage = new ChatMessage("user", message);
-        appendChatMessage(userMessage);
-
-        loadingIndicator.setVisible(true);
-        translateTransition.play();
-
-        Task<Void> task = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                ChatMessage response = runGpt(userMessage);
-                Platform.runLater(
-                        () -> {
-                            appendChatMessage(response);
-                            loadingIndicator.setVisible(false);
-                            translateTransition.stop();
-                        });
-                return null;
-            }
+    Task<Void> task =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            ChatMessage response = runGpt(userMessage);
+            Platform.runLater(
+                () -> {
+                  appendChatMessage(response);
+                  loadingIndicator.setVisible(false);
+                  translateTransition.stop();
+                });
+            return null;
+          }
         };
 
-        new Thread(task).start();
+    new Thread(task).start();
+  }
+
+  public void setProfession(String profession) {
+    this.profession = profession;
+    clearChat();
+
+    try {
+      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.2)
+              .setTopP(0.4)
+              .setMaxTokens(100);
+
+      loadingIndicator.setVisible(true);
+      translateTransition.play();
+
+      Task<Void> task =
+          new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+              ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
+              ChatMessage response = runGpt(systemMessage);
+              Platform.runLater(
+                  () -> {
+                    appendChatMessage(response);
+                    loadingIndicator.setVisible(false);
+                    translateTransition.stop();
+                  });
+              return null;
+            }
+          };
+      new Thread(task).start();
+    } catch (ApiProxyException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void appendChatMessage(ChatMessage msg) {
+    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    System.out.println(
+        "Response from LLM: " + msg.getContent()); // Print the response to the console
+  }
+
+  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    chatCompletionRequest.addMessage(msg);
+    try {
+      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      Choice result = chatCompletionResult.getChoices().iterator().next();
+      chatCompletionRequest.addMessage(result.getChatMessage());
+      return result.getChatMessage();
+    } catch (ApiProxyException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  private void clearChat() {
+    txtaChat.clear();
+  }
+
+  private String getSystemPrompt() {
+    Map<String, String> map = new HashMap<>();
+    map.put("profession", profession);
+
+    String promptFileName;
+    if ("Cleaner".equals(profession)) {
+      promptFileName = "cleaner_prompt.txt";
+    } else {
+      throw new IllegalStateException("Unexpected profession: " + profession);
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
-        clearChat();
-
-        try {
-            ApiProxyConfig config = ApiProxyConfig.readConfig();
-            chatCompletionRequest = new ChatCompletionRequest(config)
-                    .setN(1)
-                    .setTemperature(0.2)
-                    .setTopP(0.5)
-                    .setMaxTokens(30);
-
-            loadingIndicator.setVisible(true);
-            translateTransition.play();
-
-            Task<Void> task = new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
-                    ChatMessage response = runGpt(systemMessage);
-                    Platform.runLater(
-                            () -> {
-                                appendChatMessage(response);
-                                loadingIndicator.setVisible(false);
-                                translateTransition.stop();
-                            });
-                    return null;
-                }
-            };
-            new Thread(task).start();
-        } catch (ApiProxyException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void appendChatMessage(ChatMessage msg) {
-        txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
-    }
-
-    private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-        chatCompletionRequest.addMessage(msg);
-        try {
-            ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-            Choice result = chatCompletionResult.getChoices().iterator().next();
-            chatCompletionRequest.addMessage(result.getChatMessage());
-            return result.getChatMessage();
-        } catch (ApiProxyException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private void clearChat() {
-        txtaChat.clear();
-    }
-
-    private String getSystemPrompt() {
-        Map<String, String> map = new HashMap<>();
-        map.put("profession", profession);
-
-        String promptFileName;
-        if ("Cleaner".equals(profession)) {
-            promptFileName = "cleaner_prompt.txt";
-        } else {
-            throw new IllegalStateException("Unexpected profession: " + profession);
-        }
-
-        String prompt = PromptEngineering.getPrompt(promptFileName, map);
-        return prompt;
-    }
+    String prompt = PromptEngineering.getPrompt(promptFileName, map);
+    return prompt;
+  }
 }
