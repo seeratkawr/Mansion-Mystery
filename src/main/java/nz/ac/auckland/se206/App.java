@@ -100,6 +100,16 @@ public class App extends Application {
     stage.show();
     root.requestFocus();
     sceneStack.push(scene);
+
+    // ending any remaining threads on close
+    stage.setOnCloseRequest(
+        e -> {
+            if (mediaPlayer != null) {
+              System.out.println("Closing media player");
+              mediaPlayer.stop();
+              mediaPlayer.dispose();
+            }
+        });
   }
 
   // public static void openScene(MouseEvent event, String fxml) throws IOException {
