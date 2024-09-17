@@ -25,24 +25,15 @@ import java.util.Map;
 
 public class GuessingController {
 
-  @FXML
-  private ResourceBundle resources;
-  @FXML
-  private URL location;
-  @FXML
-  private Rectangle chef;
-  @FXML
-  private Rectangle cleaner;
-  @FXML
-  private Rectangle daughter;
-  @FXML
-  private Button btnSubmit;
-  @FXML
-  private TextField txtInput;
-  @FXML
-  private Label lbSelectedSuspect;
-  @FXML
-  private Label lbSelected;
+  @FXML private ResourceBundle resources;
+  @FXML private URL location;
+  @FXML private Rectangle chef;
+  @FXML private Rectangle cleaner;
+  @FXML private Rectangle daughter;
+  @FXML private Button btnSubmit;
+  @FXML private TextField txtInput;
+  @FXML private Label lbSelectedSuspect;
+  @FXML private Label lbSelected;
 
   private String chosenSuspect;
   private String profession;
@@ -114,7 +105,9 @@ public class GuessingController {
         return null;
       }
     };
-    new Thread(task).start();
+    Thread thread = new Thread(task);
+    thread.setDaemon(true);
+    thread.start();
   }
 
   public void setProfession(String profession) {
@@ -140,7 +133,9 @@ public class GuessingController {
           return null;
         }
       };
-      new Thread(task).start();
+      Thread thread = new Thread(task);
+      thread.setDaemon(true);
+      thread.start();
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }

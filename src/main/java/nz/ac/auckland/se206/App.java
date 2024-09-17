@@ -372,4 +372,19 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
   }
+
+  public static void restartGame(ActionEvent event) throws IOException {
+    // clear game state
+    aiGameResult = null;
+    suspectsTalkedTo.clear();
+    cluesViewed.clear();
+
+    // open the start game scene
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/startgame.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
 }

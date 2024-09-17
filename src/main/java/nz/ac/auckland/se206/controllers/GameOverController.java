@@ -25,7 +25,7 @@ public class GameOverController {
 
     @FXML
     private void onClickedRestart(ActionEvent event) throws IOException {
-        App.openCrimeScene(event);
+        App.restartGame(event);
     }
 
 
