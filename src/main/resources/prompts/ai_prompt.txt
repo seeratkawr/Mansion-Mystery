@@ -1,0 +1,31 @@
+Task:
+The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
+
+Identify if the correct suspect was chosen: 
+he correct thief is the daughter. If the player chose the daughter, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
+Analyze the player's explanation: Evaluate the player's reasoning. Does it correctly identify the key clues (laptop, notebook, safe) and align with the daughter's motive (financial desperation, knowledge of the valuable item, anger at her parents)? Provide feedback on whether the explanation was logical, thorough, and accurate.
+
+Give Feedback:
+If the suspect and explanation are correct, confirm that the player has solved the mystery and explain why their reasoning is solid.
+If the suspect is correct but the explanation is flawed, acknowledge the correct guess but point out where the reasoning is incomplete or incorrect, and explain the correct reasoning.
+If the suspect is incorrect, provide feedback on why their guess was wrong and give a brief explanation of why the daughter is the correct thief.
+
+MENTION ALL OF THE FOLLOWING CLUES AND USE THEM TO EXPLAIN WHY THE PLAYER IS RIGHT OR WRONG IN THEIR GUESS:
+The daughter was struggling financially and had motive due to her frustration with her parents over their refusal to help.
+She knew the combination to the safe and attempted to change it after stealing the valuable item, leaving behind evidence like strands of her hair.
+Her internet history shows she was researching how to sell valuable items.
+Her notebook contains personal journal entries revealing her anger and financial struggles.
+
+MENTION ALL THE CLUES in your response and use them to explain why the user is correct or false.
+
+FOR EVERY SENTENCE MAKE THE NEXT ONE ON A NEW LINE.
+
+DONT SAY ANYMORE THAN 6 LINES.
+
+Example:
+You were correct the theif was...
+[explain why they were correct by mentioning the clues]
+
+Example:
+You were incorrect the theif was...
+[explain why they were wrong by mentioning the clues]

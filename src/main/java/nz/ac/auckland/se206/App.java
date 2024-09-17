@@ -30,10 +30,10 @@ public class App extends Application {
 
   private static Scene scene;
   private static Scene currentScene;
-  private static MediaPlayer
-      mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
+  private static String aiGameResult;
   private static Stage primaryStage;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
@@ -102,6 +102,16 @@ public class App extends Application {
     stage.show();
     root.requestFocus();
     sceneStack.push(scene);
+
+    // ending any remaining threads on close
+    stage.setOnCloseRequest(
+        e -> {
+            if (mediaPlayer != null) {
+              System.out.println("Closing media player");
+              mediaPlayer.stop();
+              mediaPlayer.dispose();
+            }
+        });
   }
 
   // public static void openScene(MouseEvent event, String fxml) throws IOException {
@@ -346,6 +356,38 @@ public class App extends Application {
   public static void addCluesViewed(String clue) {
     cluesViewed.add(clue);
     System.out.println(cluesViewed);
+  }
+
+  public static void setAiGameResult(String result) {
+    aiGameResult = result;
+  }
+
+  public static String getAiGameResult() {
+    return aiGameResult;
+  }
+
+  public static void openGameOver(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameOver.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+  }
+
+  public static void restartGame(ActionEvent event) throws IOException {
+    // clear game state
+    aiGameResult = null;
+    suspectsTalkedTo.clear();
+    cluesViewed.clear();
+
+    // open the start game scene
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/startgame.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
   }
 
   public static void lastSceneDaughter() throws IOException {
