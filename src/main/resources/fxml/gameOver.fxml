@@ -8,8 +8,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameOverController">
    <children>
       <Label layoutX="304.0" layoutY="40.0" style="-fx-font-size: 50px;" text="Game over!" />
-      <Label layoutX="180.0" layoutY="176.0" text="Your restults:" />
-      <TextArea fx:id="txtaResults" editable="false" layoutX="180.0" layoutY="201.0" prefHeight="200.0" prefWidth="487.0" />
+      <Label layoutX="128.0" layoutY="161.0" text="Your restults:" />
+      <TextArea fx:id="txtaResults" editable="false" layoutX="128.0" layoutY="186.0" prefHeight="296.0" prefWidth="590.0" />
       <Button layoutX="711.0" layoutY="527.0" mnemonicParsing="false" onAction="#onClickedRestart" text="Restart" />
    </children>
 </AnchorPane>

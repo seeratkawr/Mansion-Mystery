@@ -119,7 +119,7 @@ public class GuessingController {
           .setN(1)
           .setTemperature(0.2)
           .setTopP(0.5)
-          .setMaxTokens(50);
+          .setMaxTokens(100);
 
       Task<Void> task = new Task<Void>() {
         @Override
