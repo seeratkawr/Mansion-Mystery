@@ -18,7 +18,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
-import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 // this is a test comment to test github flows
 
@@ -70,22 +69,6 @@ public class App extends Application {
   }
 
   /**
-   * Opens the chat view and sets the profession in the chat controller.
-   *
-   * @param event the mouse event that triggered the method
-   * @param profession the profession to set in the chat controller
-   * @throws IOException if the FXML file is not found
-   */
-  // public static void openChat(MouseEvent event, String profession) throws IOException {
-  //   FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
-  //   Parent root = loader.load();
-
-  //   // ChatController chatController = loader.getController();
-  //   // chatController.setProfession(profession);
-
-  // }
-
-  /**
    * This method is invoked when the application starts. It loads and shows the "room" scene.
    *
    * @param stage the primary stage of the application
@@ -113,19 +96,6 @@ public class App extends Application {
             }
         });
   }
-
-  // public static void openScene(MouseEvent event, String fxml) throws IOException {
-  //   // Save the current scene to the stack
-  //   sceneStack.push(currentScene);
-
-  //   // Load and set the new scene
-  //   FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
-  //   Parent root = loader.load();
-  //   currentScene = new Scene(root);
-  //   Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-  //   stage.setScene(currentScene);
-  //   stage.show();
-  // }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
@@ -239,10 +209,6 @@ public class App extends Application {
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-  }
-
-  private void handleWindowClose(WindowEvent event) {
-    FreeTextToSpeech.deallocateSynthesizer();
   }
 
   public static void openGuess(ActionEvent event) throws IOException {
