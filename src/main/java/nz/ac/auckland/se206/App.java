@@ -16,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 
 // this is a test comment to test github flows
@@ -28,8 +27,8 @@ import nz.ac.auckland.se206.controllers.MapController;
 public class App extends Application {
 
   private static Scene scene;
-  private static Scene currentScene;
-  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer
+      mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
@@ -89,11 +88,11 @@ public class App extends Application {
     // ending any remaining threads on close
     stage.setOnCloseRequest(
         e -> {
-            if (mediaPlayer != null) {
-              System.out.println("Closing media player");
-              mediaPlayer.stop();
-              mediaPlayer.dispose();
-            }
+          if (mediaPlayer != null) {
+            System.out.println("Closing media player");
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+          }
         });
   }
 
@@ -162,7 +161,6 @@ public class App extends Application {
   }
 
   public static void goToDrawers(ActionEvent event) throws IOException {
-    ;
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
@@ -172,7 +170,6 @@ public class App extends Application {
   }
 
   public static void openSafe(MouseEvent event) throws IOException {
-
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safe.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
@@ -356,42 +353,19 @@ public class App extends Application {
     stage.show();
   }
 
-  public static void lastSceneDaughter() throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
-    Parent root = loader.load();
-    Scene newScene = new Scene(root);
-
-    // Set the new scene on the provided stage
-    primaryStage.setScene(newScene);
-    primaryStage.show();
-  }
-
-  public static void lastSceneCrimeScene() throws IOException {
+  public static void goLastScene(String lastScene) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
+
+    if (lastScene.equals("daughter")) {
+      loader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
+    } else if (lastScene.equals("kitchen")) {
+      loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
+    } else if (lastScene.equals("cleaner")) {
+      loader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
+    }
+
     Parent root = loader.load();
     Scene newScene = new Scene(root);
-
-    // Set the new scene on the provided stage
-    primaryStage.setScene(newScene);
-    primaryStage.show();
-  }
-
-  public static void lastSceneKitchen() throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
-    Parent root = loader.load();
-    Scene newScene = new Scene(root);
-
-    // Set the new scene on the provided stage
-    primaryStage.setScene(newScene);
-    primaryStage.show();
-  }
-
-  public static void lastSceneCleaner() throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
-    Parent root = loader.load();
-    Scene newScene = new Scene(root);
-
-    // Set the new scene on the provided stage
     primaryStage.setScene(newScene);
     primaryStage.show();
   }

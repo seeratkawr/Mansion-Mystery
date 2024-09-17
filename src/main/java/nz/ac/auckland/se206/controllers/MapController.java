@@ -29,16 +29,7 @@ public class MapController {
   @FXML
   private void onExitClicked(ActionEvent event) {
     try {
-      // Navigate back to the last scene
-      if (lastScene.equals("daughter")) {
-        App.lastSceneDaughter();
-      } else if (lastScene.equals("crimeScene")) {
-        App.lastSceneCrimeScene();
-      } else if (lastScene.equals("kitchen")) {
-        App.lastSceneKitchen();
-      } else if (lastScene.equals("cleaner")) {
-        App.lastSceneCleaner();
-      }
+      App.goLastScene(lastScene);
     } catch (IOException e) {
       e.printStackTrace();
     }
