@@ -16,7 +16,7 @@ public class Notebookpg3Controller {
   private void onGoMiddlePage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3");
     System.out.println("Go middle page");
-    App.goMiddlePage(event);
+    App.goToPage(event, "notebookpg2");
   }
 
   @FXML

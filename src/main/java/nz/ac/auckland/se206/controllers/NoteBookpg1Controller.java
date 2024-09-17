@@ -11,7 +11,7 @@ public class NoteBookpg1Controller {
   @FXML
   private void onGoRightPage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3");
-    App.goMiddlePage(event);
+    App.goToPage(event, "notebookpg2");
     System.out.println("Go right page");
   }
 

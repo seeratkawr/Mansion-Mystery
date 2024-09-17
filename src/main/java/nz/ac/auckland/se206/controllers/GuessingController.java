@@ -197,7 +197,6 @@ public class GuessingController {
                 cleanUpThreads();
                 App.openGameOver(event);
               } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
               }
             });

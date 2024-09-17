@@ -14,7 +14,7 @@ public class NotebookController {
 
   @FXML
   private void onClickedBook(MouseEvent event) throws IOException {
-    App.goFirstPage(event);
+    App.goToPage(event, "notebookpg1");
   }
 
   @FXML
