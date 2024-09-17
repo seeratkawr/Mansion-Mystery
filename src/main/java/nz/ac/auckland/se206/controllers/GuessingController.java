@@ -22,6 +22,8 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class GuessingController {
 
@@ -34,10 +36,14 @@ public class GuessingController {
   @FXML private TextField txtInput;
   @FXML private Label lbSelectedSuspect;
   @FXML private Label lbSelected;
+  @FXML private Label lbTimesUp;
+  @FXML private Rectangle rectangleBackground;
+  @FXML private Button btnResults;
 
   private String chosenSuspect;
   private String profession;
   private ChatCompletionRequest chatCompletionRequest;
+  private List<Thread> threads = new ArrayList<Thread>();
 
   @FXML
   private void initialize() {
@@ -51,7 +57,35 @@ public class GuessingController {
     lbSelectedSuspect.setVisible(false);
     lbSelected.setVisible(false);
     btnSubmit.setVisible(false);
+
+    rectangleBackground.setVisible(false);
+    lbTimesUp.setDisable(true);
+    lbTimesUp.setVisible(false);
+    btnResults.setDisable(true);
+    btnResults.setVisible(false);
     setProfession("AI");
+
+    // start 60 second timer for users to guess
+    startTimer(); 
+  }
+
+  private void startTimer() {
+    // force game over after 60 seconds
+    new java.util.Timer().schedule(
+        new java.util.TimerTask() {
+
+          @Override
+          public void run() {
+            lbTimesUp.setDisable(false);
+            lbTimesUp.setVisible(true);
+            btnResults.setDisable(false);
+            btnResults.setVisible(true);
+            rectangleBackground.setVisible(true);
+            App.setAiGameResult("You did not guess, you ran out of time!");
+          }
+        },
+        // 60000);
+        5000);
   }
 
   @FXML
@@ -96,6 +130,7 @@ public class GuessingController {
         Platform.runLater(
             () -> {
               try {
+                cleanUpThreads();
                 App.openGameOver(event);
               } catch (IOException e) {
                 // TODO Auto-generated catch block
@@ -106,6 +141,7 @@ public class GuessingController {
       }
     };
     Thread thread = new Thread(task);
+    threads.add(thread); // add thread to list of active threads
     thread.setDaemon(true);
     thread.start();
   }
@@ -134,6 +170,7 @@ public class GuessingController {
         }
       };
       Thread thread = new Thread(task);
+      threads.add(thread); // add thread to list of active threads
       thread.setDaemon(true);
       thread.start();
     } catch (ApiProxyException e) {
@@ -186,4 +223,28 @@ public class GuessingController {
     btnSubmit.setVisible(true);
   }
 
+  /**
+   * This method is called when the user clicks the see results button.
+   * This button is presented when the user runs out of time.
+   *
+   * @param event the event that triggered this method
+   */
+  @FXML
+  private void onClickSeeResults(ActionEvent event) {
+    try {
+      cleanUpThreads();
+      App.openGameOver(event);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void cleanUpThreads() {
+    if(!threads.isEmpty()) {
+      for (Thread thread : threads) {
+        thread.interrupt();
+      }
+      threads.clear();
+    }
+  }
 }
