@@ -30,5 +30,6 @@
          </font>
       </Label>
       <Button fx:id="btnResults" disable="true" layoutX="346.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickSeeResults" text="Click to see results" visible="false" />
+      <Label fx:id="lbTimer" layoutX="14.0" layoutY="14.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
    </children>
 </AnchorPane>
