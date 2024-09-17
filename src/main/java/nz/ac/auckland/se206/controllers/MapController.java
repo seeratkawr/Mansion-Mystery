@@ -41,7 +41,7 @@ public class MapController {
     try {
       // Open the kitchen view
       System.out.println("Kitchen clicked");
-      App.openKitchen(event);
+      App.openSuspect(event, "kitchen");
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
@@ -52,7 +52,7 @@ public class MapController {
   private void onDaughterClicked(MouseEvent event) {
     try {
       // Open the daughter view
-      App.openSuspectDaughter(event);
+      App.openSuspect(event, "daughter");
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
@@ -63,7 +63,7 @@ public class MapController {
   private void onCleanerClicked(MouseEvent event) {
     try {
       // Open the cleaner view
-      App.openSuspectCleaner(event);
+      App.openSuspect(event, "cleaner");
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
