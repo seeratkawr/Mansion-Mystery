@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 public class CrimeSceneController {
 
@@ -18,10 +19,20 @@ public class CrimeSceneController {
   @FXML private Rectangle bookshelfSafeRectangle;
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
+  @FXML private Label timerLabel;
+
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   @FXML
   private void onMapClicked(MouseEvent event) {
-
     try {
       // Open the map view
       App.openMap(event, "/images/Study.png");

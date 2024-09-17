@@ -11,11 +11,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.CrimeSceneController;
 import nz.ac.auckland.se206.controllers.MapController;
 
 // this is a test comment to test github flows
@@ -33,6 +35,7 @@ public class App extends Application {
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
   private static Stage primaryStage;
+  private boolean isFirstTime;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -94,6 +97,8 @@ public class App extends Application {
             mediaPlayer.dispose();
           }
         });
+    
+    isFirstTime = true;
   }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
@@ -105,6 +110,12 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
     sceneStack.push(scene);
+
+    CrimeSceneController controller = loader.getController();
+    TimerUtility timer = new TimerUtility(300, controller.getTimerLabel());
+    controller.setTimer(timer);
+
+    timer.start();
   }
 
   public static void openMap(MouseEvent event, String path) throws IOException {
