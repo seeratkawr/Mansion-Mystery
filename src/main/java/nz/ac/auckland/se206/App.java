@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
+import java.util.HashSet;
+import java.util.Set;
 
 // this is a test comment to test github flows
 
@@ -28,8 +30,8 @@ public class App extends Application {
 
   private static Scene scene;
   private static Scene currentScene;
-  private static MediaPlayer
-      mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static Set<String> suspectsTalkedTo = new HashSet<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -306,4 +308,28 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
   }
+
+  /**
+   * This method is called to verify if the player is allowed to guess
+   *
+   * @return true if the player can guess, false otherwise
+   */
+  public static Boolean verifyCanGuess() {
+    if (suspectsTalkedTo.size() == 3) {
+      System.out.println("Can guess");
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * This method is called to add a suspect to the list of suspects talked to
+   *
+   * @param suspect the suspect to add to the list
+   */
+  public static void addSuspectTalkedTo(String suspect) {
+    suspectsTalkedTo.add(suspect);
+    System.out.println(suspectsTalkedTo);
+  }
+
 }
