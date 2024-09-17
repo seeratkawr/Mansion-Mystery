@@ -49,11 +49,11 @@ public class DaughterController {
     setProfession("Daughter");
 
     // Add event handler for the Enter key to send the message
-    textInput.setOnKeyPressed(
+    txtInput.setOnKeyPressed(
         event -> {
           switch (event.getCode()) {
             case ENTER:
-              sendButton.fire(); // Trigger the send button programmatically
+              btnSend.fire(); // Trigger the send button programmatically
               break;
             default:
               break;

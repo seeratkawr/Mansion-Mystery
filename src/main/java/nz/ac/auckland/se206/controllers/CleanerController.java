@@ -48,7 +48,7 @@ public class CleanerController {
     setProfession("Cleaner");
 
     // Add event handler for the Enter key to send the message
-    textInput.setOnKeyPressed(
+    txtInput.setOnKeyPressed(
         event -> {
           switch (event.getCode()) {
             case ENTER:
