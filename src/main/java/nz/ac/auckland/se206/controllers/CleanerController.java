@@ -59,6 +59,7 @@ public class CleanerController {
 
     @FXML
     private void onSendMessage(ActionEvent event) {
+        App.addSuspectTalkedTo(profession);
         String message = textInput.getText().trim();
         if (message.isEmpty()) {
             return;

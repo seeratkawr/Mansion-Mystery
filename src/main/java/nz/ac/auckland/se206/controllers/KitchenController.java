@@ -62,6 +62,7 @@ public class KitchenController {
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     System.out.println("Send message clicked");
+    App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
