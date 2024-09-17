@@ -16,13 +16,21 @@ public class GameOverController {
 
     private String result;
 
+    /**
+     * Initializes the controller class.
+     */
     @FXML
     private void initialize() {
         result = App.getAiGameResult();
         txtaResults.setText(result);
-
     }
 
+    /**
+     * Restarts the game
+     * 
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void onClickedRestart(ActionEvent event) throws IOException {
         App.restartGame(event);

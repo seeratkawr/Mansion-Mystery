@@ -71,7 +71,7 @@ public class GuessingController {
     setProfession("AI");
 
     // start 60 second timer for users to guess
-    startTimer(0, 10);
+    startTimer(0, 30);
   }
 
   /**
@@ -167,17 +167,19 @@ public class GuessingController {
    */
   @FXML
   private void onSubmitMessage(ActionEvent event) {
+
+    // sending the user's guess to the AI
+    String message = txtInput.getText().trim();
+    if (message.isEmpty()) {
+      System.err.println("cannot submit empty message");
+      return;
+    }
     
     // clean up and cancel threads
     cleanUpThreads();
     System.out.println("Submit message clicked");
     lbTimer.setVisible(false);
 
-    // sending the user's guess to the AI
-    String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
-      return;
-    }
     txtInput.clear();
     ChatMessage userMessage = new ChatMessage("user", "the user guessed " + chosenSuspect +": " + message);
 
@@ -206,6 +208,22 @@ public class GuessingController {
     threads.add(thread); // add thread to list of active threads
     thread.setDaemon(true);
     thread.start();
+  }
+
+  /**
+   * This method is called when the user clicks the see results button.
+   * This button is presented when the user runs out of time.
+   *
+   * @param event the event that triggered this method
+   */
+  @FXML
+  private void onClickSeeResults(ActionEvent event) {
+    try {
+      cleanUpThreads();
+      App.openGameOver(event);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -308,22 +326,6 @@ public class GuessingController {
     lbSelected.setVisible(true);
     btnSubmit.setDisable(false);
     btnSubmit.setVisible(true);
-  }
-
-  /**
-   * This method is called when the user clicks the see results button.
-   * This button is presented when the user runs out of time.
-   *
-   * @param event the event that triggered this method
-   */
-  @FXML
-  private void onClickSeeResults(ActionEvent event) {
-    try {
-      cleanUpThreads();
-      App.openGameOver(event);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 
   /**
