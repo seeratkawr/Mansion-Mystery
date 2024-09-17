@@ -4,6 +4,7 @@ import java.io.IOException; // Add this import statement
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -16,6 +17,7 @@ public class CrimeSceneController {
   @FXML private Rectangle laptopRectangle;
   @FXML private Rectangle bookshelfSafeRectangle;
   @FXML private Button guessingButton;
+  @FXML private Label lbPopup;
 
   @FXML
   private void onMapClicked(MouseEvent event) {
@@ -42,6 +44,7 @@ public class CrimeSceneController {
 
   @FXML
   private void onLaptopClicked(MouseEvent event) {
+    App.addCluesViewed("laptop");
     try {
       App.openLaptop(event);
     } catch (IOException e) {
@@ -51,6 +54,7 @@ public class CrimeSceneController {
 
   @FXML
   private void onDrawersClicked(MouseEvent event) {
+    App.addCluesViewed("drawer");
     try {
       // Open the drawer view
       App.playSound("draweropen.mp3");
@@ -68,6 +72,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
+    App.addCluesViewed("safe");
     try {
       App.openSafe(event);
     } catch (IOException e) {
@@ -75,9 +80,33 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * This method is called when the user clicks the guessing button.
+   * It will open the guess view if the user has viewed at least 1 clue and spoken to all suspects.
+   *
+   * @param event the event that triggered this method
+   * @throws IOException if the FXML file is not found
+   */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
-    App.openGuess(event);
     System.out.println("Guessing button clicked");
+
+    // verify if the user can guess
+    if (App.verifyCanGuess()) {
+      App.openGuess(event);
+    } else {
+
+      // display popup message for 3 seconds
+      lbPopup.setVisible(true);
+      new java.util.Timer().schedule(
+          new java.util.TimerTask() {
+            @Override
+            public void run() {
+              lbPopup.setVisible(false);
+            }
+          },
+          3000
+      );
+    }
   }
 }

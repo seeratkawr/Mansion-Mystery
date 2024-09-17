@@ -60,6 +60,7 @@ public class DaughterController {
 
   @FXML
   private void onSendMessage(ActionEvent event) {
+    App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
