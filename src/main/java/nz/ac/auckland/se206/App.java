@@ -32,6 +32,7 @@ public class App extends Application {
   private static Scene currentScene;
   private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
+  private static Set<String> cluesViewed = new HashSet<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -315,7 +316,7 @@ public class App extends Application {
    * @return true if the player can guess, false otherwise
    */
   public static Boolean verifyCanGuess() {
-    if (suspectsTalkedTo.size() == 3) {
+    if (suspectsTalkedTo.size() == 3 && cluesViewed.size() >= 1) {
       System.out.println("Can guess");
       return true;
     }
@@ -331,5 +332,9 @@ public class App extends Application {
     suspectsTalkedTo.add(suspect);
     System.out.println(suspectsTalkedTo);
   }
-
+  
+  public static void addCluesViewed(String clue) {
+    cluesViewed.add(clue);
+    System.out.println(suspectsTalkedTo);
+  }
 }
