@@ -341,6 +341,6 @@ public class App extends Application {
    */
   public static void addCluesViewed(String clue) {
     cluesViewed.add(clue);
-    System.out.println(suspectsTalkedTo);
+    System.out.println(cluesViewed);
   }
 }
