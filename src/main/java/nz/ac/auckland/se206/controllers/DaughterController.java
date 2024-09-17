@@ -47,6 +47,18 @@ public class DaughterController {
     daughterText.setWrapText(true);
 
     setProfession("Daughter");
+
+    // Add event handler for the Enter key to send the message
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSend.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   @FXML
@@ -104,8 +116,8 @@ public class DaughterController {
           new ChatCompletionRequest(config)
               .setN(1)
               .setTemperature(0.2)
-              .setTopP(0.5)
-              .setMaxTokens(30);
+              .setTopP(0.4)
+              .setMaxTokens(100);
 
       loadingIndicator.setVisible(true);
       translateTransition.play();
@@ -133,6 +145,8 @@ public class DaughterController {
 
   private void appendChatMessage(ChatMessage msg) {
     daughterText.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    System.out.println(
+        "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
