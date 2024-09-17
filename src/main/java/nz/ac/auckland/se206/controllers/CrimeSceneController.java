@@ -18,6 +18,19 @@ public class CrimeSceneController {
   @FXML private Button guessingButton;
 
   @FXML
+  private void initialize() {
+
+    // only show the guessing button if the player can guess
+    if(App.verifyCanGuess()){
+      guessingButton.setDisable(false);
+      guessingButton.setVisible(true);
+    } else {
+      guessingButton.setDisable(true);
+      guessingButton.setVisible(false);
+    }
+  }
+
+  @FXML
   private void onMapClicked(MouseEvent event) {
 
     try {
