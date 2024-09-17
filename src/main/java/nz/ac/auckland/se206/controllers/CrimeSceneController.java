@@ -77,7 +77,8 @@ public class CrimeSceneController {
   }
 
   @FXML
-  private void onGuessClicked(ActionEvent event) {
+  private void onGuessClicked(ActionEvent event) throws IOException {
+    App.openGuess(event);
     System.out.println("Guessing button clicked");
   }
 }
