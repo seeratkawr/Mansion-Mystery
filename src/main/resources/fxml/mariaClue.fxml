@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MariaClueController">
    <children>
       <ImageView fitHeight="603.0" fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/Maria’s%20Search%20History.png" />
+            <Image url="@../images/Maria's%20Search%20History.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="rectangleButtons" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="8.0" layoutY="6.0" onMouseClicked="#closeClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="63.0" />
