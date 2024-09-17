@@ -50,7 +50,7 @@
   -fx-border-color: #8B5E51;
   -fx-border-width: 2;
   -fx-font-family: "hand-written" "Cursive";
-  -fx-font-size: 14px;
+  -fx-font-size: 12px;
   -fx-text-fill: #4B2E39;
   -fx-font-style: italic; /* Make the text slanted */
 }
@@ -69,30 +69,9 @@
   -fx-font-size: 12px;
 }
 
-/* TextArea styling for chat display */
-#txtaChat {
-  -fx-background-color: #fff;
-  -fx-border-color: #c0c0c0;
-  -fx-border-radius: 8px;
-  -fx-background-radius: 8px;
-  -fx-padding: 10px;
-  -fx-font-size: 13px;
-  -fx-font-family: "Courier New", monospace;
-  -fx-text-fill: #333;
-  -fx-control-inner-background: #fdfdfd;
-}
 
-#daughterText{
-  -fx-background-color: #fff;
-  -fx-border-color: #c0c0c0;
-  -fx-border-radius: 8px;
-  -fx-background-radius: 8px;
-  -fx-padding: 10px;
-  -fx-font-size: 13px;
-  -fx-font-family: "Courier New", monospace;
-  -fx-text-fill: #333;
-  -fx-control-inner-background: #fdfdfd;
-}
+
+
 
 /* TextField styling for chat input */
 #txtInput {
@@ -101,7 +80,7 @@
   -fx-border-radius: 8px;
   -fx-background-radius: 8px;
   -fx-padding: 5px;
-  -fx-font-size: 14px;
+  -fx-font-size: 12px;
   -fx-text-fill: #555;
 }
 

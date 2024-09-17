@@ -21,7 +21,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <TextArea fx:id="daughterText" layoutX="411.0" layoutY="90.0" prefHeight="88.0" prefWidth="260.0" />
+      <TextArea fx:id="daughterText" layoutX="411.0" layoutY="90.0" prefHeight="132.0" prefWidth="317.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="746.0" layoutY="15.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
