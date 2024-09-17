@@ -9,7 +9,7 @@
    <children>
       <Label layoutX="304.0" layoutY="40.0" style="-fx-font-size: 50px;" text="Game over!" />
       <Label layoutX="180.0" layoutY="176.0" text="Your restults:" />
-      <TextArea fx:id="txtaResults" layoutX="180.0" layoutY="201.0" prefHeight="200.0" prefWidth="487.0" />
+      <TextArea fx:id="txtaResults" editable="false" layoutX="180.0" layoutY="201.0" prefHeight="200.0" prefWidth="487.0" />
       <Button layoutX="711.0" layoutY="527.0" mnemonicParsing="false" onAction="#onClickedRestart" text="Restart" />
    </children>
 </AnchorPane>
