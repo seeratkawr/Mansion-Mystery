@@ -29,7 +29,7 @@ public class App extends Application {
   private static Scene scene;
   private static Scene currentScene;
   private static MediaPlayer
-      mediaPlayer; // media play stored at class level to prevent garbage collection
+mediaPlayer; // media play stored at class level to prevent garbage collection
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
