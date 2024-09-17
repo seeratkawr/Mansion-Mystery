@@ -26,8 +26,8 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 // nz.ac.auckland.se206.controllers.DaughterController
 public class DaughterController {
-  @FXML private Button sendButton;
-  @FXML private TextField textInput;
+  @FXML private Button btnSend;
+  @FXML private TextField txtInput;
   @FXML private TextArea daughterText;
   @FXML private ImageView loadingIndicator;
 
@@ -60,14 +60,14 @@ public class DaughterController {
 
   @FXML
   private void onSendMessage(ActionEvent event) {
-    String message = textInput.getText().trim();
+    String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
 
     clearChat();
 
-    textInput.clear();
+    txtInput.clear();
     ChatMessage userMessage = new ChatMessage("user", message);
     appendChatMessage(userMessage);
 
