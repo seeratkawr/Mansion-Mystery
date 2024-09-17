@@ -25,17 +25,8 @@ public class CrimeSceneController {
     try {
       // Open the map view
       App.openMap(event, "/images/Study.png");
-    } catch (IOException e) {
-      // Print stack trace for debugging in case of error
-      e.printStackTrace();
-    }
-  }
+      MapController.setLastScene("crimeScene");
 
-  @FXML
-  private void onKitchenClicked(MouseEvent event) {
-    try {
-      // Open the kitchen view
-      App.openKitchen(event);
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
@@ -81,8 +72,8 @@ public class CrimeSceneController {
   }
 
   /**
-   * This method is called when the user clicks the guessing button.
-   * It will open the guess view if the user has viewed at least 1 clue and spoken to all suspects.
+   * This method is called when the user clicks the guessing button. It will open the guess view if
+   * the user has viewed at least 1 clue and spoken to all suspects.
    *
    * @param event the event that triggered this method
    * @throws IOException if the FXML file is not found
@@ -98,15 +89,15 @@ public class CrimeSceneController {
 
       // display popup message for 3 seconds
       lbPopup.setVisible(true);
-      new java.util.Timer().schedule(
-          new java.util.TimerTask() {
-            @Override
-            public void run() {
-              lbPopup.setVisible(false);
-            }
-          },
-          3000
-      );
+      new java.util.Timer()
+          .schedule(
+              new java.util.TimerTask() {
+                @Override
+                public void run() {
+                  lbPopup.setVisible(false);
+                }
+              },
+              3000);
     }
   }
 }

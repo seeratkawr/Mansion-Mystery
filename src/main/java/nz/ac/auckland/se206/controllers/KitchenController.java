@@ -52,6 +52,7 @@ public class KitchenController {
   private void onMapClicked(MouseEvent event) {
     try {
       App.openMap(event, "/images/Kitchen.png");
+      MapController.setLastScene("kitchen");
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

@@ -52,6 +52,7 @@ public class CleanerController {
     private void onMapClicked(MouseEvent event) {
         try {
             App.openMap(event, "/images/cleaner.png");
+            MapController.setLastScene("cleaner");
         } catch (IOException e) {
             e.printStackTrace();
         }

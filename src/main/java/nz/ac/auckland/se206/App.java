@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 import javafx.application.Application;
 import javafx.concurrent.Task;
@@ -17,8 +19,6 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
-import java.util.HashSet;
-import java.util.Set;
 
 // this is a test comment to test github flows
 
@@ -30,9 +30,11 @@ public class App extends Application {
 
   private static Scene scene;
   private static Scene currentScene;
-  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer
+      mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
+  private static Stage primaryStage;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -92,6 +94,7 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
     // Initialize the static stage variable
+    primaryStage = stage;
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startgame.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
@@ -126,7 +129,7 @@ public class App extends Application {
   }
 
   public static void openMap(MouseEvent event, String path) throws IOException {
-    
+
     App.playSound("mapunfolding.mp3");
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/map.fxml"));
     Parent root = loader.load();
@@ -312,8 +315,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to verify if the player is allowed to guess.
-   * The player can guess if they have talked to all suspects and viewed at least one clue.
+   * This method is called to verify if the player is allowed to guess. The player can guess if they
+   * have talked to all suspects and viewed at least one clue.
    *
    * @return true if the player can guess, false otherwise
    */
@@ -334,7 +337,7 @@ public class App extends Application {
     suspectsTalkedTo.add(suspect);
     System.out.println(suspectsTalkedTo);
   }
-  
+
   /**
    * This method is called to add a clue to the list of clues viewed
    *
@@ -343,5 +346,45 @@ public class App extends Application {
   public static void addCluesViewed(String clue) {
     cluesViewed.add(clue);
     System.out.println(cluesViewed);
+  }
+
+  public static void lastSceneDaughter() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
+    Parent root = loader.load();
+    Scene newScene = new Scene(root);
+
+    // Set the new scene on the provided stage
+    primaryStage.setScene(newScene);
+    primaryStage.show();
+  }
+
+  public static void lastSceneCrimeScene() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
+    Parent root = loader.load();
+    Scene newScene = new Scene(root);
+
+    // Set the new scene on the provided stage
+    primaryStage.setScene(newScene);
+    primaryStage.show();
+  }
+
+  public static void lastSceneKitchen() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
+    Parent root = loader.load();
+    Scene newScene = new Scene(root);
+
+    // Set the new scene on the provided stage
+    primaryStage.setScene(newScene);
+    primaryStage.show();
+  }
+
+  public static void lastSceneCleaner() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
+    Parent root = loader.load();
+    Scene newScene = new Scene(root);
+
+    // Set the new scene on the provided stage
+    primaryStage.setScene(newScene);
+    primaryStage.show();
   }
 }

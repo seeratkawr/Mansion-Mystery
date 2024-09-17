@@ -53,6 +53,7 @@ public class DaughterController {
   private void onMapClicked(MouseEvent event) {
     try {
       App.openMap(event, "/images/bedroom.jpg");
+      MapController.setLastScene("daughter");
     } catch (IOException e) {
       e.printStackTrace();
     }
