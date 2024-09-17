@@ -30,8 +30,7 @@ public class App extends Application {
 
   private static Scene scene;
   private static Scene currentScene;
-  private static MediaPlayer
-      mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
