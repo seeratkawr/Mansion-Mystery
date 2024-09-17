@@ -6,7 +6,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.DaughterController">
    <children>
@@ -15,13 +14,7 @@
             <Image url="@../images/bedroom.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="textInput" layoutY="563.0" prefHeight="40.0" prefWidth="738.0" promptText="Chat with the daughter, Maria" />
-      <Button fx:id="sendButton" layoutX="738.0" layoutY="563.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="11.0" prefWidth="108.0" text="Send">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <TextArea fx:id="daughterText" layoutX="411.0" layoutY="90.0" prefHeight="132.0" prefWidth="317.0" />
+      <TextArea fx:id="daughterText" layoutX="411.0" layoutY="90.0" prefHeight="101.0" prefWidth="316.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="746.0" layoutY="15.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
@@ -32,5 +25,7 @@
             <Image url="@../images/bear.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtInput" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the daughter, Maria" />
+      <Button fx:id="btnSend" layoutX="751.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
    </children>
 </AnchorPane>

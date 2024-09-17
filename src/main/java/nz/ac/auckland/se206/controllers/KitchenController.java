@@ -64,6 +64,7 @@ public class KitchenController {
   private void onMapClicked(MouseEvent event) {
     try {
       App.openMap(event, "/images/Kitchen.png");
+      MapController.setLastScene("kitchen");
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -74,6 +75,7 @@ public class KitchenController {
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     System.out.println("Send message clicked");
+    App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;

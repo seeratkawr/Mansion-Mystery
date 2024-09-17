@@ -36,13 +36,13 @@
                   <Image url="@../images/opennotebook-removebg-preview.png" />
                </image>
             </ImageView>
-            <Label layoutX="164.0" layoutY="115.0" prefHeight="315.0" prefWidth="233.0" text="Maria, has been complaining about wanting a new car but she has been misbehaving at school and stole from              of her classmates.   " wrapText="true">
+            <Label layoutX="164.0" layoutY="115.0" prefHeight="315.0" prefWidth="233.0" text="Maria, has been complaining about wanting a new car but she has been misbehaving at school and stole from        of her classmates.   " wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <Polygon fx:id="triangle" fill="#8b5e51" layoutX="689.0" layoutY="287.0" onMouseClicked="#onGoMiddlePage" points="-578.1666259765625, 30.000030517578125, -632.8333129882812, -5.999969482421875, -578.1666259765625, -44.666656494140625" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
-            <Text layoutX="274.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="one">
+            <Text fx:id="number" layoutX="199.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="one">
                <font>
                   <Font size="22.0" />
                </font>

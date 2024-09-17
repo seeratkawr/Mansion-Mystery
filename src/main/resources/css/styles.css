@@ -5,43 +5,54 @@
 
 /* Cursive, hand-written font style for the text and labels */
 .label, .text {
-  -fx-font-family: "hand-written", "Cursive";
+  -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;
   -fx-text-fill: #4B2E39; /* A warm brown color */
   -fx-font-style: italic; /* Make the text slanted */
 }
 
+#number{
+  -fx-font-family: "serif", "Cursive";
+  -fx-font-size: 16px;
+  -fx-text-fill: #4B2E39; /* A warm brown color */
+  -fx-font-style: italic; /* Make the text slanted */
+  /*bold text*/
+  -fx-font-weight: bold;
+
+
+}
+
 /* Button styles */
 .button {
-  -fx-background-color: #8B5E51; /* Consistent brown color */
+  -fx-background-color: #717171; /* Consistent brown color */
   -fx-text-fill: white;
   -fx-font-family: "Arial";
   -fx-font-size: 14px;
   -fx-border-radius: 5;
   -fx-background-radius: 5;
-  -fx-border-color: #633A34;
+  -fx-border-color: black;
   -fx-border-width: 2;
   -fx-padding: 5 10;
 }
 
 /* Button hover effect */
 .button:hover {
-  -fx-background-color: #A57264; /* Lighter shade on hover */
+  -fx-background-color: #c7c7c7; /* Lighter shade on hover */
   -fx-cursor: hand;
 }
 
 /* Polygon (triangle) style */
 #triangle {
-  -fx-fill: #8B5E51;
+  -fx-fill: #717171;
   -fx-stroke: black;
   -fx-stroke-width: 3;
 }
 
 /* Polygon hover effect */
 #triangle:hover {
-  -fx-fill: #A57264; /* Lighter shade on hover */
+  -fx-fill: #c7c7c7; /* Lighter shade on hover */
   -fx-cursor: hand;
-  -fx-stroke: #633A34;
+  -fx-stroke: #000000;
 }
 
 /* Additional styles */
@@ -57,7 +68,7 @@
 
 /* Styling for cursive text with a larger font */
 .text {
-  -fx-font-family: "hand-written" , "Cursive";
+  -fx-font-family: "serif" , "Cursive";
   -fx-font-size: 16px; /* Increased font size for better readability */
   -fx-text-fill: #4B2E39;
 }

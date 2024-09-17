@@ -26,7 +26,7 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class CleanerController {
   @FXML private Button btnSend;
-  @FXML private TextField textInput;
+  @FXML private TextField txtInput;
   @FXML private TextArea txtaChat;
   @FXML private ImageView loadingIndicator;
 
@@ -64,6 +64,7 @@ public class CleanerController {
   private void onMapClicked(MouseEvent event) {
     try {
       App.openMap(event, "/images/cleaner.png");
+      MapController.setLastScene("cleaner");
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -71,14 +72,15 @@ public class CleanerController {
 
   @FXML
   private void onSendMessage(ActionEvent event) {
-    String message = textInput.getText().trim();
+    App.addSuspectTalkedTo(profession);
+    String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
 
     clearChat();
 
-    textInput.clear();
+    txtInput.clear();
     ChatMessage userMessage = new ChatMessage("user", message);
     appendChatMessage(userMessage);
 
