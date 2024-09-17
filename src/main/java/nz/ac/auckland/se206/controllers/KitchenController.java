@@ -107,7 +107,7 @@ public class KitchenController {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(100);
+              .setMaxTokens(30);
 
       // Show loading indicator before fetching system prompt
       loadingIndicator.setVisible(true);
