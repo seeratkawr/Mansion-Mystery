@@ -46,6 +46,18 @@ public class KitchenController {
 
     // Set profession after transition is set up
     setProfession("Chef");
+
+    // Add event handler for the Enter key to send the message
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSend.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   @FXML
@@ -106,8 +118,8 @@ public class KitchenController {
           new ChatCompletionRequest(config)
               .setN(1)
               .setTemperature(0.2)
-              .setTopP(0.5)
-              .setMaxTokens(50);
+              .setTopP(0.4)
+              .setMaxTokens(100);
 
       // Show loading indicator before fetching system prompt
       loadingIndicator.setVisible(true);
@@ -137,7 +149,8 @@ public class KitchenController {
 
   private void appendChatMessage(ChatMessage msg) {
     txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
-    // TextToSpeech.speak(msg.getContent());
+    System.out.println(
+        "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
