@@ -17,7 +17,7 @@ public class AlexClueController {
 
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
-    App.setRoot("laptopClue");
+    App.openLaptop(event);
   }
 
   public void setTimer(TimerUtility timer) {

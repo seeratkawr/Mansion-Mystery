@@ -17,7 +17,7 @@ public class MariaClueController {
 
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
-    App.setRoot("laptopClue");
+    App.openLaptop(event);
   }
 
   public void setTimer(TimerUtility timer) {
