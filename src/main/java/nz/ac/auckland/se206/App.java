@@ -291,6 +291,7 @@ public class App extends Application {
     }
 
     return result;
+    // return new ArrayList<>(List.of(true, true, true));
   }
 
   /**
