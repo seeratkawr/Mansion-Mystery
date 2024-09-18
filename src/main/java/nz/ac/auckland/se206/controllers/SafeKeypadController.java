@@ -47,7 +47,7 @@ public class SafeKeypadController {
    * This method validates the code entered by the user. If the code is correct, the safe will open.
    * A beeping sound is played to indicate the code is being entered. If the code is incorrect, an
    * error sound is played and the code is cleared. The code must be 4 digits long. If the code is
-   * correct, a background thread is started to play the sound of the safe opening.
+   * correct, the sound of the safe opening is played.
    *
    * @param event the event that triggered this method
    * @throws IOException if the FXML file is not found
