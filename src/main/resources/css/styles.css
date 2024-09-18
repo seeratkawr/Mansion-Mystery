@@ -110,7 +110,7 @@
   -fx-font-style: italic; /* Make the text slanted */
 }
 
-#feedbackfield {
+#txtaResults {
   -fx-alignment: center; /* Center the text */
 }
 
