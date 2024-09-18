@@ -97,6 +97,24 @@
   -fx-opacity: 0.8; /* Slight transparency on hover */
 }
 
+#bookshelfSafeRectangle,
+#laptopRectangle,
+#drawerRectangle {
+  -fx-fill: transparent;
+}
+
+
+#drawerRectangle:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+#bookshelfSafeRectangle:hover{
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+#laptopRectangle:hover{
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+
+
 
 
 /* TextField styling for chat input */
