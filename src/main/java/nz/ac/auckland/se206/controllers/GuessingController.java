@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
@@ -43,6 +44,9 @@ public class GuessingController {
   @FXML private Rectangle rectangleBackground;
   @FXML private Button btnResults;
   @FXML private Label lbTimer;
+  @FXML private ImageView circleChef;
+  @FXML private ImageView circleCleaner;
+  @FXML private ImageView circleDaughter;
 
   private String chosenSuspect;
   private String profession;
@@ -68,6 +72,11 @@ public class GuessingController {
     lbTimesUp.setVisible(false);
     btnResults.setDisable(true);
     btnResults.setVisible(false);
+
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(false);
+
     setProfession("AI");
 
     
@@ -145,8 +154,11 @@ public class GuessingController {
    */
   @FXML
   private void onClickedChef(MouseEvent event) {
-    chosenSuspect = "the chef John";
+    chosenSuspect = "the chef James";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(true);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(false);
   }
 
   /**
@@ -159,6 +171,9 @@ public class GuessingController {
   private void onClickedCleaner(MouseEvent event) {
     chosenSuspect = "the cleaner Alex";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(true);
+    circleDaughter.setVisible(false);
   }
 
   /**
@@ -171,6 +186,9 @@ public class GuessingController {
   private void onClickedDaughter(MouseEvent event) {
     chosenSuspect = "the daughter Maria";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(true);
   }
 
   /**
