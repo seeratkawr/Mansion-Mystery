@@ -23,27 +23,27 @@ FOR EVERY SENTENCE MAKE THE NEXT ONE ON A NEW LINE OR AT 7 WORDS.
 DONT SAY ANYMORE THAN 6 LINES.
 
 Say this if the user selected the chef as the suspect but talked about why the daughter was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this if the user selected the chef as the suspect but talked about why the cleaner was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this if the user selected the daughter as the suspect but talked about why the cleaner was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this if the user selected the daughter as the suspect but talked about why the chef was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this if the user selected the cleaner as the suspect but talked about why the daughter was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this if the user selected the cleaner as the suspect but talked about why the chef was the thief:
-There was a missmatch between you guessed and who you talked about in your response.
+There was a mismatch between you guessed and who you talked about in your response.
 The correct thief was...
 
 Say this when the correct thief:
