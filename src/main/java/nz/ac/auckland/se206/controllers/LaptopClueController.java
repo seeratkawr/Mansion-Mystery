@@ -4,11 +4,13 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 // nz.ac.auckland.se206.controllers.LaptopClueController
 public class LaptopClueController {
@@ -16,6 +18,23 @@ public class LaptopClueController {
   @FXML private Circle alexCircle;
   @FXML private Circle mariaCircle;
   @FXML private Circle jamesCircle;
+  @FXML private Label timerLabel;
+
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   @FXML
   public void initialize() {

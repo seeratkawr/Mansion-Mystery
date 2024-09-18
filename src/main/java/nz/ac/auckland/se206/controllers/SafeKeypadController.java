@@ -7,19 +7,37 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 public class SafeKeypadController {
 
   @FXML private ResourceBundle resources;
   @FXML private URL location;
   @FXML private AnchorPane safePane;
+  @FXML private Label timerLabel;
 
   List<Integer> code = new ArrayList<>();
   List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1)); // the password to open the safe
   int codeLength = password.size(); // the length of the code
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   /** This method initializes the controller. */
   @FXML

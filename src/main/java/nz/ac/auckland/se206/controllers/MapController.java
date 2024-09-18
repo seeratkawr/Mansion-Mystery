@@ -4,10 +4,12 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 // nz.ac
 // nz.ac.auckland.se206.controllers.MapController
@@ -16,7 +18,24 @@ public class MapController {
   @FXML private Button exit_button;
   @FXML private ImageView background;
   @FXML private Button btnToStudy;
+  @FXML private Label timerLabel;
+
+  private TimerUtility timer;
   private static String lastScene; // Field to store the last scene
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+
+    if (timer != null) {
+      timer.timeSecondsProperty().addListener((obs, oldTime, newTime) -> {
+        timerLabel.setText(timer.formatTime(newTime.intValue()));
+    });
+    }
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   public static void setLastScene(String scene) {
     lastScene = scene;

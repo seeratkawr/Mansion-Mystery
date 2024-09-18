@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException; // Add this import statement
+import java.util.Timer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 import java.util.Timer;
 
 public class CrimeSceneController {
@@ -19,10 +21,26 @@ public class CrimeSceneController {
   @FXML private Rectangle bookshelfSafeRectangle;
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
+  @FXML private Label timerLabel;
+
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   @FXML
   private void onMapClicked(MouseEvent event) {
-
     try {
       // Open the map view
       App.openMap(event, "/images/Study.png");
@@ -92,7 +110,7 @@ public class CrimeSceneController {
 
     // verify if the user can guess.
     if (canGuess) {
-      App.openGuess(event);
+      App.openGuessingScene();
     } else {
 
       // update the popup message based on the user's progress

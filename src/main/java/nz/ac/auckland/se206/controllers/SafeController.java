@@ -5,9 +5,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 /**
  * This class is the controller for the Safe.fxml file. It contains the logic for the safe scene.
@@ -15,10 +17,25 @@ import nz.ac.auckland.se206.App;
 public class SafeController {
 
   @FXML private ResourceBundle resources;
-
   @FXML private URL location;
-
   @FXML private AnchorPane safePane;
+  @FXML private Label timerLabel;
+
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   /** This method initializes the controller. */
   @FXML
