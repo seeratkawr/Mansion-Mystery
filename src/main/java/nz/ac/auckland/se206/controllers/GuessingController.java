@@ -38,8 +38,6 @@ public class GuessingController {
   @FXML private Rectangle daughter;
   @FXML private Button btnSubmit;
   @FXML private TextField txtInput;
-  @FXML private Label lbSelectedSuspect;
-  @FXML private Label lbSelected;
   @FXML private Label lbTimesUp;
   @FXML private Rectangle rectangleBackground;
   @FXML private Button btnResults;
@@ -47,6 +45,7 @@ public class GuessingController {
   @FXML private ImageView circleChef;
   @FXML private ImageView circleCleaner;
   @FXML private ImageView circleDaughter;
+  @FXML private Label lbExplain;
 
   private String chosenSuspect;
   private String profession;
@@ -59,20 +58,19 @@ public class GuessingController {
 
     // set text field and labels to disabled and invisible
     txtInput.setDisable(true);
-    lbSelectedSuspect.setDisable(true);
-    lbSelected.setDisable(true);
     btnSubmit.setDisable(true);
     txtInput.setVisible(false);
-    lbSelectedSuspect.setVisible(false);
-    lbSelected.setVisible(false);
     btnSubmit.setVisible(false);
+    lbExplain.setVisible(false);
 
+    // times up screen
     rectangleBackground.setVisible(false);
     lbTimesUp.setDisable(true);
     lbTimesUp.setVisible(false);
     btnResults.setDisable(true);
     btnResults.setVisible(false);
 
+    // select indicators
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
@@ -155,7 +153,7 @@ public class GuessingController {
   @FXML
   private void onClickedChef(MouseEvent event) {
     chosenSuspect = "the chef James";
-    updateSelectedSuspect(chosenSuspect);
+    showTextField();
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
@@ -170,7 +168,7 @@ public class GuessingController {
   @FXML
   private void onClickedCleaner(MouseEvent event) {
     chosenSuspect = "the cleaner Alex";
-    updateSelectedSuspect(chosenSuspect);
+    showTextField();
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
@@ -185,7 +183,7 @@ public class GuessingController {
   @FXML
   private void onClickedDaughter(MouseEvent event) {
     chosenSuspect = "the daughter Maria";
-    updateSelectedSuspect(chosenSuspect);
+    showTextField();
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
@@ -340,26 +338,13 @@ public class GuessingController {
     return prompt;
   }
 
-  /**
-   * This method updates the selected suspect label with the chosen suspect.
-   *
-   * @param chosenSuspect the chosen suspect
-   */
-  private void updateSelectedSuspect(String chosenSuspect) {
-    lbSelectedSuspect.setText(chosenSuspect);
-    showTextField();
-  }
-
   /** This method shows the text field and submit button. */
   private void showTextField() {
     txtInput.setDisable(false);
     txtInput.setVisible(true);
-    lbSelectedSuspect.setDisable(false);
-    lbSelectedSuspect.setVisible(true);
-    lbSelected.setDisable(false);
-    lbSelected.setVisible(true);
     btnSubmit.setDisable(false);
     btnSubmit.setVisible(true);
+    lbExplain.setVisible(true);
   }
 
   /** This method cleans up and cancels all active threads. */
