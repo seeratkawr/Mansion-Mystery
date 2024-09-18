@@ -9,7 +9,7 @@ import nz.ac.auckland.se206.App;
 public class NoteBookpg1Controller {
 
   @FXML
-  private void onGoRightPage(MouseEvent event) throws IOException {
+  private void onGoMiddlePage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3");
     App.goToPage(event, "notebookpg2");
     System.out.println("Go right page");

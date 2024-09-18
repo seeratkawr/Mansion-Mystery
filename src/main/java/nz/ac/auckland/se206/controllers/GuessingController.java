@@ -70,6 +70,18 @@ public class GuessingController {
     btnResults.setVisible(false);
     setProfession("AI");
 
+    
+    // Add event handler for the Enter key to send the message
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSubmit.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
     // start 60 second timer for users to guess
     startTimer(0, 30);
   }

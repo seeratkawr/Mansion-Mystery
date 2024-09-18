@@ -43,14 +43,13 @@
 
 /* Polygon (triangle) style */
 #triangle {
-  -fx-fill: #717171;
-  -fx-stroke: black;
+  -fx-fill: #c7c7c7;
+  -fx-stroke: white;
   -fx-stroke-width: 3;
 }
-
 /* Polygon hover effect */
 #triangle:hover {
-  -fx-fill: #c7c7c7; /* Lighter shade on hover */
+  -fx-fill: #717171;; /* Lighter shade on hover */
   -fx-cursor: hand;
   -fx-stroke: #000000;
 }
@@ -97,6 +96,24 @@
   -fx-cursor: hand;
   -fx-opacity: 0.8; /* Slight transparency on hover */
 }
+
+#bookshelfSafeRectangle,
+#laptopRectangle,
+#drawerRectangle {
+  -fx-fill: transparent;
+}
+
+
+#drawerRectangle:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+#bookshelfSafeRectangle:hover{
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+#laptopRectangle:hover{
+  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+}
+
 
 
 
