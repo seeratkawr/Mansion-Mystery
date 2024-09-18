@@ -30,6 +30,9 @@ import nz.ac.auckland.se206.controllers.NoteBookpg1Controller;
 import nz.ac.auckland.se206.controllers.NotebookController;
 import nz.ac.auckland.se206.controllers.Notebookpg2Controller;
 import nz.ac.auckland.se206.controllers.Notebookpg3Controller;
+import nz.ac.auckland.se206.controllers.SafeController;
+import nz.ac.auckland.se206.controllers.SafeKeypadController;
+import nz.ac.auckland.se206.controllers.SafeOpenedController;
 
 // this is a test comment to test github flows
 
@@ -203,6 +206,10 @@ public class App extends Application {
   public static void openSafe(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safe.fxml"));
     Parent root = loader.load();
+
+    SafeController safeController = loader.getController();
+    safeController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -213,6 +220,10 @@ public class App extends Application {
 
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeOpened.fxml"));
     Parent root = loader.load();
+
+    SafeOpenedController safeOpenedController = loader.getController();
+    safeOpenedController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -223,6 +234,10 @@ public class App extends Application {
 
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeKeypad.fxml"));
     Parent root = loader.load();
+
+    SafeKeypadController safeKeypadController = loader.getController();
+    safeKeypadController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
