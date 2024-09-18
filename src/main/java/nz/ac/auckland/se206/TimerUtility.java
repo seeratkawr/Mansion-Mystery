@@ -11,7 +11,7 @@ public class TimerUtility {
   private Timeline timeline;
   private IntegerProperty timeSeconds;
   private int duration;
-  private Label timerLabel;
+  public Label timerLabel;
 
   public TimerUtility(int duration, Label timerLabel) {
     this.duration = duration;

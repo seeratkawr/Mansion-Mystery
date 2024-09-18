@@ -267,6 +267,18 @@ public class App extends Application {
   public static void openSuspect(MouseEvent event, String fxml) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     Parent root = loader.load();
+
+    if (fxml.equals("daughter")) {
+      DaughterController daughterController = loader.getController();
+      daughterController.setTimer(timer);
+    } else if (fxml.equals("kitchen")) {
+      KitchenController kitchenController = loader.getController();
+      kitchenController.setTimer(timer);
+    } else if (fxml.equals("cleaner")) {
+      CleanerController cleanerController = loader.getController();
+      cleanerController.setTimer(timer);
+    }
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -341,31 +353,32 @@ public class App extends Application {
 
   public static void goLastScene(String lastScene) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
-    // Call the controller method here
-    Parent root = loader.load();
-    
+    Parent root = null;
+
     if (lastScene.equals("daughter")) {
       FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
       root = daughterLoader.load();
       DaughterController daughterController = daughterLoader.getController();
-      //daughterController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
     } else if (lastScene.equals("kitchen")) {
       FXMLLoader kitchenLoader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
       root = kitchenLoader.load();
       KitchenController kitchenController = kitchenLoader.getController();
-      //kitchenController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
     } else if (lastScene.equals("cleaner")) {
       FXMLLoader cleanerLoader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
       root = cleanerLoader.load();
       CleanerController cleanerController = cleanerLoader.getController();
-      //cleanerController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
     } else {
+      root = loader.load();
       CrimeSceneController controller = loader.getController();
       controller.setTimer(timer); // Default method call for CrimeSceneController
     }
 
-    Scene newScene = new Scene(root);
-    primaryStage.setScene(newScene);
-    primaryStage.show();
+    if (root != null) {
+      Scene newScene = new Scene(root);
+      primaryStage.setScene(newScene);
+      primaryStage.show();
+    } else {
+      System.err.println("Failed to load the scene root.");
+    }
   }
 }
