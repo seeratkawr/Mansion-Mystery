@@ -222,6 +222,7 @@ public class GuessingController {
   @FXML
   private void onClickSeeResults(ActionEvent event) {
     try {
+      App.playSound("button.mp3");
       cleanUpThreads();
       App.openGameOver(event);
     } catch (IOException e) {
