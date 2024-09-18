@@ -154,7 +154,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedChef(MouseEvent event) {
-    chosenSuspect = "the chef John";
+    chosenSuspect = "the chef James";
     updateSelectedSuspect(chosenSuspect);
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
