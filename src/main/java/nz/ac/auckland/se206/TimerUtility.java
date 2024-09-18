@@ -66,4 +66,8 @@ public class TimerUtility {
   public void setTimerLabel(Label timerLabel) {
     this.timerLabel = timerLabel;
   }
+
+  public boolean isFinished() {
+    return timeSeconds.get() == 0;
+  }
 }

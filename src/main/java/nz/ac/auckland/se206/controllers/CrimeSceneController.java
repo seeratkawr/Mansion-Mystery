@@ -101,7 +101,7 @@ public class CrimeSceneController {
 
     // verify if the user can guess
     if (App.verifyCanGuess()) {
-      App.openGuess(event);
+      App.openGuessingScene();
     } else {
 
       // display popup message for 3 seconds

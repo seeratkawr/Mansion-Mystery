@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.controllers.AlexClueController;
 import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
@@ -51,6 +54,10 @@ public class App extends Application {
   private static Stage primaryStage;
   private static boolean timerStarted = false;
   private static TimerUtility timer;
+  private static Timeline timerCheckTimeline;
+  private static TimerUtility guessingTimer;
+  private static boolean guessed = false;
+  private static Timeline guessingTimerCheckTimeline;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -111,7 +118,59 @@ public class App extends Application {
             mediaPlayer.stop();
             mediaPlayer.dispose();
           }
+          if (timerCheckTimeline != null) {
+            System.out.println("Closing timer check timeline");
+            timerCheckTimeline.stop();
+          }
         });
+
+    startTimerCheckTask();
+  }
+
+  private void startTimerCheckTask() {
+    timerCheckTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  if (timer != null && timer.isFinished()) {
+                    // Handle the case when the timer has finished
+                    System.out.println("Timer has finished.");
+                    // You might want to perform specific actions or show a notification
+                    try {
+                      if (verifyCanGuess()) {
+                        openGuessingScene();
+                        System.out.println("Guessing scene opened.");
+                      } else {
+                        openGameLost();
+                        System.out.println("Game lost scene opened.");
+                        timerCheckTimeline.stop();
+                      }
+                    } catch (IOException e) {
+                      // TODO Auto-generated catch block
+                      e.printStackTrace();
+                    }
+                  }
+                }));
+    timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
+    timerCheckTimeline.play();
+  }
+
+  public static void openGameLost() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameLost.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
+
+  public static void openGuessingScene() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/guessingscene.fxml"));
+    Parent root = loader.load();
+
+    scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.show();
   }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
@@ -238,15 +297,6 @@ public class App extends Application {
     SafeKeypadController safeKeypadController = loader.getController();
     safeKeypadController.setTimer(timer);
 
-    scene = new Scene(root);
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  public static void openGuess(ActionEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/guessingscene.fxml"));
-    Parent root = loader.load();
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -398,14 +448,13 @@ public class App extends Application {
     aiGameResult = null;
     suspectsTalkedTo.clear();
     cluesViewed.clear();
+    timer.reset();
+    timerStarted = false;
 
-    // open the start game scene
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/startgame.fxml"));
-    Parent root = loader.load();
-    scene = new Scene(root);
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
+    Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    currentStage.close();
+
+    new App().start(new Stage());
   }
 
   public static void goLastScene(String lastScene) throws IOException {
@@ -437,5 +486,9 @@ public class App extends Application {
     } else {
       System.err.println("Failed to load the scene root.");
     }
+  }
+
+  public static void hasGuessed() {
+    guessed = true;
   }
 }
