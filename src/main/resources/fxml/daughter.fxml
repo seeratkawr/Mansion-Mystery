@@ -15,7 +15,7 @@
             <Image url="@../images/bedroom.jpg" />
          </image>
       </ImageView>
-      <TextArea fx:id="daughterText" layoutX="411.0" layoutY="90.0" prefHeight="101.0" prefWidth="316.0" />
+      <TextArea fx:id="daughterText" editable="false" layoutX="411.0" layoutY="90.0" prefHeight="101.0" prefWidth="316.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="746.0" layoutY="15.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
