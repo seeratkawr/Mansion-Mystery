@@ -26,6 +26,10 @@ import nz.ac.auckland.se206.controllers.KitchenController;
 import nz.ac.auckland.se206.controllers.LaptopClueController;
 import nz.ac.auckland.se206.controllers.MapController;
 import nz.ac.auckland.se206.controllers.MariaClueController;
+import nz.ac.auckland.se206.controllers.NoteBookpg1Controller;
+import nz.ac.auckland.se206.controllers.NotebookController;
+import nz.ac.auckland.se206.controllers.Notebookpg2Controller;
+import nz.ac.auckland.se206.controllers.Notebookpg3Controller;
 
 // this is a test comment to test github flows
 
@@ -150,9 +154,12 @@ public class App extends Application {
   }
 
   public static void openDrawer(MouseEvent event) throws IOException {
-
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
+
+    NotebookController notebookController = loader.getController();
+    notebookController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -162,6 +169,18 @@ public class App extends Application {
   public static void goToPage(MouseEvent event, String fxml) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     Parent root = loader.load();
+
+    if (fxml.equals("notebookpg1")) {
+      NoteBookpg1Controller noteBookpg1Controller = loader.getController();
+      noteBookpg1Controller.setTimer(timer);
+    } else if (fxml.equals("notebookpg2")) {
+      Notebookpg2Controller notebookpg2Controller = loader.getController();
+      notebookpg2Controller.setTimer(timer);
+    } else if (fxml.equals("notebookpg3")) {
+      Notebookpg3Controller notebookpg3Controller = loader.getController();
+      notebookpg3Controller.setTimer(timer);
+    }
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -171,6 +190,10 @@ public class App extends Application {
   public static void goToDrawers(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
+
+    NotebookController notebookController = loader.getController();
+    notebookController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
