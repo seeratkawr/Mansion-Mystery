@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,5 +14,6 @@
          </image>
       </ImageView>
       <Button fx:id="startButton" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="61.0" prefWidth="174.0" textFill="TRANSPARENT" />
+      <Label fx:id="backstory" layoutX="100.0" layoutY="6.0" prefHeight="103.0" prefWidth="651.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. Do you have what it takes to catch the mansion thief?" wrapText="true" />
    </children>
 </AnchorPane>
