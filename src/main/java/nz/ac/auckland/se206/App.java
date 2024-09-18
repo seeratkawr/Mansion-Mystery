@@ -17,6 +17,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.MapController;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Timer;
 
 // this is a test comment to test github flows
 
@@ -33,6 +36,7 @@ public class App extends Application {
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
   private static Stage primaryStage;
+  private static List<Timer> activeTimers = new ArrayList<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -92,6 +96,12 @@ public class App extends Application {
             System.out.println("Closing media player");
             mediaPlayer.stop();
             mediaPlayer.dispose();
+          }
+          if(activeTimers.size() > 0) {
+            System.out.println("Closing active timers");
+            for (Timer timer : activeTimers) {
+              timer.cancel();
+            }
           }
         });
   }
@@ -253,14 +263,34 @@ public class App extends Application {
    * This method is called to verify if the player is allowed to guess. The player can guess if they
    * have talked to all suspects and viewed at least one clue.
    *
-   * @return true if the player can guess, false otherwise
+   * @return a list of booleans indicating if the player has talked to all suspects, viewed at least
+   *         one clue, and can guess respectively.
+   *         The list format is Boolean [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
    */
-  public static Boolean verifyCanGuess() {
+  public static List<Boolean> verifyCanGuess() {
+    List<Boolean> result = new ArrayList<Boolean>();
+
+    if(suspectsTalkedTo.size() == 3) {
+      result.add(true);
+    } else {
+      result.add(false);
+    }
+
+    if(cluesViewed.size() >= 1) {
+      result.add(true);
+    } else {
+      result.add(false);
+    }
+
     if (suspectsTalkedTo.size() == 3 && cluesViewed.size() >= 1) {
       System.out.println("Can guess");
-      return true;
+      result.add(true);
+    } else {
+      System.out.println("Cannot guess");
+      result.add(false);
     }
-    return false;
+
+    return result;
   }
 
   /**
@@ -330,5 +360,15 @@ public class App extends Application {
     Scene newScene = new Scene(root);
     primaryStage.setScene(newScene);
     primaryStage.show();
+  }
+
+  /**
+   * This method is called to add a timer to the list of active timers
+   * so that they can be stopped when the application is closed
+   *
+   * @param timer the timer to add to the list
+   */
+  public static void addTimer(Timer timer) {
+    activeTimers.add(timer);
   }
 }
