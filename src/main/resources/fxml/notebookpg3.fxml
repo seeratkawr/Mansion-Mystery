@@ -47,7 +47,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Button layoutX="364.0" layoutY="525.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
+            <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
          </children>
       </Pane>
    </children>
