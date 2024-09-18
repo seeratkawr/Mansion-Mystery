@@ -9,6 +9,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -22,6 +23,7 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class KitchenController {
@@ -29,10 +31,13 @@ public class KitchenController {
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
+  @FXML private ImageView loadingIndicator;
+  @FXML private Label timerLabel;
+
   private String profession;
   private ChatCompletionRequest chatCompletionRequest;
-  @FXML private ImageView loadingIndicator;
   private TranslateTransition translateTransition;
+  private TimerUtility timer;
 
   public void initialize() {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
@@ -58,6 +63,20 @@ public class KitchenController {
               break;
           }
         });
+  }
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
   }
 
   @FXML
@@ -108,7 +127,10 @@ public class KitchenController {
             return null;
           }
         };
-    new Thread(task).start();
+    Thread thread = new Thread(task);
+    App.addThread(thread);
+    thread.setDaemon(true);
+    thread.start();
   }
 
   public void setProfession(String profession) {
@@ -144,7 +166,10 @@ public class KitchenController {
               return null;
             }
           };
-      new Thread(task).start();
+      Thread thread = new Thread(task);
+      App.addThread(thread);
+      thread.setDaemon(true);
+      thread.start();
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }

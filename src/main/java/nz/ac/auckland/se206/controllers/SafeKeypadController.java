@@ -7,19 +7,37 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.TimerUtility;
 
 public class SafeKeypadController {
 
   @FXML private ResourceBundle resources;
   @FXML private URL location;
   @FXML private AnchorPane safePane;
+  @FXML private Label timerLabel;
 
   List<Integer> code = new ArrayList<>();
   List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1)); // the password to open the safe
   int codeLength = password.size(); // the length of the code
+  private TimerUtility timer;
+
+  public void setTimer(TimerUtility timer) {
+    this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
+  }
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   /** This method initializes the controller. */
   @FXML
@@ -47,7 +65,7 @@ public class SafeKeypadController {
    * This method validates the code entered by the user. If the code is correct, the safe will open.
    * A beeping sound is played to indicate the code is being entered. If the code is incorrect, an
    * error sound is played and the code is cleared. The code must be 4 digits long. If the code is
-   * correct, a background thread is started to play the sound of the safe opening.
+   * correct, the sound of the safe opening is played.
    *
    * @param event the event that triggered this method
    * @throws IOException if the FXML file is not found
