@@ -38,6 +38,7 @@ public class SafeKeypadController {
    */
   @FXML
   void onGoBackSafe(MouseEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Go back to crimescene");
     App.openSafe(event);
   }

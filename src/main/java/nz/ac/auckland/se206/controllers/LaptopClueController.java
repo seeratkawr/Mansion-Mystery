@@ -28,10 +28,13 @@ public class LaptopClueController {
   private void onCircleClicked(MouseEvent event) {
     try {
       if (event.getTarget() == jamesCircle) {
+        App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/jamesClue.fxml");
       } else if (event.getTarget() == mariaCircle) {
+        App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/mariaClue.fxml");
       } else if (event.getTarget() == alexCircle) {
+        App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/alexClue.fxml");
       }
     } catch (IOException e) {
@@ -43,6 +46,7 @@ public class LaptopClueController {
   private void onGoBack(ActionEvent event) {
     try {
       // Go back to the crime scene
+      App.playSound("button.mp3");
       App.closeClue(event);
     } catch (IOException e) {
       e.printStackTrace();

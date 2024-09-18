@@ -19,6 +19,7 @@ public class NotebookController {
 
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
     // if the back button is clicked, set the bookpane to be invisible
     App.openCrimeScene(event);

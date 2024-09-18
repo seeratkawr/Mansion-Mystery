@@ -74,6 +74,7 @@ public class KitchenController {
 
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Send message clicked");
     App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();

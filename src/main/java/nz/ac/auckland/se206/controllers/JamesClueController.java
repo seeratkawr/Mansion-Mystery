@@ -13,6 +13,7 @@ public class JamesClueController {
 
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
+    App.playSound("mouseclick.mp3");
     App.setRoot("laptopClue");
   }
 }

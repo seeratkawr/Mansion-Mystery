@@ -81,6 +81,22 @@
 }
 
 
+#startButton {
+  -fx-background-color: transparent; /* Initially transparent */
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-border-radius: 0; /* Remove rounded corners */
+  -fx-background-radius: 0; /* Remove rounded corners */
+  -fx-border-color: transparent; /* No border */
+  -fx-border-width: 0; /* Set border width to 0 */
+  -fx-padding: 7 15;
+}
+/* Hover effect for startButton */
+#startButton:hover {
+  -fx-background-color: rgba(139, 141, 56, 0.8); /* Lighter version of #5c5e25 with transparency */
+  -fx-cursor: hand;
+  -fx-opacity: 0.8; /* Slight transparency on hover */
+}
 
 
 

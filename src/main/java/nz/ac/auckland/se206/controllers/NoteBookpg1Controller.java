@@ -17,6 +17,7 @@ public class NoteBookpg1Controller {
 
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Go back");
     // if the back button is clicked, set the bookpane to be invisible
     App.goToDrawers(event);
