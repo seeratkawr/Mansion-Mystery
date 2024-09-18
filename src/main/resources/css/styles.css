@@ -114,6 +114,17 @@
   -fx-alignment: center; /* Center the text */
 }
 
+#backstory {
+  -fx-font-family: "serif", "Cursive";
+  -fx-font-size: 14px;
+  -fx-alignment: center; /* Center the text */
+  /*bold the text*/
+  -fx-text-alignment: center;
+  -fx-font-weight: bold;
+  -fx-font-style: italic;
+  -fx-text-fill: #ffffff;
+}
+
 #gameOver {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;
