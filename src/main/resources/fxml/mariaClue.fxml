@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,5 +14,6 @@
          </image>
       </ImageView>
       <Rectangle fx:id="rectangleButtons" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="8.0" layoutY="6.0" onMouseClicked="#closeClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="63.0" />
+      <Label fx:id="timerLabel" layoutX="735.0" layoutY="5.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
    </children>
 </AnchorPane>

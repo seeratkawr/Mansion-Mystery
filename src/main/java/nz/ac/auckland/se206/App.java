@@ -17,11 +17,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.AlexClueController;
 import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
 import nz.ac.auckland.se206.controllers.DaughterController;
+import nz.ac.auckland.se206.controllers.JamesClueController;
 import nz.ac.auckland.se206.controllers.KitchenController;
+import nz.ac.auckland.se206.controllers.LaptopClueController;
 import nz.ac.auckland.se206.controllers.MapController;
+import nz.ac.auckland.se206.controllers.MariaClueController;
 
 // this is a test comment to test github flows
 
@@ -215,6 +219,10 @@ public class App extends Application {
   public static void openLaptop(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
     Parent root = loader.load();
+
+    LaptopClueController laptopClueController = loader.getController();
+    laptopClueController.setTimer(timer);
+
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -224,6 +232,18 @@ public class App extends Application {
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
+
+    if (path.equals("/fxml/jamesClue.fxml")) {
+      JamesClueController jamesClueController = loader.getController();
+      jamesClueController.setTimer(timer);
+    } else if (path.equals("/fxml/mariaClue.fxml")) {
+      MariaClueController mariaClueController = loader.getController();
+      mariaClueController.setTimer(timer);
+    } else if (path.equals("/fxml/alexClue.fxml")) {
+      AlexClueController alexClueController = loader.getController();
+      alexClueController.setTimer(timer);
+    }
+
     AnchorPane laptopPane =
         (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
     laptopPane.getChildren().add(laptopClueView);
