@@ -15,17 +15,17 @@
          </image>
       </ImageView>
       <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="475.0" layoutY="195.0" onMouseClicked="#onClickedOne" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="555.0" layoutY="195.0" onMouseClicked="#onClickedTwo" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="634.0" layoutY="195.0" onMouseClicked="#onClickedThree" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="476.0" layoutY="262.0" onMouseClicked="#onClickedFour" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="556.0" layoutY="262.0" onMouseClicked="#onClickedFive" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="635.0" layoutY="262.0" onMouseClicked="#onClickedSix" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="476.0" layoutY="325.0" onMouseClicked="#onClickedSeven" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="556.0" layoutY="325.0" onMouseClicked="#onClickedEight" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="635.0" layoutY="325.0" onMouseClicked="#onClickedNine" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="555.0" layoutY="389.0" onMouseClicked="#onClickedZero" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="634.0" layoutY="389.0" onMouseClicked="#onClickedClear" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="338.0" layoutY="264.0" onMouseClicked="#onClickedOne" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="395.0" layoutY="267.0" onMouseClicked="#onClickedTwo" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="451.0" layoutY="267.0" onMouseClicked="#onClickedThree" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="339.0" layoutY="331.0" onMouseClicked="#onClickedFour" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="396.0" layoutY="334.0" onMouseClicked="#onClickedFive" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="452.0" layoutY="334.0" onMouseClicked="#onClickedSix" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="339.0" layoutY="394.0" onMouseClicked="#onClickedSeven" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="396.0" layoutY="397.0" onMouseClicked="#onClickedEight" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="452.0" layoutY="397.0" onMouseClicked="#onClickedNine" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="395.0" layoutY="461.0" onMouseClicked="#onClickedZero" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="47.0" layoutX="451.0" layoutY="461.0" onMouseClicked="#onClickedClear" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
    </children>
 </AnchorPane>
