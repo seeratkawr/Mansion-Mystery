@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
+import java.util.Timer;
 
 public class CrimeSceneController {
 
@@ -103,7 +104,9 @@ public class CrimeSceneController {
 
       // display popup message for 3 seconds
       lbPopup.setVisible(true);
-      new java.util.Timer()
+      Timer timer = new java.util.Timer();
+      App.addTimer(timer); // store timer in App.java for garbage collection
+      timer
           .schedule(
               new java.util.TimerTask() {
                 @Override

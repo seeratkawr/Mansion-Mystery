@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.MapController;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Timer;
 
 // this is a test comment to test github flows
 
@@ -35,6 +36,7 @@ public class App extends Application {
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
   private static Stage primaryStage;
+  private static List<Timer> activeTimers = new ArrayList<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -94,6 +96,12 @@ public class App extends Application {
             System.out.println("Closing media player");
             mediaPlayer.stop();
             mediaPlayer.dispose();
+          }
+          if(activeTimers.size() > 0) {
+            System.out.println("Closing active timers");
+            for (Timer timer : activeTimers) {
+              timer.cancel();
+            }
           }
         });
   }
@@ -263,18 +271,14 @@ public class App extends Application {
     List<Boolean> result = new ArrayList<Boolean>();
 
     if(suspectsTalkedTo.size() == 3) {
-      System.out.println("Enough suspects talked to");
       result.add(true);
     } else {
-      System.out.println("Not enough suspects talked to");
       result.add(false);
     }
 
     if(cluesViewed.size() >= 1) {
-      System.out.println("Enough clues viewed");
       result.add(true);
     } else {
-      System.out.println("Not enough clues viewed");
       result.add(false);
     }
 
@@ -356,5 +360,15 @@ public class App extends Application {
     Scene newScene = new Scene(root);
     primaryStage.setScene(newScene);
     primaryStage.show();
+  }
+
+  /**
+   * This method is called to add a timer to the list of active timers
+   * so that they can be stopped when the application is closed
+   *
+   * @param timer the timer to add to the list
+   */
+  public static void addTimer(Timer timer) {
+    activeTimers.add(timer);
   }
 }
