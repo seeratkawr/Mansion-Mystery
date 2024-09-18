@@ -1,7 +1,9 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import javafx.animation.KeyFrame;
@@ -36,6 +38,9 @@ import nz.ac.auckland.se206.controllers.Notebookpg3Controller;
 import nz.ac.auckland.se206.controllers.SafeController;
 import nz.ac.auckland.se206.controllers.SafeKeypadController;
 import nz.ac.auckland.se206.controllers.SafeOpenedController;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Timer;
 
 // this is a test comment to test github flows
 
@@ -58,6 +63,7 @@ public class App extends Application {
   private static TimerUtility guessingTimer;
   private static boolean guessed = false;
   private static Timeline guessingTimerCheckTimeline;
+  private static List<Timer> activeTimers = new ArrayList<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -118,6 +124,14 @@ public class App extends Application {
             mediaPlayer.stop();
             mediaPlayer.dispose();
           }
+
+          if(activeTimers.size() > 0) {
+            System.out.println("Closing active timers");
+            for (Timer timer : activeTimers) {
+              timer.cancel();
+            }
+          }
+
           if (timerCheckTimeline != null) {
             System.out.println("Closing timer check timeline");
             timerCheckTimeline.stop();
@@ -138,7 +152,7 @@ public class App extends Application {
                     System.out.println("Timer has finished.");
                     // You might want to perform specific actions or show a notification
                     try {
-                      if (verifyCanGuess()) {
+                      if (verifyCanGuess().get(0).equals(true) && verifyCanGuess().get(1).equals(true) && verifyCanGuess().get(2).equals(true)) {
                         openGuessingScene();
                         System.out.println("Guessing scene opened.");
                       } else {
@@ -171,6 +185,13 @@ public class App extends Application {
     scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
+          if(activeTimers.size() > 0) {
+            System.out.println("Closing active timers");
+            for (Timer timer : activeTimers) {
+              timer.cancel();
+            }
+          }
+        });
   }
 
   public static void openCrimeScene(ActionEvent event) throws IOException {
@@ -396,14 +417,35 @@ public class App extends Application {
    * This method is called to verify if the player is allowed to guess. The player can guess if they
    * have talked to all suspects and viewed at least one clue.
    *
-   * @return true if the player can guess, false otherwise
+   * @return a list of booleans indicating if the player has talked to all suspects, viewed at least
+   *         one clue, and can guess respectively.
+   *         The list format is Boolean [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
    */
-  public static Boolean verifyCanGuess() {
+  public static List<Boolean> verifyCanGuess() {
+    List<Boolean> result = new ArrayList<Boolean>();
+
+    if(suspectsTalkedTo.size() == 3) {
+      result.add(true);
+    } else {
+      result.add(false);
+    }
+
+    if(cluesViewed.size() >= 1) {
+      result.add(true);
+    } else {
+      result.add(false);
+    }
+
     if (suspectsTalkedTo.size() == 3 && cluesViewed.size() >= 1) {
       System.out.println("Can guess");
-      return true;
+      result.add(true);
+    } else {
+      System.out.println("Cannot guess");
+      result.add(false);
     }
-    return false;
+
+    return result;
+    // return new ArrayList<>(List.of(true, true, true));
   }
 
   /**
@@ -465,14 +507,17 @@ public class App extends Application {
       FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
       root = daughterLoader.load();
       DaughterController daughterController = daughterLoader.getController();
+      daughterController.setTimer(timer);
     } else if (lastScene.equals("kitchen")) {
       FXMLLoader kitchenLoader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
       root = kitchenLoader.load();
       KitchenController kitchenController = kitchenLoader.getController();
+      kitchenController.setTimer(timer);
     } else if (lastScene.equals("cleaner")) {
       FXMLLoader cleanerLoader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
       root = cleanerLoader.load();
       CleanerController cleanerController = cleanerLoader.getController();
+      cleanerController.setTimer(timer);
     } else {
       root = loader.load();
       CrimeSceneController controller = loader.getController();
@@ -490,5 +535,15 @@ public class App extends Application {
 
   public static void hasGuessed() {
     guessed = true;
+  }
+
+  /**
+   * This method is called to add a timer to the list of active timers
+   * so that they can be stopped when the application is closed
+   *
+   * @param timer the timer to add to the list
+   */
+  public static void addTimer(Timer timer) {
+    activeTimers.add(timer);
   }
 }

@@ -6,7 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -16,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -44,6 +51,9 @@ public class GuessingController {
   @FXML private Rectangle rectangleBackground;
   @FXML private Button btnResults;
   @FXML private Label lbTimer;
+  @FXML private ImageView circleChef;
+  @FXML private ImageView circleCleaner;
+  @FXML private ImageView circleDaughter;
 
   private String chosenSuspect;
   private String profession;
@@ -70,6 +80,11 @@ public class GuessingController {
     lbTimesUp.setVisible(false);
     btnResults.setDisable(true);
     btnResults.setVisible(false);
+
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(false);
+
     setProfession("AI");
 
     timer = new TimerUtility(60, lbTimer);
@@ -109,17 +124,24 @@ public class GuessingController {
   /**
    * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
    * chef and updates the selected suspect label.
+   * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
+   * chef and updates the selected suspect label.
    *
    * @param event the event that triggered this method
    */
   @FXML
   private void onClickedChef(MouseEvent event) {
-    chosenSuspect = "chef";
+    chosenSuspect = "the chef James";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(true);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(false);
     App.hasGuessed();
   }
 
   /**
+   * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
+   * to cleaner and updates the selected suspect label.
    * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
    * to cleaner and updates the selected suspect label.
    *
@@ -127,12 +149,17 @@ public class GuessingController {
    */
   @FXML
   private void onClickedCleaner(MouseEvent event) {
-    chosenSuspect = "cleaner";
+    chosenSuspect = "the cleaner Alex";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(true);
+    circleDaughter.setVisible(false);
     App.hasGuessed();
   }
 
   /**
+   * This method is called when the user clicks on the daughter rectangle. It sets the chosen
+   * suspect to daughter and updates the selected suspect label.
    * This method is called when the user clicks on the daughter rectangle. It sets the chosen
    * suspect to daughter and updates the selected suspect label.
    *
@@ -140,12 +167,17 @@ public class GuessingController {
    */
   @FXML
   private void onClickedDaughter(MouseEvent event) {
-    chosenSuspect = "daughter";
+    chosenSuspect = "the daughter Maria";
     updateSelectedSuspect(chosenSuspect);
+    circleChef.setVisible(false);
+    circleCleaner.setVisible(false);
+    circleDaughter.setVisible(true);
     App.hasGuessed();
   }
 
   /**
+   * This method is called when the user clicks the submit button. It will submit the user's guess
+   * and run the AI chat operation.
    * This method is called when the user clicks the submit button. It will submit the user's guess
    * and run the AI chat operation.
    *
@@ -161,6 +193,7 @@ public class GuessingController {
       return;
     }
 
+
     // clean up and cancel threads
     cleanUpThreads();
     System.out.println("Submit message clicked");
@@ -168,7 +201,7 @@ public class GuessingController {
 
     txtInput.clear();
     ChatMessage userMessage =
-        new ChatMessage("user", "the user guessed " + chosenSuspect + ": " + message);
+        new ChatMessage("user", "SELECTED USER: " + chosenSuspect + "USER MESSAGE: " + message);
 
     // Run the AI chat operation in a background thread
     Task<Void> task =
@@ -206,6 +239,7 @@ public class GuessingController {
   @FXML
   private void onClickSeeResults(ActionEvent event) {
     try {
+      App.playSound("button.mp3");
       cleanUpThreads();
       App.openGameOver(event);
     } catch (IOException e) {
@@ -317,6 +351,7 @@ public class GuessingController {
 
   /** This method cleans up and cancels all active threads. */
   private void cleanUpThreads() {
+    timer.reset();
     if (!threads.isEmpty()) {
       for (Thread thread : threads) {
         thread.interrupt();

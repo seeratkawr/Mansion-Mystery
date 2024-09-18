@@ -15,7 +15,7 @@ public class NoteBookpg1Controller {
   private TimerUtility timer;
 
   @FXML
-  private void onGoRightPage(MouseEvent event) throws IOException {
+  private void onGoMiddlePage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3");
     App.goToPage(event, "notebookpg2");
     System.out.println("Go right page");
@@ -23,6 +23,7 @@ public class NoteBookpg1Controller {
 
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Go back");
     // if the back button is clicked, set the bookpane to be invisible
     App.goToDrawers(event);

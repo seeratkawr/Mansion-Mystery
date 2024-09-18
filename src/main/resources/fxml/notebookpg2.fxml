@@ -41,8 +41,8 @@
                   <Font size="16.0" />
                </font></Label>
             <Polygon fx:id="triangle" fill="#8b5e51" layoutX="730.0" layoutY="303.0" onMouseClicked="#onGoLastPage" points="0.0, 11.66668701171875, 46.16668701171875, -25.333343505859375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
-            <Button fx:id="triangle" layoutX="367.0" layoutY="525.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
-            <Polygon fx:id="triangle" fill="#8b5e51" layoutX="689.0" layoutY="287.0" onMouseClicked="#onGoFirstPage" points="-578.1666259765625, 30.000030517578125, -632.8333129882812, -5.999969482421875, -578.1666259765625, -44.666656494140625" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+            <Button fx:id="triangle" layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
+            <Polygon fx:id="triangle" fill="#8b5e51" layoutX="689.0" layoutY="287.0" onMouseClicked="#onGoMiddlePage" points="-578.1666259765625, 30.000030517578125, -632.8333129882812, -5.999969482421875, -578.1666259765625, -44.666656494140625" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
             <Text fx:id="number" layoutX="595.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
                <font>
                   <Font size="27.0" />

@@ -12,6 +12,7 @@ public class StartGameController {
 
   @FXML
   private void onStartGame(ActionEvent event) {
+    App.playSound("button.mp3");
     System.out.println("Game started!");
     try {
       // Open the crime scene view

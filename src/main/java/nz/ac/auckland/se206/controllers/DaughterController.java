@@ -91,6 +91,7 @@ public class DaughterController {
 
   @FXML
   private void onSendMessage(ActionEvent event) {
+    App.playSound("button.mp3");
     App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {

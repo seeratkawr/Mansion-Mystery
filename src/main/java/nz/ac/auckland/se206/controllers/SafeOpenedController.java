@@ -49,6 +49,7 @@ public class SafeOpenedController {
    */
   @FXML
   void onGoBackSafe(MouseEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Go back to safe closed");
     App.openSafe(event);
   }

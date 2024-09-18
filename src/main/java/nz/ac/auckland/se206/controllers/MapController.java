@@ -58,6 +58,7 @@ public class MapController {
   @FXML
   private void onKitchenClicked(MouseEvent event) {
     try {
+      App.playSound("doorshut.mp3");
       // Open the kitchen view
       System.out.println("Kitchen clicked");
       App.openSuspect(event, "kitchen");
@@ -70,6 +71,7 @@ public class MapController {
   @FXML
   private void onDaughterClicked(MouseEvent event) {
     try {
+      App.playSound("doorshut.mp3");
       // Open the daughter view
       App.openSuspect(event, "daughter");
     } catch (IOException e) {
@@ -81,6 +83,7 @@ public class MapController {
   @FXML
   private void onCleanerClicked(MouseEvent event) {
     try {
+      App.playSound("doorshut.mp3");
       // Open the cleaner view
       App.openSuspect(event, "cleaner");
     } catch (IOException e) {
@@ -92,6 +95,7 @@ public class MapController {
   @FXML
   private void onStudyClicked(ActionEvent event) {
     try {
+      App.playSound("doorshut.mp3");
       // Open the study view
       App.openCrimeScene(event);
     } catch (IOException e) {

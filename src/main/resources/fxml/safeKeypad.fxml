@@ -9,9 +9,9 @@
 
 <AnchorPane fx:id="safePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SafeKeypadController">
    <children>
-      <ImageView fitHeight="603.0" fitWidth="943.0" layoutX="-98.0">
+      <ImageView fitHeight="1198.0" fitWidth="2105.0" layoutX="-640.0" layoutY="-313.0">
          <image>
-            <Image url="@../images/safeKeypad.png" />
+            <Image url="@../images/safe.png" />
          </image>
       </ImageView>
       <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
