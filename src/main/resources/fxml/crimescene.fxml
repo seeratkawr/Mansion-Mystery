@@ -20,9 +20,9 @@
             <Image url="@../images/map.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="laptopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutX="422.0" layoutY="319.0" onMouseClicked="#onLaptopClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="78.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="28.0" layoutX="424.0" layoutY="438.0" onMouseClicked="#onDrawersClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="111.0" />
-      <Rectangle fx:id="bookshelfSafeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="245.0" layoutX="169.0" layoutY="118.0" onMouseClicked="#onBookshelfSafeClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="78.0" />
+      <Rectangle fx:id="laptopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="74.0" layoutX="422.0" layoutY="319.0" onMouseClicked="#onLaptopClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="78.0" />
+      <Rectangle fx:id="drawerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="20.0" layoutX="424.0" layoutY="443.0" onMouseClicked="#onDrawersClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="111.0" />
+      <Rectangle fx:id="bookshelfSafeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="236.0" layoutX="169.0" layoutY="118.0" onMouseClicked="#onBookshelfSafeClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="78.0" />
       <Button fx:id="guessingButton" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
       <Label fx:id="lbPopup" layoutX="14.0" layoutY="56.0" prefHeight="51.0" prefWidth="377.0" style="-fx-background-color: grey; -fx-text-fill: white; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-label-padding: 5px; -fx-alignment: center; -fx-border-width: 2px;" textAlignment="RIGHT" visible="false">
          <font>
