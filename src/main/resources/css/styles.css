@@ -43,14 +43,13 @@
 
 /* Polygon (triangle) style */
 #triangle {
-  -fx-fill: #717171;
-  -fx-stroke: black;
+  -fx-fill: #c7c7c7;
+  -fx-stroke: white;
   -fx-stroke-width: 3;
 }
-
 /* Polygon hover effect */
 #triangle:hover {
-  -fx-fill: #c7c7c7; /* Lighter shade on hover */
+  -fx-fill: #717171;; /* Lighter shade on hover */
   -fx-cursor: hand;
   -fx-stroke: #000000;
 }
