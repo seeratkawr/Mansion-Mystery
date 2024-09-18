@@ -17,6 +17,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.controllers.MapController;
+import java.util.List;
+import java.util.ArrayList;
 
 // this is a test comment to test github flows
 
@@ -253,14 +255,38 @@ public class App extends Application {
    * This method is called to verify if the player is allowed to guess. The player can guess if they
    * have talked to all suspects and viewed at least one clue.
    *
-   * @return true if the player can guess, false otherwise
+   * @return a list of booleans indicating if the player has talked to all suspects, viewed at least
+   *         one clue, and can guess respectively.
+   *         The list format is Boolean [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
    */
-  public static Boolean verifyCanGuess() {
+  public static List<Boolean> verifyCanGuess() {
+    List<Boolean> result = new ArrayList<Boolean>();
+
+    if(suspectsTalkedTo.size() == 3) {
+      System.out.println("Enough suspects talked to");
+      result.add(true);
+    } else {
+      System.out.println("Not enough suspects talked to");
+      result.add(false);
+    }
+
+    if(cluesViewed.size() >= 1) {
+      System.out.println("Enough clues viewed");
+      result.add(true);
+    } else {
+      System.out.println("Not enough clues viewed");
+      result.add(false);
+    }
+
     if (suspectsTalkedTo.size() == 3 && cluesViewed.size() >= 1) {
       System.out.println("Can guess");
-      return true;
+      result.add(true);
+    } else {
+      System.out.println("Cannot guess");
+      result.add(false);
     }
-    return false;
+
+    return result;
   }
 
   /**

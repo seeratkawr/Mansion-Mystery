@@ -82,11 +82,24 @@ public class CrimeSceneController {
   private void onGuessClicked(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
     System.out.println("Guessing button clicked");
+    
+    // verifyCanGuess() returns a list of booleans in the format 
+    // [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
+    Boolean canGuess = App.verifyCanGuess().get(2);
+    Boolean enoughCluesViewed = App.verifyCanGuess().get(1);
+    Boolean enoughSuspectsTalkedTo = App.verifyCanGuess().get(0);
 
-    // verify if the user can guess
-    if (App.verifyCanGuess()) {
+    // verify if the user can guess.
+    if (canGuess) {
       App.openGuess(event);
     } else {
+
+      // update the popup message based on the user's progress
+      if(!enoughSuspectsTalkedTo){
+        lbPopup.setText("You need to talk to all suspects before making a guess.");
+      } else if(!enoughCluesViewed){
+        lbPopup.setText("You need to view at least 1 clue before making a guess.");
+      }
 
       // display popup message for 3 seconds
       lbPopup.setVisible(true);
