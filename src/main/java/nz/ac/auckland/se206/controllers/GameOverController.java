@@ -10,31 +10,28 @@ import nz.ac.auckland.se206.App;
 
 public class GameOverController {
 
-    @FXML private ResourceBundle resources;
-    @FXML private URL location;
-    @FXML private TextArea txtaResults;
+  @FXML private ResourceBundle resources;
+  @FXML private URL location;
+  @FXML private TextArea txtaResults;
 
-    private String result;
+  private String result;
 
-    /**
-     * Initializes the controller class.
-     */
-    @FXML
-    private void initialize() {
-        result = App.getAiGameResult();
-        txtaResults.setText(result);
-    }
+  /** Initializes the controller class. */
+  @FXML
+  private void initialize() {
+    result = App.getAiGameResult();
+    txtaResults.setText(result);
+  }
 
-    /**
-     * Restarts the game
-     * 
-     * @param event
-     * @throws IOException
-     */
-    @FXML
-    private void onClickedRestart(ActionEvent event) throws IOException {
-        App.restartGame(event);
-    }
-
-
+  /**
+   * Restarts the game
+   *
+   * @param event
+   * @throws IOException
+   */
+  @FXML
+  private void onClickedRestart(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
+    App.restartGame(event);
+  }
 }

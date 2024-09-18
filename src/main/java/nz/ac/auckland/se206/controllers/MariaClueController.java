@@ -12,6 +12,7 @@ public class MariaClueController {
 
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
+    App.playSound("mouseclick.mp3");
     App.setRoot("laptopClue");
   }
 }

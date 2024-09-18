@@ -80,6 +80,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
+    App.playSound("button.mp3");
     System.out.println("Guessing button clicked");
 
     // verify if the user can guess

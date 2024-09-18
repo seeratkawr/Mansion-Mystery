@@ -5,13 +5,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartGameController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartGameController">
    <children>
       <ImageView fitHeight="621.0" fitWidth="915.0" layoutX="-33.0" pickOnBounds="true" preserveRatio="true">
          <image>
            <Image url="@../images/Mansion.png" />
          </image>
       </ImageView>
-      <Button fx:id="startButton" layoutX="380.0" layoutY="414.0" mnemonicParsing="false" onAction="#onStartGame" opacity="0.0" prefHeight="77.0" prefWidth="194.0" />
+      <Button fx:id="startButton" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="61.0" prefWidth="174.0" textFill="TRANSPARENT" />
    </children>
 </AnchorPane>
