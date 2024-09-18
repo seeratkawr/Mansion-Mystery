@@ -103,6 +103,24 @@
   -fx-fill: transparent;
 }
 
+#results {
+  -fx-font-family: "serif", "Cursive";
+  -fx-font-size: 20px;
+  -fx-text-fill: #ffffff; /* A warm brown color */
+  -fx-font-style: italic; /* Make the text slanted */
+}
+
+#feedbackfield {
+  -fx-alignment: center; /* Center the text */
+}
+
+#gameOver {
+  -fx-font-family: "serif", "Cursive";
+  -fx-font-size: 14px;
+  -fx-text-fill: #ffffff; /* A warm brown color */
+  -fx-font-style: italic; /* Make the text slanted */
+}
+
 
 #drawerRectangle:hover {
   -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */

@@ -42,7 +42,7 @@ public class Notebookpg2Controller {
   }
 
   @FXML
-  private void onGoMiddlePage(MouseEvent event) throws IOException {
+  private void onGoFirstPage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3");
     System.out.println("Go first page");
     App.goToPage(event, "notebookpg1");
