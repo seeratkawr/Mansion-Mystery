@@ -119,15 +119,14 @@ public class App extends Application {
 
     CrimeSceneController controller = loader.getController();
 
-    Label timerLabel = controller.getTimerLabel();
-    timer = new TimerUtility(300, timerLabel);
-    controller.setTimer(timer);
-
     if (!timerStarted) {
+      Label timerLabel = controller.getTimerLabel();
+      timer = new TimerUtility(300, timerLabel);
+      controller.setTimer(timer);
       timer.start();
       timerStarted = true;
     } else {
-      timerLabel.textProperty().bind(timer.timeSecondsProperty().asString());
+      controller.setTimer(timer);
     }
   }
 
