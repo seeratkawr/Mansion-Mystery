@@ -17,7 +17,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
+import nz.ac.auckland.se206.controllers.DaughterController;
+import nz.ac.auckland.se206.controllers.KitchenController;
 import nz.ac.auckland.se206.controllers.MapController;
 
 // this is a test comment to test github flows
@@ -338,16 +341,29 @@ public class App extends Application {
 
   public static void goLastScene(String lastScene) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
-
+    // Call the controller method here
+    Parent root = loader.load();
+    
     if (lastScene.equals("daughter")) {
-      loader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
+      FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
+      root = daughterLoader.load();
+      DaughterController daughterController = daughterLoader.getController();
+      //daughterController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
     } else if (lastScene.equals("kitchen")) {
-      loader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
+      FXMLLoader kitchenLoader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
+      root = kitchenLoader.load();
+      KitchenController kitchenController = kitchenLoader.getController();
+      //kitchenController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
     } else if (lastScene.equals("cleaner")) {
-      loader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
+      FXMLLoader cleanerLoader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
+      root = cleanerLoader.load();
+      CleanerController cleanerController = cleanerLoader.getController();
+      //cleanerController.someMethod(); // Replace 'someMethod' with the actual method name you want to call
+    } else {
+      CrimeSceneController controller = loader.getController();
+      controller.setTimer(timer); // Default method call for CrimeSceneController
     }
 
-    Parent root = loader.load();
     Scene newScene = new Scene(root);
     primaryStage.setScene(newScene);
     primaryStage.show();

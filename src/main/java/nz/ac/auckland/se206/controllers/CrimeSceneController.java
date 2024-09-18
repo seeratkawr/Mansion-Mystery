@@ -25,6 +25,12 @@ public class CrimeSceneController {
 
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
   }
 
   public Label getTimerLabel() {
