@@ -37,6 +37,7 @@ public class App extends Application {
   private static String aiGameResult;
   private static Stage primaryStage;
   private static List<Timer> activeTimers = new ArrayList<>();
+  private static List<Thread> activeThreads = new ArrayList<>();
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -371,5 +372,15 @@ public class App extends Application {
    */
   public static void addTimer(Timer timer) {
     activeTimers.add(timer);
+  }
+
+  /**
+   * This method is called to add a thread to the list of active threads
+   * so that they can be stopped when the application is closed
+   *
+   * @param thread the thread to add to the list
+   */
+  public static void addThread(Thread thread) {
+    activeThreads.add(thread);
   }
 }

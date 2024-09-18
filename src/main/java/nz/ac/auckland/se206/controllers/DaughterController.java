@@ -104,7 +104,10 @@ public class DaughterController {
           }
         };
 
-    new Thread(task).start();
+    Thread thread = new Thread(task);
+    App.addThread(thread);
+    thread.setDaemon(true);
+    thread.start();
   }
 
   public void setProfession(String profession) {
@@ -138,7 +141,10 @@ public class DaughterController {
               return null;
             }
           };
-      new Thread(task).start();
+      Thread thread = new Thread(task);
+      App.addThread(thread);
+      thread.setDaemon(true);
+      thread.start();
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
