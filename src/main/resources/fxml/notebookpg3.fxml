@@ -37,7 +37,6 @@
             <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
          </children>
       </Pane>
-      <Button fx:id="triangle1" layoutX="367.0" layoutY="525.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
-      <Polygon fx:id="triangle" fill="#8b5e51" layoutX="104.0" layoutY="303.0" onMouseClicked="#onGoMiddlePage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+      <Polygon fx:id="triangle" fill="#8b5e51" layoutX="104.0" layoutY="303.0" onMouseClicked="#onGoFirstPage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
    </children>
 </AnchorPane>
