@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="safePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SafeOpenedController">
    <children>
-      <ImageView fitHeight="483.0" fitWidth="483.0" layoutX="159.0" layoutY="32.0">
+      <ImageView fitHeight="603.0" fitWidth="975.0" layoutX="-15.0">
          <image>
             <Image url="@../images/safeOpened.png" />
          </image>

@@ -145,7 +145,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedChef(MouseEvent event) {
-    chosenSuspect = "chef";
+    chosenSuspect = "the chef John";
     updateSelectedSuspect(chosenSuspect);
   }
 
@@ -157,7 +157,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedCleaner(MouseEvent event) {
-    chosenSuspect = "cleaner";
+    chosenSuspect = "the cleaner Alex";
     updateSelectedSuspect(chosenSuspect);
   }
 
@@ -169,7 +169,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedDaughter(MouseEvent event) {
-    chosenSuspect = "daughter";
+    chosenSuspect = "the daughter Maria";
     updateSelectedSuspect(chosenSuspect);
   }
 
@@ -196,7 +196,7 @@ public class GuessingController {
 
     txtInput.clear();
     ChatMessage userMessage =
-        new ChatMessage("user", "the user guessed " + chosenSuspect + ": " + message);
+        new ChatMessage("user", "SELECTED USER: " + chosenSuspect + "USER MESSAGE: " + message);
 
     // Run the AI chat operation in a background thread
     Task<Void> task =

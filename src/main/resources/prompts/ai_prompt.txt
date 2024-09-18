@@ -2,7 +2,7 @@ Task:
 The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
 
 Identify if the correct suspect was chosen: 
-he correct thief is the daughter. If the player chose the daughter, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
+he correct thief is the daughter. If the player chose the daughter Maria, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
 Analyze the player's explanation: Evaluate the player's reasoning. Does it correctly identify the key clues (laptop, notebook, safe) and align with the daughter's motive (financial desperation, knowledge of the valuable item, anger at her parents)? Provide feedback on whether the explanation was logical, thorough, and accurate.
 
 Give Feedback:
@@ -18,14 +18,39 @@ Her notebook contains personal journal entries revealing her anger and financial
 
 MENTION ALL THE CLUES in your response and use them to explain why the user is correct or false.
 
-FOR EVERY SENTENCE MAKE THE NEXT ONE ON A NEW LINE.
+FOR EVERY SENTENCE MAKE THE NEXT ONE ON A NEW LINE OR AT 7 WORDS.
 
 DONT SAY ANYMORE THAN 6 LINES.
 
-Example:
-You were correct the theif was...
-[explain why they were correct by mentioning the clues]
+Say this if the user selected the chef as the suspect but talked about why the daughter was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
 
-Example:
-You were incorrect the theif was...
+Say this if the user selected the chef as the suspect but talked about why the cleaner was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
+
+Say this if the user selected the daughter as the suspect but talked about why the cleaner was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
+
+Say this if the user selected the daughter as the suspect but talked about why the chef was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
+
+Say this if the user selected the cleaner as the suspect but talked about why the daughter was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
+
+Say this if the user selected the cleaner as the suspect but talked about why the chef was the thief:
+There was a mismatch between you guessed and who you talked about in your response.
+The correct thief was...
+
+Say this when the correct thief:
+You were correct the theif was...
+[explain why they were right by mentioning the clues]
+
+Say this when wrong thief:
+You were incorrect the thief was...
+You selected...
 [explain why they were wrong by mentioning the clues]
