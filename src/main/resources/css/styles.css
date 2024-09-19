@@ -108,8 +108,17 @@
   -fx-padding: 7 15;
 }
 
-/* Hover effect for startButton */
-#startButton:hover {
+#restartButton {
+  /* Styling for the restart button */
+  -fx-background-color: transparent;
+
+  -fx-border-color: transparent;
+
+  -fx-border-radius: 0;
+}
+
+/* Hover effect for startButton and restart button */
+#startButton:hover, #restartButton:hover {
   -fx-background-color: rgba(139, 141, 56, 0.8);
   /* Lighter version of #5c5e25 with transparency */
   -fx-cursor: hand;
