@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -24,9 +23,14 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
+/**
+ * Controller class for the Cleaner scene. This class handles the chat completion request to the
+ * OpenAI API and displays the chat messages in the chat area.
+ *
+ * <p>It also handles the user input and sends the messages to the API for completion.
+ */
 public class CleanerController {
   @FXML private Button btnSend; // Button to send messages
   @FXML private TextField txtInput; // TextField for user input
@@ -65,27 +69,6 @@ public class CleanerController {
         });
   }
 
-  // Method to set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
-  }
-
   // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel;
@@ -95,6 +78,7 @@ public class CleanerController {
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
+      // Open the map scene and set the last scene to cleaner
       App.openMap(event, "/images/cleaner.png");
       MapController.setLastScene("cleaner");
     } catch (IOException e) {
@@ -106,17 +90,19 @@ public class CleanerController {
   @FXML
   private void onSendMessage(ActionEvent event) {
     App.playSound("button.mp3");
+    // Add the profession to the list of suspects talked to
     App.addSuspectTalkedTo(profession);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
 
+    // Clear the chat area and append the user message
     clearChat();
 
     txtInput.clear();
-    ChatMessage userMessage = new ChatMessage("user", message);
-    appendChatMessage(userMessage);
+    ChatMessage userMessage = new ChatMessage("user", message); // Create a user message
+    appendChatMessage(userMessage); //  Append the user message to the chat area
 
     loadingIndicator.setVisible(true);
     translateTransition.play();
@@ -145,8 +131,9 @@ public class CleanerController {
   // Method to set the profession and initialize chat completion request
   public void setProfession(String profession) {
     this.profession = profession;
-    clearChat();
+    clearChat(); // Clear the chat area
 
+    // Initialize chat completion request
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest =
@@ -195,6 +182,7 @@ public class CleanerController {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
+      // Execute the chat completion request and get the response
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
@@ -215,6 +203,7 @@ public class CleanerController {
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);
 
+    // Get the prompt from the file based on the profession
     String promptFileName;
     if ("Cleaner".equals(profession)) {
       promptFileName = "cleaner_prompt.txt";

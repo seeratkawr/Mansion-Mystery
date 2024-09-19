@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 
 // Controller class for the Laptop Clue scene
 public class LaptopClueController {
@@ -20,28 +18,6 @@ public class LaptopClueController {
   @FXML private Circle mariaCircle; // Circle representing Maria
   @FXML private Circle jamesCircle; // Circle representing James
   @FXML private Label timerLabel; // Label to display the timer
-
-  // Method to set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    // AnimationTimer to continuously update the timer label
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
-  }
 
   // Getter for the timer label
   public Label getTimerLabel() {

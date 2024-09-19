@@ -2,7 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException; // Import IOException for handling file-related exceptions
 import java.util.Timer; // Import Timer for scheduling tasks
-import javafx.animation.AnimationTimer; // Import AnimationTimer for creating a custom timer
+// Import AnimationTimer for creating a custom timer
 import javafx.event.ActionEvent; // Import ActionEvent for handling button click events
 import javafx.fxml.FXML; // Import FXML for JavaFX annotations
 import javafx.scene.control.Button; // Import Button for JavaFX button control
@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView; // Import ImageView for displaying images
 import javafx.scene.input.MouseEvent; // Import MouseEvent for handling mouse events
 import javafx.scene.shape.Rectangle; // Import Rectangle for JavaFX rectangle shape
 import nz.ac.auckland.se206.App; // Import App for accessing application-wide methods
-import nz.ac.auckland.se206.TimerUtility; // Import TimerUtility for custom timer utility
+// Import TimerUtility for custom timer utility
 
 public class CrimeSceneController {
 
@@ -22,28 +22,6 @@ public class CrimeSceneController {
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
   @FXML private Label timerLabel;
-
-  // Method to set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue())); // Update timer label
-            });
-
-    // Create an AnimationTimer to continuously update the timer label
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft())); // Update timer label
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
-  }
 
   // Getter method for the timer label
   public Label getTimerLabel() {

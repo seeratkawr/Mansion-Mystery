@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 
 // Controller class for the Map view
 public class MapController {
@@ -23,29 +21,6 @@ public class MapController {
 
   // Field to store the last scene
   private static String lastScene;
-
-  // Method to set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    // Add listener to update the timer label when the time changes
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    // Create an AnimationTimer to continuously update the timer label
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
-  }
 
   // Getter for the timer label
   public Label getTimerLabel() {
