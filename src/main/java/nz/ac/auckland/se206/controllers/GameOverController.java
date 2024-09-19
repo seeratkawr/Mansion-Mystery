@@ -15,20 +15,7 @@ import nz.ac.auckland.se206.App;
  * The continue button is initially disabled and hidden, and it becomes enabled and visible after a delay.
  * The class also handles the action of clicking the continue button to restart the game.
  * 
- * <p>FXML Annotations:
- * <ul>
- *   <li>{@code @FXML private ResourceBundle resources;} - Resource bundle for internationalization.</li>
- *   <li>{@code @FXML private URL location;} - Location of the FXML file.</li>
- *   <li>{@code @FXML private TextArea txtaResults;} - Text area to display the game result.</li>
- *   <li>{@code @FXML private Button continueButton;} - Button to continue or restart the game.</li>
- * </ul>
- * 
- * <p>Methods:
- * <ul>
- *   <li>{@code private void initialize()} - Initializes the controller, sets the game result, and manages the continue button visibility and state.</li>
- *   <li>{@code private void onClickedContinue(ActionEvent event)} - Handles the action of clicking the continue button to restart the game.</li>
- * </ul>
- */
+**/
 public class GameOverController {
 
   @FXML private ResourceBundle resources;

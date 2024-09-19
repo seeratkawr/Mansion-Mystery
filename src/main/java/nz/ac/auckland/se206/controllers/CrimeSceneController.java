@@ -2,6 +2,8 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException; // Import IOException for handling file-related exceptions
 import java.util.Timer; // Import Timer for scheduling tasks
+import java.util.TimerTask;
+
 // Import AnimationTimer for creating a custom timer
 import javafx.event.ActionEvent; // Import ActionEvent for handling button click events
 import javafx.fxml.FXML; // Import FXML for JavaFX annotations
@@ -113,10 +115,10 @@ public class CrimeSceneController {
 
       // Display popup message for 3 seconds
       lbPopup.setVisible(true);
-      Timer timer = new java.util.Timer();
+      Timer timer = new Timer();
       App.addTimer(timer); // Store timer in App.java for garbage collection
       timer.schedule(
-          new java.util.TimerTask() {
+          new TimerTask() {
             @Override
             public void run() {
               lbPopup.setVisible(false); // Hide popup message after 3 seconds

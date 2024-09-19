@@ -36,8 +36,11 @@ public class LaptopClueController {
   // Method called when a circle is clicked
   @FXML
   private void onCircleClicked(MouseEvent event) {
+
+    // Check which circle was clicked and open the corresponding clue
     try {
       if (event.getTarget() == jamesCircle) {
+        // Open the next scene and play the mouse click sound
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/jamesClue.fxml");
       } else if (event.getTarget() == mariaCircle) {
@@ -47,6 +50,7 @@ public class LaptopClueController {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/alexClue.fxml");
       }
+      // Catch any exceptions that occur 
     } catch (IOException e) {
       e.printStackTrace();
     }

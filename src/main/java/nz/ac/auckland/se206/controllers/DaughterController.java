@@ -87,42 +87,47 @@ public class DaughterController {
   // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    App.playSound("button.mp3"); // Play button click sound
-    App.addSuspectTalkedTo(profession); // Add the profession to the list of suspects talked to
-    String message = txtInput.getText().trim(); // Get the user input message
+    // Play sound when the button is clicked and increment suspects talked to
+    App.playSound("button.mp3"); 
+    App.addSuspectTalkedTo(profession); 
+
+    // Get the message from the input field and trim it
+    String message = txtInput.getText().trim();
     if (message.isEmpty()) {
-      return; // Do nothing if the message is empty
+      return; 
     }
 
-    clearChat(); // Clear the chat
+    // Handling chat messages
+    clearChat(); 
+    txtInput.clear();
+    ChatMessage userMessage = new ChatMessage("user", message);
+    appendChatMessage(userMessage); 
 
-    txtInput.clear(); // Clear the input field
-    ChatMessage userMessage = new ChatMessage("user", message); // Create a new chat message
-    appendChatMessage(userMessage); // Append the user message to the chat
-
-    loadingIndicator.setVisible(true); // Show loading indicator
-    translateTransition.play(); // Start loading animation
+    loadingIndicator.setVisible(true);
+    translateTransition.play();
 
     // Create a task to run the GPT model
     Task<Void> task =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            ChatMessage response = runGpt(userMessage); // Get the response from GPT
+            ChatMessage response = runGpt(userMessage); 
             Platform.runLater(
                 () -> {
-                  appendChatMessage(response); // Append the response to the chat
-                  loadingIndicator.setVisible(false); // Hide loading indicator
-                  translateTransition.stop(); // Stop loading animation
+                  // Handling response and animations
+                  appendChatMessage(response); 
+                  loadingIndicator.setVisible(false); 
+                  translateTransition.stop(); 
                 });
             return null;
           }
         };
 
-    Thread thread = new Thread(task); // Create a new thread for the task
-    App.addThread(thread); // Add the thread to the app
-    thread.setDaemon(true); // Set the thread as a daemon
-    thread.start(); // Start the thread
+    // Start the task in a new thread
+    Thread thread = new Thread(task); 
+    App.addThread(thread);
+    thread.setDaemon(true);
+    thread.start();
   }
 
   // Method to set the profession
@@ -211,6 +216,6 @@ public class DaughterController {
 
     String prompt =
         PromptEngineering.getPrompt(promptFileName, map); // Get the prompt from the file
-    return prompt; // Return the prompt
+    return prompt;
   }
 }

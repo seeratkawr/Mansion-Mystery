@@ -113,6 +113,8 @@ public class CleanerController {
           @Override
           protected Void call() throws Exception {
             ChatMessage response = runGpt(userMessage);
+
+            // Append the response to the chat area and stop the loading indicator
             Platform.runLater(
                 () -> {
                   appendChatMessage(response);
@@ -122,6 +124,8 @@ public class CleanerController {
             return null;
           }
         };
+
+    // Start the task in a new thread
     Thread thread = new Thread(task);
     App.addThread(thread);
     thread.setDaemon(true);
@@ -151,8 +155,11 @@ public class CleanerController {
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+              // Create a system message and get the response from GPT
               ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
               ChatMessage response = runGpt(systemMessage);
+
+              // On a new thread, append the response to the chat area and stop the loading indicator
               Platform.runLater(
                   () -> {
                     appendChatMessage(response);
@@ -162,6 +169,8 @@ public class CleanerController {
               return null;
             }
           };
+
+      // Start the task in a new thread
       Thread thread = new Thread(task);
       App.addThread(thread);
       thread.setDaemon(true);

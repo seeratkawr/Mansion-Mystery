@@ -116,12 +116,14 @@ public class App extends Application {
     // ending any remaining threads on close
     stage.setOnCloseRequest(
         e -> {
+          // ending media players
           if (mediaPlayer != null) {
             System.out.println("Closing media player");
             mediaPlayer.stop();
             mediaPlayer.dispose();
           }
 
+          // ending threads
           if (activeTimers.size() > 0) {
             System.out.println("Closing active timers");
             for (Timer timer : activeTimers) {
@@ -129,6 +131,7 @@ public class App extends Application {
             }
           }
 
+          // ending threads for AI
           if (timerCheckTimeline != null) {
             System.out.println("Closing timer check timeline");
             timerCheckTimeline.stop();
@@ -260,16 +263,19 @@ public class App extends Application {
    */
   public static void openMap(MouseEvent event, String path) throws IOException {
 
+    // Initaial sound effect for map unfolding
     App.playSound("mapunfolding.mp3");
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/map.fxml"));
     Parent root = loader.load();
 
+    // Set the last scene to the current scene
     MapController mapController = loader.getController();
     mapController.changeBackground(path);
     timerLabel = mapController.getTimerLabel();
 
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -288,11 +294,14 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the notebook scene
     NotebookController notebookController = loader.getController();
     timerLabel = notebookController.getTimerLabel();
 
+    // Set the timer label in the TimerUtilityHandler
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -343,10 +352,12 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the notebook scene
     NotebookController notebookController = loader.getController();
     timerLabel = notebookController.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -363,10 +374,12 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safe.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the safe scene
     SafeController safeController = loader.getController();
     timerLabel = safeController.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -380,14 +393,16 @@ public class App extends Application {
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openSafeOpened(MouseEvent event) throws IOException {
-
+    // Load the safe opened FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeOpened.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the safe opened scene
     SafeOpenedController safeOpenedController = loader.getController();
     timerLabel = safeOpenedController.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -430,10 +445,12 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the laptop clue scene
     LaptopClueController laptopClueController = loader.getController();
     timerLabel = laptopClueController.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
