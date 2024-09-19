@@ -1,19 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException; // Import IOException for handling file-related exceptions
-import java.util.Timer; // Import Timer for scheduling tasks
+import java.io.IOException; 
+import java.util.Timer; 
 import java.util.TimerTask;
-
-// Import AnimationTimer for creating a custom timer
-import javafx.event.ActionEvent; // Import ActionEvent for handling button click events
-import javafx.fxml.FXML; // Import FXML for JavaFX annotations
-import javafx.scene.control.Button; // Import Button for JavaFX button control
-import javafx.scene.control.Label; // Import Label for JavaFX label control
-import javafx.scene.image.ImageView; // Import ImageView for displaying images
-import javafx.scene.input.MouseEvent; // Import MouseEvent for handling mouse events
-import javafx.scene.shape.Rectangle; // Import Rectangle for JavaFX rectangle shape
-import nz.ac.auckland.se206.App; // Import App for accessing application-wide methods
-// Import TimerUtility for custom timer utility
+import javafx.event.ActionEvent; 
+import javafx.fxml.FXML; 
+import javafx.scene.control.Button; 
+import javafx.scene.control.Label; 
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle; 
+import nz.ac.auckland.se206.App; 
 
 public class CrimeSceneController {
 

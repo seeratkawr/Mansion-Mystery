@@ -159,7 +159,8 @@ public class CleanerController {
               ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
               ChatMessage response = runGpt(systemMessage);
 
-              // On a new thread, append the response to the chat area and stop the loading indicator
+              // On a new thread, append the response to the
+              // chat area and stop the loading indicator
               Platform.runLater(
                   () -> {
                     appendChatMessage(response);

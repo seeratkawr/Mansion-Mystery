@@ -49,8 +49,7 @@ import nz.ac.auckland.se206.controllers.SafeOpenedController;
 public class App extends Application {
 
   private static Scene scene;
-  private static MediaPlayer
-      mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;
@@ -61,7 +60,6 @@ public class App extends Application {
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
   private static Label timerLabel;
-
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
   /**
@@ -139,42 +137,6 @@ public class App extends Application {
         });
 
     startTimerCheckTask();
-  }
-
-  /**
-   * Starts a task to periodically check the timer status. If the timer has finished, it will either
-   * open the guessing scene or the game lost scene based on the game state.
-   */
-  private void startTimerCheckTask() {
-    timerCheckTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(1),
-                event -> {
-                  if (timer != null && timer.isFinished()) {
-                    // Handle the case when the timer has finished
-                    System.out.println("Timer has finished.");
-                    // You might want to perform specific actions or show a notification
-                    try {
-                      // Check if the player can guess
-                      if (verifyCanGuess().get(0).equals(true)
-                          && verifyCanGuess().get(1).equals(true)
-                          && verifyCanGuess().get(2).equals(true)) {
-                        openGuessingScene();
-                        System.out.println("Guessing scene opened.");
-                      } else {
-                        openGameLost();
-                        System.out.println("Game lost scene opened.");
-                        timerCheckTimeline.stop();
-                      }
-                    } catch (IOException e) {
-                      // Handle any IO exceptions that occur
-                      e.printStackTrace();
-                    }
-                  }
-                }));
-    timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
-    timerCheckTimeline.play();
   }
 
   /**
@@ -754,5 +716,43 @@ public class App extends Application {
    */
   public static void addThread(Thread thread) {
     activeThreads.add(thread);
+  }
+
+  /**
+   * Starts a task to periodically check the timer status. If the timer has
+   * finished, it will either
+   * open the guessing scene or the game lost scene based on the game state.
+   */
+  private void startTimerCheckTask() {
+    timerCheckTimeline = new Timeline(
+        new KeyFrame(
+            Duration.seconds(1),
+            event -> {
+              if (timer != null && timer.isFinished()) {
+                // Handle the case when the timer has finished
+                System.out.println("Timer has finished.");
+                // You might want to perform specific actions or show a notification
+                try {
+                  // Check if the player can guess based on the number
+                  // of suspects talked to and clues viewed
+                  if (verifyCanGuess().get(0).equals(true)
+                      && verifyCanGuess().get(1).equals(true)
+                      && verifyCanGuess().get(2).equals(true)) {
+                    openGuessingScene();
+                    System.out.println("Guessing scene opened.");
+                  } else {
+                    // If the player cannot guess, open the game lost scene
+                    openGameLost();
+                    System.out.println("Game lost scene opened.");
+                    timerCheckTimeline.stop();
+                  }
+                } catch (IOException e) {
+                  // Handle any IO exceptions that occur
+                  e.printStackTrace();
+                }
+              }
+            }));
+    timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
+    timerCheckTimeline.play();
   }
 }
