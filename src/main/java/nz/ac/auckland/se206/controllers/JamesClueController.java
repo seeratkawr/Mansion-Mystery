@@ -4,15 +4,18 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
 // Controller class for handling the James Clue scene
 public class JamesClueController {
-  // FXML injected Rectangle for button area
-  @FXML private Rectangle rectangleButtons;
+
   // FXML injected Label for displaying the timer
   @FXML private Label timerLabel;
+  // FXML injected Circle elements for the buttons
+  @FXML private Circle circleButton1;
+  @FXML private Circle circleButton2;
+  @FXML private Circle circleButton3;
 
   // Method to handle the close clue action
   @FXML

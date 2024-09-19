@@ -18,6 +18,9 @@ public class LaptopClueController {
   @FXML private Circle mariaCircle; // Circle representing Maria
   @FXML private Circle jamesCircle; // Circle representing James
   @FXML private Label timerLabel; // Label to display the timer
+  @FXML private Circle hoverCircle1; // Circle button 1
+  @FXML private Circle hoverCircle2; // Circle button 2
+  @FXML private Circle hoverCircle3; // Circle button 3
 
   // Getter for the timer label
   public Label getTimerLabel() {
@@ -39,14 +42,13 @@ public class LaptopClueController {
 
     // Check which circle was clicked and open the corresponding clue
     try {
-      if (event.getTarget() == jamesCircle) {
-        // Open the next scene and play the mouse click sound
+      if (event.getTarget() == jamesCircle || event.getTarget() == hoverCircle1) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/jamesClue.fxml");
-      } else if (event.getTarget() == mariaCircle) {
+      } else if (event.getTarget() == mariaCircle || event.getTarget() == hoverCircle2) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/mariaClue.fxml");
-      } else if (event.getTarget() == alexCircle) {
+      } else if (event.getTarget() == alexCircle || event.getTarget() == hoverCircle3) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/alexClue.fxml");
       }

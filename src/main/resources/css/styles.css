@@ -108,8 +108,17 @@
   -fx-padding: 7 15;
 }
 
-/* Hover effect for startButton */
-#startButton:hover {
+#restartButton {
+  /* Styling for the restart button */
+  -fx-background-color: transparent;
+
+  -fx-border-color: transparent;
+
+  -fx-border-radius: 0;
+}
+
+/* Hover effect for startButton and restart button */
+#startButton:hover, #restartButton:hover {
   -fx-background-color: rgba(139, 141, 56, 0.8);
   /* Lighter version of #5c5e25 with transparency */
   -fx-cursor: hand;
@@ -177,6 +186,7 @@
 #rectangleKeypad:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
 }
 
 #rectangle1:hover,
@@ -189,13 +199,30 @@
 #rectangle8:hover,
 #rectangle9:hover,
 #rectangle0:hover,
-#rectangleClear:hover {
+#rectangleClear:hover,
+#rectangleBook:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
 }
 
+#circleButton1:hover,
+#circleButton2:hover,
+#circleButton3:hover,
+#hoverCircle1:hover,
+#hoverCircle2:hover,
+#hoverCircle3:hover {
+  -fx-fill: rgba(70, 70, 70, 0.3);
+  /* Light transparent color */
+  -fx-cursor: hand;
+}
 
-
+#daughter:hover,
+#chef:hover,
+#cleaner:hover {
+  /* hand cursor */
+  -fx-cursor: hand;
+}
 
 /* TextField styling for chat input */
 #txtInput {

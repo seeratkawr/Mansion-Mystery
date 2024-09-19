@@ -24,5 +24,8 @@
       <Circle fx:id="mariaCircle" fill="DODGERBLUE" layoutX="422.5" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="alexCircle" fill="DODGERBLUE" layoutX="595.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Circle fx:id="hoverCircle1" fill="TRANSPARENT" layoutX="250.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fx:id="hoverCircle2" fill="TRANSPARENT" layoutX="423.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fx:id="hoverCircle3" fill="TRANSPARENT" layoutX="595.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </AnchorPane>
