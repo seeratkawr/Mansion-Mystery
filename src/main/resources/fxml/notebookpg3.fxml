@@ -37,7 +37,7 @@
             <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
          </children>
       </Pane>
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
-      <Polygon fx:id="triangle" fill="#8b5e51" layoutX="109.0" layoutY="312.0" onMouseClicked="#onGoMiddlePage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Polygon fx:id="triangle" fill="#8b5e51" layoutX="104.0" layoutY="303.0" onMouseClicked="#onGoMiddlePage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
    </children>
 </AnchorPane>
