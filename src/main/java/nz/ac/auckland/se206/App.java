@@ -60,6 +60,7 @@ public class App extends Application {
   private static Timeline timerCheckTimeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
+  private static Label timerLabel;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -200,11 +201,13 @@ public class App extends Application {
     if (!timerStarted) {
       Label timerLabel = controller.getTimerLabel();
       timer = new TimerUtility(300, timerLabel);
-      controller.setTimer(timer);
+      timerLabel = controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
       timer.start();
       timerStarted = true;
     } else {
-      controller.setTimer(timer);
+      timerLabel = controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
   }
 
@@ -216,15 +219,14 @@ public class App extends Application {
 
     MapController mapController = loader.getController();
     mapController.changeBackground(path);
+    timerLabel = mapController.getTimerLabel();
 
-    mapController.setTimer(timer);
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-
-    timer.setTimerLabel(mapController.getTimerLabel());
   }
 
   public static void openDrawer(MouseEvent event) throws IOException {
@@ -232,7 +234,9 @@ public class App extends Application {
     Parent root = loader.load();
 
     NotebookController notebookController = loader.getController();
-    notebookController.setTimer(timer);
+    timerLabel = notebookController.getTimerLabel();
+
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -246,13 +250,16 @@ public class App extends Application {
 
     if (fxml.equals("notebookpg1")) {
       NoteBookpg1Controller noteBookpg1Controller = loader.getController();
-      noteBookpg1Controller.setTimer(timer);
+      timerLabel = noteBookpg1Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("notebookpg2")) {
       Notebookpg2Controller notebookpg2Controller = loader.getController();
-      notebookpg2Controller.setTimer(timer);
+      timerLabel = notebookpg2Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("notebookpg3")) {
       Notebookpg3Controller notebookpg3Controller = loader.getController();
-      notebookpg3Controller.setTimer(timer);
+      timerLabel = notebookpg3Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
     scene = new Scene(root);
@@ -266,7 +273,8 @@ public class App extends Application {
     Parent root = loader.load();
 
     NotebookController notebookController = loader.getController();
-    notebookController.setTimer(timer);
+    timerLabel = notebookController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -279,7 +287,8 @@ public class App extends Application {
     Parent root = loader.load();
 
     SafeController safeController = loader.getController();
-    safeController.setTimer(timer);
+    timerLabel = safeController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -293,7 +302,8 @@ public class App extends Application {
     Parent root = loader.load();
 
     SafeOpenedController safeOpenedController = loader.getController();
-    safeOpenedController.setTimer(timer);
+    timerLabel = safeOpenedController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -307,7 +317,8 @@ public class App extends Application {
     Parent root = loader.load();
 
     SafeKeypadController safeKeypadController = loader.getController();
-    safeKeypadController.setTimer(timer);
+    timerLabel = safeKeypadController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -320,7 +331,8 @@ public class App extends Application {
     Parent root = loader.load();
 
     LaptopClueController laptopClueController = loader.getController();
-    laptopClueController.setTimer(timer);
+    timerLabel = laptopClueController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -334,13 +346,16 @@ public class App extends Application {
 
     if (path.equals("/fxml/jamesClue.fxml")) {
       JamesClueController jamesClueController = loader.getController();
-      jamesClueController.setTimer(timer);
+      timerLabel = jamesClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (path.equals("/fxml/mariaClue.fxml")) {
       MariaClueController mariaClueController = loader.getController();
-      mariaClueController.setTimer(timer);
+      timerLabel = mariaClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (path.equals("/fxml/alexClue.fxml")) {
       AlexClueController alexClueController = loader.getController();
-      alexClueController.setTimer(timer);
+      timerLabel = alexClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
     AnchorPane laptopPane =
@@ -389,13 +404,16 @@ public class App extends Application {
 
     if (fxml.equals("daughter")) {
       DaughterController daughterController = loader.getController();
-      daughterController.setTimer(timer);
+      timerLabel = daughterController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("kitchen")) {
       KitchenController kitchenController = loader.getController();
-      kitchenController.setTimer(timer);
+      timerLabel = kitchenController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("cleaner")) {
       CleanerController cleanerController = loader.getController();
-      cleanerController.setTimer(timer);
+      timerLabel = cleanerController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
     scene = new Scene(root);
@@ -497,21 +515,25 @@ public class App extends Application {
       FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
       root = daughterLoader.load();
       DaughterController daughterController = daughterLoader.getController();
-      daughterController.setTimer(timer);
+      timerLabel = daughterController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (lastScene.equals("kitchen")) {
       FXMLLoader kitchenLoader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
       root = kitchenLoader.load();
       KitchenController kitchenController = kitchenLoader.getController();
-      kitchenController.setTimer(timer);
+      timerLabel = kitchenController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (lastScene.equals("cleaner")) {
       FXMLLoader cleanerLoader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
       root = cleanerLoader.load();
       CleanerController cleanerController = cleanerLoader.getController();
-      cleanerController.setTimer(timer);
+      timerLabel = cleanerController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else {
       root = loader.load();
       CrimeSceneController controller = loader.getController();
-      controller.setTimer(timer); // Default method call for CrimeSceneController
+      timerLabel = controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
     if (root != null) {

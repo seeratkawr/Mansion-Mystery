@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -24,7 +23,6 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class KitchenController {
@@ -64,27 +62,6 @@ public class KitchenController {
               break;
           }
         });
-  }
-
-  // Set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
   }
 
   // Get the timer label
