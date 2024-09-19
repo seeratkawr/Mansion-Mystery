@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -45,8 +44,8 @@ public class KitchenController {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/spatula.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
-    translateTransition.setFromX(-50); // Start position (off-screen)
-    translateTransition.setToX(300); // End position (adjust as needed)
+    translateTransition.setFromX(0); // Start position (off-screen)
+    translateTransition.setToX(324); // End position (adjust as needed)
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
     translateTransition.setAutoReverse(true); // Move back and forth
     txtaChat.setWrapText(true);

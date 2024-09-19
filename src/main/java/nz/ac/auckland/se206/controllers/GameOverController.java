@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.App;
 
@@ -13,6 +14,7 @@ public class GameOverController {
   @FXML private ResourceBundle resources;
   @FXML private URL location;
   @FXML private TextArea txtaResults;
+  @FXML private Button continueButton;
 
   private String result;
 
@@ -21,6 +23,20 @@ public class GameOverController {
   private void initialize() {
     result = App.getAiGameResult();
     txtaResults.setText(result);
+    continueButton.setDisable(true);
+    continueButton.setVisible(false);
+
+    // Enable the button after 10 seconds
+    javafx.animation.PauseTransition pauseTransition =
+        new javafx.animation.PauseTransition(javafx.util.Duration.seconds(5));
+    pauseTransition.setOnFinished(
+        e -> {
+          // Assuming there is a button to enable, replace 'yourButton' with the actual button
+          // variable
+          continueButton.setDisable(false);
+          continueButton.setVisible(true);
+        });
+    pauseTransition.play();
   }
 
   /**
@@ -30,8 +46,8 @@ public class GameOverController {
    * @throws IOException
    */
   @FXML
-  private void onClickedRestart(ActionEvent event) throws IOException {
+  private void onClickedContinue(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
-    App.restartGame(event);
+    App.openGameLost();
   }
 }

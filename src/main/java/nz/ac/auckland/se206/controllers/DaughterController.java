@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -46,7 +45,7 @@ public class DaughterController {
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/bear.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
     translateTransition.setFromX(0);
-    translateTransition.setToX(250);
+    translateTransition.setToX(316);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
     daughterText.setEditable(false);
