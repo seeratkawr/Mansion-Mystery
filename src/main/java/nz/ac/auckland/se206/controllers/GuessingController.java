@@ -6,13 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -88,6 +82,17 @@ public class GuessingController {
     timer = new TimerUtility(60, lbTimer);
     timer.start();
     timeUpCheck();
+
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSubmit.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   public void enableGameOver() {
@@ -121,9 +126,8 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
-   * chef and updates the selected suspect label.
-   * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
-   * chef and updates the selected suspect label.
+   * chef and updates the selected suspect label. This method is called when the user clicks on the
+   * chef rectangle. It sets the chosen suspect to chef and updates the selected suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -139,9 +143,9 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
-   * to cleaner and updates the selected suspect label.
-   * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
-   * to cleaner and updates the selected suspect label.
+   * to cleaner and updates the selected suspect label. This method is called when the user clicks
+   * on the cleaner rectangle. It sets the chosen suspect to cleaner and updates the selected
+   * suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -157,9 +161,9 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the daughter rectangle. It sets the chosen
-   * suspect to daughter and updates the selected suspect label.
-   * This method is called when the user clicks on the daughter rectangle. It sets the chosen
-   * suspect to daughter and updates the selected suspect label.
+   * suspect to daughter and updates the selected suspect label. This method is called when the user
+   * clicks on the daughter rectangle. It sets the chosen suspect to daughter and updates the
+   * selected suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -175,9 +179,8 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks the submit button. It will submit the user's guess
-   * and run the AI chat operation.
-   * This method is called when the user clicks the submit button. It will submit the user's guess
-   * and run the AI chat operation.
+   * and run the AI chat operation. This method is called when the user clicks the submit button. It
+   * will submit the user's guess and run the AI chat operation.
    *
    * @param event the event that triggered this method
    */
@@ -190,7 +193,6 @@ public class GuessingController {
       System.err.println("cannot submit empty message");
       return;
     }
-
 
     // clean up and cancel threads
     cleanUpThreads();

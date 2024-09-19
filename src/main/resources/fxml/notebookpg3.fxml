@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="844.5" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Notebookpg3Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603" prefWidth="845" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Notebookpg3Controller">
    <children>
       <Pane fx:id="bookPane" prefHeight="653.0" prefWidth="849.0" style="-fx-background-color: black;">
          <children>
@@ -24,12 +24,12 @@
                   <Image url="@../images/opennotebook-removebg-preview.png" />
                </image>
             </ImageView>
-            <Label layoutX="164.0" layoutY="115.0" prefHeight="315.0" prefWidth="233.0" text="Maria, has been complaining about wanting a new car but she has been misbehaving at school and stole from        of her classmates.   " wrapText="true">
+            <Label layoutX="164.0" layoutY="115.0" prefHeight="315.0" prefWidth="233.0" text="Maria, has been complaining about wanting a new car but she has been misbehaving at school and stole from        of her classmates. She does not deserve anything right now!   " wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Text fx:id="number" layoutX="199.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="one">
+            <Text fx:id="number" layoutX="199.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="one">
                <font>
                   <Font size="22.0" />
                </font>
