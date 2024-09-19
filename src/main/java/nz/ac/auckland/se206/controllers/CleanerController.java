@@ -42,7 +42,7 @@ public class CleanerController {
     txtaChat.setEditable(false);
     txtaChat.setWrapText(true);
 
-    App.setProfession("Cleaner", txtaChat,loadingIndicator, translateTransition);
+    App.setProfession("Cleaner", txtaChat, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();
 
     // Add event handler for the Enter key to send the message
@@ -80,5 +80,4 @@ public class CleanerController {
   private void onSendMessage(ActionEvent event) {
     App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
-
 }
