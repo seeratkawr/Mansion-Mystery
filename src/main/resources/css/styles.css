@@ -194,6 +194,10 @@
   /* Light transparent color */
 }
 
+#circleButton1:hover,#circleButton2:hover,#circleButton3:hover {
+  -fx-fill: rgba(105, 105, 105, 0.3);
+  /* Light transparent color */
+}
 
 
 

@@ -5,18 +5,19 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
 // Controller class for handling the Maria Clue scene
 public class MariaClueController {
-  // FXML injected Rectangle element for buttons
-  @FXML private Rectangle rectangleButtons;
 
   // FXML injected Label element for displaying the timer
   @FXML private Label timerLabel;
-
+  // FXML injected Circle elements for the buttons
+  @FXML private Circle circleButton1;
+  @FXML private Circle circleButton2;
+  @FXML private Circle circleButton3;
 
   // Method to handle the closing of the clue window
   @FXML

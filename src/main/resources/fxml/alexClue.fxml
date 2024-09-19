@@ -4,7 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Circle?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.AlexClueController">
    <children>
@@ -13,7 +13,9 @@
             <Image url="@../images/Alex's%20Emails.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rectangleButtons" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="21.0" layoutX="8.0" layoutY="9.0" onMouseClicked="#closeClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="63.0" />
       <Label fx:id="timerLabel" layoutX="785.0" layoutY="3.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Circle fx:id="circleButton3" fill="TRANSPARENT" layoutX="61.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fx:id="circleButton2" fill="TRANSPARENT" layoutX="40.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fx:id="circleButton1" fill="TRANSPARENT" layoutX="19.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </AnchorPane>
