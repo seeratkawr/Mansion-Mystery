@@ -186,6 +186,7 @@
 #rectangleKeypad:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
 }
 
 #rectangle1:hover,
