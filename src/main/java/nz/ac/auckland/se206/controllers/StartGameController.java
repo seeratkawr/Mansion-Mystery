@@ -18,6 +18,7 @@ public class StartGameController {
   // Method called when the controller is initialized
   public void initialize() {
     // Start the fade-in effect for the backstory label
+    App.playSound("startGameAudio.mp3");
     fadeInBackstory();
   }
 

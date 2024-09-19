@@ -15,24 +15,17 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 /**
- * The KitchenController class is responsible for handling the interactions
- * within the kitchen scene
- * of the application. It manages the chat interface, user input, and animations
- * related to the
+ * The KitchenController class is responsible for handling the interactions within the kitchen scene
+ * of the application. It manages the chat interface, user input, and animations related to the
  * kitchen scene.
  */
 public class KitchenController {
 
-  @FXML
-  private TextArea txtaChat; // Text area for chat messages
-  @FXML
-  private TextField txtInput; // Text field for user input
-  @FXML
-  private Button btnSend; // Button to send messages
-  @FXML
-  private ImageView loadingIndicator; // Loading indicator image
-  @FXML
-  private Label timerLabel; // Label to display the timer
+  @FXML private TextArea txtaChat; // Text area for chat messages
+  @FXML private TextField txtInput; // Text field for user input
+  @FXML private Button btnSend; // Button to send messages
+  @FXML private ImageView loadingIndicator; // Loading indicator image
+  @FXML private Label timerLabel; // Label to display the timer
 
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
@@ -73,6 +66,7 @@ public class KitchenController {
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
+      App.playSound("map.mp3");
       App.openMap(event, "/images/Kitchen.png");
       MapController.setLastScene("kitchen");
     } catch (IOException e) {
