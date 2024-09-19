@@ -62,8 +62,6 @@ public class NoteBookpg1Controller {
 
   @FXML private Label timerLabel; // Label to display the timer
 
-  private TimerUtility timer; // Timer utility instance
-
   /**
    * Handles the event when the user clicks to go to the middle page of the notebook.
    *
@@ -97,7 +95,6 @@ public class NoteBookpg1Controller {
    * @param timer the TimerUtility instance
    */
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add a listener to update the timer label whenever the time changes
     timer
         .timeSecondsProperty()

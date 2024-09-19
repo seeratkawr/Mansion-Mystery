@@ -40,8 +40,6 @@ public class SafeKeypadController {
   List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1));
   // The length of the code
   int codeLength = password.size();
-  // Timer utility instance
-  private TimerUtility timer;
 
   /**
    * Sets the timer and updates the timer label.
@@ -49,7 +47,6 @@ public class SafeKeypadController {
    * @param timer the TimerUtility instance
    */
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

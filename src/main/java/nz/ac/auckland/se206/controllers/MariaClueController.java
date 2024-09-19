@@ -17,8 +17,6 @@ public class MariaClueController {
   // FXML injected Label element for displaying the timer
   @FXML private Label timerLabel;
 
-  // Timer utility instance
-  private TimerUtility timer;
 
   // Method to handle the closing of the clue window
   @FXML
@@ -31,8 +29,6 @@ public class MariaClueController {
 
   // Method to set the timer and initialize the timer label updates
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
-
     // Add a listener to update the timer label whenever the time changes
     timer
         .timeSecondsProperty()

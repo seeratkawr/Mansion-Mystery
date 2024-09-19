@@ -17,9 +17,6 @@ public class NotebookController {
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
 
-  // TimerUtility instance to manage the timer
-  private TimerUtility timer;
-
   // Method to handle the event when the book is clicked
   @FXML
   private void onClickedBook(MouseEvent event) throws IOException {
@@ -39,7 +36,6 @@ public class NotebookController {
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add a listener to update the timer label whenever the time changes
     timer
         .timeSecondsProperty()

@@ -17,8 +17,7 @@ public class Notebookpg3Controller {
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
 
-  // Timer utility instance
-  private TimerUtility timer;
+  
 
   // Method to handle the event when the middle page is clicked
   @FXML
@@ -60,7 +59,6 @@ public class Notebookpg3Controller {
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add a listener to update the timer label whenever the time changes
     timer
         .timeSecondsProperty()

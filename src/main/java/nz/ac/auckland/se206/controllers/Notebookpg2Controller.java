@@ -17,9 +17,6 @@ public class Notebookpg2Controller {
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
 
-  // Timer utility instance
-  private TimerUtility timer;
-
   // Method to handle the event when the user clicks to go to the last page
   @FXML
   private void onGoLastPage(MouseEvent event) throws IOException {
@@ -62,7 +59,6 @@ public class Notebookpg2Controller {
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add a listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()

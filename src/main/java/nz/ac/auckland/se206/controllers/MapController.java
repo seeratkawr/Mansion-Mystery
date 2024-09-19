@@ -21,14 +21,11 @@ public class MapController {
   @FXML private Button btnToStudy;
   @FXML private Label timerLabel;
 
-  // Timer utility instance
-  private TimerUtility timer;
   // Field to store the last scene
   private static String lastScene;
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()

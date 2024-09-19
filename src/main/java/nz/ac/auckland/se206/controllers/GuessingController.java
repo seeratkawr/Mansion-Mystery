@@ -181,7 +181,6 @@ public class GuessingController {
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
-    App.hasGuessed();
   }
 
   /**
@@ -199,7 +198,6 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
-    App.hasGuessed();
   }
 
   /**
@@ -217,7 +215,6 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
-    App.hasGuessed();
   }
 
   /**
