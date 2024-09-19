@@ -201,11 +201,18 @@
 #rectangleClear:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
 }
 
-#circleButton1:hover,#circleButton2:hover,#circleButton3:hover {
-  -fx-fill: rgba(105, 105, 105, 0.3);
+#circleButton1:hover,
+#circleButton2:hover,
+#circleButton3:hover,
+#hoverCircle1:hover,
+#hoverCircle2:hover,
+#hoverCircle3:hover {
+  -fx-fill: rgba(70, 70, 70, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
 }
 
 
