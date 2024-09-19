@@ -145,9 +145,11 @@ public class GuessingController {
   private void onClickedChef(MouseEvent event) {
     App.setChosenSuspect("the chef James");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
+    // disabling other rectangles
     cleaner.setDisable(true);
     daughter.setDisable(true);
   }
@@ -164,9 +166,11 @@ public class GuessingController {
   private void onClickedCleaner(MouseEvent event) {
     App.setChosenSuspect("the cleaner Alex");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
+    // disabling other rectangles
     chef.setDisable(true);
     daughter.setDisable(true);
   }
@@ -183,9 +187,11 @@ public class GuessingController {
   private void onClickedDaughter(MouseEvent event) {
     App.setChosenSuspect("the daughter Maria");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
+    // disabling other rectangles
     chef.setDisable(true);
     cleaner.setDisable(true);
   }
