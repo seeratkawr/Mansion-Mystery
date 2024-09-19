@@ -217,7 +217,12 @@
   -fx-cursor: hand;
 }
 
-
+#daughter:hover,
+#chef:hover,
+#cleaner:hover {
+  /* hand cursor */
+  -fx-cursor: hand;
+}
 
 /* TextField styling for chat input */
 #txtInput {
