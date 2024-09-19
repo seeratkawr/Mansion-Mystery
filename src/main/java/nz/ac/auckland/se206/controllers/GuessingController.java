@@ -263,7 +263,7 @@ public class GuessingController {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(100);
+              .setMaxTokens(200);
 
       // run chat operation in a background thread
       Task<Void> task =

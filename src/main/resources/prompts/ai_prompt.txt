@@ -1,3 +1,4 @@
+Keep the responses very short. 
 Task:
 The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
 
@@ -25,11 +26,15 @@ make sure to tell them that they missed out some informtion let them know what p
 mention anything about marias financial motive, then also make sure to tell them they didn't mention her financial motive, 
 and explain what marias financial motive was. 
 
-Make sure to write full sentences and try to keep the explanation under 9 sentences. 
-
 Say this when the [SELECTED SUSPECT] is the chef James or the cleaner Alex:
-You were incorrect the thief was...
-You selected...
-explain why they were wrong by mentioning all the clues including the 
-safe, the notebook, and the laptop briefly, and the motive behind why maria stole the necklace. Make sureto explicitly
-mention the notebook, safe and computer as the clues in the study. 
+You were incorrect; the thief was actually the daughter, Maria. 
+
+While you selected Alex, the clues clearly point to Maria as the true culprit. Here’s why:
+
+1. **The Safe**: Maria had access to the safe and knew its combination. After stealing the valuable item, she attempted to change the combination, which indicates her involvement.
+
+2. **The Notebook**: In the study, there was a notebook that revealed Maria's history of theft, having been caught stealing from classmates. This suggests a pattern of behavior that aligns with her being the thief.
+
+3. **The Laptop**: The laptop in the study showed that Maria was researching how to sell valuable items, such as jewelry. This indicates her intent and knowledge of the value of the stolen item.
+
+Maria's motive for stealing the necklace was rooted in financial desperation. She was struggling to buy a car and felt frustrated with her parents for refusing to help her. 
