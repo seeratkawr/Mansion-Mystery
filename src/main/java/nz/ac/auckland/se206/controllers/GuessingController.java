@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -47,6 +49,8 @@ public class GuessingController {
   @FXML private ImageView circleCleaner;
   @FXML private ImageView circleDaughter;
   @FXML private Label lbExplain;
+  @FXML private ImageView loadingIndicator;
+  private TranslateTransition translateTransition;
 
   private String chosenSuspect;
   private String profession;
@@ -57,6 +61,14 @@ public class GuessingController {
 
   @FXML
   private void initialize() {
+
+    loadingIndicator.setVisible(false); // Hide loading indicator initially
+    loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/necklace.png")));
+    translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
+    translateTransition.setFromX(-50); // Start position (off-screen)
+    translateTransition.setToX(500); // End position (adjust as needed)
+    translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
+    translateTransition.setAutoReverse(true); // Move back and forth
 
     // set text field and labels to disabled and invisible
     txtInput.setDisable(true);
@@ -203,6 +215,9 @@ public class GuessingController {
     ChatMessage userMessage =
         new ChatMessage("user", "SELECTED USER: " + chosenSuspect + "USER MESSAGE: " + message);
 
+    loadingIndicator.setVisible(true);
+    translateTransition.play(); // Start the animation
+
     // Run the AI chat operation in a background thread
     Task<Void> task =
         new Task<Void>() {
@@ -217,6 +232,8 @@ public class GuessingController {
                   try {
                     cleanUpThreads();
                     App.openGameOver(event);
+                    loadingIndicator.setVisible(false); // Hide loading indicator after response
+                    translateTransition.stop(); // Stop the animation
                   } catch (IOException e) {
                     e.printStackTrace();
                   }
