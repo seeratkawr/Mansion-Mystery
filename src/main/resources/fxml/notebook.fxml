@@ -19,7 +19,7 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="151.0" layoutX="229.0" layoutY="89.0" onMouseClicked="#onClickedBook" stroke="TRANSPARENT" strokeType="INSIDE" width="163.0" />
             <Button layoutX="703.0" layoutY="39.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
-            <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
+            <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
          </children>
       </Pane>
    </children>

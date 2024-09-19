@@ -28,6 +28,6 @@
       </ImageView>
       <TextField fx:id="txtInput" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the daughter, Maria" />
       <Button fx:id="btnSend" layoutX="751.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Time remaining: " />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
    </children>
 </AnchorPane>

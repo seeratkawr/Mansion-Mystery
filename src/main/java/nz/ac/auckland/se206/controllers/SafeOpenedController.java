@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +28,17 @@ public class SafeOpenedController {
             (obs, oldTime, newTime) -> {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
+
+    AnimationTimer timerAnimation =
+        new AnimationTimer() {
+          @Override
+          public void handle(long now) {
+            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+          }
+        };
+
+    // Start the AnimationTimer
+    timerAnimation.start();
   }
 
   public Label getTimerLabel() {

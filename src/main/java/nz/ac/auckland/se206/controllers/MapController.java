@@ -1,6 +1,10 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+
+import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,12 +29,23 @@ public class MapController {
 
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
+    timer
+        .timeSecondsProperty()
+        .addListener(
+            (obs, oldTime, newTime) -> {
+              timerLabel.setText(timer.formatTime(newTime.intValue()));
+            });
 
-    if (timer != null) {
-      timer.timeSecondsProperty().addListener((obs, oldTime, newTime) -> {
-        timerLabel.setText(timer.formatTime(newTime.intValue()));
-    });
-    }
+    AnimationTimer timerAnimation =
+        new AnimationTimer() {
+          @Override
+          public void handle(long now) {
+            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+          }
+        };
+
+    // Start the AnimationTimer
+    timerAnimation.start();
   }
 
   public Label getTimerLabel() {
