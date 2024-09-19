@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,9 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
-import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
@@ -30,7 +25,6 @@ import nz.ac.auckland.se206.TimerUtility;
  * The GuessingController class is responsible for handling the user interactions and game logic for
  * the guessing game. It manages the UI components, handles user input, and communicates with the AI
  * to process the user's guesses.
- *
  */
 public class GuessingController {
 
@@ -52,7 +46,6 @@ public class GuessingController {
   @FXML private ImageView loadingIndicator;
   private TranslateTransition translateTransition;
 
-  private String chosenSuspect;
   private String profession;
   private List<Thread> threads = new ArrayList<Thread>();
   private TimerUtility timer;
@@ -109,9 +102,7 @@ public class GuessingController {
         });
   }
 
-  /**
-   * This method is called to enable game over mode
-   */
+  /** This method is called to enable game over mode */
   public void enableGameOver() {
     lbTimesUp.setDisable(false);
     btnResults.setDisable(false);
@@ -119,9 +110,7 @@ public class GuessingController {
     btnResults.setVisible(true);
   }
 
-  /**
-   * This method is called to check the timer
-   */
+  /** This method is called to check the timer */
   private void timeUpCheck() {
     guessingTimerCheckTimeline =
         new Timeline(
@@ -159,6 +148,8 @@ public class GuessingController {
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
+    cleaner.setDisable(true);
+    daughter.setDisable(true);
   }
 
   /**
@@ -176,6 +167,8 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
+    chef.setDisable(true);
+    daughter.setDisable(true);
   }
 
   /**
@@ -193,6 +186,8 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
+    chef.setDisable(true);
+    cleaner.setDisable(true);
   }
 
   /**
@@ -229,17 +224,6 @@ public class GuessingController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * This method runs the GPT chat operation.
-   *
-   * @param msg the message to send to the AI
-   * @return the response from the AI
-   * @throws ApiProxyException if the API request fails
-   */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    return App.runGpt(msg);
   }
 
   /** This method shows the text field and submit button. */
