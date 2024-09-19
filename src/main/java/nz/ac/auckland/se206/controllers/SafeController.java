@@ -3,15 +3,13 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
@@ -24,6 +22,7 @@ public class SafeController {
   @FXML private URL location;
   @FXML private AnchorPane safePane;
   @FXML private Label timerLabel;
+  @FXML private Rectangle rectangleKeypad;
 
   private TimerUtility timer;
 
