@@ -70,4 +70,8 @@ public class TimerUtility {
   public boolean isFinished() {
     return timeSeconds.get() == 0;
   }
+
+  public int getSecondsLeft() {
+    return timeSeconds.get();
+  }
 }

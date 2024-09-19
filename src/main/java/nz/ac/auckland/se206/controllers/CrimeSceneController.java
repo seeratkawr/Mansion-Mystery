@@ -2,6 +2,10 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException; // Add this import statement
 import java.util.Timer;
+
+import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,6 +37,17 @@ public class CrimeSceneController {
             (obs, oldTime, newTime) -> {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
+
+    AnimationTimer timerAnimation =
+        new AnimationTimer() {
+          @Override
+          public void handle(long now) {
+            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+          }
+        };
+
+    // Start the AnimationTimer
+    timerAnimation.start();
   }
 
   public Label getTimerLabel() {

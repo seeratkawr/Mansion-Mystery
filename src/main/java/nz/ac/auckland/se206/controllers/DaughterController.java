@@ -3,6 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -73,6 +75,17 @@ public class DaughterController {
             (obs, oldTime, newTime) -> {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
+
+    AnimationTimer timerAnimation =
+        new AnimationTimer() {
+          @Override
+          public void handle(long now) {
+            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+          }
+        };
+
+    // Start the AnimationTimer
+    timerAnimation.start();
   }
 
   public Label getTimerLabel() {
