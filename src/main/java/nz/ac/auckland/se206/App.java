@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Timer;
+import java.util.Map;
+import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +21,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
+import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.chat.openai.Choice;
+import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.controllers.AlexClueController;
 import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
@@ -39,6 +52,7 @@ import nz.ac.auckland.se206.controllers.Notebookpg3Controller;
 import nz.ac.auckland.se206.controllers.SafeController;
 import nz.ac.auckland.se206.controllers.SafeKeypadController;
 import nz.ac.auckland.se206.controllers.SafeOpenedController;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 // this is a test comment to test github flows
 
@@ -61,6 +75,8 @@ public class App extends Application {
   private static List<Thread> activeThreads = new ArrayList<>();
   private static Label timerLabel;
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
+  private static String profession;
+  private static String chosenSuspect;
 
   /**
    * The main method that launches the JavaFX application.
@@ -172,26 +188,17 @@ public class App extends Application {
    * @param event the action event that triggered this method
    * @throws IOException if the FXML file is not found
    */
-  /**
-   * Opens the crime scene.
-   *
-   * @param event the action event that triggered this method
-   * @throws IOException if the FXML file is not found
-   */
   public static void openCrimeScene(ActionEvent event) throws IOException {
-    // Load the crime scene FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
 
     // Load the root node from the FXML file
     Parent root = loader.load();
-    // Create a new scene with the loaded root node
     scene = new Scene(root);
+
     // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    // Set the new scene on the stage and show it
     stage.setScene(scene);
     stage.show();
-    // Push the new scene onto the scene stack
     sceneStack.push(scene);
 
     // Get the controller associated with the crime scene
@@ -199,15 +206,12 @@ public class App extends Application {
 
     // Check if the timer has not been started yet
     if (!timerStarted) {
-      // Get the timer label from the controller
       Label timerLabel = controller.getTimerLabel();
-      // Initialize the timer with 300 seconds and the timer label
       timer = new TimerUtility(300, timerLabel);
+
       // Set the timer label in the TimerUtilityHandler
       TimerUtilityHandler.setTimer(timer, timerLabel);
-      // Start the timer
       timer.start();
-      // Mark the timer as started
       timerStarted = true;
     } else {
       // If the timer is already started, just update the timer label
@@ -581,7 +585,7 @@ public class App extends Application {
    */
   public static void addSuspectTalkedTo(String suspect) {
     suspectsTalkedTo.add(suspect);
-    System.out.println(suspectsTalkedTo);
+    System.out.println("suspects talked to:" + suspectsTalkedTo);
   }
 
   /**
@@ -716,6 +720,199 @@ public class App extends Application {
    */
   public static void addThread(Thread thread) {
     activeThreads.add(thread);
+  }
+
+  private static ChatCompletionRequest chatCompletionRequest;
+
+    // Event handler for send button click
+  public static void handleGPT(String profession, TextField txtInput, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition, 
+      ActionEvent event) {
+    App.playSound("button.mp3");
+
+    // Add the profession to the list of suspects talked to
+    App.addSuspectTalkedTo(profession);
+
+    // Get the user message from the text field
+    String message = txtInput.getText().trim();
+    if (message.isEmpty()) {
+      return;
+    }
+
+    // Clear the chat area and append the user message
+    if (txtaChat != null) {
+      txtaChat.clear();
+    }
+    txtInput.clear();
+
+    ChatMessage userMessage = new ChatMessage("user", txtaChat != null ? message : "SELECTED USER: " + chosenSuspect
+        + "USER MESSAGE: " + message); // Create a user message
+
+    if (txtaChat != null) {
+      appendChatMessage(userMessage, txtaChat); // Append the user message to the chat area
+    }
+
+    loadingIndicator.setVisible(true);
+    translateTransition.play();
+
+    // Task to handle chat completion request in a background thread
+    Task<Void> task =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            ChatMessage response = runGpt(userMessage);
+
+            // Set the AI game result if this method called by guessingController
+            if (txtaChat == null) {
+              App.setAiGameResult(response.getContent());
+            }
+            // Append the response to the chat area and stop the loading indicator
+            Platform.runLater(
+                () -> {
+                  if (txtaChat != null) {
+                    appendChatMessage(response, txtaChat);
+                  } else {
+                    try {
+                      App.openGameOver(event);
+                    } catch (IOException e) {
+                      e.printStackTrace();
+                    }
+                  }
+                  loadingIndicator.setVisible(false);
+                  translateTransition.stop();
+                });
+            return null;
+          }
+        };
+
+    // Start the task in a new thread
+    Thread thread = new Thread(task);
+    App.addThread(thread);
+    thread.setDaemon(true);
+    thread.start();
+  }
+
+  // Method to set the profession and initialize chat completion request
+  public static void setProfession(String profession, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition) {
+    setCurrentProfession(profession);
+    System.out.println("setting profession: " + profession);
+    if(txtaChat != null) {
+      txtaChat.clear();
+    }
+
+    // Initialize chat completion request
+    try {
+      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      chatCompletionRequest =
+          new ChatCompletionRequest(config)
+              .setN(1)
+              .setTemperature(0.2)
+              .setTopP(0.4)
+              .setMaxTokens(txtaChat != null ? 200 : 100);
+
+      if (loadingIndicator != null && translateTransition != null) {
+        loadingIndicator.setVisible(true);
+        translateTransition.play();
+      }
+
+      // Task to handle initial chat completion request in a background thread
+      Task<Void> task =
+          new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+              // Create a system message and get the response from GPT
+              ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt(profession));
+              ChatMessage response = runGpt(systemMessage);
+
+              // On a new thread, append the response to the
+              // chat area and stop the loading indicator
+              if (txtaChat != null && loadingIndicator != null && translateTransition != null) {
+                Platform.runLater(
+                    () -> {
+                      appendChatMessage(response, txtaChat);
+                      loadingIndicator.setVisible(false);
+                      translateTransition.stop();
+                    });
+              }
+              return null;
+            }
+          };
+
+      // Start the task in a new thread
+      Thread thread = new Thread(task);
+      App.addThread(thread);
+      thread.setDaemon(true);
+      thread.start();
+    } catch (ApiProxyException e) {
+      e.printStackTrace();
+    }
+  }
+
+  // Method to append a chat message to the chat area
+  private static void appendChatMessage(ChatMessage msg, TextArea txtaChat) {
+    txtaChat.appendText(msg.getContent() + "\n\n");
+    System.out.println(
+        "Response from LLM: " + msg.getContent()); // Print the response to the console
+  }
+
+  // Method to run GPT chat completion request
+  public static ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+    chatCompletionRequest.addMessage(msg);
+    try {
+      // Execute the chat completion request and get the response
+      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      Choice result = chatCompletionResult.getChoices().iterator().next();
+      chatCompletionRequest.addMessage(result.getChatMessage());
+      return result.getChatMessage();
+    } catch (ApiProxyException e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+
+  // Method to get the system prompt based on the profession
+  public static String getSystemPrompt(String profession) {
+    Map<String, String> map = new HashMap<>();
+    map.put("profession", profession);
+
+    // Get the prompt from the file based on the profession
+    String promptFileName;
+    if ("Cleaner".equals(profession)) {
+      promptFileName = "cleaner_prompt.txt";
+    } else if ("Daughter".equals(profession)) {
+      promptFileName = "daughter_prompt.txt";
+    } else if ("Chef".equals(profession)) {
+      promptFileName = "chef_prompt.txt";
+    } else if ("AI".equals(profession)) {
+      promptFileName = "ai_prompt.txt";
+    } else {
+      // Throw an exception if the profession is not recognized
+      System.out.println("Unexpected profession: " + profession);
+      throw new IllegalStateException("Unexpected profession: " + profession);
+    }
+
+    String prompt = PromptEngineering.getPrompt(promptFileName, map);
+    return prompt;
+  }
+
+  // Method to get the current profession
+  public static String getCurrentProfession() {
+    return profession;
+  }
+
+  // Method to set the current profession
+  private static void setCurrentProfession(String profession) {
+    App.profession = profession;
+  }
+
+  // Method to set the chosen suspect
+  public static void setChosenSuspect(String chosenSuspect) {
+    App.chosenSuspect = chosenSuspect;
+  }
+
+  // Method to get the chosen suspect
+  public static String getChosenSuspect() {
+    return chosenSuspect;
   }
 
   /**
