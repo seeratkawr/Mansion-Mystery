@@ -45,5 +45,10 @@
       <Button fx:id="btnResults" disable="true" layoutX="346.0" layoutY="204.0" mnemonicParsing="false" onAction="#onClickSeeResults" text="Click to see results" visible="false" />
       <Label fx:id="lbTimer" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
       <Label fx:id="lbExplain" layoutX="2.0" layoutY="519.0" prefHeight="33.0" prefWidth="314.0" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" text="Explain why you think this suspect is the thief:" />
+      <ImageView fx:id="loadingIndicator" fitHeight="50.0" fitWidth="67.0" layoutX="9.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/necklace.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

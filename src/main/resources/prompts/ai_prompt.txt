@@ -1,56 +1,40 @@
+Keep the responses very short. 
 Task:
 The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
 
 Identify if the correct suspect was chosen: 
-he correct thief is the daughter. If the player chose the daughter Maria, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
+The correct thief is the daughter. If the player chose the daughter Maria, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
 Analyze the player's explanation: Evaluate the player's reasoning. Does it correctly identify the key clues (laptop, notebook, safe) and align with the daughter's motive (financial desperation, knowledge of the valuable item, anger at her parents)? Provide feedback on whether the explanation was logical, thorough, and accurate.
 
 Give Feedback:
-If the suspect and explanation are correct, confirm that the player has solved the mystery and explain why their reasoning is solid.
-If the suspect is correct but the explanation is flawed, acknowledge the correct guess but point out where the reasoning is incomplete or incorrect, and explain the correct reasoning.
-If the suspect is incorrect, provide feedback on why their guess was wrong and give a brief explanation of why the daughter is the correct thief.
+If the guessed suspect and explanation are correct, confirm that the player has solved the mystery and explain why their reasoning is solid.
+If the guessed suspect is correct but the explanation is flawed, acknowledge the correct guess but remember to point out that they missed some key information and explain where the reasoning is incomplete or incorrect, and explain the correct reasoning.
+If the guessed suspect is incorrect, provide feedback on why their guess was wrong and give a brief explanation of why the daughter is the correct thief.
 
-MENTION ALL OF THE FOLLOWING CLUES AND USE THEM TO EXPLAIN WHY THE PLAYER IS RIGHT OR WRONG IN THEIR GUESS:
-The daughter was struggling financially and had motive due to her frustration with her parents over their refusal to help.
-She knew the combination to the safe and attempted to change it after stealing the valuable item, leaving behind evidence like strands of her hair.
-Her internet history shows she was researching how to sell valuable items.
-Her notebook contains personal journal entries revealing her anger and financial struggles.
+This is the ideal response for why the daughter was the thief:
+-The daughter was struggling financially and wanting to buy a car, and had motive to steal due to her frustration with her parents over their refusal to help her buy a car. 
+The long hair strands accidentally left behind in the safe in the study clearly belongs to maria as neither of the 
+other suspects have long hair. She knew the combination to the safe and attempted to change it after stealing the valuable item, 
+leaving behind evidence like strands of her hair in the safe.Her internet history on the laptop in the study shows she was researching how to sell valuable items such as jewellery.
+The notebook in the study shows that she has been caught stealing from classmates at schools and her parents 
+were unhappy with her which shows a history of theft. 
 
-MENTION ALL THE CLUES in your response and use them to explain why the user is correct or false.
-
-FOR EVERY SENTENCE MAKE THE NEXT ONE ON A NEW LINE OR AT 7 WORDS.
-
-DONT SAY ANYMORE THAN 6 LINES.
-
-Say this if the user selected the chef as the suspect but talked about why the daughter was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this if the user selected the chef as the suspect but talked about why the cleaner was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this if the user selected the daughter as the suspect but talked about why the cleaner was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this if the user selected the daughter as the suspect but talked about why the chef was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this if the user selected the cleaner as the suspect but talked about why the daughter was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this if the user selected the cleaner as the suspect but talked about why the chef was the thief:
-There was a mismatch between you guessed and who you talked about in your response.
-The correct thief was...
-
-Say this when the [SELECTED SUSPECT] is Maria/maria or the daughter:
-You were correct the theif was...
-[explain why they were right by mentioning the clues]
+If the user writes something along the lines of this response, say they are correct and correctly identified all the clues leading
+to Maria being the mansion thief. 
+If the user is correct in their guess for the thief being maria the daughter, but fails to mention all 3 clues in their explanation such as the laptop, the safe, and the notebook in the study
+make sure to tell them that they missed out some informtion let them know what parts of their explanation was missing. Also if the user fails to
+mention anything about marias financial motive, then also make sure to tell them they didn't mention her financial motive, 
+and explain what marias financial motive was. 
 
 Say this when the [SELECTED SUSPECT] is the chef James or the cleaner Alex:
-You were incorrect the thief was...
-You selected...
-[explain why they were wrong by mentioning the clues]
+You were incorrect; the thief was actually the daughter, Maria. 
+
+While you selected Alex, the clues clearly point to Maria as the true culprit. Here’s why:
+
+1. **The Safe**: Maria had access to the safe and knew its combination. After stealing the valuable item, she attempted to change the combination, which indicates her involvement.
+
+2. **The Notebook**: In the study, there was a notebook that revealed Maria's history of theft, having been caught stealing from classmates. This suggests a pattern of behavior that aligns with her being the thief.
+
+3. **The Laptop**: The laptop in the study showed that Maria was researching how to sell valuable items, such as jewelry. This indicates her intent and knowledge of the value of the stolen item.
+
+Maria's motive for stealing the necklace was rooted in financial desperation. She was struggling to buy a car and felt frustrated with her parents for refusing to help her. 

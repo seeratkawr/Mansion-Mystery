@@ -6,15 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -22,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -53,6 +49,8 @@ public class GuessingController {
   @FXML private ImageView circleCleaner;
   @FXML private ImageView circleDaughter;
   @FXML private Label lbExplain;
+  @FXML private ImageView loadingIndicator;
+  private TranslateTransition translateTransition;
 
   private String chosenSuspect;
   private String profession;
@@ -63,6 +61,14 @@ public class GuessingController {
 
   @FXML
   private void initialize() {
+
+    loadingIndicator.setVisible(false); // Hide loading indicator initially
+    loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/necklace.png")));
+    translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
+    translateTransition.setFromX(-50); // Start position (off-screen)
+    translateTransition.setToX(720); // End position (adjust as needed)
+    translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
+    translateTransition.setAutoReverse(true); // Move back and forth
 
     // set text field and labels to disabled and invisible
     txtInput.setDisable(true);
@@ -88,6 +94,17 @@ public class GuessingController {
     timer = new TimerUtility(60, lbTimer);
     timer.start();
     timeUpCheck();
+
+    txtInput.setOnKeyPressed(
+        event -> {
+          switch (event.getCode()) {
+            case ENTER:
+              btnSubmit.fire(); // Trigger the send button programmatically
+              break;
+            default:
+              break;
+          }
+        });
   }
 
   public void enableGameOver() {
@@ -121,9 +138,8 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
-   * chef and updates the selected suspect label.
-   * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
-   * chef and updates the selected suspect label.
+   * chef and updates the selected suspect label. This method is called when the user clicks on the
+   * chef rectangle. It sets the chosen suspect to chef and updates the selected suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -139,9 +155,9 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
-   * to cleaner and updates the selected suspect label.
-   * This method is called when the user clicks on the cleaner rectangle. It sets the chosen suspect
-   * to cleaner and updates the selected suspect label.
+   * to cleaner and updates the selected suspect label. This method is called when the user clicks
+   * on the cleaner rectangle. It sets the chosen suspect to cleaner and updates the selected
+   * suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -157,9 +173,9 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks on the daughter rectangle. It sets the chosen
-   * suspect to daughter and updates the selected suspect label.
-   * This method is called when the user clicks on the daughter rectangle. It sets the chosen
-   * suspect to daughter and updates the selected suspect label.
+   * suspect to daughter and updates the selected suspect label. This method is called when the user
+   * clicks on the daughter rectangle. It sets the chosen suspect to daughter and updates the
+   * selected suspect label.
    *
    * @param event the event that triggered this method
    */
@@ -175,9 +191,8 @@ public class GuessingController {
 
   /**
    * This method is called when the user clicks the submit button. It will submit the user's guess
-   * and run the AI chat operation.
-   * This method is called when the user clicks the submit button. It will submit the user's guess
-   * and run the AI chat operation.
+   * and run the AI chat operation. This method is called when the user clicks the submit button. It
+   * will submit the user's guess and run the AI chat operation.
    *
    * @param event the event that triggered this method
    */
@@ -191,7 +206,6 @@ public class GuessingController {
       return;
     }
 
-
     // clean up and cancel threads
     cleanUpThreads();
     System.out.println("Submit message clicked");
@@ -200,6 +214,9 @@ public class GuessingController {
     txtInput.clear();
     ChatMessage userMessage =
         new ChatMessage("user", "SELECTED USER: " + chosenSuspect + "USER MESSAGE: " + message);
+
+    loadingIndicator.setVisible(true);
+    translateTransition.play(); // Start the animation
 
     // Run the AI chat operation in a background thread
     Task<Void> task =
@@ -215,6 +232,8 @@ public class GuessingController {
                   try {
                     cleanUpThreads();
                     App.openGameOver(event);
+                    loadingIndicator.setVisible(false); // Hide loading indicator after response
+                    translateTransition.stop(); // Stop the animation
                   } catch (IOException e) {
                     e.printStackTrace();
                   }
@@ -261,7 +280,7 @@ public class GuessingController {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(100);
+              .setMaxTokens(200);
 
       // run chat operation in a background thread
       Task<Void> task =
