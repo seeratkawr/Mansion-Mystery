@@ -44,7 +44,6 @@ public class CleanerController {
 
     App.setProfession("Cleaner", txtaChat,loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();
-    System.out.println("prfession from app now actually set to: " + profession);
 
     // Add event handler for the Enter key to send the message
     txtInput.setOnKeyPressed(
@@ -79,7 +78,6 @@ public class CleanerController {
   // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    System.out.println("Send button clicked - handling gpt with profession: " + profession);
     App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
 

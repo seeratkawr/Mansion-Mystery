@@ -43,7 +43,6 @@ public class DaughterController {
 
     App.setProfession("Daughter", daughterText, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();
-    System.out.println("prfession from app now actually set to: " + profession);
 
     // Add event handler for the Enter key to send the message
     txtInput.setOnKeyPressed(

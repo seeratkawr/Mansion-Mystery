@@ -727,11 +727,12 @@ public class App extends Application {
     // Event handler for send button click
   public static void handleGPT(String profession, TextField txtInput, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition, 
       ActionEvent event) {
-    System.out.println("handling GPT");
     App.playSound("button.mp3");
+
     // Add the profession to the list of suspects talked to
     App.addSuspectTalkedTo(profession);
-    System.out.println("adding addSuspectTalkedTo Profession: " + profession);
+
+    // Get the user message from the text field
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
@@ -793,7 +794,7 @@ public class App extends Application {
   // Method to set the profession and initialize chat completion request
   public static void setProfession(String profession, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition) {
     setCurrentProfession(profession);
-    System.out.println("setting Profession: " + profession);
+    System.out.println("setting profession: " + profession);
     if(txtaChat != null) {
       txtaChat.clear();
     }
@@ -843,13 +844,11 @@ public class App extends Application {
       thread.start();
     } catch (ApiProxyException e) {
       e.printStackTrace();
-      System.out.println("Error setting professionsssssssssssssssssssss: " + e.getMessage());
     }
   }
 
   // Method to append a chat message to the chat area
   private static void appendChatMessage(ChatMessage msg, TextArea txtaChat) {
-    System.out.println("appending chat message");
     txtaChat.appendText(msg.getContent() + "\n\n");
     System.out.println(
         "Response from LLM: " + msg.getContent()); // Print the response to the console
@@ -866,7 +865,6 @@ public class App extends Application {
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
-      System.out.println("Error running RUN GPT: " + e.getMessage());
       return null;
     }
   }
@@ -874,10 +872,9 @@ public class App extends Application {
 
   // Method to get the system prompt based on the profession
   public static String getSystemPrompt(String profession) {
-    System.out.println("getting system prompt");
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);
-    System.out.println("trying to put profession into map: " + profession);
+
     // Get the prompt from the file based on the profession
     String promptFileName;
     if ("Cleaner".equals(profession)) {
@@ -889,6 +886,7 @@ public class App extends Application {
     } else if ("AI".equals(profession)) {
       promptFileName = "ai_prompt.txt";
     } else {
+      // Throw an exception if the profession is not recognized
       System.out.println("Unexpected profession: " + profession);
       throw new IllegalStateException("Unexpected profession: " + profession);
     }
@@ -905,7 +903,6 @@ public class App extends Application {
   // Method to set the current profession
   private static void setCurrentProfession(String profession) {
     App.profession = profession;
-    System.out.println("Profession set to in app: " + profession);
   }
 
   // Method to set the chosen suspect

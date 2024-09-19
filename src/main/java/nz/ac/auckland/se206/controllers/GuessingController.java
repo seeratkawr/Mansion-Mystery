@@ -90,7 +90,6 @@ public class GuessingController {
 
     App.setProfession("AI", null, null, null);
     profession = App.getCurrentProfession();
-    System.out.println("prfession from app now actually set to: " + profession);
 
     // set up timer
     timer = new TimerUtility(60, lbTimer);
