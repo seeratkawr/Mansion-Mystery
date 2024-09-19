@@ -49,7 +49,7 @@ import nz.ac.auckland.se206.controllers.SafeOpenedController;
 public class App extends Application {
 
   private static Scene scene;
-  private static MediaPlayer mediaPlayer; // media play stored at class level to prevent garbage collection
+  private static MediaPlayer mediaPlayer;
   private static Set<String> suspectsTalkedTo = new HashSet<>();
   private static Set<String> cluesViewed = new HashSet<>();
   private static String aiGameResult;

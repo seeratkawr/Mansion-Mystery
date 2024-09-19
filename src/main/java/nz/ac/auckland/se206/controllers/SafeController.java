@@ -34,7 +34,7 @@ public class SafeController {
 
   /** This method initializes the controller. */
   @FXML
-  void initialize() {
+  private void initialize() {
     // Ensure that the safePane is injected properly
     assert safePane != null
         : "fx:id=\"crimeScenePane\" was not injected: check your FXML file 'Safe.fxml'.";
@@ -46,7 +46,7 @@ public class SafeController {
    * @param event the event that triggered this method
    */
   @FXML
-  void onClickedFingerprint(MouseEvent event) {
+  private void onClickedFingerprint(MouseEvent event) {
     System.out.println("Fingerprint clicked");
   }
 
@@ -57,7 +57,7 @@ public class SafeController {
    * @throws IOException if an I/O error occurs
    */
   @FXML
-  void onClickedKeypad(MouseEvent event) throws IOException {
+  private void onClickedKeypad(MouseEvent event) throws IOException {
     System.out.println("Keypad clicked");
     App.openSafeKeypad(event);
   }
@@ -70,7 +70,7 @@ public class SafeController {
    * @throws IOException if the FXML file is not found
    */
   @FXML
-  void onGoBackCrimeScene(ActionEvent event) throws IOException {
+  private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
     App.openCrimeScene(event);
