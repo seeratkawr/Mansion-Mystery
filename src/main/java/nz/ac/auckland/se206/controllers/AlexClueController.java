@@ -38,7 +38,8 @@ public class AlexClueController {
         .timeSecondsProperty()
         .addListener(
             (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
+              timerLabel.setText(
+                  timer.formatTime(newTime.intValue())); // Update the label with formatted time
             });
 
     // Create an AnimationTimer to continuously update the timer label
@@ -46,7 +47,9 @@ public class AlexClueController {
         new AnimationTimer() {
           @Override
           public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+            timerLabel.setText(
+                timer.formatTime(
+                    timer.getSecondsLeft())); // Update the label with the remaining time
           }
         };
 

@@ -81,6 +81,7 @@ public class DaughterController {
               timerLabel.setText(timer.formatTime(newTime.intValue())); // Update timer label
             });
 
+    // Create an AnimationTimer to update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
