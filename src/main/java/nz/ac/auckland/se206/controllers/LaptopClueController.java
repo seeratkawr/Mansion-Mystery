@@ -39,6 +39,8 @@ public class LaptopClueController {
   // Method called when a circle is clicked
   @FXML
   private void onCircleClicked(MouseEvent event) {
+
+    // Check which circle was clicked and open the corresponding clue
     try {
       if (event.getTarget() == jamesCircle || event.getTarget() == hoverCircle1) {
         App.playSound("mouseclick.mp3");
@@ -50,6 +52,7 @@ public class LaptopClueController {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/alexClue.fxml");
       }
+      // Catch any exceptions that occur 
     } catch (IOException e) {
       e.printStackTrace();
     }

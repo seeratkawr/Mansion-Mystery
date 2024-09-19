@@ -284,6 +284,7 @@ public class GuessingController {
   @FXML
   private void onClickSeeResults(ActionEvent event) {
     try {
+      // Play button click sound and clean up any active threads
       App.playSound("button.mp3");
       cleanUpThreads();
       App.openGameOver(event);
@@ -316,7 +317,7 @@ public class GuessingController {
             @Override
             protected Void call() throws Exception {
               ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
-              ChatMessage response = runGpt(systemMessage);
+              runGpt(systemMessage);
 
               return null;
             }
@@ -340,12 +341,16 @@ public class GuessingController {
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
+
+    // Execute the chat completion request
     try {
+      // Get the response from the AI
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       return result.getChatMessage();
     } catch (ApiProxyException e) {
+      // Handle the case when the API request fails
       e.printStackTrace();
       return null;
     }
