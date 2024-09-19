@@ -39,6 +39,7 @@ public class CleanerController {
   private TranslateTransition translateTransition;
   private TimerUtility timer;
 
+  // Initialize the controller
   public void initialize() {
     loadingIndicator.setVisible(false);
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/broom.png")));
@@ -65,6 +66,7 @@ public class CleanerController {
         });
   }
 
+  // Set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
     timer
@@ -86,10 +88,12 @@ public class CleanerController {
     timerAnimation.start();
   }
 
+  // Get the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  // Handle map click event
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
@@ -100,6 +104,7 @@ public class CleanerController {
     }
   }
 
+  // Handle send message button click event
   @FXML
   private void onSendMessage(ActionEvent event) {
     App.playSound("button.mp3");
@@ -118,6 +123,7 @@ public class CleanerController {
     loadingIndicator.setVisible(true);
     translateTransition.play();
 
+    // Create a task to run the GPT model
     Task<Void> task =
         new Task<Void>() {
           @Override
@@ -138,6 +144,7 @@ public class CleanerController {
     thread.start();
   }
 
+  // Set the profession and initialize the chat completion request
   public void setProfession(String profession) {
     this.profession = profession;
     clearChat();
@@ -154,6 +161,7 @@ public class CleanerController {
       loadingIndicator.setVisible(true);
       translateTransition.play();
 
+      // Create a task to run the GPT model with the system prompt
       Task<Void> task =
           new Task<Void>() {
             @Override
@@ -178,12 +186,14 @@ public class CleanerController {
     }
   }
 
+  // Append a chat message to the chat area
   private void appendChatMessage(ChatMessage msg) {
     txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
     System.out.println(
         "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
+  // Run the GPT model with the given message
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
@@ -197,10 +207,12 @@ public class CleanerController {
     }
   }
 
+  // Clear the chat area
   private void clearChat() {
     txtaChat.clear();
   }
 
+  // Get the system prompt based on the profession
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);

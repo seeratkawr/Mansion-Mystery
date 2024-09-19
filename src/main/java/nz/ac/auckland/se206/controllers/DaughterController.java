@@ -40,7 +40,9 @@ public class DaughterController {
   private TranslateTransition translateTransition;
   private TimerUtility timer;
 
+  // Initialize the controller
   public void initialize() {
+    // Set up the loading indicator
     loadingIndicator.setVisible(false);
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/bear.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
@@ -48,9 +50,12 @@ public class DaughterController {
     translateTransition.setToX(316);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
+
+    // Set up the text area
     daughterText.setEditable(false);
     daughterText.setWrapText(true);
 
+    // Set the profession to "Daughter"
     setProfession("Daughter");
 
     // Add event handler for the Enter key to send the message
@@ -66,6 +71,7 @@ public class DaughterController {
         });
   }
 
+  // Set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
     timer
@@ -75,6 +81,7 @@ public class DaughterController {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
+    // Create an AnimationTimer to update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -87,10 +94,12 @@ public class DaughterController {
     timerAnimation.start();
   }
 
+  // Get the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  // Handle the map click event
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
@@ -101,6 +110,7 @@ public class DaughterController {
     }
   }
 
+  // Handle the send message button click event
   @FXML
   private void onSendMessage(ActionEvent event) {
     App.playSound("button.mp3");
@@ -119,6 +129,7 @@ public class DaughterController {
     loadingIndicator.setVisible(true);
     translateTransition.play();
 
+    // Create a task to run the GPT model
     Task<Void> task =
         new Task<Void>() {
           @Override
@@ -134,12 +145,14 @@ public class DaughterController {
           }
         };
 
+    // Start the task in a new thread
     Thread thread = new Thread(task);
     App.addThread(thread);
     thread.setDaemon(true);
     thread.start();
   }
 
+  // Set the profession and initialize the chat
   public void setProfession(String profession) {
     this.profession = profession;
     clearChat();
@@ -156,6 +169,7 @@ public class DaughterController {
       loadingIndicator.setVisible(true);
       translateTransition.play();
 
+      // Create a task to initialize the chat with the system prompt
       Task<Void> task =
           new Task<Void>() {
             @Override
@@ -180,12 +194,14 @@ public class DaughterController {
     }
   }
 
+  // Append a chat message to the text area
   private void appendChatMessage(ChatMessage msg) {
     daughterText.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
     System.out.println(
         "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
+  // Run the GPT model with the given message
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
@@ -199,10 +215,12 @@ public class DaughterController {
     }
   }
 
+  // Clear the chat text area
   private void clearChat() {
     daughterText.clear();
   }
 
+  // Get the system prompt based on the profession
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);

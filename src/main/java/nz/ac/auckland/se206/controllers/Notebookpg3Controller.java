@@ -1,10 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,43 +12,49 @@ import nz.ac.auckland.se206.TimerUtility;
 
 public class Notebookpg3Controller {
 
-  @FXML private Pane bookPane;
-  @FXML private Pane mainPane;
-  @FXML private Label timerLabel;
+  @FXML private Pane bookPane; // Pane for the book
+  @FXML private Pane mainPane; // Main pane of the scene
+  @FXML private Label timerLabel; // Label to display the timer
 
-  private TimerUtility timer;
+  private TimerUtility timer; // Timer utility instance
 
   @FXML
   private void onGoMiddlePage(MouseEvent event) throws IOException {
+    // Play page flip sound
     App.playSound("pageflip.mp3");
     System.out.println("Go middle page");
+    // Navigate to the middle page of the notebook
     App.goToPage(event, "notebookpg2");
   }
 
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
+    // Play button click sound
     App.playSound("button.mp3");
+    // Navigate to the drawers scene
     App.goToDrawers(event);
   }
 
   @FXML
   private void onClickedBook(MouseEvent event) {
     System.out.println("Book clicked");
-    // if the book is clicked, set the bookpane to be visible
+    // If the book is clicked, set the bookPane to be visible and mainPane to be invisible
     bookPane.setVisible(true);
     mainPane.setVisible(false);
   }
 
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
+    // Play button click sound
     App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
-    // if the back button is clicked, set the bookpane to be invisible
+    // Navigate back to the crime scene
     App.openCrimeScene(event);
   }
 
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
+    // Add a listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()
         .addListener(
@@ -59,6 +62,7 @@ public class Notebookpg3Controller {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
+    // Create an AnimationTimer to update the timer label every frame
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -72,6 +76,6 @@ public class Notebookpg3Controller {
   }
 
   public Label getTimerLabel() {
-    return timerLabel;
+    return timerLabel; // Return the timer label
   }
 }

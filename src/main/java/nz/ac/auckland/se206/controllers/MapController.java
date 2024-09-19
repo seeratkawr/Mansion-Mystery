@@ -1,10 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,8 +12,6 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
-// nz.ac
-// nz.ac.auckland.se206.controllers.MapController
 public class MapController {
 
   @FXML private Button exit_button;
