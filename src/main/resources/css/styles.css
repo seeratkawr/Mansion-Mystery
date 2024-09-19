@@ -4,18 +4,23 @@
 }
 
 /* Cursive, hand-written font style for the text and labels */
-.label, .text {
+.label,
+.text {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;
-  -fx-text-fill: #4B2E39; /* A warm brown color */
-  -fx-font-style: italic; /* Make the text slanted */
+  -fx-text-fill: #4B2E39;
+  /* A warm brown color */
+  -fx-font-style: italic;
+  /* Make the text slanted */
 }
 
-#number{
+#number {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 16px;
-  -fx-text-fill: #4B2E39; /* A warm brown color */
-  -fx-font-style: italic; /* Make the text slanted */
+  -fx-text-fill: #4B2E39;
+  /* A warm brown color */
+  -fx-font-style: italic;
+  /* Make the text slanted */
   /*bold text*/
   -fx-font-weight: bold;
 
@@ -24,7 +29,8 @@
 
 /* Button styles */
 .button {
-  -fx-background-color: #717171; /* Consistent brown color */
+  -fx-background-color: #717171;
+  /* Consistent brown color */
   -fx-text-fill: white;
   -fx-font-family: "Arial";
   -fx-font-size: 14px;
@@ -37,7 +43,8 @@
 
 /* Button hover effect */
 .button:hover {
-  -fx-background-color: #c7c7c7; /* Lighter shade on hover */
+  -fx-background-color: #c7c7c7;
+  /* Lighter shade on hover */
   -fx-cursor: hand;
 }
 
@@ -47,9 +54,12 @@
   -fx-stroke: white;
   -fx-stroke-width: 3;
 }
+
 /* Polygon hover effect */
 #triangle:hover {
-  -fx-fill: #717171;; /* Lighter shade on hover */
+  -fx-fill: #717171;
+  ;
+  /* Lighter shade on hover */
   -fx-cursor: hand;
   -fx-stroke: #000000;
 }
@@ -62,13 +72,15 @@
   -fx-font-family: "hand-written" "Cursive";
   -fx-font-size: 12px;
   -fx-text-fill: #4B2E39;
-  -fx-font-style: italic; /* Make the text slanted */
+  -fx-font-style: italic;
+  /* Make the text slanted */
 }
 
 /* Styling for cursive text with a larger font */
 .text {
-  -fx-font-family: "serif" , "Cursive";
-  -fx-font-size: 16px; /* Increased font size for better readability */
+  -fx-font-family: "serif", "Cursive";
+  -fx-font-size: 16px;
+  /* Increased font size for better readability */
   -fx-text-fill: #4B2E39;
 }
 
@@ -81,20 +93,28 @@
 
 
 #startButton {
-  -fx-background-color: transparent; /* Initially transparent */
+  -fx-background-color: transparent;
+  /* Initially transparent */
   -fx-text-fill: white;
   -fx-font-size: 16px;
-  -fx-border-radius: 0; /* Remove rounded corners */
-  -fx-background-radius: 0; /* Remove rounded corners */
-  -fx-border-color: transparent; /* No border */
-  -fx-border-width: 0; /* Set border width to 0 */
+  -fx-border-radius: 0;
+  /* Remove rounded corners */
+  -fx-background-radius: 0;
+  /* Remove rounded corners */
+  -fx-border-color: transparent;
+  /* No border */
+  -fx-border-width: 0;
+  /* Set border width to 0 */
   -fx-padding: 7 15;
 }
+
 /* Hover effect for startButton */
 #startButton:hover {
-  -fx-background-color: rgba(139, 141, 56, 0.8); /* Lighter version of #5c5e25 with transparency */
+  -fx-background-color: rgba(139, 141, 56, 0.8);
+  /* Lighter version of #5c5e25 with transparency */
   -fx-cursor: hand;
-  -fx-opacity: 0.8; /* Slight transparency on hover */
+  -fx-opacity: 0.8;
+  /* Slight transparency on hover */
 }
 
 #bookshelfSafeRectangle,
@@ -106,18 +126,22 @@
 #results {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 20px;
-  -fx-text-fill: #ffffff; /* A warm brown color */
-  -fx-font-style: italic; /* Make the text slanted */
+  -fx-text-fill: #ffffff;
+  /* A warm brown color */
+  -fx-font-style: italic;
+  /* Make the text slanted */
 }
 
 #txtaResults {
-  -fx-alignment: center; /* Center the text */
+  -fx-alignment: center;
+  /* Center the text */
 }
 
 #backstory {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;
-  -fx-alignment: center; /* Center the text */
+  -fx-alignment: center;
+  /* Center the text */
   /*bold the text*/
   -fx-text-alignment: center;
   -fx-font-weight: bold;
@@ -128,19 +152,46 @@
 #gameOver {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;
-  -fx-text-fill: #ffffff; /* A warm brown color */
-  -fx-font-style: italic; /* Make the text slanted */
+  -fx-text-fill: #ffffff;
+  /* A warm brown color */
+  -fx-font-style: italic;
+  /* Make the text slanted */
 }
 
 
 #drawerRectangle:hover {
-  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+  -fx-fill: rgba(200, 200, 200, 0.3);
+  /* Light transparent color */
 }
-#bookshelfSafeRectangle:hover{
-  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+
+#bookshelfSafeRectangle:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3);
+  /* Light transparent color */
 }
-#laptopRectangle:hover{
-  -fx-fill: rgba(200, 200, 200, 0.3); /* Light transparent color */
+
+#laptopRectangle:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3);
+  /* Light transparent color */
+}
+
+#rectangleKeypad:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3);
+  /* Light transparent color */
+}
+
+#rectangle1:hover,
+#rectangle2:hover,
+#rectangle3:hover,
+#rectangle4:hover,
+#rectangle5:hover,
+#rectangle6:hover,
+#rectangle7:hover,
+#rectangle8:hover,
+#rectangle9:hover,
+#rectangle0:hover,
+#rectangleClear:hover {
+  -fx-fill: rgba(200, 200, 200, 0.3);
+  /* Light transparent color */
 }
 
 
