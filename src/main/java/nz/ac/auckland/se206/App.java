@@ -60,6 +60,7 @@ public class App extends Application {
   private static Timeline timerCheckTimeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
+  private static Label timerLabel;
 
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
 
@@ -137,6 +138,10 @@ public class App extends Application {
     startTimerCheckTask();
   }
 
+  /**
+   * Starts a task to periodically check the timer status. If the timer has finished, it will either
+   * open the guessing scene or the game lost scene based on the game state.
+   */
   private void startTimerCheckTask() {
     timerCheckTimeline =
         new Timeline(
@@ -148,6 +153,7 @@ public class App extends Application {
                     System.out.println("Timer has finished.");
                     // You might want to perform specific actions or show a notification
                     try {
+                      // Check if the player can guess
                       if (verifyCanGuess().get(0).equals(true)
                           && verifyCanGuess().get(1).equals(true)
                           && verifyCanGuess().get(2).equals(true)) {
@@ -159,7 +165,7 @@ public class App extends Application {
                         timerCheckTimeline.stop();
                       }
                     } catch (IOException e) {
-                      // TODO Auto-generated catch block
+                      // Handle any IO exceptions that occur
                       e.printStackTrace();
                     }
                   }
@@ -168,6 +174,11 @@ public class App extends Application {
     timerCheckTimeline.play();
   }
 
+  /**
+   * Opens the game lost scene.
+   *
+   * @throws IOException if the FXML file is not found
+   */
   public static void openGameLost() throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameLost.fxml"));
     Parent root = loader.load();
@@ -176,6 +187,11 @@ public class App extends Application {
     primaryStage.show();
   }
 
+  /**
+   * Opens the guessing scene.
+   *
+   * @throws IOException if the FXML file is not found
+   */
   public static void openGuessingScene() throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/guessingscene.fxml"));
     Parent root = loader.load();
@@ -185,29 +201,63 @@ public class App extends Application {
     primaryStage.show();
   }
 
+  /**
+   * Opens the crime scene.
+   *
+   * @param event the action event that triggered this method
+   * @throws IOException if the FXML file is not found
+   */
+  /**
+   * Opens the crime scene.
+   *
+   * @param event the action event that triggered this method
+   * @throws IOException if the FXML file is not found
+   */
   public static void openCrimeScene(ActionEvent event) throws IOException {
+    // Load the crime scene FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
 
+    // Load the root node from the FXML file
     Parent root = loader.load();
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
+    // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // Set the new scene on the stage and show it
     stage.setScene(scene);
     stage.show();
+    // Push the new scene onto the scene stack
     sceneStack.push(scene);
 
+    // Get the controller associated with the crime scene
     CrimeSceneController controller = loader.getController();
 
+    // Check if the timer has not been started yet
     if (!timerStarted) {
+      // Get the timer label from the controller
       Label timerLabel = controller.getTimerLabel();
+      // Initialize the timer with 300 seconds and the timer label
       timer = new TimerUtility(300, timerLabel);
-      controller.setTimer(timer);
+      // Set the timer label in the TimerUtilityHandler
+      TimerUtilityHandler.setTimer(timer, timerLabel);
+      // Start the timer
       timer.start();
+      // Mark the timer as started
       timerStarted = true;
     } else {
-      controller.setTimer(timer);
+      // If the timer is already started, just update the timer label
+      timerLabel = controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
   }
 
+  /**
+   * Opens the map view when a mouse event occurs and sets up the necessary components.
+   *
+   * @param event the MouseEvent that triggers the opening of the map
+   * @param path the path to the background image for the map
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openMap(MouseEvent event, String path) throws IOException {
 
     App.playSound("mapunfolding.mp3");
@@ -216,23 +266,32 @@ public class App extends Application {
 
     MapController mapController = loader.getController();
     mapController.changeBackground(path);
+    timerLabel = mapController.getTimerLabel();
 
-    mapController.setTimer(timer);
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
-
-    timer.setTimerLabel(mapController.getTimerLabel());
   }
 
+  /**
+   * Opens the drawer by loading the notebook.fxml file and setting up the scene. This method
+   * initializes the NotebookController, retrieves the timer label, and sets the timer using the
+   * TimerUtilityHandler. It then updates the stage with the new scene.
+   *
+   * @param event the MouseEvent that triggers the drawer to open
+   * @throws IOException if the FXML file cannot be loaded
+   */
   public static void openDrawer(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
 
     NotebookController notebookController = loader.getController();
-    notebookController.setTimer(timer);
+    timerLabel = notebookController.getTimerLabel();
+
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -240,33 +299,53 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Navigates to a specific page in the notebook based on the provided FXML file name.
+   *
+   * @param event the MouseEvent that triggers the navigation
+   * @param fxml the name of the FXML file (without extension) to load
+   * @throws IOException if the FXML file cannot be loaded
+   */
   public static void goToPage(MouseEvent event, String fxml) throws IOException {
+    // Load the specified FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     Parent root = loader.load();
 
+    // Set the timer label based on the specific notebook page
     if (fxml.equals("notebookpg1")) {
       NoteBookpg1Controller noteBookpg1Controller = loader.getController();
-      noteBookpg1Controller.setTimer(timer);
+      timerLabel = noteBookpg1Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("notebookpg2")) {
       Notebookpg2Controller notebookpg2Controller = loader.getController();
-      notebookpg2Controller.setTimer(timer);
+      timerLabel = notebookpg2Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("notebookpg3")) {
       Notebookpg3Controller notebookpg3Controller = loader.getController();
-      notebookpg3Controller.setTimer(timer);
+      timerLabel = notebookpg3Controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
+    // Set the new scene and show it
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
   }
 
+  /**
+   * Navigates to the drawers view.
+   *
+   * @param event the ActionEvent that triggers the navigation
+   * @throws IOException if the FXML file cannot be loaded
+   */
   public static void goToDrawers(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/notebook.fxml"));
     Parent root = loader.load();
 
     NotebookController notebookController = loader.getController();
-    notebookController.setTimer(timer);
+    timerLabel = notebookController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -274,12 +353,19 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Opens the safe scene when a mouse event is triggered.
+   *
+   * @param event the MouseEvent that triggers the opening of the safe scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openSafe(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safe.fxml"));
     Parent root = loader.load();
 
     SafeController safeController = loader.getController();
-    safeController.setTimer(timer);
+    timerLabel = safeController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -287,13 +373,20 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Opens the "safe opened" scene when a specific mouse event occurs.
+   *
+   * @param event the MouseEvent that triggers the opening of the "safe opened" scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openSafeOpened(MouseEvent event) throws IOException {
 
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeOpened.fxml"));
     Parent root = loader.load();
 
     SafeOpenedController safeOpenedController = loader.getController();
-    safeOpenedController.setTimer(timer);
+    timerLabel = safeOpenedController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -301,26 +394,45 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Opens the safe keypad scene when a mouse event is triggered.
+   *
+   * @param event the MouseEvent that triggers the opening of the safe keypad scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openSafeKeypad(MouseEvent event) throws IOException {
-
+    // Load the safe keypad FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/safeKeypad.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the safe keypad scene
     SafeKeypadController safeKeypadController = loader.getController();
-    safeKeypadController.setTimer(timer);
+    // Set the timer label in the TimerUtilityHandler
+    timerLabel = safeKeypadController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
+    // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // Set the new scene on the stage and show it
     stage.setScene(scene);
     stage.show();
   }
 
+  /**
+   * Opens the laptop scene when a mouse event is triggered.
+   *
+   * @param event the MouseEvent that triggers the opening of the laptop scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openLaptop(MouseEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/laptopClue.fxml"));
     Parent root = loader.load();
 
     LaptopClueController laptopClueController = loader.getController();
-    laptopClueController.setTimer(timer);
+    timerLabel = laptopClueController.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
 
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -328,30 +440,56 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Opens a laptop clue scene based on the provided path.
+   *
+   * @param event the MouseEvent that triggers the opening of the laptop clue scene
+   * @param path the path to the FXML file for the laptop clue scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
+    // Load the specified FXML file for the laptop clue
     FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
 
+    // Set the timer label based on the specific laptop clue
     if (path.equals("/fxml/jamesClue.fxml")) {
       JamesClueController jamesClueController = loader.getController();
-      jamesClueController.setTimer(timer);
+      timerLabel = jamesClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (path.equals("/fxml/mariaClue.fxml")) {
       MariaClueController mariaClueController = loader.getController();
-      mariaClueController.setTimer(timer);
+      timerLabel = mariaClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (path.equals("/fxml/alexClue.fxml")) {
       AlexClueController alexClueController = loader.getController();
-      alexClueController.setTimer(timer);
+      timerLabel = alexClueController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
+    // Add the loaded laptop clue view to the laptop pane
     AnchorPane laptopPane =
         (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
     laptopPane.getChildren().add(laptopClueView);
   }
 
+  /**
+   * Closes the currently open clue scene.
+   *
+   * @param event the ActionEvent that triggers the closing of the clue scene
+   * @throws IOException if there is an error during the closing process
+   */
   public static void closeClue(ActionEvent event) throws IOException {
     openCrimeScene(event);
   }
 
+  /**
+   * Plays a sound file in the background to avoid blocking the main application thread.
+   *
+   * @param soundFileName the name of the sound file to be played. The file should be located in the
+   *     "/sounds/" directory within the application's resources.
+   * @throws Exception if there is an error loading or playing the sound file.
+   */
   public static void playSound(String soundFileName) {
     try {
 
@@ -383,50 +521,69 @@ public class App extends Application {
     }
   }
 
+  /**
+   * Opens the suspect scene based on the provided FXML file name.
+   *
+   * @param event the MouseEvent that triggers the opening of the suspect scene
+   * @param fxml the name of the FXML file (without extension) to load
+   * @throws IOException if the FXML file cannot be loaded
+   */
   public static void openSuspect(MouseEvent event, String fxml) throws IOException {
+    // Load the specified FXML file for the suspect scene
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
     Parent root = loader.load();
 
+    // Set the timer label based on the specific suspect scene
     if (fxml.equals("daughter")) {
       DaughterController daughterController = loader.getController();
-      daughterController.setTimer(timer);
+      timerLabel = daughterController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("kitchen")) {
       KitchenController kitchenController = loader.getController();
-      kitchenController.setTimer(timer);
+      timerLabel = kitchenController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (fxml.equals("cleaner")) {
       CleanerController cleanerController = loader.getController();
-      cleanerController.setTimer(timer);
+      timerLabel = cleanerController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
+    // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    // Set the new scene on the stage and show it
     stage.setScene(scene);
     stage.show();
   }
 
   /**
-   * This method is called to verify if the player is allowed to guess. The player can guess if they
-   * have talked to all suspects and viewed at least one clue.
+   * Verifies if the player can make a guess based on the number of suspects talked to and clues
+   * viewed.
    *
-   * @return a list of booleans indicating if the player has talked to all suspects, viewed at least
-   *     one clue, and can guess respectively. The list format is Boolean [enoughSuspectsTalkedTo,
-   *     enoughCluesViewed, canGuess]
+   * @return a list of booleans indicating the conditions for guessing: - First element: true if 3
+   *     suspects have been talked to, false otherwise. - Second element: true if at least 1 clue
+   *     has been viewed, false otherwise. - Third element: true if both conditions are met, false
+   *     otherwise.
    */
   public static List<Boolean> verifyCanGuess() {
-    List<Boolean> result = new ArrayList<Boolean>();
+    List<Boolean> result = new ArrayList<>();
 
+    // Check if the player has talked to 3 suspects
     if (suspectsTalkedTo.size() == 3) {
       result.add(true);
     } else {
       result.add(false);
     }
 
+    // Check if the player has viewed at least 1 clue
     if (cluesViewed.size() >= 1) {
       result.add(true);
     } else {
       result.add(false);
     }
 
+    // Check if both conditions are met
     if (suspectsTalkedTo.size() == 3 && cluesViewed.size() >= 1) {
       System.out.println("Can guess");
       result.add(true);
@@ -458,14 +615,30 @@ public class App extends Application {
     System.out.println(cluesViewed);
   }
 
+  /**
+   * Sets the result of the AI game.
+   *
+   * @param result the result of the AI game
+   */
   public static void setAiGameResult(String result) {
     aiGameResult = result;
   }
 
+  /**
+   * Gets the result of the AI game.
+   *
+   * @return the result of the AI game
+   */
   public static String getAiGameResult() {
     return aiGameResult;
   }
 
+  /**
+   * Opens the game over scene.
+   *
+   * @param event the ActionEvent that triggers the opening of the game over scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openGameOver(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameOver.fxml"));
     Parent root = loader.load();
@@ -475,6 +648,12 @@ public class App extends Application {
     stage.show();
   }
 
+  /**
+   * Restarts the game by clearing the game state and reinitializing the application.
+   *
+   * @param event the ActionEvent that triggers the game restart
+   * @throws IOException if there is an error during the restart process
+   */
   public static void restartGame(ActionEvent event) throws IOException {
     // clear game state
     aiGameResult = null;
@@ -489,31 +668,48 @@ public class App extends Application {
     new App().start(new Stage());
   }
 
+  /**
+   * Navigates to the last scene based on the provided scene name.
+   *
+   * @param lastScene the name of the last scene to navigate to
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void goLastScene(String lastScene) throws IOException {
+    // Load the crime scene FXML file as a fallback
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
     Parent root;
 
+    // Determine which scene to load based on the lastScene parameter
     if (lastScene.equals("daughter")) {
+      // Load the daughter scene
       FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
       root = daughterLoader.load();
       DaughterController daughterController = daughterLoader.getController();
-      daughterController.setTimer(timer);
+      timerLabel = daughterController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (lastScene.equals("kitchen")) {
+      // Load the kitchen scene
       FXMLLoader kitchenLoader = new FXMLLoader(App.class.getResource("/fxml/kitchen.fxml"));
       root = kitchenLoader.load();
       KitchenController kitchenController = kitchenLoader.getController();
-      kitchenController.setTimer(timer);
+      timerLabel = kitchenController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else if (lastScene.equals("cleaner")) {
+      // Load the cleaner scene
       FXMLLoader cleanerLoader = new FXMLLoader(App.class.getResource("/fxml/cleaner.fxml"));
       root = cleanerLoader.load();
       CleanerController cleanerController = cleanerLoader.getController();
-      cleanerController.setTimer(timer);
+      timerLabel = cleanerController.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     } else {
+      // Load the crime scene as the default
       root = loader.load();
       CrimeSceneController controller = loader.getController();
-      controller.setTimer(timer); // Default method call for CrimeSceneController
+      timerLabel = controller.getTimerLabel();
+      TimerUtilityHandler.setTimer(timer, timerLabel);
     }
 
+    // Set the new scene and show it
     if (root != null) {
       Scene newScene = new Scene(root);
       primaryStage.setScene(newScene);

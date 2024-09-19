@@ -6,14 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 
 public class SafeKeypadController {
 
@@ -40,31 +38,6 @@ public class SafeKeypadController {
   List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1));
   // The length of the code
   int codeLength = password.size();
-
-  /**
-   * Sets the timer and updates the timer label.
-   *
-   * @param timer the TimerUtility instance
-   */
-  public void setTimer(TimerUtility timer) {
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
-  }
 
   /**
    * Gets the timer label.

@@ -1,14 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.TimerUtility;
 
 public class Notebookpg2Controller {
 
@@ -55,29 +53,6 @@ public class Notebookpg2Controller {
     App.playSound("pageflip.mp3"); // Play page flip sound
     System.out.println("Go first page"); // Log action
     App.goToPage(event, "notebookpg1"); // Navigate to the first page
-  }
-
-  // Method to set the timer and update the timer label
-  public void setTimer(TimerUtility timer) {
-    // Add a listener to update the timer label when the time changes
-    timer
-        .timeSecondsProperty()
-        .addListener(
-            (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
-            });
-
-    // Create an AnimationTimer to update the timer label in real-time
-    AnimationTimer timerAnimation =
-        new AnimationTimer() {
-          @Override
-          public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
-          }
-        };
-
-    // Start the AnimationTimer
-    timerAnimation.start();
   }
 
   // Getter for the timer label
