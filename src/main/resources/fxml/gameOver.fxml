@@ -14,9 +14,9 @@
             <Image url="@../images/mansionb.png" />
          </image>
       </ImageView>
-      <Label fx:id="gameOver" layoutX="294.0" layoutY="196.0" style="-fx-font-size: 50px;" text="Game over!" textFill="WHITE" />
+      <Label fx:id="gameOver" layoutX="308.0" layoutY="200.0" style="-fx-font-size: 50px;" text="Game over!" textFill="WHITE" />
       <Label fx:id="results" layoutX="184.0" layoutY="265.0" text="Your results:" textFill="WHITE" />
       <TextArea fx:id="txtaResults" editable="false" layoutX="184.0" layoutY="296.0" prefHeight="186.0" prefWidth="469.0" wrapText="true" />
-      <Button layoutX="378.0" layoutY="493.0" mnemonicParsing="false" onAction="#onClickedRestart" text="Restart" />
+      <Button fx:id="continueButton" layoutX="383.0" layoutY="487.0" mnemonicParsing="false" onAction="#onClickedContinue" text="Continue" />
    </children>
 </AnchorPane>
