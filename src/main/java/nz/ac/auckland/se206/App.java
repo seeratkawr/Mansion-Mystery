@@ -787,7 +787,9 @@ public class App extends Application {
   public static void setProfession(String profession, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition) {
     setCurrentProfession(profession);
     System.out.println("setting Profession: " + profession);
-    txtaChat.clear();
+    if(txtaChat != null) {
+      txtaChat.clear();
+    }
 
     // Initialize chat completion request
     try {
@@ -797,10 +799,12 @@ public class App extends Application {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.4)
-              .setMaxTokens(100);
+              .setMaxTokens(txtaChat != null ? 200 : 100);
 
-      loadingIndicator.setVisible(true);
-      translateTransition.play();
+      if (loadingIndicator != null && translateTransition != null) {
+        loadingIndicator.setVisible(true);
+        translateTransition.play();
+      }
 
       // Task to handle initial chat completion request in a background thread
       Task<Void> task =
@@ -813,12 +817,14 @@ public class App extends Application {
 
               // On a new thread, append the response to the
               // chat area and stop the loading indicator
-              Platform.runLater(
-                  () -> {
-                    appendChatMessage(response, txtaChat);
-                    loadingIndicator.setVisible(false);
-                    translateTransition.stop();
-                  });
+              if (txtaChat != null && loadingIndicator != null && translateTransition != null) {
+                Platform.runLater(
+                    () -> {
+                      appendChatMessage(response, txtaChat);
+                      loadingIndicator.setVisible(false);
+                      translateTransition.stop();
+                    });
+              }
               return null;
             }
           };
@@ -830,6 +836,7 @@ public class App extends Application {
       thread.start();
     } catch (ApiProxyException e) {
       e.printStackTrace();
+      System.out.println("Error setting professionsssssssssssssssssssss: " + e.getMessage());
     }
   }
 
@@ -842,7 +849,7 @@ public class App extends Application {
   }
 
   // Method to run GPT chat completion request
-  private static ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+  public static ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
       // Execute the chat completion request and get the response
@@ -852,13 +859,14 @@ public class App extends Application {
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
+      System.out.println("Error running RUN GPT: " + e.getMessage());
       return null;
     }
   }
 
 
   // Method to get the system prompt based on the profession
-  private static String getSystemPrompt(String profession) {
+  public static String getSystemPrompt(String profession) {
     System.out.println("getting system prompt");
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);
@@ -871,6 +879,8 @@ public class App extends Application {
       promptFileName = "daughter_prompt.txt";
     } else if ("Chef".equals(profession)) {
       promptFileName = "chef_prompt.txt";
+    } else if ("AI".equals(profession)) {
+      promptFileName = "ai_prompt.txt";
     } else {
       System.out.println("Unexpected profession: " + profession);
       throw new IllegalStateException("Unexpected profession: " + profession);
