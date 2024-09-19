@@ -12,10 +12,15 @@ import nz.ac.auckland.se206.App;
 
 // Controller class for the Map view
 public class MapController {
-  
+
   // Field to store the last scene
   private static String lastScene;
-  
+
+  // Static method to set the last scene
+  public static void setLastScene(String scene) {
+    lastScene = scene;
+  }
+
   // FXML injected fields
   @FXML private ImageView background;
   @FXML private Label timerLabel;
@@ -25,11 +30,6 @@ public class MapController {
   // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel;
-  }
-
-  // Static method to set the last scene
-  public static void setLastScene(String scene) {
-    lastScene = scene;
   }
 
   // Method to change the background image
