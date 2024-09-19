@@ -11,15 +11,20 @@ import nz.ac.auckland.se206.App;
 
 public class StartGameController {
 
+  // FXML annotation to link with the corresponding elements in the FXML file
   @FXML private Button startButton;
   @FXML private Label backstory;
 
+  // Method called when the controller is initialized
   public void initialize() {
+    // Start the fade-in effect for the backstory label
     fadeInBackstory();
   }
 
+  // Event handler for the start button
   @FXML
   private void onStartGame(ActionEvent event) {
+    // Play a sound when the button is clicked
     App.playSound("button.mp3");
     System.out.println("Game started!");
     try {
@@ -31,11 +36,12 @@ public class StartGameController {
     }
   }
 
+  // Method to create and play a fade-in effect for the backstory label
   private void fadeInBackstory() {
     // Create a new FadeTransition
     FadeTransition fadeTransition = new FadeTransition();
 
-    // Set the duration of the fade (e.g., 2 seconds)
+    // Set the duration of the fade (e.g., 3 seconds)
     fadeTransition.setDuration(Duration.seconds(3));
 
     // Set the label you want to fade

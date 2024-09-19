@@ -29,17 +29,18 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class KitchenController {
 
-  @FXML private TextArea txtaChat;
-  @FXML private TextField txtInput;
-  @FXML private Button btnSend;
-  @FXML private ImageView loadingIndicator;
-  @FXML private Label timerLabel;
+  @FXML private TextArea txtaChat; // Text area for chat messages
+  @FXML private TextField txtInput; // Text field for user input
+  @FXML private Button btnSend; // Button to send messages
+  @FXML private ImageView loadingIndicator; // Loading indicator image
+  @FXML private Label timerLabel; // Label to display the timer
 
-  private String profession;
-  private ChatCompletionRequest chatCompletionRequest;
-  private TranslateTransition translateTransition;
-  private TimerUtility timer;
+  private String profession; // Profession of the character
+  private ChatCompletionRequest chatCompletionRequest; // Request object for chat completion
+  private TranslateTransition translateTransition; // Animation for loading indicator
+  private TimerUtility timer; // Timer utility object
 
+  // Initialize method called after FXML fields are populated
   public void initialize() {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/spatula.png")));
@@ -48,7 +49,7 @@ public class KitchenController {
     translateTransition.setToX(324); // End position (adjust as needed)
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
     translateTransition.setAutoReverse(true); // Move back and forth
-    txtaChat.setWrapText(true);
+    txtaChat.setWrapText(true); // Enable text wrapping in chat area
 
     // Set profession after transition is set up
     setProfession("Chef");
@@ -66,6 +67,7 @@ public class KitchenController {
         });
   }
 
+  // Set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
     timer
@@ -87,10 +89,12 @@ public class KitchenController {
     timerAnimation.start();
   }
 
+  // Get the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  // Handle map click event
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
@@ -103,6 +107,7 @@ public class KitchenController {
     System.out.println("Map clicked");
   }
 
+  // Handle send message button click event
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
@@ -145,6 +150,7 @@ public class KitchenController {
     thread.start();
   }
 
+  // Set the profession and initialize chat
   public void setProfession(String profession) {
     this.profession = profession;
     clearChat(); // Clear chat initially
@@ -187,12 +193,14 @@ public class KitchenController {
     }
   }
 
+  // Append a chat message to the chat area
   private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    txtaChat.appendText(msg.getContent() + "\n\n");
     System.out.println(
         "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
+  // Run GPT model to get a response
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
@@ -206,6 +214,7 @@ public class KitchenController {
     }
   }
 
+  // Get the system prompt based on the profession
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);
@@ -222,6 +231,7 @@ public class KitchenController {
     return prompt;
   }
 
+  // Clear the chat area
   private void clearChat() {
     txtaChat.clear();
   }
