@@ -80,7 +80,7 @@ public class CleanerController {
   @FXML
   private void onSendMessage(ActionEvent event) {
     System.out.println("Send button clicked - handling gpt with profession: " + profession);
-    App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition);
+    App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
 
 }

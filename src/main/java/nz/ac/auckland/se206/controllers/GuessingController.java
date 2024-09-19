@@ -155,7 +155,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedChef(MouseEvent event) {
-    chosenSuspect = "the chef James";
+    App.setChosenSuspect("the chef James");
     showTextField();
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
@@ -172,7 +172,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedCleaner(MouseEvent event) {
-    chosenSuspect = "the cleaner Alex";
+    App.setChosenSuspect("the cleaner Alex");
     showTextField();
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
@@ -189,7 +189,7 @@ public class GuessingController {
    */
   @FXML
   private void onClickedDaughter(MouseEvent event) {
-    chosenSuspect = "the daughter Maria";
+    App.setChosenSuspect("the daughter Maria");
     showTextField();
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
@@ -206,52 +206,12 @@ public class GuessingController {
   @FXML
   private void onSubmitMessage(ActionEvent event) {
 
-    // sending the user's guess to the AI
-    String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
-      System.err.println("cannot submit empty message");
-      return;
-    }
-
     // clean up and cancel threads
     cleanUpThreads();
     System.out.println("Submit message clicked");
     lbTimer.setVisible(false);
 
-    txtInput.clear();
-    ChatMessage userMessage =
-        new ChatMessage("user", "SELECTED USER: " + chosenSuspect + "USER MESSAGE: " + message);
-
-    loadingIndicator.setVisible(true);
-    translateTransition.play(); // Start the animation
-
-    // Run the AI chat operation in a background thread
-    Task<Void> task =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            ChatMessage response = runGpt(userMessage);
-            // save the response
-            App.setAiGameResult(response.getContent());
-            System.out.println("AI response: " + response.getContent());
-            Platform.runLater(
-                () -> {
-                  try {
-                    cleanUpThreads();
-                    App.openGameOver(event);
-                    loadingIndicator.setVisible(false); // Hide loading indicator after response
-                    translateTransition.stop(); // Stop the animation
-                  } catch (IOException e) {
-                    e.printStackTrace();
-                  }
-                });
-            return null;
-          }
-        };
-    Thread thread = new Thread(task);
-    threads.add(thread); // add thread to list of active threads
-    thread.setDaemon(true);
-    thread.start();
+    App.handleGPT(profession, txtInput, null, loadingIndicator, translateTransition, event);
   }
 
   /**

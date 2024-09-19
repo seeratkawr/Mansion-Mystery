@@ -16,7 +16,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -77,6 +76,7 @@ public class App extends Application {
   private static Label timerLabel;
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
   private static String profession;
+  private static String chosenSuspect;
 
   /**
    * The main method that launches the JavaFX application.
@@ -188,26 +188,17 @@ public class App extends Application {
    * @param event the action event that triggered this method
    * @throws IOException if the FXML file is not found
    */
-  /**
-   * Opens the crime scene.
-   *
-   * @param event the action event that triggered this method
-   * @throws IOException if the FXML file is not found
-   */
   public static void openCrimeScene(ActionEvent event) throws IOException {
-    // Load the crime scene FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
 
     // Load the root node from the FXML file
     Parent root = loader.load();
-    // Create a new scene with the loaded root node
     scene = new Scene(root);
+
     // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    // Set the new scene on the stage and show it
     stage.setScene(scene);
     stage.show();
-    // Push the new scene onto the scene stack
     sceneStack.push(scene);
 
     // Get the controller associated with the crime scene
@@ -215,15 +206,12 @@ public class App extends Application {
 
     // Check if the timer has not been started yet
     if (!timerStarted) {
-      // Get the timer label from the controller
       Label timerLabel = controller.getTimerLabel();
-      // Initialize the timer with 300 seconds and the timer label
       timer = new TimerUtility(300, timerLabel);
+
       // Set the timer label in the TimerUtilityHandler
       TimerUtilityHandler.setTimer(timer, timerLabel);
-      // Start the timer
       timer.start();
-      // Mark the timer as started
       timerStarted = true;
     } else {
       // If the timer is already started, just update the timer label
@@ -737,7 +725,8 @@ public class App extends Application {
   private static ChatCompletionRequest chatCompletionRequest;
 
     // Event handler for send button click
-  public static void handleGPT(String profession, TextField txtInput, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition) {
+  public static void handleGPT(String profession, TextField txtInput, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition, 
+      ActionEvent event) {
     System.out.println("handling GPT");
     App.playSound("button.mp3");
     // Add the profession to the list of suspects talked to
@@ -749,11 +738,17 @@ public class App extends Application {
     }
 
     // Clear the chat area and append the user message
-    txtaChat.clear();
+    if (txtaChat != null) {
+      txtaChat.clear();
+    }
     txtInput.clear();
 
-    ChatMessage userMessage = new ChatMessage("user", message); // Create a user message
-    appendChatMessage(userMessage, txtaChat); //  Append the user message to the chat area
+    ChatMessage userMessage = new ChatMessage("user", txtaChat != null ? message : "SELECTED USER: " + chosenSuspect
+        + "USER MESSAGE: " + message); // Create a user message
+
+    if (txtaChat != null) {
+      appendChatMessage(userMessage, txtaChat); // Append the user message to the chat area
+    }
 
     loadingIndicator.setVisible(true);
     translateTransition.play();
@@ -765,10 +760,22 @@ public class App extends Application {
           protected Void call() throws Exception {
             ChatMessage response = runGpt(userMessage);
 
+            // Set the AI game result if this method called by guessingController
+            if (txtaChat == null) {
+              App.setAiGameResult(response.getContent());
+            }
             // Append the response to the chat area and stop the loading indicator
             Platform.runLater(
                 () -> {
-                  appendChatMessage(response, txtaChat);
+                  if (txtaChat != null) {
+                    appendChatMessage(response, txtaChat);
+                  } else {
+                    try {
+                      App.openGameOver(event);
+                    } catch (IOException e) {
+                      e.printStackTrace();
+                    }
+                  }
                   loadingIndicator.setVisible(false);
                   translateTransition.stop();
                 });
@@ -890,6 +897,27 @@ public class App extends Application {
     return prompt;
   }
 
+  // Method to get the current profession
+  public static String getCurrentProfession() {
+    return profession;
+  }
+
+  // Method to set the current profession
+  private static void setCurrentProfession(String profession) {
+    App.profession = profession;
+    System.out.println("Profession set to in app: " + profession);
+  }
+
+  // Method to set the chosen suspect
+  public static void setChosenSuspect(String chosenSuspect) {
+    App.chosenSuspect = chosenSuspect;
+  }
+
+  // Method to get the chosen suspect
+  public static String getChosenSuspect() {
+    return chosenSuspect;
+  }
+
   /**
    * Starts a task to periodically check the timer status. If the timer has
    * finished, it will either
@@ -926,14 +954,5 @@ public class App extends Application {
             }));
     timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
     timerCheckTimeline.play();
-  }
-
-  private static void setCurrentProfession(String profession) {
-    App.profession = profession;
-    System.out.println("Profession set to in app: " + profession);
-  }
-
-  public static String getCurrentProfession() {
-    return profession;
   }
 }
