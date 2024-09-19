@@ -10,10 +10,12 @@ import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.App;
 
 /**
- * The GameOverController class is responsible for handling the game over screen in the application.
- * It initializes the game over screen, displays the result of the game, and manages the continue button.
- * The continue button is initially disabled and hidden, and it becomes enabled and visible after a delay.
- * The class also handles the action of clicking the continue button to restart the game.
+ * The GameOverController class is responsible for handling the game over
+ * screen in the application. It initializes the game over screen, displays
+ * the result of the game, and manages the continue button. The continue
+ * button is initially disabled and hidden, and it becomes enabled and
+ * visible after a delay. The class also handles the action of clicking the
+ * continue button to restart the game.
  * 
 **/
 public class GameOverController {

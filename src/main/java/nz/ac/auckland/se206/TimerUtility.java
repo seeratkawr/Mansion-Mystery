@@ -8,10 +8,10 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 public class TimerUtility {
-  private Timeline timeline; // Timeline for the countdown
-  private IntegerProperty timeSeconds; // Property to hold the remaining time in seconds
-  private int duration; // Initial duration of the timer in seconds
-  public Label timerLabel; // Label to display the timer
+  private Timeline timeline;
+  private IntegerProperty timeSeconds; 
+  private int duration; 
+  private Label timerLabel;
 
   // Constructor to initialize the timer with a specific duration and label
   public TimerUtility(int duration, Label timerLabel) {
