@@ -27,14 +27,5 @@ mention anything about marias financial motive, then also make sure to tell them
 and explain what marias financial motive was. 
 
 Say this when the [SELECTED SUSPECT] is the chef James or the cleaner Alex:
-You were incorrect; the thief was actually the daughter, Maria. 
+You guessed the mansion thief incorrectly. Better luck next time!
 
-While you selected Alex, the clues clearly point to Maria as the true culprit. Here’s why:
-
-1. **The Safe**: Maria had access to the safe and knew its combination. After stealing the valuable item, she attempted to change the combination, which indicates her involvement.
-
-2. **The Notebook**: In the study, there was a notebook that revealed Maria's history of theft, having been caught stealing from classmates. This suggests a pattern of behavior that aligns with her being the thief.
-
-3. **The Laptop**: The laptop in the study showed that Maria was researching how to sell valuable items, such as jewelry. This indicates her intent and knowledge of the value of the stolen item.
-
-Maria's motive for stealing the necklace was rooted in financial desperation. She was struggling to buy a car and felt frustrated with her parents for refusing to help her. 
