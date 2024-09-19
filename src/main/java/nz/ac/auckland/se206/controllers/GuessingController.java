@@ -8,8 +8,6 @@ import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
@@ -30,7 +27,6 @@ import nz.ac.auckland.se206.TimerUtility;
  * The GuessingController class is responsible for handling the user interactions and game logic for
  * the guessing game. It manages the UI components, handles user input, and communicates with the AI
  * to process the user's guesses.
- *
  */
 public class GuessingController {
 
@@ -60,7 +56,7 @@ public class GuessingController {
 
   @FXML
   private void initialize() {
-
+    App.playSound("guessingAudio.mp3");
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/necklace.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
@@ -109,9 +105,7 @@ public class GuessingController {
         });
   }
 
-  /**
-   * This method is called to enable game over mode
-   */
+  /** This method is called to enable game over mode */
   public void enableGameOver() {
     lbTimesUp.setDisable(false);
     btnResults.setDisable(false);
@@ -119,9 +113,7 @@ public class GuessingController {
     btnResults.setVisible(true);
   }
 
-  /**
-   * This method is called to check the timer
-   */
+  /** This method is called to check the timer */
   private void timeUpCheck() {
     guessingTimerCheckTimeline =
         new Timeline(
