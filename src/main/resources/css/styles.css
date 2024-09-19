@@ -199,7 +199,8 @@
 #rectangle8:hover,
 #rectangle9:hover,
 #rectangle0:hover,
-#rectangleClear:hover {
+#rectangleClear:hover,
+#rectangleBook:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   /* Light transparent color */
   -fx-cursor: hand;

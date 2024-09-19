@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
@@ -16,6 +17,7 @@ public class NotebookController {
   @FXML private Pane bookPane;
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
+  @FXML private Rectangle rectangleBook;
 
   // Method to handle the event when the book is clicked
   @FXML
