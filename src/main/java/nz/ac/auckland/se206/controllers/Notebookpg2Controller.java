@@ -12,58 +12,58 @@ import nz.ac.auckland.se206.TimerUtility;
 
 public class Notebookpg2Controller {
 
-  @FXML private Pane bookPane; // Pane for the book
-  @FXML private Pane mainPane; // Main pane of the scene
-  @FXML private Label timerLabel; // Label to display the timer
+  // FXML annotations to link with the corresponding elements in the FXML file
+  @FXML private Pane bookPane;
+  @FXML private Pane mainPane;
+  @FXML private Label timerLabel;
 
-  private TimerUtility timer; // Timer utility instance
+  // Timer utility instance
+  private TimerUtility timer;
 
+  // Method to handle the event when the user clicks to go to the last page
   @FXML
   private void onGoLastPage(MouseEvent event) throws IOException {
-    // Play page flip sound
-    App.playSound("pageflip.mp3");
-    System.out.println("Go last page");
-    // Navigate to the last page of the notebook
-    App.goToPage(event, "notebookpg3");
+    App.playSound("pageflip.mp3"); // Play page flip sound
+    System.out.println("Go last page"); // Log action
+    App.goToPage(event, "notebookpg3"); // Navigate to the last page
   }
 
+  // Method to handle the event when the book is clicked
   @FXML
   private void onClickedBook(MouseEvent event) {
-    System.out.println("Book clicked");
-    // If the book is clicked, set the bookPane to be visible and mainPane to be invisible
+    System.out.println("Book clicked"); // Log action
+    // Make the bookPane visible and hide the mainPane
     bookPane.setVisible(true);
     mainPane.setVisible(false);
   }
 
+  // Method to handle the event when the exit book button is clicked
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
-    // Play button click sound
-    App.playSound("button.mp3");
-    // Navigate to the drawers scene
-    App.goToDrawers(event);
+    App.playSound("button.mp3"); // Play button click sound
+    App.goToDrawers(event); // Navigate to the drawers
   }
 
+  // Method to handle the event when the user clicks to go back to the crime scene
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
-    // Play button click sound
-    App.playSound("button.mp3");
-    System.out.println("Go back to crime scene");
-    // Navigate back to the crime scene
-    App.openCrimeScene(event);
+    App.playSound("button.mp3"); // Play button click sound
+    System.out.println("Go back to crime scene"); // Log action
+    App.openCrimeScene(event); // Navigate to the crime scene
   }
 
+  // Method to handle the event when the user clicks to go to the first page
   @FXML
   private void onGoFirstPage(MouseEvent event) throws IOException {
-    // Play page flip sound
-    App.playSound("pageflip.mp3");
-    System.out.println("Go first page");
-    // Navigate to the first page of the notebook
-    App.goToPage(event, "notebookpg1");
+    App.playSound("pageflip.mp3"); // Play page flip sound
+    System.out.println("Go first page"); // Log action
+    App.goToPage(event, "notebookpg1"); // Navigate to the first page
   }
 
+  // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
-    // Add a listener to update the timer label whenever the time changes
+    // Add a listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()
         .addListener(
@@ -71,7 +71,7 @@ public class Notebookpg2Controller {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
-    // Create an AnimationTimer to update the timer label every frame
+    // Create an AnimationTimer to update the timer label in real-time
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -84,6 +84,7 @@ public class Notebookpg2Controller {
     timerAnimation.start();
   }
 
+  // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel; // Getter for the timer label
   }

@@ -27,36 +27,36 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-// nz.ac.auckland.se206.controllers.DaughterController
+// Controller class for the Daughter scene
 public class DaughterController {
-  @FXML private Button btnSend;
-  @FXML private TextField txtInput;
-  @FXML private TextArea daughterText;
-  @FXML private ImageView loadingIndicator;
-  @FXML private Label timerLabel;
+  @FXML private Button btnSend; // Button to send the message
+  @FXML private TextField txtInput; // Text field for user input
+  @FXML private TextArea daughterText; // Text area to display chat messages
+  @FXML private ImageView loadingIndicator; // Loading indicator image
+  @FXML private Label timerLabel; // Label to display the timer
 
-  private String profession;
-  private ChatCompletionRequest chatCompletionRequest;
-  private TranslateTransition translateTransition;
-  private TimerUtility timer;
+  private String profession; // Profession of the character
+  private ChatCompletionRequest chatCompletionRequest; // Request object for chat completion
+  private TranslateTransition translateTransition; // Animation for loading indicator
+  private TimerUtility timer; // Timer utility object
 
-  // Initialize the controller
+  // Initialize method called after the FXML fields are populated
   public void initialize() {
-    // Set up the loading indicator
-    loadingIndicator.setVisible(false);
-    loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/bear.png")));
-    translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
+    loadingIndicator.setVisible(false); // Hide loading indicator initially
+    loadingIndicator.setImage(
+        new Image(
+            getClass().getResourceAsStream("/images/bear.png"))); // Set loading indicator image
+    translateTransition =
+        new TranslateTransition(
+            Duration.seconds(2), loadingIndicator); // Create translate transition animation
     translateTransition.setFromX(0);
     translateTransition.setToX(316);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
+    daughterText.setEditable(false); // Make text area non-editable
+    daughterText.setWrapText(true); // Enable text wrapping
 
-    // Set up the text area
-    daughterText.setEditable(false);
-    daughterText.setWrapText(true);
-
-    // Set the profession to "Daughter"
-    setProfession("Daughter");
+    setProfession("Daughter"); // Set the profession to Daughter
 
     // Add event handler for the Enter key to send the message
     txtInput.setOnKeyPressed(
@@ -71,14 +71,14 @@ public class DaughterController {
         });
   }
 
-  // Set the timer and update the timer label
+  // Method to set the timer utility
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(
             (obs, oldTime, newTime) -> {
-              timerLabel.setText(timer.formatTime(newTime.intValue()));
+              timerLabel.setText(timer.formatTime(newTime.intValue())); // Update timer label
             });
 
     // Create an AnimationTimer to update the timer label
@@ -86,7 +86,7 @@ public class DaughterController {
         new AnimationTimer() {
           @Override
           public void handle(long now) {
-            timerLabel.setText(timer.formatTime(timer.getSecondsLeft()));
+            timerLabel.setText(timer.formatTime(timer.getSecondsLeft())); // Update timer label
           }
         };
 
@@ -94,145 +94,149 @@ public class DaughterController {
     timerAnimation.start();
   }
 
-  // Get the timer label
+  // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  // Handle the map click event
+  // Event handler for map click
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
-      App.openMap(event, "/images/bedroom.jpg");
-      MapController.setLastScene("daughter");
+      App.openMap(event, "/images/bedroom.jpg"); // Open the map with the specified image
+      MapController.setLastScene("daughter"); // Set the last scene to daughter
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  // Handle the send message button click event
+  // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    App.playSound("button.mp3");
-    App.addSuspectTalkedTo(profession);
-    String message = txtInput.getText().trim();
+    App.playSound("button.mp3"); // Play button click sound
+    App.addSuspectTalkedTo(profession); // Add the profession to the list of suspects talked to
+    String message = txtInput.getText().trim(); // Get the user input message
     if (message.isEmpty()) {
-      return;
+      return; // Do nothing if the message is empty
     }
 
-    clearChat();
+    clearChat(); // Clear the chat
 
-    txtInput.clear();
-    ChatMessage userMessage = new ChatMessage("user", message);
-    appendChatMessage(userMessage);
+    txtInput.clear(); // Clear the input field
+    ChatMessage userMessage = new ChatMessage("user", message); // Create a new chat message
+    appendChatMessage(userMessage); // Append the user message to the chat
 
-    loadingIndicator.setVisible(true);
-    translateTransition.play();
+    loadingIndicator.setVisible(true); // Show loading indicator
+    translateTransition.play(); // Start loading animation
 
     // Create a task to run the GPT model
     Task<Void> task =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            ChatMessage response = runGpt(userMessage);
+            ChatMessage response = runGpt(userMessage); // Get the response from GPT
             Platform.runLater(
                 () -> {
-                  appendChatMessage(response);
-                  loadingIndicator.setVisible(false);
-                  translateTransition.stop();
+                  appendChatMessage(response); // Append the response to the chat
+                  loadingIndicator.setVisible(false); // Hide loading indicator
+                  translateTransition.stop(); // Stop loading animation
                 });
             return null;
           }
         };
 
-    // Start the task in a new thread
-    Thread thread = new Thread(task);
-    App.addThread(thread);
-    thread.setDaemon(true);
-    thread.start();
+    Thread thread = new Thread(task); // Create a new thread for the task
+    App.addThread(thread); // Add the thread to the app
+    thread.setDaemon(true); // Set the thread as a daemon
+    thread.start(); // Start the thread
   }
 
-  // Set the profession and initialize the chat
+  // Method to set the profession
   public void setProfession(String profession) {
-    this.profession = profession;
-    clearChat();
+    this.profession = profession; // Set the profession
+    clearChat(); // Clear the chat
 
     try {
-      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      ApiProxyConfig config = ApiProxyConfig.readConfig(); // Read the API proxy config
       chatCompletionRequest =
           new ChatCompletionRequest(config)
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.4)
-              .setMaxTokens(100);
+              .setMaxTokens(100); // Set chat completion request parameters
 
-      loadingIndicator.setVisible(true);
-      translateTransition.play();
+      loadingIndicator.setVisible(true); // Show loading indicator
+      translateTransition.play(); // Start loading animation
 
-      // Create a task to initialize the chat with the system prompt
+      // Create a task to run the GPT model
       Task<Void> task =
           new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-              ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
-              ChatMessage response = runGpt(systemMessage);
+              ChatMessage systemMessage =
+                  new ChatMessage("system", getSystemPrompt()); // Create system message
+              ChatMessage response = runGpt(systemMessage); // Get the response from GPT
               Platform.runLater(
                   () -> {
-                    appendChatMessage(response);
-                    loadingIndicator.setVisible(false);
-                    translateTransition.stop();
+                    appendChatMessage(response); // Append the response to the chat
+                    loadingIndicator.setVisible(false); // Hide loading indicator
+                    translateTransition.stop(); // Stop loading animation
                   });
               return null;
             }
           };
-      Thread thread = new Thread(task);
-      App.addThread(thread);
-      thread.setDaemon(true);
-      thread.start();
+      Thread thread = new Thread(task); // Create a new thread for the task
+      App.addThread(thread); // Add the thread to the app
+      thread.setDaemon(true); // Set the thread as a daemon
+      thread.start(); // Start the thread
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
   }
 
-  // Append a chat message to the text area
+  // Method to append a chat message to the text area
   private void appendChatMessage(ChatMessage msg) {
-    daughterText.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    daughterText.appendText(msg.getContent() + "\n\n"); // Append message to text area
     System.out.println(
         "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
-  // Run the GPT model with the given message
+  // Method to run the GPT model and get a response
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
+    chatCompletionRequest.addMessage(msg); // Add the message to the request
     try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      return result.getChatMessage();
+      ChatCompletionResult chatCompletionResult =
+          chatCompletionRequest.execute(); // Execute the request
+      Choice result = chatCompletionResult.getChoices().iterator().next(); // Get the result choice
+      chatCompletionRequest.addMessage(
+          result.getChatMessage()); // Add the result message to the request
+      return result.getChatMessage(); // Return the result message
     } catch (ApiProxyException e) {
       e.printStackTrace();
       return null;
     }
   }
 
-  // Clear the chat text area
+  // Method to clear the chat text area
   private void clearChat() {
-    daughterText.clear();
+    daughterText.clear(); // Clear the text area
   }
 
-  // Get the system prompt based on the profession
+  // Method to get the system prompt based on the profession
   private String getSystemPrompt() {
     Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
+    map.put("profession", profession); // Add profession to the map
 
     String promptFileName;
     if ("Daughter".equals(profession)) {
-      promptFileName = "daughter_prompt.txt";
+      promptFileName = "daughter_prompt.txt"; // Set prompt file name for Daughter
     } else {
-      throw new IllegalStateException("Unexpected profession: " + profession);
+      throw new IllegalStateException(
+          "Unexpected profession: " + profession); // Throw exception for unexpected profession
     }
 
-    String prompt = PromptEngineering.getPrompt(promptFileName, map);
-    return prompt;
+    String prompt =
+        PromptEngineering.getPrompt(promptFileName, map); // Get the prompt from the file
+    return prompt; // Return the prompt
   }
 }

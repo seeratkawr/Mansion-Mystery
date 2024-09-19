@@ -9,24 +9,31 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
-// Controller class for handling the Alex Clue scene
+// Controller class for handling the Alex Clue screen
 public class AlexClueController {
-  @FXML private Rectangle rectangleButtons; // Rectangle for button visuals
-  @FXML private Label timerLabel; // Label to display the timer
+  // FXML injected Rectangle for buttons
+  @FXML private Rectangle rectangleButtons;
 
-  private TimerUtility timer; // Utility class for managing the timer
+  // FXML injected Label for displaying the timer
+  @FXML private Label timerLabel;
 
-  // Method to handle the closing of the clue window
+  // Timer utility instance
+  private TimerUtility timer;
+
+  // Method to handle the close clue action
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
-    App.playSound("mouseclick.mp3"); // Play a sound on mouse click
-    App.openLaptop(event); // Open the laptop scene
+    // Play mouse click sound
+    App.playSound("mouseclick.mp3");
+    // Open the laptop screen
+    App.openLaptop(event);
   }
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
-    // Add a listener to update the timer label whenever the time changes
+
+    // Add a listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()
         .addListener(

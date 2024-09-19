@@ -11,15 +11,16 @@ import nz.ac.auckland.se206.TimerUtility;
 
 // Controller class for handling the Maria Clue scene
 public class MariaClueController {
-  // FXML injected Rectangle for button area
+  // FXML injected Rectangle element for buttons
   @FXML private Rectangle rectangleButtons;
-  // FXML injected Label for displaying the timer
+
+  // FXML injected Label element for displaying the timer
   @FXML private Label timerLabel;
 
   // Timer utility instance
   private TimerUtility timer;
 
-  // Method to handle the close clue event
+  // Method to handle the closing of the clue window
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
     // Open the laptop scene
@@ -28,10 +29,11 @@ public class MariaClueController {
     App.playSound("mouseclick.mp3");
   }
 
-  // Method to set the timer and update the timer label
+  // Method to set the timer and initialize the timer label updates
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
-    // Add listener to update the timer label when the time changes
+
+    // Add a listener to update the timer label whenever the time changes
     timer
         .timeSecondsProperty()
         .addListener(
@@ -39,7 +41,7 @@ public class MariaClueController {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
-    // Create an AnimationTimer to update the timer label every frame
+    // Create an AnimationTimer to continuously update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -52,7 +54,7 @@ public class MariaClueController {
     timerAnimation.start();
   }
 
-  // Getter for the timer label
+  // Getter method for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }

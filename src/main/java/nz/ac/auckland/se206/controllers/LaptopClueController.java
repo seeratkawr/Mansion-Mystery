@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
-// Controller for the Laptop Clue scene
+// Controller class for the Laptop Clue scene
 public class LaptopClueController {
   @FXML private Button backButton; // Button to go back to the previous scene
   @FXML private Circle alexCircle; // Circle representing Alex
@@ -21,7 +21,7 @@ public class LaptopClueController {
   @FXML private Circle jamesCircle; // Circle representing James
   @FXML private Label timerLabel; // Label to display the timer
 
-  private TimerUtility timer; // Utility for managing the timer
+  private TimerUtility timer; // Timer utility instance
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
@@ -33,7 +33,7 @@ public class LaptopClueController {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
-    // AnimationTimer to update the timer label every frame
+    // AnimationTimer to continuously update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
