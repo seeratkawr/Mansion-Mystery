@@ -55,6 +55,6 @@ public class Notebookpg3Controller {
 
   // Getter method for the timer label
   public Label getTimerLabel() {
-    return timerLabel; // Return the timer label
+    return timerLabel;
   }
 }

@@ -38,7 +38,6 @@ public class StartGameController {
 
   // Method to create and play a fade-in effect for the backstory label
   private void fadeInBackstory() {
-    // Create a new FadeTransition
     FadeTransition fadeTransition = new FadeTransition();
 
     // Set the duration of the fade (e.g., 3 seconds)
@@ -47,11 +46,9 @@ public class StartGameController {
     // Set the label you want to fade
     fadeTransition.setNode(backstory);
 
-    // Set the start and end opacity values
     fadeTransition.setFromValue(0.0); // fully transparent
     fadeTransition.setToValue(1.0); // fully opaque
 
-    // Play the transition
     fadeTransition.play();
   }
 }

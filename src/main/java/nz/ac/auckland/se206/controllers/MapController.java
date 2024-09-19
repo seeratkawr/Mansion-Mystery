@@ -14,10 +14,10 @@ import nz.ac.auckland.se206.App;
 public class MapController {
 
   // FXML injected fields
-  @FXML private Button exit_button;
   @FXML private ImageView background;
-  @FXML private Button btnToStudy;
   @FXML private Label timerLabel;
+  @FXML private Button btnExit;
+  @FXML private Button btnToStudy;
 
   // Field to store the last scene
   private static String lastScene;

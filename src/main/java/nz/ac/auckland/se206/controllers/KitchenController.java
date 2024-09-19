@@ -216,12 +216,16 @@ public class KitchenController {
   // Run GPT model to get a response
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
+
+    // Execute the chat completion request and get the response
     try {
+      // Get the first choice from the response
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       return result.getChatMessage();
     } catch (ApiProxyException e) {
+      // Print stack trace for debugging in case of error
       e.printStackTrace();
       return null;
     }
