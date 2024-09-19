@@ -18,16 +18,25 @@ import nz.ac.auckland.se206.TimerUtility;
  */
 public class SafeController {
 
+  // FXML injected fields
   @FXML private ResourceBundle resources;
   @FXML private URL location;
   @FXML private AnchorPane safePane;
   @FXML private Label timerLabel;
   @FXML private Rectangle rectangleKeypad;
 
+  // Timer utility instance
   private TimerUtility timer;
 
+  /**
+   * Sets the timer and initializes the timer label to update with the timer's value.
+   *
+   * @param timer the TimerUtility instance to be used
+   */
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
+
+    // Add a listener to update the timer label when the timer's value changes
     timer
         .timeSecondsProperty()
         .addListener(
@@ -35,6 +44,7 @@ public class SafeController {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
+    // Create an AnimationTimer to continuously update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -47,6 +57,11 @@ public class SafeController {
     timerAnimation.start();
   }
 
+  /**
+   * Gets the timer label.
+   *
+   * @return the timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
@@ -54,6 +69,7 @@ public class SafeController {
   /** This method initializes the controller. */
   @FXML
   void initialize() {
+    // Ensure that the safePane is injected properly
     assert safePane != null
         : "fx:id=\"crimeScenePane\" was not injected: check your FXML file 'Safe.fxml'.";
   }
@@ -72,7 +88,7 @@ public class SafeController {
    * This method is called when the user clicks the keypad.
    *
    * @param event the event that triggered this method
-   * @throws IOException
+   * @throws IOException if an I/O error occurs
    */
   @FXML
   void onClickedKeypad(MouseEvent event) throws IOException {

@@ -32,6 +32,37 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
+/**
+ * The GuessingController class is responsible for handling the user interactions and game logic for
+ * the guessing game. It manages the UI components, handles user input, and communicates with the AI
+ * to process the user's guesses.
+ *
+ * <p>Fields: - resources: ResourceBundle for localization. - location: URL for the location of the
+ * FXML file. - chef, cleaner, daughter: Rectangles representing the suspects. - btnSubmit: Button
+ * for submitting the user's guess. - txtInput: TextField for user input. - lbTimesUp: Label
+ * indicating that the time is up. - rectangleBackground: Rectangle for the background. -
+ * btnResults: Button for viewing results. - lbTimer: Label for displaying the timer. - circleChef,
+ * circleCleaner, circleDaughter: ImageViews for indicating selected suspects. - lbExplain: Label
+ * for explanations. - loadingIndicator: ImageView for the loading indicator. - translateTransition:
+ * TranslateTransition for animating the loading indicator. - chosenSuspect: String representing the
+ * chosen suspect. - profession: String representing the profession of the AI. -
+ * chatCompletionRequest: ChatCompletionRequest for AI chat operations. - threads: List of active
+ * threads. - timer: TimerUtility for managing the game timer. - guessingTimerCheckTimeline:
+ * Timeline for checking if the timer has finished.
+ *
+ * <p>Methods: - initialize(): Initializes the controller and sets up the UI components. -
+ * enableGameOver(): Enables the game over screen. - timeUpCheck(): Checks if the timer has finished
+ * and handles the time-up scenario. - onClickedChef(MouseEvent event): Handles the event when the
+ * chef rectangle is clicked. - onClickedCleaner(MouseEvent event): Handles the event when the
+ * cleaner rectangle is clicked. - onClickedDaughter(MouseEvent event): Handles the event when the
+ * daughter rectangle is clicked. - onSubmitMessage(ActionEvent event): Handles the event when the
+ * submit button is clicked. - onClickSeeResults(ActionEvent event): Handles the event when the see
+ * results button is clicked. - setProfession(String profession): Sets the profession of the AI and
+ * initializes the chat request. - runGpt(ChatMessage msg): Runs the GPT chat operation and returns
+ * the AI response. - getSystemPrompt(): Gets the system prompt based on the profession of the AI. -
+ * showTextField(): Shows the text field and submit button. - cleanUpThreads(): Cleans up and
+ * cancels all active threads.
+ */
 public class GuessingController {
 
   @FXML private ResourceBundle resources;

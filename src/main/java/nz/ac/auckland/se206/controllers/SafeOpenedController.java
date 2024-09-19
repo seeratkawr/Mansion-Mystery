@@ -11,6 +11,51 @@ import javafx.scene.layout.AnchorPane;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
+/**
+ * The SafeOpenedController class is responsible for handling the interactions and logic for the
+ * "safe opened" scene in the application. It manages the timer display and handles user actions
+ * such as going back to the previous scene.
+ *
+ * <p>This controller uses JavaFX annotations to link UI components defined in the FXML file
+ * 'safeOpened.fxml' and provides methods to initialize the controller and handle user events.
+ *
+ * <p>Fields:
+ *
+ * <ul>
+ *   <li>{@code resources} - The resources used to localize the UI components.
+ *   <li>{@code location} - The location of the FXML file that defines the UI components.
+ *   <li>{@code safePane} - The main container for the "safe opened" scene.
+ *   <li>{@code timerLabel} - The label that displays the remaining time.
+ *   <li>{@code timer} - The utility class that manages the timer logic.
+ * </ul>
+ *
+ * <p>Methods:
+ *
+ * <ul>
+ *   <li>{@link #setTimer(TimerUtility)} - Sets the timer utility and initializes the timer display.
+ *   <li>{@link #getTimerLabel()} - Returns the label that displays the remaining time.
+ *   <li>{@link #initialize()} - Initializes the controller and ensures the FXML components are
+ *       injected.
+ *   <li>{@link #onGoBackSafe(MouseEvent)} - Handles the event when the user clicks the go back
+ *       button, returning the user to the previous scene.
+ * </ul>
+ *
+ * <p>Exceptions:
+ *
+ * <ul>
+ *   <li>{@link IOException} - Thrown by {@link #onGoBackSafe(MouseEvent)} if the FXML file is not
+ *       found.
+ * </ul>
+ *
+ * <p>Annotations:
+ *
+ * <ul>
+ *   <li>{@link FXML} - Indicates that a field or method is linked to an FXML component or event.
+ * </ul>
+ *
+ * @see TimerUtility
+ * @see App
+ */
 public class SafeOpenedController {
 
   @FXML private ResourceBundle resources;

@@ -17,6 +17,7 @@ import nz.ac.auckland.se206.TimerUtility;
 
 public class SafeKeypadController {
 
+  // FXML injected fields
   @FXML private ResourceBundle resources;
   @FXML private URL location;
   @FXML private AnchorPane safePane;
@@ -33,11 +34,20 @@ public class SafeKeypadController {
   @FXML private Rectangle rectangle0;
   @FXML private Rectangle rectangleClear;
 
+  // List to store the entered code
   List<Integer> code = new ArrayList<>();
-  List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1)); // the password to open the safe
-  int codeLength = password.size(); // the length of the code
+  // The correct password to open the safe
+  List<Integer> password = new ArrayList<>(Arrays.asList(5, 3, 1));
+  // The length of the code
+  int codeLength = password.size();
+  // Timer utility instance
   private TimerUtility timer;
 
+  /**
+   * Sets the timer and updates the timer label.
+   *
+   * @param timer the TimerUtility instance
+   */
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
     timer
@@ -59,6 +69,11 @@ public class SafeKeypadController {
     timerAnimation.start();
   }
 
+  /**
+   * Gets the timer label.
+   *
+   * @return the timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
@@ -66,8 +81,7 @@ public class SafeKeypadController {
   /** This method initializes the controller. */
   @FXML
   void initialize() {
-
-    // reset the user entry code when the scene is loaded
+    // Reset the user entry code when the scene is loaded
     code.clear();
   }
 
@@ -95,24 +109,19 @@ public class SafeKeypadController {
    * @throws IOException if the FXML file is not found
    */
   void validateCode(MouseEvent event) throws IOException {
-
-    // play a beep sound when a keypad button is clicked
+    // Play a beep sound when a keypad button is clicked
     App.playSound("safeKeypadBeep.mp3");
 
-    // validate the code only if it is the correct length
+    // Validate the code only if it is the correct length
     if (code.size() == codeLength) {
-
-      // play the sound of the safe opening in a background thread when the correct
+      // Play the sound of the safe opening in a background thread when the correct
       // code is entered to prevent blocking the UI thread when switching scenes
       if (code.equals(password)) {
-
         App.playSound("safeOpen.mp3");
-
         System.out.println("Correct code entered");
         App.openSafeOpened(event);
       } else {
-
-        // play an error sound and clear the code if the code is incorrect
+        // Play an error sound and clear the code if the code is incorrect
         App.playSound("safeKeypadError.mp3");
         System.out.println("Incorrect code entered");
         code.clear();

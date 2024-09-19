@@ -1,10 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,20 +12,24 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
-// nz.ac
-// nz.ac.auckland.se206.controllers.MapController
+// Controller class for the Map view
 public class MapController {
 
+  // FXML injected fields
   @FXML private Button exit_button;
   @FXML private ImageView background;
   @FXML private Button btnToStudy;
   @FXML private Label timerLabel;
 
+  // Timer utility instance
   private TimerUtility timer;
-  private static String lastScene; // Field to store the last scene
+  // Field to store the last scene
+  private static String lastScene;
 
+  // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
     this.timer = timer;
+    // Add listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()
         .addListener(
@@ -36,6 +37,7 @@ public class MapController {
               timerLabel.setText(timer.formatTime(newTime.intValue()));
             });
 
+    // Create an AnimationTimer to continuously update the timer label
     AnimationTimer timerAnimation =
         new AnimationTimer() {
           @Override
@@ -48,21 +50,26 @@ public class MapController {
     timerAnimation.start();
   }
 
+  // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  // Static method to set the last scene
   public static void setLastScene(String scene) {
     lastScene = scene;
   }
 
+  // Method to change the background image
   public void changeBackground(String path) {
     background.setImage(new Image(path));
   }
 
+  // Event handler for the exit button click
   @FXML
   private void onExitClicked(ActionEvent event) {
     try {
+      // Go back to the last scene
       App.goLastScene(lastScene);
     } catch (IOException e) {
       e.printStackTrace();
@@ -70,9 +77,11 @@ public class MapController {
     System.out.println("Exit Map clicked");
   }
 
+  // Event handler for the kitchen area click
   @FXML
   private void onKitchenClicked(MouseEvent event) {
     try {
+      // Play door shut sound
       App.playSound("doorshut.mp3");
       // Open the kitchen view
       System.out.println("Kitchen clicked");
@@ -83,9 +92,11 @@ public class MapController {
     }
   }
 
+  // Event handler for the daughter area click
   @FXML
   private void onDaughterClicked(MouseEvent event) {
     try {
+      // Play door shut sound
       App.playSound("doorshut.mp3");
       // Open the daughter view
       App.openSuspect(event, "daughter");
@@ -95,9 +106,11 @@ public class MapController {
     }
   }
 
+  // Event handler for the cleaner area click
   @FXML
   private void onCleanerClicked(MouseEvent event) {
     try {
+      // Play door shut sound
       App.playSound("doorshut.mp3");
       // Open the cleaner view
       App.openSuspect(event, "cleaner");
@@ -107,9 +120,11 @@ public class MapController {
     }
   }
 
+  // Event handler for the study button click
   @FXML
   private void onStudyClicked(ActionEvent event) {
     try {
+      // Play door shut sound
       App.playSound("doorshut.mp3");
       // Open the study view
       App.openCrimeScene(event);
