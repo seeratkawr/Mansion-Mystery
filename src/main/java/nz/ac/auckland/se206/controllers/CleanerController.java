@@ -37,7 +37,6 @@ public class CleanerController {
   private String profession; // Profession of the character
   private ChatCompletionRequest chatCompletionRequest; // Request object for chat completion
   private TranslateTransition translateTransition; // Animation for loading indicator
-  private TimerUtility timer; // Timer utility object
 
   // Initialize method called after the FXML fields are injected
   public void initialize() {
@@ -68,7 +67,6 @@ public class CleanerController {
 
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

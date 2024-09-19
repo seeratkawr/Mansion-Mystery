@@ -23,11 +23,8 @@ public class CrimeSceneController {
   @FXML private Label lbPopup;
   @FXML private Label timerLabel;
 
-  private TimerUtility timer; // TimerUtility instance for managing the game timer
-
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

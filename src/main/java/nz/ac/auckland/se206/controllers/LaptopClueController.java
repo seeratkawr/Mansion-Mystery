@@ -21,11 +21,8 @@ public class LaptopClueController {
   @FXML private Circle jamesCircle; // Circle representing James
   @FXML private Label timerLabel; // Label to display the timer
 
-  private TimerUtility timer; // Timer utility instance
-
   // Method to set the timer and update the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

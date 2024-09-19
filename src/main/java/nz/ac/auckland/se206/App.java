@@ -58,9 +58,6 @@ public class App extends Application {
   private static boolean timerStarted = false;
   private static TimerUtility timer;
   private static Timeline timerCheckTimeline;
-  private static TimerUtility guessingTimer;
-  private static boolean guessed = false;
-  private static Timeline guessingTimerCheckTimeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
 
@@ -439,7 +436,6 @@ public class App extends Application {
     }
 
     return result;
-    // return new ArrayList<>(List.of(true, true, true));
   }
 
   /**
@@ -495,7 +491,7 @@ public class App extends Application {
 
   public static void goLastScene(String lastScene) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
-    Parent root = null;
+    Parent root;
 
     if (lastScene.equals("daughter")) {
       FXMLLoader daughterLoader = new FXMLLoader(App.class.getResource("/fxml/daughter.fxml"));
@@ -525,10 +521,6 @@ public class App extends Application {
     } else {
       System.err.println("Failed to load the scene root.");
     }
-  }
-
-  public static void hasGuessed() {
-    guessed = true;
   }
 
   /**

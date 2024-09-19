@@ -38,7 +38,6 @@ public class DaughterController {
   private String profession; // Profession of the character
   private ChatCompletionRequest chatCompletionRequest; // Request object for chat completion
   private TranslateTransition translateTransition; // Animation for loading indicator
-  private TimerUtility timer; // Timer utility object
 
   // Initialize method called after the FXML fields are populated
   public void initialize() {
@@ -73,7 +72,6 @@ public class DaughterController {
 
   // Method to set the timer utility
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

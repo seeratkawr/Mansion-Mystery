@@ -63,10 +63,7 @@ public class SafeOpenedController {
   @FXML private AnchorPane safePane;
   @FXML private Label timerLabel;
 
-  private TimerUtility timer;
-
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     timer
         .timeSecondsProperty()
         .addListener(

@@ -25,16 +25,12 @@ public class SafeController {
   @FXML private Label timerLabel;
   @FXML private Rectangle rectangleKeypad;
 
-  // Timer utility instance
-  private TimerUtility timer;
-
   /**
    * Sets the timer and initializes the timer label to update with the timer's value.
    *
    * @param timer the TimerUtility instance to be used
    */
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
 
     // Add a listener to update the timer label when the timer's value changes
     timer

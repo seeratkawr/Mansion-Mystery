@@ -16,9 +16,6 @@ public class JamesClueController {
   // FXML injected Label for displaying the timer
   @FXML private Label timerLabel;
 
-  // Timer utility instance
-  private TimerUtility timer;
-
   // Method to handle the close clue action
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
@@ -30,7 +27,6 @@ public class JamesClueController {
 
   // Method to set the timer utility and initialize the timer label
   public void setTimer(TimerUtility timer) {
-    this.timer = timer;
     // Add listener to update the timer label when the time changes
     timer
         .timeSecondsProperty()
