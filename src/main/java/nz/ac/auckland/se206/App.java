@@ -2,13 +2,13 @@ package nz.ac.auckland.se206;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Timer;
-import java.util.Map;
-import java.util.HashMap;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -77,6 +77,7 @@ public class App extends Application {
   private static Stack<Scene> sceneStack = new Stack<>(); // Stack to manage scene history
   private static String profession;
   private static String chosenSuspect;
+  private static ChatCompletionRequest chatCompletionRequest;
 
   /**
    * The main method that launches the JavaFX application.
@@ -107,52 +108,6 @@ public class App extends Application {
    */
   private static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
-  }
-
-  /**
-   * This method is invoked when the application starts. It loads and shows the "room" scene.
-   *
-   * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
-   */
-  @Override
-  public void start(final Stage stage) throws IOException {
-    // Initialize the static stage variable
-    primaryStage = stage;
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startgame.fxml"));
-    Parent root = loader.load();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-    root.requestFocus();
-    sceneStack.push(scene);
-
-    // ending any remaining threads on close
-    stage.setOnCloseRequest(
-        e -> {
-          // ending media players
-          if (mediaPlayer != null) {
-            System.out.println("Closing media player");
-            mediaPlayer.stop();
-            mediaPlayer.dispose();
-          }
-
-          // ending threads
-          if (activeTimers.size() > 0) {
-            System.out.println("Closing active timers");
-            for (Timer timer : activeTimers) {
-              timer.cancel();
-            }
-          }
-
-          // ending threads for AI
-          if (timerCheckTimeline != null) {
-            System.out.println("Closing timer check timeline");
-            timerCheckTimeline.stop();
-          }
-        });
-
-    startTimerCheckTask();
   }
 
   /**
@@ -722,10 +677,13 @@ public class App extends Application {
     activeThreads.add(thread);
   }
 
-  private static ChatCompletionRequest chatCompletionRequest;
-
-    // Event handler for send button click
-  public static void handleGPT(String profession, TextField txtInput, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition, 
+  // Event handler for send button click
+  public static void handleGPT(
+      String profession,
+      TextField txtInput,
+      TextArea txtaChat,
+      ImageView loadingIndicator,
+      TranslateTransition translateTransition,
       ActionEvent event) {
     App.playSound("button.mp3");
 
@@ -744,8 +702,15 @@ public class App extends Application {
     }
     txtInput.clear();
 
-    ChatMessage userMessage = new ChatMessage("user", txtaChat != null ? message : "SELECTED USER: " + chosenSuspect
-        + "USER MESSAGE: " + message); // Create a user message
+    ChatMessage userMessage =
+        new ChatMessage(
+            "user",
+            txtaChat != null
+                ? message
+                : "SELECTED USER: "
+                    + chosenSuspect
+                    + "USER MESSAGE: "
+                    + message); // Create a user message
 
     if (txtaChat != null) {
       appendChatMessage(userMessage, txtaChat); // Append the user message to the chat area
@@ -792,10 +757,14 @@ public class App extends Application {
   }
 
   // Method to set the profession and initialize chat completion request
-  public static void setProfession(String profession, TextArea txtaChat, ImageView loadingIndicator, TranslateTransition translateTransition) {
+  public static void setProfession(
+      String profession,
+      TextArea txtaChat,
+      ImageView loadingIndicator,
+      TranslateTransition translateTransition) {
     setCurrentProfession(profession);
     System.out.println("setting profession: " + profession);
-    if(txtaChat != null) {
+    if (txtaChat != null) {
       txtaChat.clear();
     }
 
@@ -869,7 +838,6 @@ public class App extends Application {
     }
   }
 
-
   // Method to get the system prompt based on the profession
   public static String getSystemPrompt(String profession) {
     Map<String, String> map = new HashMap<>();
@@ -916,39 +884,85 @@ public class App extends Application {
   }
 
   /**
-   * Starts a task to periodically check the timer status. If the timer has
-   * finished, it will either
+   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   *
+   * @param stage the primary stage of the application
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   */
+  @Override
+  public void start(final Stage stage) throws IOException {
+    // Initialize the static stage variable
+    primaryStage = stage;
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/startgame.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    stage.setScene(scene);
+    stage.show();
+    root.requestFocus();
+    sceneStack.push(scene);
+
+    // ending any remaining threads on close
+    stage.setOnCloseRequest(
+        e -> {
+          // ending media players
+          if (mediaPlayer != null) {
+            System.out.println("Closing media player");
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+          }
+
+          // ending threads
+          if (activeTimers.size() > 0) {
+            System.out.println("Closing active timers");
+            for (Timer timer : activeTimers) {
+              timer.cancel();
+            }
+          }
+
+          // ending threads for AI
+          if (timerCheckTimeline != null) {
+            System.out.println("Closing timer check timeline");
+            timerCheckTimeline.stop();
+          }
+        });
+
+    startTimerCheckTask();
+  }
+
+  /**
+   * Starts a task to periodically check the timer status. If the timer has finished, it will either
    * open the guessing scene or the game lost scene based on the game state.
    */
   private void startTimerCheckTask() {
-    timerCheckTimeline = new Timeline(
-        new KeyFrame(
-            Duration.seconds(1),
-            event -> {
-              if (timer != null && timer.isFinished()) {
-                // Handle the case when the timer has finished
-                System.out.println("Timer has finished.");
-                // You might want to perform specific actions or show a notification
-                try {
-                  // Check if the player can guess based on the number
-                  // of suspects talked to and clues viewed
-                  if (verifyCanGuess().get(0).equals(true)
-                      && verifyCanGuess().get(1).equals(true)
-                      && verifyCanGuess().get(2).equals(true)) {
-                    openGuessingScene();
-                    System.out.println("Guessing scene opened.");
-                  } else {
-                    // If the player cannot guess, open the game lost scene
-                    openGameLost();
-                    System.out.println("Game lost scene opened.");
-                    timerCheckTimeline.stop();
+    timerCheckTimeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.seconds(1),
+                event -> {
+                  if (timer != null && timer.isFinished()) {
+                    // Handle the case when the timer has finished
+                    System.out.println("Timer has finished.");
+                    // You might want to perform specific actions or show a notification
+                    try {
+                      // Check if the player can guess based on the number
+                      // of suspects talked to and clues viewed
+                      if (verifyCanGuess().get(0).equals(true)
+                          && verifyCanGuess().get(1).equals(true)
+                          && verifyCanGuess().get(2).equals(true)) {
+                        openGuessingScene();
+                        System.out.println("Guessing scene opened.");
+                      } else {
+                        // If the player cannot guess, open the game lost scene
+                        openGameLost();
+                        System.out.println("Game lost scene opened.");
+                        timerCheckTimeline.stop();
+                      }
+                    } catch (IOException e) {
+                      // Handle any IO exceptions that occur
+                      e.printStackTrace();
+                    }
                   }
-                } catch (IOException e) {
-                  // Handle any IO exceptions that occur
-                  e.printStackTrace();
-                }
-              }
-            }));
+                }));
     timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
     timerCheckTimeline.play();
   }

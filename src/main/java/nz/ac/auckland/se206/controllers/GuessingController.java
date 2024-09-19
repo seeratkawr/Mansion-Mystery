@@ -18,8 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
-import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
@@ -48,7 +46,6 @@ public class GuessingController {
   @FXML private ImageView loadingIndicator;
   private TranslateTransition translateTransition;
 
-  private String chosenSuspect;
   private String profession;
   private List<Thread> threads = new ArrayList<Thread>();
   private TimerUtility timer;
@@ -148,9 +145,13 @@ public class GuessingController {
   private void onClickedChef(MouseEvent event) {
     App.setChosenSuspect("the chef James");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
+    // disabling other rectangles
+    cleaner.setDisable(true);
+    daughter.setDisable(true);
   }
 
   /**
@@ -165,9 +166,13 @@ public class GuessingController {
   private void onClickedCleaner(MouseEvent event) {
     App.setChosenSuspect("the cleaner Alex");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
+    // disabling other rectangles
+    chef.setDisable(true);
+    daughter.setDisable(true);
   }
 
   /**
@@ -182,9 +187,13 @@ public class GuessingController {
   private void onClickedDaughter(MouseEvent event) {
     App.setChosenSuspect("the daughter Maria");
     showTextField();
+    // changing visibility of circles
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
+    // disabling other rectangles
+    chef.setDisable(true);
+    cleaner.setDisable(true);
   }
 
   /**
@@ -221,17 +230,6 @@ public class GuessingController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * This method runs the GPT chat operation.
-   *
-   * @param msg the message to send to the AI
-   * @return the response from the AI
-   * @throws ApiProxyException if the API request fails
-   */
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    return App.runGpt(msg);
   }
 
   /** This method shows the text field and submit button. */
