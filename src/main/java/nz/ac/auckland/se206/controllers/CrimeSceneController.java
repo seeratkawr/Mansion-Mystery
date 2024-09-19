@@ -1,17 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException; 
-import java.util.Timer; 
+import java.io.IOException;
+import java.util.Timer;
 import java.util.TimerTask;
-import javafx.event.ActionEvent; 
-import javafx.fxml.FXML; 
-import javafx.scene.control.Button; 
-import javafx.scene.control.Label; 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle; 
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.speech.TextToSpeech; 
 
 public class CrimeSceneController {
 
@@ -31,9 +30,6 @@ public class CrimeSceneController {
   // Method to handle map click events
   @FXML
   private void onMapClicked(MouseEvent event) {
-    TextToSpeech.speak("Welcome to Mansion Mystery. Talk to the suspects and find clues to guess who stole the diamond necklace.");
-    TextToSpeech.speak("Click on the suspect you think is the thief.");
-
     try {
       // Open the map view
       App.playSound("map.mp3"); // Play map sound
