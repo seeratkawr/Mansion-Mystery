@@ -17,9 +17,9 @@
       </ImageView>
       <TextArea fx:id="txtaChat" editable="false" layoutX="469.0" layoutY="105.0" prefHeight="99.0" prefWidth="324.0" />
       <TextField fx:id="txtInput" layoutX="-1.0" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the chef, James" />
-      <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="750.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true" styleClass="styles.css">
+      <ImageView fitHeight="85.0" fitWidth="85.0" layoutX="798.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true" styleClass="styles.css">
          <image>
-            <Image url="@../images/map.png" />
+            <Image url="@../images/rolled_map.png" />
          </image>
       </ImageView>
       <Button fx:id="btnSend" layoutX="750.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />

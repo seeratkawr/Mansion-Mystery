@@ -66,6 +66,7 @@ public class DaughterController {
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
+      App.playSound("map.mp3"); // Play map sound
       App.openMap(event, "/images/bedroom.jpg"); // Open the map with the specified image
       MapController.setLastScene("daughter"); // Set the last scene to daughter
     } catch (IOException e) {

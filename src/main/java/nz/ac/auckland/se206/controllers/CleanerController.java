@@ -68,6 +68,7 @@ public class CleanerController {
   private void onMapClicked(MouseEvent event) {
     try {
       // Open the map scene and set the last scene to cleaner
+      App.playSound("map.mp3"); // Play map sound
       App.openMap(event, "/images/cleaner.png");
       MapController.setLastScene("cleaner");
     } catch (IOException e) {
