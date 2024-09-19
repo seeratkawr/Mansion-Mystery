@@ -66,7 +66,7 @@ public class GuessingController {
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/necklace.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
     translateTransition.setFromX(-50); // Start position (off-screen)
-    translateTransition.setToX(500); // End position (adjust as needed)
+    translateTransition.setToX(720); // End position (adjust as needed)
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
     translateTransition.setAutoReverse(true); // Move back and forth
 
