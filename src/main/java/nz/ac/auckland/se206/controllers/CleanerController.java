@@ -39,7 +39,6 @@ public class CleanerController {
   @FXML private Label timerLabel; // Label to display timer
 
   private String profession; // Profession of the character
-  private ChatCompletionRequest chatCompletionRequest; // Request object for chat completion
   private TranslateTransition translateTransition; // Animation for loading indicator
 
   // Initialize method called after the FXML fields are injected
@@ -54,7 +53,9 @@ public class CleanerController {
     txtaChat.setEditable(false);
     txtaChat.setWrapText(true);
 
-    setProfession("Cleaner");
+    App.setProfession("Cleaner", txtaChat,loadingIndicator, translateTransition);
+    profession = App.getCurrentProfession();
+    System.out.println("prfession from app now actually set to: " + profession);
 
     // Add event handler for the Enter key to send the message
     txtInput.setOnKeyPressed(
@@ -89,139 +90,8 @@ public class CleanerController {
   // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    App.playSound("button.mp3");
-    // Add the profession to the list of suspects talked to
-    App.addSuspectTalkedTo(profession);
-    String message = txtInput.getText().trim();
-    if (message.isEmpty()) {
-      return;
-    }
-
-    // Clear the chat area and append the user message
-    clearChat();
-
-    txtInput.clear();
-    ChatMessage userMessage = new ChatMessage("user", message); // Create a user message
-    appendChatMessage(userMessage); //  Append the user message to the chat area
-
-    loadingIndicator.setVisible(true);
-    translateTransition.play();
-
-    // Task to handle chat completion request in a background thread
-    Task<Void> task =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            ChatMessage response = runGpt(userMessage);
-
-            // Append the response to the chat area and stop the loading indicator
-            Platform.runLater(
-                () -> {
-                  appendChatMessage(response);
-                  loadingIndicator.setVisible(false);
-                  translateTransition.stop();
-                });
-            return null;
-          }
-        };
-
-    // Start the task in a new thread
-    Thread thread = new Thread(task);
-    App.addThread(thread);
-    thread.setDaemon(true);
-    thread.start();
+    System.out.println("Send button clicked - handling gpt with profession: " + profession);
+    App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition);
   }
 
-  // Method to set the profession and initialize chat completion request
-  public void setProfession(String profession) {
-    this.profession = profession;
-    clearChat(); // Clear the chat area
-
-    // Initialize chat completion request
-    try {
-      ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest =
-          new ChatCompletionRequest(config)
-              .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.4)
-              .setMaxTokens(100);
-
-      loadingIndicator.setVisible(true);
-      translateTransition.play();
-
-      // Task to handle initial chat completion request in a background thread
-      Task<Void> task =
-          new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-              // Create a system message and get the response from GPT
-              ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt());
-              ChatMessage response = runGpt(systemMessage);
-
-              // On a new thread, append the response to the
-              // chat area and stop the loading indicator
-              Platform.runLater(
-                  () -> {
-                    appendChatMessage(response);
-                    loadingIndicator.setVisible(false);
-                    translateTransition.stop();
-                  });
-              return null;
-            }
-          };
-
-      // Start the task in a new thread
-      Thread thread = new Thread(task);
-      App.addThread(thread);
-      thread.setDaemon(true);
-      thread.start();
-    } catch (ApiProxyException e) {
-      e.printStackTrace();
-    }
-  }
-
-  // Method to append a chat message to the chat area
-  private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getContent() + "\n\n");
-    System.out.println(
-        "Response from LLM: " + msg.getContent()); // Print the response to the console
-  }
-
-  // Method to run GPT chat completion request
-  private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
-    try {
-      // Execute the chat completion request and get the response
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      return result.getChatMessage();
-    } catch (ApiProxyException e) {
-      e.printStackTrace();
-      return null;
-    }
-  }
-
-  // Method to clear the chat area
-  private void clearChat() {
-    txtaChat.clear();
-  }
-
-  // Method to get the system prompt based on the profession
-  private String getSystemPrompt() {
-    Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
-
-    // Get the prompt from the file based on the profession
-    String promptFileName;
-    if ("Cleaner".equals(profession)) {
-      promptFileName = "cleaner_prompt.txt";
-    } else {
-      throw new IllegalStateException("Unexpected profession: " + profession);
-    }
-
-    String prompt = PromptEngineering.getPrompt(promptFileName, map);
-    return prompt;
-  }
 }
