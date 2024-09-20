@@ -26,14 +26,14 @@
          </image>
       </ImageView>
       <Button fx:id="btnExit" layoutX="778.0" layoutY="21.0" mnemonicParsing="false" onAction="#onExitClicked" opacity="0.0" prefHeight="46.0" prefWidth="46.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="102.0" layoutX="341.0" layoutY="242.0" onMouseClicked="#onKitchenClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="101.0" />
-      <Rectangle fx:id="daughterRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="185.0" layoutY="77.0" onMouseClicked="#onDaughterClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="101.0" />
+      <Rectangle fx:id="kitchenRectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="96.0" layoutX="354.0" layoutY="225.0" onMouseClicked="#onKitchenClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="87.0" />
+      <Rectangle fx:id="daughterRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" layoutX="209.0" layoutY="68.0" onMouseClicked="#onDaughterClicked" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="87.0" />
       <Button fx:id="btnToStudy" layoutX="209.0" layoutY="433.0" mnemonicParsing="false" onAction="#onStudyClicked" prefHeight="78.0" prefWidth="101.0" style="-fx-background-color: transparent; -fx-text-fill: transparent; -fx-border-color: transparent;" text="Go to study" textFill="#e8e8e8">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="102.0" layoutX="559.0" layoutY="128.0" onMouseClicked="#onCleanerClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="101.0" />
+      <Rectangle fx:id="cleanerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="90.0" layoutX="565.0" layoutY="136.0" onMouseClicked="#onCleanerClicked" stroke="TRANSPARENT" strokeType="INSIDE" width="87.0" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
    </children>
 </AnchorPane>

@@ -211,7 +211,10 @@
 #circleButton3:hover,
 #hoverCircle1:hover,
 #hoverCircle2:hover,
-#hoverCircle3:hover {
+#hoverCircle3:hover,
+#laptopRectangle:hover,
+#drawerRectangle:hover,
+#bookshelfSafeRectangle:hover {
   -fx-fill: rgba(70, 70, 70, 0.3);
   /* Light transparent color */
   -fx-cursor: hand;
@@ -219,7 +222,12 @@
 
 #daughter:hover,
 #chef:hover,
-#cleaner:hover {
+#cleaner:hover,
+#map:hover,
+#mapImage:hover,
+#daughterRectangle:hover,
+#kitchenRectangle:hover,
+#cleanerRectangle:hover {
   /* hand cursor */
   -fx-cursor: hand;
 }
