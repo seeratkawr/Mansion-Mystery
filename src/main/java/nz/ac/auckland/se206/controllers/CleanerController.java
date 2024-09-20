@@ -79,6 +79,6 @@ public class CleanerController {
   // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
+    App.handleGpt(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
 }

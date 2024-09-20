@@ -678,7 +678,7 @@ public class App extends Application {
   }
 
   // Event handler for send button click
-  public static void handleGPT(
+  public static void handleGpt(
       String profession,
       TextField txtInput,
       TextArea txtaChat,

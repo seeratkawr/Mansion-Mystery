@@ -77,7 +77,7 @@ public class DaughterController {
   // Event handler for send button click
   @FXML
   private void onSendMessage(ActionEvent event) {
-    App.handleGPT(profession, txtInput, daughterText, loadingIndicator, translateTransition, null);
+    App.handleGpt(profession, txtInput, daughterText, loadingIndicator, translateTransition, null);
   }
 
 }
