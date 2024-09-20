@@ -953,6 +953,7 @@ public class App extends Application {
                         System.out.println("Guessing scene opened.");
                       } else {
                         // If the player cannot guess, open the game lost scene
+                        App.playSound("gameOverNoTime.mp3");
                         openGameLost();
                         System.out.println("Game lost scene opened.");
                         timerCheckTimeline.stop();
