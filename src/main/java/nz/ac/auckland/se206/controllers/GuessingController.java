@@ -53,7 +53,6 @@ public class GuessingController {
 
   @FXML
   private void initialize() {
-    App.playSound("guessingAudio.mp3");
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/necklace.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
