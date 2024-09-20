@@ -79,6 +79,6 @@ public class KitchenController {
   // Handle send message button click event
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
-    App.handleGPT(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
+    App.handleGpt(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
 }

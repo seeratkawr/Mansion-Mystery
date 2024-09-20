@@ -211,7 +211,7 @@ public class GuessingController {
     System.out.println("Submit message clicked");
     lbTimer.setVisible(false);
 
-    App.handleGPT(profession, txtInput, null, loadingIndicator, translateTransition, event);
+    App.handleGpt(profession, txtInput, null, loadingIndicator, translateTransition, event);
   }
 
   /**
