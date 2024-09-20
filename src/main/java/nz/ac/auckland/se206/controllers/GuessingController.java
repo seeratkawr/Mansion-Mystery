@@ -122,6 +122,7 @@ public class GuessingController {
                     System.out.println("Guessing timer has finished.");
                     // You might want to perform specific actions or show a notification
                     try {
+                      App.playSound("gameOverNoTime.mp3");
                       App.openGameLost();
                     } catch (IOException e) {
                       e.printStackTrace();

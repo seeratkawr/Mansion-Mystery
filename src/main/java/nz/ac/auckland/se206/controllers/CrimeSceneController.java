@@ -18,6 +18,7 @@ public class CrimeSceneController {
   @FXML private ImageView map;
   @FXML private Rectangle laptopRectangle;
   @FXML private Rectangle bookshelfSafeRectangle;
+  @FXML private Rectangle drawersRectangle;
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
   @FXML private Label timerLabel;

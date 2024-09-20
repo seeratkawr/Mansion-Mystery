@@ -26,6 +26,7 @@ public class KitchenController {
   @FXML private Button btnSend; // Button to send messages
   @FXML private ImageView loadingIndicator; // Loading indicator image
   @FXML private Label timerLabel; // Label to display the timer
+  @FXML private ImageView mapImage; // Image view for the map
 
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
