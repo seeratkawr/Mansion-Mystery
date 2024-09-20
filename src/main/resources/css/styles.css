@@ -108,7 +108,8 @@
   -fx-padding: 7 15;
 }
 
-#restartButton {
+#restartButton,
+#btnToStudy {
   /* Styling for the restart button */
   -fx-background-color: transparent;
 
@@ -184,8 +185,14 @@
 }
 
 #rectangleKeypad:hover {
-  -fx-fill: rgba(200, 200, 200, 0.3);
+  -fx-fill: rgba(70, 70, 70, 0.3);
   /* Light transparent color */
+  -fx-cursor: hand;
+}
+
+#btnToStudy:hover {
+  -fx-background-color: rgba(70, 70, 70, 0.3);
+  /* Lighter version of #5c5e25 with transparency */
   -fx-cursor: hand;
 }
 
@@ -200,8 +207,11 @@
 #rectangle9:hover,
 #rectangle0:hover,
 #rectangleClear:hover,
-#rectangleBook:hover {
-  -fx-fill: rgba(200, 200, 200, 0.3);
+#rectangleBook:hover,
+#kitchenCircle:hover,
+#cleanerCircle:hover,
+#daughterCircle:hover {
+  -fx-fill: rgba(70, 70, 70, 0.3);
   /* Light transparent color */
   -fx-cursor: hand;
 }

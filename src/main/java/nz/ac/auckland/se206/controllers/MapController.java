@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
 // Controller class for the Map view
@@ -27,9 +27,9 @@ public class MapController {
   @FXML private Label timerLabel;
   @FXML private Button btnExit;
   @FXML private Button btnToStudy;
-  @FXML private Rectangle kitchenRectangle;
-  @FXML private Rectangle daughterRectangle;
-  @FXML private Rectangle cleanerRectangle;
+  @FXML private Circle kitchenCircle;
+  @FXML private Circle daughterCircle;
+  @FXML private Circle cleanerCircle;
 
   // Getter for the timer label
   public Label getTimerLabel() {
