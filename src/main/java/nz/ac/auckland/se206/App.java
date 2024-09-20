@@ -949,6 +949,7 @@ public class App extends Application {
                       if (verifyCanGuess().get(0).equals(true)
                           && verifyCanGuess().get(1).equals(true)
                           && verifyCanGuess().get(2).equals(true)) {
+                        App.playSound("guessingAudio.mp3");
                         openGuessingScene();
                         System.out.println("Guessing scene opened.");
                       } else {
