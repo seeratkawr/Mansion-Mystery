@@ -1,4 +1,4 @@
-Keep the responses very short. 
+Try keep your messages short. 
 Task:
 The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
 
@@ -26,6 +26,7 @@ make sure to tell them that they missed out some informtion let them know what p
 mention anything about marias financial motive, then also make sure to tell them they didn't mention her financial motive, 
 and explain what marias financial motive was. 
 
-Say this when the [SELECTED SUSPECT] is the chef James or the cleaner Alex:
+Say this when the [SELECTED SUSPECT] is the chef James or the cleaner Alex: DO NOT MENTION WHO THE CORRECT 
+THIEF IS, ONLY SAY THIS:
 You guessed the mansion thief incorrectly. Better luck next time!
 

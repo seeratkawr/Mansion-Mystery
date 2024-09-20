@@ -776,7 +776,7 @@ public class App extends Application {
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.4)
-              .setMaxTokens(txtaChat != null ? 200 : 100);
+              .setMaxTokens(txtaChat != null ? 260 : 190);
 
       if (loadingIndicator != null && translateTransition != null) {
         loadingIndicator.setVisible(true);
