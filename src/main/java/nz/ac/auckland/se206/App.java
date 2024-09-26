@@ -132,6 +132,8 @@ public class App extends Application {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/guessingscene.fxml"));
     Parent root = loader.load();
 
+    timer.pause();
+
     scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
@@ -952,6 +954,7 @@ public class App extends Application {
                         App.playSound("guessingAudio.mp3");
                         openGuessingScene();
                         System.out.println("Guessing scene opened.");
+                        timerCheckTimeline.stop();
                       } else {
                         // If the player cannot guess, open the game lost scene
                         App.playSound("gameOverNoTime.mp3");
