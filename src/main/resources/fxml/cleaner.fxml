@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CleanerController">
    <children>
@@ -15,19 +16,20 @@
             <Image url="@../images/cleaner.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="txtaChat" editable="false" layoutX="61.0" layoutY="118.0" prefHeight="137.0" prefWidth="292.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="799.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/rolled_map.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="51.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="txtInput" layoutY="561.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the cleaner, Alex" />
+      <Button fx:id="btnSend" layoutX="751.0" layoutY="561.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <TextArea fx:id="txtaChat" editable="false" layoutX="66.0" layoutY="77.0" prefHeight="109.0" prefWidth="292.0" />
+      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="66.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/broom.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtInput" layoutY="561.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the cleaner, Alex" />
-      <Button fx:id="btnSend" layoutX="751.0" layoutY="561.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Polygon fill="WHITE" layoutX="393.0" layoutY="276.0" points="-43.333343505859375, -115.33332824707031, -57.333343505859375, -95.33332824707031, 3.0517578125E-5, -70.99998474121094" stroke="WHITE" strokeType="INSIDE" />
    </children>
 </AnchorPane>

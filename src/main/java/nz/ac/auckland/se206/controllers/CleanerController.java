@@ -36,7 +36,7 @@ public class CleanerController {
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/broom.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
     translateTransition.setFromX(0);
-    translateTransition.setToX(292);
+    translateTransition.setToX(285);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
     txtaChat.setEditable(false);

@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.DaughterController">
    <children>
@@ -15,13 +16,13 @@
             <Image url="@../images/bedroom.jpg" />
          </image>
       </ImageView>
-      <TextArea fx:id="daughterText" editable="false" layoutX="411.0" layoutY="90.0" prefHeight="101.0" prefWidth="316.0" />
+      <TextArea fx:id="daughterText" editable="false" layoutX="445.0" layoutY="95.0" prefHeight="101.0" prefWidth="316.0" />
       <ImageView fx:id="mapImage" fitHeight="93.0" fitWidth="82.0" layoutX="799.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/rolled_map.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="395.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="442.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/bear.png" />
          </image>
@@ -29,5 +30,6 @@
       <TextField fx:id="txtInput" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the daughter, Maria" />
       <Button fx:id="btnSend" layoutX="751.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Polygon fill="WHITE" layoutX="403.0" layoutY="286.0" points="47.999969482421875, -124.13850402832031, 66.66665649414062, -101.47184753417969, 5.333343505859375, -76.13850402832031" stroke="WHITE" strokeType="INSIDE" />
    </children>
 </AnchorPane>

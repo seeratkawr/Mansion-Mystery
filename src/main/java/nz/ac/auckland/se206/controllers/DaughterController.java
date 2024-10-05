@@ -35,7 +35,7 @@ public class DaughterController {
         new TranslateTransition(
             Duration.seconds(2), loadingIndicator); // Create translate transition animation
     translateTransition.setFromX(0);
-    translateTransition.setToX(316);
+    translateTransition.setToX(300);
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE);
     translateTransition.setAutoReverse(true);
     daughterText.setEditable(false); // Make text area non-editable
@@ -79,5 +79,4 @@ public class DaughterController {
   private void onSendMessage(ActionEvent event) {
     App.handleGpt(profession, txtInput, daughterText, loadingIndicator, translateTransition, null);
   }
-
 }
