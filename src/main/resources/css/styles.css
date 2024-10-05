@@ -75,6 +75,35 @@
   -fx-font-style: italic;
   /* Make the text slanted */
 }
+#txtaChat {
+  -fx-background-color: #FFFFFF;          /* Background color changed to white */
+  -fx-border-width: 0;                     /* Set border width to 0 to remove the border */
+  -fx-font-family: "hand-written", "Cursive"; /* Font style */
+  -fx-font-size: 12px;                      /* Font size */
+  -fx-text-fill: #4B2E39;                  /* Text color */
+  -fx-font-style: italic;                   /* Italic text */
+  -fx-background-radius: 30;                /* Increase radius for more oval shape */
+  -fx-padding: 10;                          /* Padding inside the bubble */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1); /* Drop shadow effect */
+    /* Remove focus highlight */
+    -fx-focus-color: transparent;            /* Make focus color transparent */
+    -fx-faint-focus-color: transparent;      /* Remove faint focus outline */
+}
+
+#daughterText{
+  -fx-background-color: #FFFFFF;          /* Background color changed to white */
+  -fx-border-width: 0;                     /* Set border width to 0 to remove the border */
+  -fx-font-family: "hand-written", "Cursive"; /* Font style */
+  -fx-font-size: 12px;                      /* Font size */
+  -fx-text-fill: #4B2E39;                  /* Text color */
+  -fx-font-style: italic;                   /* Italic text */
+  -fx-background-radius: 30;                /* Increase radius for more oval shape */
+  -fx-padding: 10;                          /* Padding inside the bubble */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0.0, 0, 1); /* Drop shadow effect */
+    /* Remove focus highlight */
+    -fx-focus-color: transparent;            /* Make focus color transparent */
+    -fx-faint-focus-color: transparent;      /* Remove faint focus outline */
+}
 
 /* Styling for cursive text with a larger font */
 .text {

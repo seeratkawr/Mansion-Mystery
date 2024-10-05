@@ -1,17 +1,15 @@
 Try keep your messages short. 
 Task:
-The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed feedback based on the game's storyline. Follow these steps:
+The player has provided their guess of who the thief is and an explanation. Your job is to analyze their answer and give detailed 
+feedback based on the game's storyline. Follow these steps:
 
-Identify if the correct suspect was chosen: 
-The correct thief is the daughter. If the player chose the daughter Maria, acknowledge it as correct. If they chose someone else, indicate that the guess is incorrect and why the correct suspect is the daughter.
-Analyze the player's explanation: Evaluate the player's reasoning. Does it correctly identify the key clues (laptop, notebook, safe) and align with the daughter's motive (financial desperation, knowledge of the valuable item, anger at her parents)? Provide feedback on whether the explanation was logical, thorough, and accurate.
+Say this when the [SELECTED SUSPECT] is the daughter Maria:
+You guessed correctly! The mansion thief is the daughter.
+Next, analyze the player's explanation: Evaluate the player's reasoning for choosing the daughter, Maria. 
+Does it correctly identify key clues (laptop, notebook, safe) and align with the daughter's motive (financial desperation, knowledge of the 
+valuable item, anger at her parents)? Provide feedback on whether the explanation was logical, thorough, and accurate.
 
-Give Feedback:
-If the guessed suspect and explanation are correct, confirm that the player has solved the mystery and explain why their reasoning is solid.
-If the guessed suspect is correct but the explanation is flawed, acknowledge the correct guess but remember to point out that they missed some key information and explain where the reasoning is incomplete or incorrect, and explain the correct reasoning.
-If the guessed suspect is incorrect, provide feedback on why their guess was wrong and give a brief explanation of why the daughter is the correct thief.
-
-This is the ideal response for why the daughter was the thief:
+This is an ideal response for why the daughter was the thief:
 -The daughter was struggling financially and wanting to buy a car, and had motive to steal due to her frustration with her parents over their refusal to help her buy a car. 
 The long hair strands accidentally left behind in the safe in the study clearly belongs to maria as neither of the 
 other suspects have long hair. She knew the combination to the safe and attempted to change it after stealing the valuable item, 
@@ -19,9 +17,10 @@ leaving behind evidence like strands of her hair in the safe.Her internet histor
 The notebook in the study shows that she has been caught stealing from classmates at schools and her parents 
 were unhappy with her which shows a history of theft. 
 
-If the user writes something along the lines of this response, say they are correct and correctly identified all the clues leading
-to Maria being the mansion thief. 
-If the user is correct in their guess for the thief being maria the daughter, but fails to mention all 3 clues in their explanation such as the laptop, the safe, and the notebook in the study
+If the user writes something along the lines of this response (it doesn't have to mention everything just key points), say they are correct and successfulling idenitified
+the clues and motives clues leading to Maria being the mansion thief, confirm that the player has solved the mystery and explain why their reasoning is solid.
+;
+If the user is correct in their guess for the thief being maria the daughter, but fails to mention at least 1 solid clue in their explanation such as the laptop, the safe, and the notebook in the study
 make sure to tell them that they missed out some informtion let them know what parts of their explanation was missing. Also if the user fails to
 mention anything about marias financial motive, then also make sure to tell them they didn't mention her financial motive, 
 and explain what marias financial motive was. 

@@ -119,12 +119,18 @@ public class GuessingController {
                   if (timer != null && timer.isFinished()) {
                     // Handle the case when the timer has finished
                     System.out.println("Guessing timer has finished.");
-                    // You might want to perform specific actions or show a notification
-                    try {
-                      App.playSound("gameOverNoTime.mp3");
-                      App.openGameLost();
-                    } catch (IOException e) {
-                      e.printStackTrace();
+                    // Check if there is text in the input field
+                    if (!txtInput.getText().isEmpty()) {
+                      // Automatically submit the message
+                      btnSubmit.fire(); // Trigger the submit button programmatically
+                    } else {
+                      // No message was entered, handle game over scenario
+                      try {
+                        App.playSound("gameOverNoTime.mp3");
+                        App.openGameLost();
+                      } catch (IOException e) {
+                        e.printStackTrace();
+                      }
                     }
                     guessingTimerCheckTimeline.stop();
                   }

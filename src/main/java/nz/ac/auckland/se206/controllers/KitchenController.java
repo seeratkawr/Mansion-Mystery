@@ -37,7 +37,7 @@ public class KitchenController {
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/spatula.png")));
     translateTransition = new TranslateTransition(Duration.seconds(2), loadingIndicator);
     translateTransition.setFromX(0); // Start position (off-screen)
-    translateTransition.setToX(324); // End position (adjust as needed)
+    translateTransition.setToX(310); // End position (adjust as needed)
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
     translateTransition.setAutoReverse(true); // Move back and forth
     txtaChat.setWrapText(true); // Enable text wrapping in chat area

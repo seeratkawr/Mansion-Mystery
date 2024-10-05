@@ -20,6 +20,31 @@
             <Rectangle fx:id="rectangleBook" arcHeight="15.0" arcWidth="15.0" fill="#ffffff00" height="133.0" layoutX="240.0" layoutY="99.0" onMouseClicked="#onClickedBook" rotate="76.6" stroke="TRANSPARENT" strokeType="INSIDE" width="163.0" />
             <Button layoutX="703.0" layoutY="39.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
             <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+            <ImageView fx:id="item1" fitHeight="189.0" fitWidth="229.0" layoutX="279.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/scrunchpaper.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="item2" fitHeight="189.0" fitWidth="229.0" layoutX="276.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/scissors.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="item3" fitHeight="122.0" fitWidth="109.0" layoutX="183.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/highliter.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="item4" fitHeight="122.0" fitWidth="167.0" layoutX="292.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stapler.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="item5" fitHeight="109.0" fitWidth="123.0" layoutX="190.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/holepuncher.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
