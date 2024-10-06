@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Timer;
+import java.util.TimerTask;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
@@ -30,7 +31,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.util.TimerTask;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
@@ -54,7 +54,6 @@ import nz.ac.auckland.se206.controllers.SafeController;
 import nz.ac.auckland.se206.controllers.SafeKeypadController;
 import nz.ac.auckland.se206.controllers.SafeOpenedController;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 
 // this is a test comment to test github flows
 
@@ -178,15 +177,16 @@ public class App extends Application {
       warningTimer = new Timer();
       activeTimers.add(warningTimer);
       // play warning sound when timer is up
-      TimerTask task = new TimerTask() {
-        public void run() {
-          Platform.runLater(
-              () -> {
-                System.out.println("1 minute and 30 seconds left");
-                App.playSound("timerWarningAudio.mp3");
-              });
-        }
-      };
+      TimerTask task =
+          new TimerTask() {
+            public void run() {
+              Platform.runLater(
+                  () -> {
+                    System.out.println("1 minute and 30 seconds left");
+                    App.playSound("timerWarningAudio.mp3");
+                  });
+            }
+          };
       warningTimer.schedule(task, 210000);
     } else {
       // If the timer is already started, just update the timer label
@@ -731,10 +731,6 @@ public class App extends Application {
                     + chosenSuspect
                     + "USER MESSAGE: "
                     + message); // Create a user message
-
-    if (txtaChat != null) {
-      appendChatMessage(userMessage, txtaChat); // Append the user message to the chat area
-    }
 
     loadingIndicator.setVisible(true);
     translateTransition.play();
