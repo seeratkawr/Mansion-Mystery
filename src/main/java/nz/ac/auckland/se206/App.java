@@ -30,6 +30,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.util.TimerTask;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
@@ -53,6 +54,7 @@ import nz.ac.auckland.se206.controllers.SafeController;
 import nz.ac.auckland.se206.controllers.SafeKeypadController;
 import nz.ac.auckland.se206.controllers.SafeOpenedController;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 // this is a test comment to test github flows
 
@@ -70,6 +72,7 @@ public class App extends Application {
   private static Stage primaryStage;
   private static boolean timerStarted = false;
   private static TimerUtility timer;
+  private static Timer warningTimer;
   private static Timeline timerCheckTimeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
@@ -170,6 +173,21 @@ public class App extends Application {
       TimerUtilityHandler.setTimer(timer, timerLabel);
       timer.start();
       timerStarted = true;
+
+      // start warning timer for 1.30 min left
+      warningTimer = new Timer();
+      activeTimers.add(warningTimer);
+      // play warning sound when timer is up
+      TimerTask task = new TimerTask() {
+        public void run() {
+          Platform.runLater(
+              () -> {
+                System.out.println("1 minute and 30 seconds left");
+                App.playSound("timerWarningAudio.mp3");
+              });
+        }
+      };
+      warningTimer.schedule(task, 210000);
     } else {
       // If the timer is already started, just update the timer label
       timerLabel = controller.getTimerLabel();
