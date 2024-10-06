@@ -291,3 +291,17 @@
 .image-view {
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 4);
 }
+
+#backButton, #signInButton {
+  -fx-background-color: rgb(255, 255, 255);  
+  -fx-text-fill: #4B2E39;
+  -fx-font-family: "serif", "Cursive";
+  -fx-border-color: white;
+  -fx-font-weight: bold;  
+
+}
+
+#backButton:hover, #signInButton:hover {
+  -fx-background-color: rgb(196, 196, 196);  
+  -fx-border-color: rgb(196, 196, 196); 
+}

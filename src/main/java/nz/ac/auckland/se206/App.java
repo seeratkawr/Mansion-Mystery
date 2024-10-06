@@ -387,7 +387,7 @@ public class App extends Application {
    * @param path the path to the FXML file for the laptop clue scene
    * @throws IOException if there is an error loading the FXML file
    */
-  public static void openLaptopClue(MouseEvent event, String path) throws IOException {
+  public static void openLaptopClue(ActionEvent event, String path) throws IOException {
     // Load the specified FXML file for the laptop clue
     FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
