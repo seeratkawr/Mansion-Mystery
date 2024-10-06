@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.event.ActionEvent;
@@ -21,6 +22,7 @@ public class CrimeSceneController {
   @FXML private Rectangle drawersRectangle;
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
+  @FXML private Label lbPopup2;
   @FXML private Label timerLabel;
 
   // Getter method for the timer label
@@ -97,33 +99,39 @@ public class CrimeSceneController {
 
     // verifyCanGuess() returns a list of booleans in the format
     // [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
-    Boolean canGuess = App.verifyCanGuess().get(2);
-    Boolean enoughCluesViewed = App.verifyCanGuess().get(1);
-    Boolean enoughSuspectsTalkedTo = App.verifyCanGuess().get(0);
+    List<Boolean> canGuessList = App.verifyCanGuess();
+    Boolean canGuess = canGuessList.get(2);
+    Boolean enoughCluesViewed = canGuessList.get(1);
+    Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
 
     // Verify if the user can guess
     if (canGuess) {
       App.openGuessingScene(); // Open the guessing scene
     } else {
       // Update the popup message based on the user's progress
-      if (!enoughSuspectsTalkedTo) {
+      if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
+        lbPopup2.setVisible(true);
+      } else if (!enoughSuspectsTalkedTo) {
         lbPopup.setText("You need to talk to all suspects before making a guess.");
+        lbPopup.setVisible(true);
       } else if (!enoughCluesViewed) {
         lbPopup.setText("You need to view at least 1 clue before making a guess.");
+        lbPopup.setVisible(true);
       }
 
-      // Display popup message for 3 seconds
-      lbPopup.setVisible(true);
+      // Display popup message for 4 seconds
+      
       Timer timer = new Timer();
       App.addTimer(timer); // Store timer in App.java for garbage collection
       timer.schedule(
           new TimerTask() {
             @Override
             public void run() {
-              lbPopup.setVisible(false); // Hide popup message after 3 seconds
+              lbPopup.setVisible(false); // Hide popup message after 4 seconds
+              lbPopup2.setVisible(false); // Hide popup message after 4 seconds
             }
           },
-          3000);
+          4000);
     }
   }
 }
