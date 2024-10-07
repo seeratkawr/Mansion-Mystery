@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.util.List;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,8 @@ public class KitchenController {
   @FXML private ImageView loadingIndicator; // Loading indicator image
   @FXML private Label timerLabel; // Label to display the timer
   @FXML private ImageView mapImage; // Image view for the map
+  @FXML private Label lbPopup; // Label for popup message
+  @FXML private Label lbPopup2;
 
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
@@ -81,5 +84,34 @@ public class KitchenController {
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     App.handleGpt(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
+  }
+
+  @FXML
+  private void onGuessClicked(ActionEvent event) throws IOException {
+    App.playSound("button.mp3"); // Play button click sound
+    System.out.println("Guessing button clicked");
+
+    // verifyCanGuess() returns a list of booleans in the format
+    // [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
+    List<Boolean> canGuessList = App.verifyCanGuess();
+    Boolean canGuess = canGuessList.get(2);
+    Boolean enoughCluesViewed = canGuessList.get(1);
+    Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
+
+    // Verify if the user can guess
+    if (canGuess) {
+      App.openGuessingScene(); // Open the guessing scene
+    } else {
+      // Update the popup message based on the user's progress
+      if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
+        lbPopup2.setVisible(true);
+      } else if (!enoughSuspectsTalkedTo) {
+        lbPopup.setText("You need to talk to all suspects before making a guess.");
+        lbPopup.setVisible(true);
+      } else if (!enoughCluesViewed) {
+        lbPopup.setText("You need to view at least 1 clue before making a guess.");
+        lbPopup.setVisible(true);
+      }
+    }
   }
 }
