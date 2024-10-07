@@ -14,6 +14,8 @@
          </image>
       </ImageView>
       <Button fx:id="startButton" layoutX="337.0" layoutY="403.0" mnemonicParsing="false" onAction="#onStartGame" prefHeight="61.0" prefWidth="174.0" textFill="TRANSPARENT" />
-      <Label fx:id="backstory" layoutX="100.0" layoutY="6.0" prefHeight="103.0" prefWidth="651.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. Do you have what it takes to catch the mansion thief?" wrapText="true" />
+      <Label fx:id="backstory1" layoutX="62.0" layoutY="-27.0" prefHeight="103.0" prefWidth="722.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. " wrapText="true" />
+      <Label fx:id="backstory3" layoutX="139.0" layoutY="46.0" prefHeight="103.0" prefWidth="553.0" text=" Do you have what it takes to catch the mansion thief?" wrapText="true" />
+      <Label fx:id="backstory2" layoutX="116.0" layoutY="5.0" prefHeight="112.0" prefWidth="651.0" text="Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. " textFill="WHITE" wrapText="true" />
    </children>
 </AnchorPane>
