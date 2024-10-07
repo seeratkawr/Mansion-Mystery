@@ -41,6 +41,9 @@ public class CleanerController {
     translateTransition.setAutoReverse(true);
     txtaChat.setEditable(false);
     txtaChat.setWrapText(true);
+    txtaChat.setText(
+        "Oh, hi detective! I’m Alex. Just, uh, doing my cleaning duties here in the mansion. It’s a"
+            + " bit overwhelming with everything going on, you know?");
 
     App.setProfession("Cleaner", txtaChat, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();

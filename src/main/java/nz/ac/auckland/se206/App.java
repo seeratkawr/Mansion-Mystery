@@ -780,9 +780,10 @@ public class App extends Application {
       TranslateTransition translateTransition) {
     setCurrentProfession(profession);
     System.out.println("setting profession: " + profession);
-    if (txtaChat != null) {
+    
+    /*if (txtaChat != null) {
       txtaChat.clear();
-    }
+    }*/
 
     // Initialize chat completion request
     try {
@@ -794,10 +795,10 @@ public class App extends Application {
               .setTopP(0.4)
               .setMaxTokens(txtaChat != null ? 260 : 190);
 
-      if (loadingIndicator != null && translateTransition != null) {
+      /*if (loadingIndicator != null && translateTransition != null) {
         loadingIndicator.setVisible(true);
         translateTransition.play();
-      }
+      }*/
 
       // Task to handle initial chat completion request in a background thread
       Task<Void> task =
@@ -810,14 +811,14 @@ public class App extends Application {
 
               // On a new thread, append the response to the
               // chat area and stop the loading indicator
-              if (txtaChat != null && loadingIndicator != null && translateTransition != null) {
+              /*if (txtaChat != null && loadingIndicator != null && translateTransition != null) {
                 Platform.runLater(
                     () -> {
                       appendChatMessage(response, txtaChat);
                       loadingIndicator.setVisible(false);
                       translateTransition.stop();
                     });
-              }
+              }*/
               return null;
             }
           };
