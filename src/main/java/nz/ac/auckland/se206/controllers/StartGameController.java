@@ -11,18 +11,22 @@ import nz.ac.auckland.se206.App;
 
 public class StartGameController {
 
-  // FXML annotation to link with the corresponding elements in the FXML file
   @FXML private Button startButton;
-  @FXML private Label backstory;
+  @FXML private Label backstory1;
+  @FXML private Label backstory2;
+  @FXML private Label backstory3;
 
   // Method called when the controller is initialized
   public void initialize() {
-    // Start the fade-in effect for the backstory label
+    // Set all backstory labels to invisible at first
+    backstory1.setOpacity(0);
+    backstory2.setOpacity(0);
+    backstory3.setOpacity(0);
+
     App.playSound("startGameAudio.mp3");
-    fadeInBackstory();
+    fadeInBackstories();
   }
 
-  // Event handler for the start button
   @FXML
   private void onStartGame(ActionEvent event) {
     // Play a sound when the button is clicked
@@ -30,27 +34,38 @@ public class StartGameController {
     App.playSound("button.mp3");
     System.out.println("Game started!");
     try {
-      // Open the crime scene view
       App.openCrimeScene(event);
     } catch (IOException e) {
-      // Print stack trace for debugging in case of error
       e.printStackTrace();
     }
   }
 
-  // Method to create and play a fade-in effect for the backstory label
-  private void fadeInBackstory() {
+  // Method to fade in the three backstory labels sequentially
+  private void fadeInBackstories() {
+    // Fade in backstory1
+    FadeTransition fade1 = createFadeTransition(backstory1, 3);
+    fade1.setOnFinished(
+        event -> {
+          // When backstory1 finishes, fade in backstory2
+          FadeTransition fade2 = createFadeTransition(backstory2, 3);
+          fade2.setOnFinished(
+              event2 -> {
+                // When backstory2 finishes, fade in backstory3
+                FadeTransition fade3 = createFadeTransition(backstory3, 3);
+                fade3.play();
+              });
+          fade2.play();
+        });
+    fade1.play();
+  }
+
+  // Helper method to create a fade transition for a given label and duration
+  private FadeTransition createFadeTransition(Label label, int durationInSeconds) {
     FadeTransition fadeTransition = new FadeTransition();
-
-    // Set the duration of the fade (e.g., 3 seconds)
-    fadeTransition.setDuration(Duration.seconds(3));
-
-    // Set the label you want to fade
-    fadeTransition.setNode(backstory);
-
+    fadeTransition.setDuration(Duration.seconds(durationInSeconds));
+    fadeTransition.setNode(label);
     fadeTransition.setFromValue(0.0); // fully transparent
     fadeTransition.setToValue(1.0); // fully opaque
-
-    fadeTransition.play();
+    return fadeTransition;
   }
 }
