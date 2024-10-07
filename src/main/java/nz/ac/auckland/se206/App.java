@@ -479,6 +479,12 @@ public class App extends Application {
     }
   }
 
+  public static void stopSound() {
+    if (mediaPlayer != null) {
+      mediaPlayer.stop();
+    }
+  }
+
   /**
    * Opens the suspect scene based on the provided FXML file name.
    *
