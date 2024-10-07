@@ -44,6 +44,9 @@ public class KitchenController {
     translateTransition.setCycleCount(TranslateTransition.INDEFINITE); // Loop the animation
     translateTransition.setAutoReverse(true); // Move back and forth
     txtaChat.setWrapText(true); // Enable text wrapping in chat area
+    txtaChat.setEditable(false);
+    txtaChat.setText(
+        "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?");
 
     App.setProfession("Chef", txtaChat, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();
