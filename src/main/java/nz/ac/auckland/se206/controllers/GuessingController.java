@@ -155,9 +155,6 @@ public class GuessingController {
     circleChef.setVisible(true);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(false);
-    // disabling other rectangles
-    cleaner.setDisable(true);
-    daughter.setDisable(true);
   }
 
   /**
@@ -176,9 +173,6 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(true);
     circleDaughter.setVisible(false);
-    // disabling other rectangles
-    chef.setDisable(true);
-    daughter.setDisable(true);
   }
 
   /**
@@ -197,9 +191,6 @@ public class GuessingController {
     circleChef.setVisible(false);
     circleCleaner.setVisible(false);
     circleDaughter.setVisible(true);
-    // disabling other rectangles
-    chef.setDisable(true);
-    cleaner.setDisable(true);
   }
 
   /**

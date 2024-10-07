@@ -26,6 +26,7 @@ public class StartGameController {
   @FXML
   private void onStartGame(ActionEvent event) {
     // Play a sound when the button is clicked
+    App.stopSound();
     App.playSound("button.mp3");
     System.out.println("Game started!");
     try {

@@ -449,6 +449,7 @@ public class App extends Application {
    * @throws Exception if there is an error loading or playing the sound file.
    */
   public static void playSound(String soundFileName) {
+    stopSound();
     try {
 
       // Create a background task to play the sound to prevent blocking the application thread
@@ -476,6 +477,12 @@ public class App extends Application {
       backgroundThread.start();
     } catch (Exception e) {
       System.out.println("Error loading sound file: " + e.getMessage());
+    }
+  }
+
+  public static void stopSound() {
+    if (mediaPlayer != null) {
+      mediaPlayer.stop();
     }
   }
 
