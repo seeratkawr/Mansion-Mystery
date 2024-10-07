@@ -41,7 +41,7 @@ public class DaughterController {
     daughterText.setEditable(false); // Make text area non-editable
     daughterText.setWrapText(true); // Enable text wrapping
     daughterText.setText(
-        "Hi detective. I assume you should already know who I am, but just in case, I'm the"
+        "Hi detective. I assume you should already know who I am, but just in case, I'm Maria, the"
             + " daughter of the owner of this mansion. What do you want anyway?");
 
     App.setProfession("Daughter", daughterText, loadingIndicator, translateTransition);
