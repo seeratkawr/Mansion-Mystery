@@ -449,6 +449,7 @@ public class App extends Application {
    * @throws Exception if there is an error loading or playing the sound file.
    */
   public static void playSound(String soundFileName) {
+    stopSound();
     try {
 
       // Create a background task to play the sound to prevent blocking the application thread
