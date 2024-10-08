@@ -30,6 +30,8 @@ public class CrimeSceneController {
   @FXML private Rectangle backstoryRectangle;
   @FXML private ImageView closeButton;
 
+  private static boolean isBackstoryShown = false;
+
   // Getter method for the timer label
   public Label getTimerLabel() {
     return timerLabel;
@@ -43,27 +45,45 @@ public class CrimeSceneController {
     drawerRectangle.setMouseTransparent(true);
     guessingButton.setDisable(true);
 
-    Timer timer = new Timer();
-    App.addTimer(timer); // Store timer in App.java for garbage collection
-    timer.schedule(
-        new TimerTask() {
-          @Override
-          public void run() {
-            // Hide backstory elements
-            backstory1.setVisible(false);
-            backstory2.setVisible(false);
-            backstory3.setVisible(false);
-            backstoryRectangle.setVisible(false);
-            closeButton.setVisible(false);
+    if (!isBackstoryShown) {
+      // Display backstory only the first time
+      isBackstoryShown = true;
 
-            map.setMouseTransparent(false);
-            laptopRectangle.setMouseTransparent(false);
-            bookshelfSafeRectangle.setMouseTransparent(false);
-            drawerRectangle.setMouseTransparent(false);
-            guessingButton.setDisable(false);
-          }
-        },
-        15000); // 15-second delay
+      Timer timer = new Timer();
+      App.addTimer(timer); // Store timer in App.java for garbage collection
+      timer.schedule(
+          new TimerTask() {
+            @Override
+            public void run() {
+              // Hide backstory elements
+              backstory1.setVisible(false);
+              backstory2.setVisible(false);
+              backstory3.setVisible(false);
+              backstoryRectangle.setVisible(false);
+              closeButton.setVisible(false);
+
+              map.setMouseTransparent(false);
+              laptopRectangle.setMouseTransparent(false);
+              bookshelfSafeRectangle.setMouseTransparent(false);
+              drawerRectangle.setMouseTransparent(false);
+              guessingButton.setDisable(false);
+            }
+          },
+          15000); // 15-second delay
+    } else {
+      // Skip backstory if it has already been shown
+      backstory1.setVisible(false);
+      backstory2.setVisible(false);
+      backstory3.setVisible(false);
+      backstoryRectangle.setVisible(false);
+      closeButton.setVisible(false);
+
+      map.setMouseTransparent(false);
+      laptopRectangle.setMouseTransparent(false);
+      bookshelfSafeRectangle.setMouseTransparent(false);
+      drawerRectangle.setMouseTransparent(false);
+      guessingButton.setDisable(false);
+    }
   }
 
   // Method to handle map click events
