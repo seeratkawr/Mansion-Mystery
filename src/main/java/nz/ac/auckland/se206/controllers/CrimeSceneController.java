@@ -31,19 +31,8 @@ public class CrimeSceneController {
   @FXML private Rectangle backstoryRectangle;
   @FXML private ImageView closeButton;
 
-  private static boolean isBackstoryShown = false;
-
   public Label getTimerLabel() {
     return timerLabel;
-  }
-
-  private FadeTransition createFadeTransition(Label label, Duration duration, Duration delay) {
-    FadeTransition fade = new FadeTransition(duration, label);
-    fade.setFromValue(0.0);
-    fade.setToValue(1.0);
-    fade.setDelay(delay);
-    fade.setOnFinished(e -> label.setVisible(true)); // Ensure label is visible after fade-in
-    return fade;
   }
 
   @FXML

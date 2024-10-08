@@ -851,13 +851,6 @@ public class App extends Application {
     }
   }
 
-  // Method to append a chat message to the chat area
-  private static void appendChatMessage(ChatMessage msg, TextArea txtaChat) {
-    txtaChat.appendText(msg.getContent() + "\n\n");
-    System.out.println(
-        "Response from LLM: " + msg.getContent()); // Print the response to the console
-  }
-
   // Method to run GPT chat completion request
   public static ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
