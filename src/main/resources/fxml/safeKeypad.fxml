@@ -26,6 +26,6 @@
       <Rectangle fx:id="rectangle9" arcHeight="20.0" arcWidth="20.0" fill="#ffffff00" height="55.0" layoutX="452.0" layoutY="397.0" onMouseClicked="#onClickedNine" stroke="TRANSPARENT" strokeType="INSIDE" width="45.0" />
       <Rectangle fx:id="rectangle0" arcHeight="20.0" arcWidth="20.0" fill="#ffffff00" height="47.0" layoutX="395.0" layoutY="461.0" onMouseClicked="#onClickedZero" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
       <Rectangle fx:id="rectangleClear" arcHeight="20.0" arcWidth="20.0" fill="#ffffff00" height="47.0" layoutX="451.0" layoutY="461.0" onMouseClicked="#onClickedClear" stroke="TRANSPARENT" strokeType="INSIDE" width="51.0" />
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
    </children>
 </AnchorPane>

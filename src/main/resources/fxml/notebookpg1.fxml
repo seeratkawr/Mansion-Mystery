@@ -39,6 +39,6 @@
             <Label fx:id="nextpage" layoutX="721.0" layoutY="327.0" text="Next page" />
          </children>
       </Pane>
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
    </children>
 </AnchorPane>

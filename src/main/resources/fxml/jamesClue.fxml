@@ -13,7 +13,7 @@
             <Image url="@../images/James'%20Notes.png" />
          </image>
       </ImageView>
-      <Label fx:id="timerLabel" layoutX="786.0" layoutY="4.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Label fx:id="timerLabel" layoutX="786.0" layoutY="4.0" prefHeight="33.0" prefWidth="51.5" />
       <Circle fx:id="circleButton3" fill="TRANSPARENT" layoutX="61.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fx:id="circleButton2" fill="TRANSPARENT" layoutX="40.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle fx:id="circleButton1" fill="TRANSPARENT" layoutX="19.0" layoutY="20.0" onMouseClicked="#closeClue" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />

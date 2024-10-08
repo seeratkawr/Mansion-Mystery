@@ -27,13 +27,13 @@
       </ImageView>
       <Polygon fill="WHITE" layoutX="393.0" layoutY="276.0" points="-35.000030517578125, -105.33332824707031, -43.333343505859375, -83.99998474121094, 9.333343505859375, -73.33332824707031" stroke="WHITE" strokeType="INSIDE" />
       <Button fx:id="guessingButton" layoutX="32.0" layoutY="34.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
-      <Label fx:id="timerLabel" layoutX="168.0" layoutY="34.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
-      <Label fx:id="lbPopup2" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" style="-fx-background-color: grey; -fx-text-fill: white; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-label-padding: 10px; -fx-alignment: center; -fx-border-width: 2px; -fx-wrap-text: true;" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false">
+      <Label fx:id="timerLabel" layoutX="168.0" layoutY="34.0" prefHeight="33.0" prefWidth="51.5" />
+      <Label fx:id="lbPopup2" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbPopup" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" style="-fx-background-color: grey; -fx-text-fill: white; -fx-border-color: black; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-label-padding: 5px; -fx-alignment: center; -fx-border-width: 2px; -fx-wrap-text: true;" visible="false">
+      <Label fx:id="lbPopup" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" visible="false">
          <font>
             <Font size="15.0" />
          </font>

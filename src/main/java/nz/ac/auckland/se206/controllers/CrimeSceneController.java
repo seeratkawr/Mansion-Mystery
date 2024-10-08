@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,11 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 public class CrimeSceneController {
 
-  // FXML annotations to link with the corresponding elements in the FXML file
   @FXML private ImageView map;
   @FXML private Rectangle laptopRectangle;
   @FXML private Rectangle bookshelfSafeRectangle;
@@ -32,7 +33,6 @@ public class CrimeSceneController {
 
   private static boolean isBackstoryShown = false;
 
-  // Getter method for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
@@ -45,17 +45,33 @@ public class CrimeSceneController {
     drawerRectangle.setMouseTransparent(true);
     guessingButton.setDisable(true);
 
+    // Initially hide the backstory labels
+    backstory1.setVisible(false);
+    backstory2.setVisible(false);
+    backstory3.setVisible(false);
+
     if (!isBackstoryShown) {
-      // Display backstory only the first time
       isBackstoryShown = true;
 
+      // Set up fade transitions for each backstory label
+      FadeTransition fade1 =
+          createFadeTransition(backstory1, Duration.seconds(1), Duration.seconds(0));
+      FadeTransition fade2 =
+          createFadeTransition(backstory2, Duration.seconds(1), Duration.seconds(2));
+      FadeTransition fade3 =
+          createFadeTransition(backstory3, Duration.seconds(1), Duration.seconds(4));
+
+      // Play the fade transitions in sequence
+      fade1.play();
+      fade2.play();
+      fade3.play();
+
       Timer timer = new Timer();
-      App.addTimer(timer); // Store timer in App.java for garbage collection
+      App.addTimer(timer);
       timer.schedule(
           new TimerTask() {
             @Override
             public void run() {
-              // Hide backstory elements
               backstory1.setVisible(false);
               backstory2.setVisible(false);
               backstory3.setVisible(false);
@@ -69,9 +85,8 @@ public class CrimeSceneController {
               guessingButton.setDisable(false);
             }
           },
-          15000); // 15-second delay
+          15000);
     } else {
-      // Skip backstory if it has already been shown
       backstory1.setVisible(false);
       backstory2.setVisible(false);
       backstory3.setVisible(false);
@@ -86,85 +101,70 @@ public class CrimeSceneController {
     }
   }
 
-  // Method to handle map click events
+  private FadeTransition createFadeTransition(Label label, Duration duration, Duration delay) {
+    FadeTransition fade = new FadeTransition(duration, label);
+    fade.setFromValue(0.0);
+    fade.setToValue(1.0);
+    fade.setDelay(delay);
+    fade.setOnFinished(e -> label.setVisible(true)); // Ensure label is visible after fade-in
+    return fade;
+  }
+
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
-      // Open the map view
-      App.playSound("map.mp3"); // Play map sound
+      App.playSound("map.mp3");
       App.openMap(event, "/images/Study.png");
-      MapController.setLastScene("crimeScene"); // Set the last scene to crimeScene
-
+      MapController.setLastScene("crimeScene");
     } catch (IOException e) {
-      // Print stack trace for debugging in case of error
       e.printStackTrace();
     }
   }
 
-  // Method to handle laptop click events
   @FXML
   private void onLaptopClicked(MouseEvent event) {
-    App.addCluesViewed("laptop"); // Add laptop clue to the viewed clues
+    App.addCluesViewed("laptop");
     try {
-      App.openLaptop(event); // Open the laptop view
+      App.openLaptop(event);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  // Method to handle drawers click events
   @FXML
   private void onDrawersClicked(MouseEvent event) {
-    App.addCluesViewed("drawer"); // Add drawer clue to the viewed clues
+    App.addCluesViewed("drawer");
     try {
-      // Open the drawer view
-      App.playSound("draweropen.mp3"); // Play drawer open sound
-      App.openDrawer(event); // Open the drawer view
+      App.playSound("draweropen.mp3");
+      App.openDrawer(event);
     } catch (IOException e) {
-      // Print stack trace for debugging in case of error
       e.printStackTrace();
     }
   }
 
-  /**
-   * This method is called when the user clicks the bookshelf safe.
-   *
-   * @param event the event that triggered this method
-   */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
-    App.addCluesViewed("safe"); // Add safe clue to the viewed clues
+    App.addCluesViewed("safe");
     try {
-      App.openSafe(event); // Open the safe view
+      App.openSafe(event);
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
-  /**
-   * This method is called when the user clicks the guessing button. It will open the guess view if
-   * the user has viewed at least 1 clue and spoken to all suspects.
-   *
-   * @param event the event that triggered this method
-   * @throws IOException if the FXML file is not found
-   */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
-    App.playSound("button.mp3"); // Play button click sound
+    App.playSound("button.mp3");
     System.out.println("Guessing button clicked");
 
-    // verifyCanGuess() returns a list of booleans in the format
-    // [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
     List<Boolean> canGuessList = App.verifyCanGuess();
     Boolean canGuess = canGuessList.get(2);
     Boolean enoughCluesViewed = canGuessList.get(1);
     Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
 
-    // Verify if the user can guess
     if (canGuess) {
-      App.openGuessingScene(); // Open the guessing scene
+      App.openGuessingScene();
     } else {
-      // Update the popup message based on the user's progress
       if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
         lbPopup2.setVisible(true);
       } else if (!enoughSuspectsTalkedTo) {
@@ -175,16 +175,14 @@ public class CrimeSceneController {
         lbPopup.setVisible(true);
       }
 
-      // Display popup message for 4 seconds
-
       Timer timer = new Timer();
-      App.addTimer(timer); // Store timer in App.java for garbage collection
+      App.addTimer(timer);
       timer.schedule(
           new TimerTask() {
             @Override
             public void run() {
-              lbPopup.setVisible(false); // Hide popup message after 4 seconds
-              lbPopup2.setVisible(false); // Hide popup message after 4 seconds
+              lbPopup.setVisible(false);
+              lbPopup2.setVisible(false);
             }
           },
           4000);
