@@ -1,4 +1,5 @@
 package nz.ac.auckland.se206.controllers;
+// nz.ac.auckland.se206.controllers.BackstoryController.java
 
 import java.io.IOException;
 import java.util.Timer;
@@ -17,6 +18,10 @@ public class BackstoryController {
   @FXML private Label backstory3;
   @FXML private Button openCrimeScene;
   @FXML private Label timerLabel;
+
+  public Label getTimerLabel() {
+    return timerLabel;
+  }
 
   @FXML
   private void onOpenCrimeScene(ActionEvent event) throws IOException {

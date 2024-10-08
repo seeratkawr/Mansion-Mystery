@@ -22,7 +22,7 @@ public class StartGameController {
     App.playSound("button.mp3");
     System.out.println("Game started!");
     try {
-      App.openCrimeScene(event);
+      App.openBackstory(event);
     } catch (IOException e) {
       e.printStackTrace();
     }

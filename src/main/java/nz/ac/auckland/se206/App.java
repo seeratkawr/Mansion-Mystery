@@ -38,6 +38,7 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.controllers.AlexClueController;
+import nz.ac.auckland.se206.controllers.BackstoryController;
 import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
 import nz.ac.auckland.se206.controllers.DaughterController;
@@ -154,14 +155,28 @@ public class App extends Application {
     Parent root = loader.load();
     scene = new Scene(root);
 
+    // Get the controller associated with the crime scene
+    CrimeSceneController controller = loader.getController();
+    timerLabel = controller.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
+
     // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
     sceneStack.push(scene);
+  }
 
-    // Get the controller associated with the crime scene
-    CrimeSceneController controller = loader.getController();
+  public static void openBackstory(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/backstory.fxml"));
+    Parent root = loader.load();
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    sceneStack.push(scene);
+
+    BackstoryController controller = loader.getController();
 
     // Check if the timer has not been started yet
     if (!timerStarted) {
