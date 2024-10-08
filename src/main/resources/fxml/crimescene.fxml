@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="603.0" fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/study1%20(1).png" />
+            <Image url="@../images/Study.png" />
          </image>
       </ImageView>
       <ImageView fx:id="map" fitHeight="108.0" fitWidth="97.0" layoutX="797.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">

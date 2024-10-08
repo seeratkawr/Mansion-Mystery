@@ -7,17 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.NotebookController">
    <children>
-      <Pane fx:id="mainPane" prefHeight="657.0" prefWidth="857.0">
+      <Pane fx:id="mainPane" prefHeight="613.0" prefWidth="857.0">
          <children>
             <ImageView fitHeight="662.0" fitWidth="851.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/closeupdesk.png" />
                </image>
             </ImageView>
-            <Rectangle fx:id="rectangleBook" arcHeight="15.0" arcWidth="15.0" fill="#ffffff00" height="133.0" layoutX="240.0" layoutY="99.0" onMouseClicked="#onClickedBook" rotate="76.6" stroke="TRANSPARENT" strokeType="INSIDE" width="163.0" />
+            <Rectangle fx:id="rectangleBook" arcHeight="15.0" arcWidth="15.0" fill="#ffffff00" height="130.0" layoutX="238.0" layoutY="103.0" onMouseClicked="#onClickedBook" rotate="76.6" stroke="TRANSPARENT" strokeType="INSIDE" width="160.0" />
             <Button layoutX="703.0" layoutY="39.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
             <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
             <ImageView fx:id="item1" fitHeight="189.0" fitWidth="229.0" layoutX="279.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
@@ -45,6 +46,11 @@
                   <Image url="@../images/holepuncher.png" />
                </image>
             </ImageView>
+            <Label fx:id="msg" layoutX="224.0" layoutY="570.0" text="Looks like all the stationary is blocking the notebook!" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

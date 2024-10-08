@@ -36,6 +36,8 @@
                </font>
             </Text>
             <Polygon fx:id="triangle" fill="#8b5e51" layoutX="109.0" layoutY="312.0" onMouseClicked="#onGoFirstPage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
+            <Label fx:id="nextpage" layoutX="727.0" layoutY="331.0" text="Last page" />
+            <Label fx:id="nextpage" layoutX="36.0" layoutY="333.0" text="Previous page" />
          </children>
       </Pane>
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />

@@ -35,6 +35,7 @@
                </font>
             </Text>
             <Button layoutX="363.0" layoutY="524.0" mnemonicParsing="false" onAction="#onExitBook" prefHeight="29.0" prefWidth="104.0" text="Go back" />
+            <Label fx:id="nextpage" layoutX="36.0" layoutY="333.0" text="Previous page" />
          </children>
       </Pane>
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />

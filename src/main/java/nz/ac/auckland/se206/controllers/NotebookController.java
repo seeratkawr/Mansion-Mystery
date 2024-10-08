@@ -12,15 +12,12 @@ import nz.ac.auckland.se206.App;
 
 public class NotebookController {
 
-  // FXML annotations to link with the corresponding elements in the FXML file
   @FXML private Pane bookPane;
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
   @FXML private Rectangle rectangleBook;
 
-  // Method to handle the event when the book is clicked
-
-  @FXML private ImageView item1, item2, item3, item4, item5; // Declare the draggable items
+  @FXML private ImageView item1, item2, item3, item4, item5;
 
   private double startX;
   private double startY;
@@ -45,22 +42,28 @@ public class NotebookController {
     }
   }
 
-  // Method to handle the event when the "Go Back" button is clicked
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
-    // Play a sound effect for the button click
     App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
-    // Navigate back to the crime scene
     App.openCrimeScene(event);
   }
 
-  // Getter method for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
   private void makeDraggable(ImageView item) {
+    item.setOnMouseEntered(
+        event -> {
+          item.setCursor(javafx.scene.Cursor.MOVE); // Change cursor on hover
+        });
+
+    item.setOnMouseExited(
+        event -> {
+          item.setCursor(javafx.scene.Cursor.DEFAULT); // Reset cursor when not hovering
+        });
+
     item.setOnMousePressed(
         event -> {
           startX = event.getSceneX();
@@ -72,9 +75,11 @@ public class NotebookController {
           double offsetX = event.getSceneX() - startX;
           double offsetY = event.getSceneY() - startY;
 
+          // Update layout position of the item
           item.setLayoutX(item.getLayoutX() + offsetX);
           item.setLayoutY(item.getLayoutY() + offsetY);
 
+          // Update starting points for smooth dragging
           startX = event.getSceneX();
           startY = event.getSceneY();
         });
@@ -97,11 +102,9 @@ public class NotebookController {
         || isOverlapping(item3, notebookMinX, notebookMaxX, notebookMinY, notebookMaxY)
         || isOverlapping(item4, notebookMinX, notebookMaxX, notebookMinY, notebookMaxY)
         || isOverlapping(item5, notebookMinX, notebookMaxX, notebookMinY, notebookMaxY)) {
-      // Still overlapping, keep notebook disabled
-      rectangleBook.setDisable(true);
+      rectangleBook.setDisable(true); // Keep notebook disabled
     } else {
-      // No overlapping, make the notebook clickable
-      rectangleBook.setDisable(false);
+      rectangleBook.setDisable(false); // Make the notebook clickable
     }
   }
 
@@ -112,7 +115,6 @@ public class NotebookController {
       double notebookMinY,
       double notebookMaxY) {
 
-    // Calculate the center of the item
     double itemCenterX = item.getLayoutX() + item.getFitWidth() / 2;
     double itemCenterY = item.getLayoutY() + item.getFitHeight() / 2;
 
