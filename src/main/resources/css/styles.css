@@ -245,6 +245,10 @@
   /* Black border */
 }
 
+#closeButton:hover {
+  -fx-cursor: hand;
+}
+
 #gameOver {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 14px;

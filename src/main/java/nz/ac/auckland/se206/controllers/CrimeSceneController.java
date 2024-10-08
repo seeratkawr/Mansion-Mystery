@@ -19,15 +19,51 @@ public class CrimeSceneController {
   @FXML private ImageView map;
   @FXML private Rectangle laptopRectangle;
   @FXML private Rectangle bookshelfSafeRectangle;
-  @FXML private Rectangle drawersRectangle;
+  @FXML private Rectangle drawerRectangle;
   @FXML private Button guessingButton;
   @FXML private Label lbPopup;
   @FXML private Label lbPopup2;
   @FXML private Label timerLabel;
+  @FXML private Label backstory1;
+  @FXML private Label backstory2;
+  @FXML private Label backstory3;
+  @FXML private Rectangle backstoryRectangle;
+  @FXML private ImageView closeButton;
 
   // Getter method for the timer label
   public Label getTimerLabel() {
     return timerLabel;
+  }
+
+  @FXML
+  public void initialize() {
+    map.setMouseTransparent(true);
+    laptopRectangle.setMouseTransparent(true);
+    bookshelfSafeRectangle.setMouseTransparent(true);
+    drawerRectangle.setMouseTransparent(true);
+    guessingButton.setDisable(true);
+
+    Timer timer = new Timer();
+    App.addTimer(timer); // Store timer in App.java for garbage collection
+    timer.schedule(
+        new TimerTask() {
+          @Override
+          public void run() {
+            // Hide backstory elements
+            backstory1.setVisible(false);
+            backstory2.setVisible(false);
+            backstory3.setVisible(false);
+            backstoryRectangle.setVisible(false);
+            closeButton.setVisible(false);
+
+            map.setMouseTransparent(false);
+            laptopRectangle.setMouseTransparent(false);
+            bookshelfSafeRectangle.setMouseTransparent(false);
+            drawerRectangle.setMouseTransparent(false);
+            guessingButton.setDisable(false);
+          }
+        },
+        15000); // 15-second delay
   }
 
   // Method to handle map click events
@@ -120,7 +156,7 @@ public class CrimeSceneController {
       }
 
       // Display popup message for 4 seconds
-      
+
       Timer timer = new Timer();
       App.addTimer(timer); // Store timer in App.java for garbage collection
       timer.schedule(
@@ -133,5 +169,20 @@ public class CrimeSceneController {
           },
           4000);
     }
+  }
+
+  @FXML
+  private void onCloseClicked(MouseEvent event) {
+    backstory1.setVisible(false);
+    backstory2.setVisible(false);
+    backstory3.setVisible(false);
+    backstoryRectangle.setVisible(false);
+    closeButton.setVisible(false);
+
+    map.setMouseTransparent(false);
+    laptopRectangle.setMouseTransparent(false);
+    bookshelfSafeRectangle.setMouseTransparent(false);
+    drawerRectangle.setMouseTransparent(false);
+    guessingButton.setDisable(false);
   }
 }
