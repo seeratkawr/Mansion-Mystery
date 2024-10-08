@@ -19,6 +19,8 @@ public class BackstoryController {
   @FXML private Button openCrimeScene;
   @FXML private Label timerLabel;
 
+  private boolean crimeSceneOpened = false;
+
   public Label getTimerLabel() {
     return timerLabel;
   }
@@ -26,6 +28,7 @@ public class BackstoryController {
   @FXML
   private void onOpenCrimeScene(ActionEvent event) throws IOException {
     App.openCrimeScene();
+    crimeSceneOpened = true;
   }
 
   @FXML
@@ -57,7 +60,10 @@ public class BackstoryController {
             Platform.runLater(
                 () -> {
                   try {
-                    App.openCrimeScene();
+                    if (!crimeSceneOpened) {
+                      App.openCrimeScene();
+                      timer.cancel();
+                    }
                   } catch (IOException e) {
                     e.printStackTrace();
                   }
