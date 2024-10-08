@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.controllers;
+
 // nz.ac.auckland.se206.controllers.BackstoryController.java
 
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,11 +56,14 @@ public class BackstoryController {
         new TimerTask() {
           @Override
           public void run() {
-            try {
-              App.openCrimeScene(null);
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
+            Platform.runLater(
+                () -> {
+                  try {
+                    App.openCrimeScene();
+                  } catch (IOException e) {
+                    e.printStackTrace();
+                  }
+                });
           }
         },
         15000);

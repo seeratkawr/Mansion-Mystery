@@ -167,6 +167,20 @@ public class App extends Application {
     sceneStack.push(scene);
   }
 
+  public static void openCrimeScene() throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
+    Parent root = loader.load();
+
+    CrimeSceneController controller = loader.getController();
+    timerLabel = controller.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
+
+    scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+    sceneStack.push(scene);
+  }
+
   public static void openBackstory(ActionEvent event) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/backstory.fxml"));
     Parent root = loader.load();
