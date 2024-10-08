@@ -19,11 +19,6 @@
       </ImageView>
       <TextArea fx:id="txtaChat" editable="false" layoutX="478.0" layoutY="78.0" prefHeight="99.0" prefWidth="324.0" />
       <TextField fx:id="txtInput" layoutX="-1.0" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the chef, James" />
-      <ImageView fx:id="mapImage" fitHeight="85.0" fitWidth="85.0" layoutX="798.0" layoutY="14.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true" styleClass="styles.css">
-         <image>
-            <Image url="@../images/rolled_map.png" />
-         </image>
-      </ImageView>
       <Button fx:id="btnSend" layoutX="750.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
       <ImageView fx:id="loadingIndicator" fitHeight="73.0" fitWidth="61.0" layoutX="484.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -43,5 +38,10 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <ImageView fx:id="map" fitHeight="108.0" fitWidth="97.0" layoutX="807.0" layoutY="24.0" onMouseClicked="#onMapClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rolled_map.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
