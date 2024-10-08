@@ -148,25 +148,6 @@ public class App extends Application {
    * @param event the action event that triggered this method
    * @throws IOException if the FXML file is not found
    */
-  public static void openCrimeScene(ActionEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
-
-    // Load the root node from the FXML file
-    Parent root = loader.load();
-    scene = new Scene(root);
-
-    // Get the controller associated with the crime scene
-    CrimeSceneController controller = loader.getController();
-    timerLabel = controller.getTimerLabel();
-    TimerUtilityHandler.setTimer(timer, timerLabel);
-
-    // Get the current stage from the event source
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    stage.setScene(scene);
-    stage.show();
-    sceneStack.push(scene);
-  }
-
   public static void openCrimeScene() throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
     Parent root = loader.load();
@@ -467,7 +448,7 @@ public class App extends Application {
    * @throws IOException if there is an error during the closing process
    */
   public static void closeClue(ActionEvent event) throws IOException {
-    openCrimeScene(event);
+    openCrimeScene();
   }
 
   /**

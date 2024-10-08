@@ -50,7 +50,7 @@ public class Notebookpg3Controller {
     App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
     // Navigate back to the crime scene
-    App.openCrimeScene(event);
+    App.openCrimeScene();
   }
 
   // Getter method for the timer label

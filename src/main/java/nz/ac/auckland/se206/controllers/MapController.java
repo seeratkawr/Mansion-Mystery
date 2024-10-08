@@ -103,7 +103,7 @@ public class MapController {
       // Play door shut sound
       App.playSound("doorshut.mp3");
       // Open the study view
-      App.openCrimeScene(event);
+      App.openCrimeScene();
     } catch (IOException e) {
       // Print stack trace for debugging in case of error
       e.printStackTrace();
