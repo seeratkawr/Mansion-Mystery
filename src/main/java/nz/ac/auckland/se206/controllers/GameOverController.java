@@ -3,6 +3,8 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 /**
@@ -37,8 +40,7 @@ public class GameOverController {
     result = App.getAiGameResult();
     chosenThief = App.getChosenSuspect();
 
-    txtaResults.setText(result);
-    
+    typeOutMessage();
 
     continueButton.setDisable(true);
     continueButton.setVisible(false);
@@ -79,5 +81,26 @@ public class GameOverController {
   private void onClickedContinue(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
     App.openGameLost();
+  }
+
+  // Helper method to simulate typed-out text effect
+  private void typeOutMessage() {
+    final int[] currentIndex = {0};
+    Timeline timeline = new Timeline();
+    // Add a keyframe for each character to be typed
+    KeyFrame keyFrame =
+        new KeyFrame(
+            Duration.millis(15),
+            event -> {
+              if (currentIndex[0] < result.length()) {
+                txtaResults.appendText(String.valueOf(result.charAt(currentIndex[0])));
+                currentIndex[0]++;
+              }
+            });
+
+    // Set the number of keyframes to the length of the message
+    timeline.getKeyFrames().add(keyFrame);
+    timeline.setCycleCount(result.length()); // Run it for each character
+    timeline.play();
   }
 }
