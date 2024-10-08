@@ -753,11 +753,11 @@ public class App extends Application {
             if (txtaChat == null) {
               App.setAiGameResult(response.getContent());
             }
-            // Append the response to the chat area and stop the loading indicator
+            // Show the "typed-out" text effect and stop the loading indicator
             Platform.runLater(
                 () -> {
                   if (txtaChat != null) {
-                    appendChatMessage(response, txtaChat);
+                    typeOutMessage(response.getContent(), txtaChat);
                   } else {
                     try {
                       App.openGameOver(event);
@@ -777,6 +777,27 @@ public class App extends Application {
     App.addThread(thread);
     thread.setDaemon(true);
     thread.start();
+  }
+
+  // Helper method to simulate typed-out text effect
+  private static void typeOutMessage(String message, TextArea txtaChat) {
+    final int[] currentIndex = {0};
+    Timeline timeline = new Timeline();
+    // Add a keyframe for each character to be typed
+    KeyFrame keyFrame =
+        new KeyFrame(
+            Duration.millis(30),
+            event -> {
+              if (currentIndex[0] < message.length()) {
+                txtaChat.appendText(String.valueOf(message.charAt(currentIndex[0])));
+                currentIndex[0]++;
+              }
+            });
+
+    // Set the number of keyframes to the length of the message
+    timeline.getKeyFrames().add(keyFrame);
+    timeline.setCycleCount(message.length()); // Run it for each character
+    timeline.play();
   }
 
   // Method to set the profession and initialize chat completion request

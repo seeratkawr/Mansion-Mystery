@@ -16,7 +16,7 @@
             <Image url="@../images/macOS-Monterey-Apple-Stock-Wallpaper-still-1.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" style="-fx-background-color: grey; -fx-background-radius: 5px; -fx-border-color: black; -fx-border-radius: 5px; -fx-label-padding: 5px; -fx-text-fill: white; -fx-border-width: 2px;" />
+      <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#ffffffd2" height="427.0" layoutX="92.0" layoutY="91.0" stroke="TRANSPARENT" strokeType="INSIDE" width="661.0" />
       <Label layoutX="147.0" layoutY="133.0" prefHeight="58.0" prefWidth="141.0" style="-fx-font-size: 40px; -fx-font-family: System;" text="Sign in">
          <font>
