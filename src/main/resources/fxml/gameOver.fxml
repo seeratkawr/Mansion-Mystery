@@ -6,17 +6,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameOverController">
    <children>
-      <ImageView fx:id="feedbackfield" fitHeight="603.0" fitWidth="852.0" layoutX="-2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="feedbackfield" fitHeight="611.0" fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/mansionb.png" />
+            <Image url="@../images/feedback.png" />
          </image>
       </ImageView>
-      <Label fx:id="gameOver" layoutX="308.0" layoutY="200.0" style="-fx-font-size: 50px;" text="Game over!" textFill="WHITE" />
-      <Label fx:id="results" layoutX="184.0" layoutY="265.0" text="Your results:" textFill="WHITE" />
-      <TextArea fx:id="txtaResults" editable="false" layoutX="184.0" layoutY="296.0" prefHeight="186.0" prefWidth="469.0" wrapText="true" />
-      <Button fx:id="continueButton" layoutX="383.0" layoutY="487.0" mnemonicParsing="false" onAction="#onClickedContinue" text="Continue" />
+      <Label fx:id="results" layoutX="392.0" layoutY="192.0" text="Your results:" />
+      <TextArea fx:id="txtaResults" editable="false" layoutX="392.0" layoutY="216.0" prefHeight="252.0" prefWidth="318.0" wrapText="true" />
+      <Button fx:id="continueButton" layoutX="755.0" layoutY="7.0" mnemonicParsing="false" onAction="#onClickedContinue" text="Continue" />
+      <ImageView fx:id="selectedSuspect" fitHeight="170.0" fitWidth="179.0" layoutX="96.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="selectedSuspectName" layoutX="97.0" layoutY="381.0" prefHeight="42.0" prefWidth="177.0" textAlignment="CENTER">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
