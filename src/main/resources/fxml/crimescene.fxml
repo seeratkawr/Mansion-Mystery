@@ -35,14 +35,5 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Rectangle fx:id="backstoryRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="108.0" layoutX="56.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" width="731.0" />
-      <Label fx:id="backstory1" layoutX="63.0" layoutY="180.0" prefHeight="103.0" prefWidth="722.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. " wrapText="true" />
-      <Label fx:id="backstory3" layoutX="140.0" layoutY="253.0" prefHeight="103.0" prefWidth="553.0" text=" Do you have what it takes to catch the mansion thief?" wrapText="true" />
-      <Label fx:id="backstory2" layoutX="117.0" layoutY="212.0" prefHeight="112.0" prefWidth="651.0" text="Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. " textFill="WHITE" wrapText="true" />
-      <ImageView fx:id="closeButton" fitHeight="45.0" fitWidth="54.0" layoutX="762.0" layoutY="191.0" onMouseClicked="#onCloseClicked" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/close-button.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

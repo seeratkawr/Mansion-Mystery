@@ -14,7 +14,9 @@
   /* Make the text slanted */
 }
 
-#timerLabel, #lbExplain, #lbPopout, #lbPopup2{
+#lbExplain,
+#lbPopout,
+#lbPopup2 {
   -fx-background-color: #F0C78A;
   /* Consistent brown color */
   -fx-text-fill: #4B2E39;
@@ -24,11 +26,10 @@
   -fx-background-radius: 5;
   -fx-border-color: rgb(255, 255, 255);
   -fx-border-width: 2;
-
-
 }
 
-#lbTimer{
+#lbTimer,
+#timerLabel {
   -fx-background-color: #F0C78A;
   /* Consistent brown color */
   -fx-text-fill: #4B2E39;
@@ -38,22 +39,32 @@
   -fx-background-radius: 5;
   -fx-border-color: rgb(255, 255, 255);
   -fx-border-width: 2;
-
+  -fx-text-alignment: center;
+  -fx-alignment: center;
 }
 
 #triangle {
-  -fx-fill: #F0C78A; /* Soft cream color for the triangle */
-  -fx-stroke: rgb(255, 255, 255); /* White border color */
-  -fx-stroke-width: 2; /* Border width */
-  -fx-effect: null; /* No shadow by default */
-  -fx-transition: 0.3s ease; /* Smooth transition */
+  -fx-fill: #F0C78A;
+  /* Soft cream color for the triangle */
+  -fx-stroke: rgb(255, 255, 255);
+  /* White border color */
+  -fx-stroke-width: 2;
+  /* Border width */
+  -fx-effect: null;
+  /* No shadow by default */
+  -fx-transition: 0.3s ease;
+  /* Smooth transition */
 }
 
 #triangle:hover {
-  -fx-fill: #e6b978; /* Darker shade on hover */
-  -fx-stroke: #FFD58C; /* Lightened stroke color */
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2); /* Subtle shadow effect */
-  -fx-scale-x: 1.05; /* Slight scaling on hover */
+  -fx-fill: #e6b978;
+  /* Darker shade on hover */
+  -fx-stroke: #FFD58C;
+  /* Lightened stroke color */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+  /* Subtle shadow effect */
+  -fx-scale-x: 1.05;
+  /* Slight scaling on hover */
   -fx-scale-y: 1.05;
 }
 
@@ -103,8 +114,10 @@
 
 /* Button styles */
 .button {
-  -fx-background-color: #F0C78A; /* Soft cream color */
-  -fx-text-fill: #4B2E39; /* Consistent brown color */
+  -fx-background-color: #F0C78A;
+  /* Soft cream color */
+  -fx-text-fill: #4B2E39;
+  /* Consistent brown color */
   -fx-font-family: "Arial";
   -fx-font-size: 14px;
   -fx-border-radius: 5;
@@ -112,17 +125,24 @@
   -fx-border-color: rgb(255, 255, 255);
   -fx-border-width: 2;
   -fx-padding: 5 10;
-  -fx-cursor: hand; /* Add a hand cursor on hover */
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0); /* Default no shadow */
-  -fx-transition: 0.3s ease; /* Smooth transition */
+  -fx-cursor: hand;
+  /* Add a hand cursor on hover */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0), 0, 0, 0, 0);
+  /* Default no shadow */
+  -fx-transition: 0.3s ease;
+  /* Smooth transition */
 }
 
 /* Hover effect */
 .button:hover {
-  -fx-background-color: #e6b978; /* Darker shade of the base color */
-  -fx-border-color: #FFD58C; /* Lightened border color for contrast */
-  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2); /* Add subtle shadow */
-  -fx-scale-x: 1.05; /* Slightly enlarge the button */
+  -fx-background-color: #e6b978;
+  /* Darker shade of the base color */
+  -fx-border-color: #FFD58C;
+  /* Lightened border color for contrast */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+  /* Add subtle shadow */
+  -fx-scale-x: 1.05;
+  /* Slightly enlarge the button */
   -fx-scale-y: 1.05;
 }
 

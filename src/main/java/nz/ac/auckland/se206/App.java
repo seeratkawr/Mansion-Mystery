@@ -38,6 +38,7 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.controllers.AlexClueController;
+import nz.ac.auckland.se206.controllers.BackstoryController;
 import nz.ac.auckland.se206.controllers.CleanerController;
 import nz.ac.auckland.se206.controllers.CrimeSceneController;
 import nz.ac.auckland.se206.controllers.DaughterController;
@@ -147,21 +148,30 @@ public class App extends Application {
    * @param event the action event that triggered this method
    * @throws IOException if the FXML file is not found
    */
-  public static void openCrimeScene(ActionEvent event) throws IOException {
+  public static void openCrimeScene() throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
+    Parent root = loader.load();
 
-    // Load the root node from the FXML file
+    CrimeSceneController controller = loader.getController();
+    timerLabel = controller.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
+
+    scene = new Scene(root);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+    sceneStack.push(scene);
+  }
+
+  public static void openBackstory(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/backstory.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
-
-    // Get the current stage from the event source
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
     stage.show();
     sceneStack.push(scene);
 
-    // Get the controller associated with the crime scene
-    CrimeSceneController controller = loader.getController();
+    BackstoryController controller = loader.getController();
 
     // Check if the timer has not been started yet
     if (!timerStarted) {
@@ -438,7 +448,7 @@ public class App extends Application {
    * @throws IOException if there is an error during the closing process
    */
   public static void closeClue(ActionEvent event) throws IOException {
-    openCrimeScene(event);
+    openCrimeScene();
   }
 
   /**
@@ -839,13 +849,6 @@ public class App extends Application {
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
-  }
-
-  // Method to append a chat message to the chat area
-  private static void appendChatMessage(ChatMessage msg, TextArea txtaChat) {
-    txtaChat.appendText(msg.getContent() + "\n\n");
-    System.out.println(
-        "Response from LLM: " + msg.getContent()); // Print the response to the console
   }
 
   // Method to run GPT chat completion request

@@ -44,7 +44,7 @@ public class Notebookpg2Controller {
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     App.playSound("button.mp3"); // Play button click sound
     System.out.println("Go back to crime scene"); // Log action
-    App.openCrimeScene(event); // Navigate to the crime scene
+    App.openCrimeScene(); // Navigate to the crime scene
   }
 
   // Method to handle the event when the user clicks to go to the first page

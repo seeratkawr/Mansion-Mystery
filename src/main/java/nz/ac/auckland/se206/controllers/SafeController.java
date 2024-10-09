@@ -73,6 +73,6 @@ public class SafeController {
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
     System.out.println("Go back to crime scene");
-    App.openCrimeScene(event);
+    App.openCrimeScene();
   }
 }
