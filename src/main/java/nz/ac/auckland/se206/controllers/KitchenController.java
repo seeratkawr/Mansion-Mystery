@@ -33,6 +33,7 @@ public class KitchenController {
 
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
+  private static boolean initialMessageShown = false;
 
   // Initialize method called after FXML fields are populated
   public void initialize() {
@@ -45,8 +46,13 @@ public class KitchenController {
     translateTransition.setAutoReverse(true); // Move back and forth
     txtaChat.setWrapText(true); // Enable text wrapping in chat area
     txtaChat.setEditable(false);
-    txtaChat.setText(
-        "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?");
+
+    if (!initialMessageShown) {
+      App.initialTypedOutMessage(
+          "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?",
+          txtaChat);
+      initialMessageShown = true;
+    }
 
     App.setProfession("Chef", txtaChat, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();

@@ -789,6 +789,25 @@ public class App extends Application {
     thread.start();
   }
 
+  public static void initialTypedOutMessage(String message, TextArea textArea) {
+    final StringBuilder displayedText = new StringBuilder(); // To hold the displayed characters
+    Timeline timeline = new Timeline();
+
+    // Set up keyframes for each character in the message
+    for (int i = 0; i < message.length(); i++) {
+      final int index = i;
+      KeyFrame keyFrame =
+          new KeyFrame(
+              Duration.millis(30 * index), // Delay for each character (adjust speed as needed)
+              event -> {
+                displayedText.append(message.charAt(index)); // Add the next character
+                textArea.setText(displayedText.toString()); // Update the TextArea
+              });
+      timeline.getKeyFrames().add(keyFrame); // Add each keyframe to the timeline
+    }
+    timeline.play(); // Start the typing effect
+  }
+
   // Helper method to simulate typed-out text effect
   private static void typeOutMessage(String message, TextArea txtaChat) {
     final int[] currentIndex = {0};
