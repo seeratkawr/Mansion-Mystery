@@ -35,9 +35,7 @@ public class GameOverController {
   private String result;
   private String chosenThief;
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   @FXML
   private void initialize() {
     result = App.getAiGameResult();
@@ -64,8 +62,7 @@ public class GameOverController {
     }
 
     // Enable the button after 10 seconds
-    PauseTransition pauseTransition =
-        new PauseTransition(javafx.util.Duration.seconds(5));
+    PauseTransition pauseTransition = new PauseTransition(javafx.util.Duration.seconds(5));
     pauseTransition.setOnFinished(
         e -> {
           // Assuming there is a button to enable, replace 'yourButton' with the actual button
@@ -85,12 +82,21 @@ public class GameOverController {
   @FXML
   private void onClickedContinue(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
-    App.openGameLost();
+
+    String result = "";
+
+    if (chosenThief.equals("the chef James")) {
+      result = "chef";
+    } else if (chosenThief.equals("the cleaner Alex")) {
+      result = "cleaner";
+    } else if (chosenThief.equals("the daughter Maria")) {
+      result = "daughter";
+    }
+
+    App.openGameLost(result);
   }
 
-  /**
-   * Types out the message in the text area character by character with a delay.
-   */
+  /** Types out the message in the text area character by character with a delay. */
   private void typeOutMessage() {
     final int[] currentIndex = {0};
     Timeline timeline = new Timeline();

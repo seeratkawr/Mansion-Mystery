@@ -136,8 +136,7 @@ public class GuessingController {
                     } else {
                       // No message was entered, handle game over scenario
                       try {
-                        App.playSound("gameOverNoTime.mp3");
-                        App.openGameLost();
+                        App.openGameLost("timeOver");
                       } catch (IOException e) {
                         e.printStackTrace();
                       }
