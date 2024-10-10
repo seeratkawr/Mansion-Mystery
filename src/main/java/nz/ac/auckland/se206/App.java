@@ -63,6 +63,25 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  * This is the entry point of the JavaFX application. This class initializes and runs the JavaFX
  * application.
  */
+/**
+ * The App class serves as the main entry point for the JavaFX application. It provides methods to
+ * manage scenes, handle game state, and interact with various controllers. The class includes
+ * methods to open different scenes, play sounds, manage timers, and verify game conditions.
+ *
+ * <p>Key functionalities include:
+ *
+ * <ul>
+ *   <li>Launching the JavaFX application
+ *   <li>Setting the root of the scene
+ *   <li>Opening various game scenes
+ *   <li>Managing timers and threads
+ *   <li>Playing and stopping sounds
+ *   <li>Verifying game conditions for making guesses
+ * </ul>
+ *
+ * <p>Note: The class relies on several FXML files located in the "src/main/resources/fxml"
+ * directory and sound files located in the "/sounds/" directory within the application's resources.
+ */
 public class App extends Application {
 
   private static Scene scene;
@@ -524,9 +543,7 @@ public class App extends Application {
     }
   }
 
-  /**
-   * Stops the currently playing sound.
-   */
+  /** Stops the currently playing sound. */
   public static void stopSound() {
     if (mediaPlayer != null) {
       mediaPlayer.stop();
@@ -753,7 +770,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param lbPopup the label to display the popup message
    * @param lbPopup2 the label to display the popup message
    * @throws InterruptedException if there is an error stopping the threads
@@ -801,7 +818,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @throws InterruptedException if there is an error stopping the threads
    */
   public static void handleGpt(
@@ -879,9 +896,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application
-   * is closed.
-   * 
+   * This method is called to stop all active timers and threads when the application is closed.
+   *
    * @param message the message to display in the text area
    * @param textArea the text area to display the message
    */
@@ -906,7 +922,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param message the message to display in the text area
    * @param txtaChat the text area to display the message
    */
@@ -932,7 +948,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param profession the profession to set
    * @param txtaChat the text area to display the chat
    * @param loadingIndicator the loading indicator to show while loading
@@ -980,7 +996,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param msg the chat message to add
    * @return the chat message to return
    * @throws ApiProxyException if there is an error with the API proxy
@@ -1001,7 +1017,7 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param profession the profession to get the system prompt for
    * @return the system prompt for the profession
    */
@@ -1030,16 +1046,14 @@ public class App extends Application {
     return prompt;
   }
 
-  /**
-   * This method is called to stop all active timers and threads when the application is closed.
-   */
+  /** This method is called to stop all active timers and threads when the application is closed. */
   public static String getCurrentProfession() {
     return profession;
   }
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param profession the profession to set as the current profession
    */
   private static void setCurrentProfession(String profession) {
@@ -1048,17 +1062,14 @@ public class App extends Application {
 
   /**
    * This method is called to stop all active timers and threads when the application is closed.
-   * 
+   *
    * @param chosenSuspect the chosen suspect to set as the current suspect
    */
   public static void setChosenSuspect(String chosenSuspect) {
     App.chosenSuspect = chosenSuspect;
   }
 
-  /**
-   * This method is called to stop all active timers and threads when the application is closed.
-   * 
-   */
+  /** This method is called to stop all active timers and threads when the application is closed. */
   public static String getChosenSuspect() {
     return chosenSuspect;
   }

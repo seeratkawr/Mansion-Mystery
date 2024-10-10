@@ -21,21 +21,20 @@ import nz.ac.auckland.se206.App;
  * <p>It also handles the user input and sends the messages to the API for completion.
  */
 public class CleanerController {
-  @FXML private TextArea txtaChat; 
-  @FXML private TextField txtInput; 
-  @FXML private Button btnSend; 
-  @FXML private ImageView loadingIndicator; 
-  @FXML private Label lbPopup; 
+
+  private static boolean initialMessageShown = false;
+  @FXML private TextArea txtaChat;
+  @FXML private TextField txtInput;
+  @FXML private Button btnSend;
+  @FXML private ImageView loadingIndicator;
+  @FXML private Label lbPopup;
   @FXML private Label lbPopup2;
   @FXML private Label timerLabel;
 
-  private static boolean initialMessageShown = false;
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   public void initialize() {
     loadingIndicator.setVisible(false);
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/broom.png")));
@@ -84,7 +83,7 @@ public class CleanerController {
 
   /**
    * Method called when the map is clicked. Opens the map scene.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -101,7 +100,7 @@ public class CleanerController {
 
   /**
    * Method called when the laptop is clicked. Opens the laptop scene.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -111,7 +110,7 @@ public class CleanerController {
 
   /**
    * Method called when the drawers are clicked. Opens the drawers scene.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML

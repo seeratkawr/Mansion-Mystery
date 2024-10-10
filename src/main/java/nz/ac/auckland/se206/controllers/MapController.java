@@ -35,7 +35,7 @@ public class MapController {
 
   /**
    * Gets the label for the timer on the map screen.
-   * 
+   *
    * @return The timer label on the map screen
    */
   public Label getTimerLabel() {
@@ -44,7 +44,7 @@ public class MapController {
 
   /**
    * Initializes the controller class. This method is called after the FXML fields are injected.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   public void changeBackground(String path) {
@@ -53,7 +53,7 @@ public class MapController {
 
   /**
    * Method called when the exit button is clicked.
-   * 
+   *
    * @param event The action event that triggered the method
    */
   @FXML
@@ -69,7 +69,7 @@ public class MapController {
 
   /**
    * Method called when the kitchen area is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -88,7 +88,7 @@ public class MapController {
 
   /**
    * Method called when the daughter area is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -106,7 +106,7 @@ public class MapController {
 
   /**
    * Method called when the cleaner area is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -124,7 +124,7 @@ public class MapController {
 
   /**
    * Method called when the study button is clicked.
-   * 
+   *
    * @param event The action event that triggered the method
    */
   @FXML

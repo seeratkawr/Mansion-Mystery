@@ -17,7 +17,7 @@ public class Notebookpg3Controller {
 
   /**
    * Method to handle the event when the middle page is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -31,10 +31,10 @@ public class Notebookpg3Controller {
   }
 
   /**
-   * Method to handle the event when the exit button is clicked
-   * to go back to the drawers.
-   * 
+   * Method to handle the event when the exit button is clicked to go back to the drawers.
+   *
    * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
    * @throws IOException If an I/O error occurs
    */
   @FXML
@@ -47,7 +47,7 @@ public class Notebookpg3Controller {
 
   /**
    * Method to handle the event when the book is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML

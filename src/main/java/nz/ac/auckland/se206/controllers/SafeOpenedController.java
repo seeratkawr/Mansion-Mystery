@@ -13,12 +13,9 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.TimerUtility;
 
 /**
- * The SafeOpenedController class is responsible for handling the interactions
- * and logic for the
- * "safe opened" scene in the application. It manages the timer display and
- * handles user actions
- * such as going back to the previous scene, as well as draggable interactions
- * with the magnifying
+ * The SafeOpenedController class is responsible for handling the interactions and logic for the
+ * "safe opened" scene in the application. It manages the timer display and handles user actions
+ * such as going back to the previous scene, as well as draggable interactions with the magnifying
  * glass.
  *
  * @see TimerUtility
@@ -26,28 +23,20 @@ import nz.ac.auckland.se206.TimerUtility;
  */
 public class SafeOpenedController {
 
-  @FXML
-  private ResourceBundle resources;
-  @FXML
-  private URL location;
-  @FXML
-  private AnchorPane safePane;
-  @FXML
-  private Label timerLabel;
-  @FXML
-  private ImageView magnifyingGlass;
-  @FXML
-  private Text msgLabel;
-  @FXML
-  private Text msgLabel1;
+  @FXML private ResourceBundle resources;
+  @FXML private URL location;
+  @FXML private AnchorPane safePane;
+  @FXML private Label timerLabel;
+  @FXML private ImageView magnifyingGlass;
+  @FXML private Text msgLabel;
+  @FXML private Text msgLabel1;
 
   // Coordinates where the magnifying glass will reveal the hair
   private final double targetX = 364.0;
   private final double targetY = 167.0;
 
   // Hair image to display when the magnifying glass is in the correct position
-  @FXML
-  private ImageView hairImage; // You need to add this to the FXML with initial visibility set to false
+  @FXML private ImageView hairImage;
 
   private double offsetX;
   private double offsetY;
@@ -70,8 +59,7 @@ public class SafeOpenedController {
   }
 
   /**
-   * This method is called when the user clicks the go back button. It returns
-   * users to the safe
+   * This method is called when the user clicks the go back button. It returns users to the safe
    * scene.
    *
    * @param event the event that triggered this method
@@ -85,8 +73,7 @@ public class SafeOpenedController {
   }
 
   /**
-   * Makes the magnifying glass draggable by setting mouse event handlers to
-   * calculate the drag
+   * Makes the magnifying glass draggable by setting mouse event handlers to calculate the drag
    * offset and update the position.
    */
   private void makeMagnifyingGlassDraggable() {
@@ -116,8 +103,7 @@ public class SafeOpenedController {
   }
 
   /**
-   * Checks if the magnifying glass is over the target point (334, 115) and shows
-   * the hair if the
+   * Checks if the magnifying glass is over the target point (334, 115) and shows the hair if the
    * condition is met.
    */
   private void checkForHair() {

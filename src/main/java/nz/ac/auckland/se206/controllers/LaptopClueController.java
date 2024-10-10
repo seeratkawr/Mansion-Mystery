@@ -13,9 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
-/**
- * Controller class for handling the laptop clue screen.
- */
+/** Controller class for handling the laptop clue screen. */
 public class LaptopClueController {
   @FXML private Button backButton; // Button to go back to the previous scene
   @FXML private Label timerLabel; // Label to display the timer
@@ -29,16 +27,14 @@ public class LaptopClueController {
 
   /**
    * Getter for the timer label.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   @FXML
   private void initialize() {
     // Set the maximum rotation for each image
@@ -56,7 +52,8 @@ public class LaptopClueController {
 
   /**
    * Method called when the back button is clicked. Closes the current scene and goes back to the
-   * 
+   * previous scene.
+   *
    * @param event The action event that triggered the method
    */
   @FXML
@@ -109,7 +106,7 @@ public class LaptopClueController {
 
   /**
    * Checks if all images are at their max rotation.
-   * 
+   *
    * @return True if all images are at their max rotation, false otherwise
    */
   private boolean allImagesAtMaxRotation() {
