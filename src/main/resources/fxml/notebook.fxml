@@ -7,7 +7,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -53,11 +52,7 @@
                   <Font size="26.0" />
                </font>
                <effect>
-                  <DropShadow height="20.0" offsetY="2.0" radius="9.5" width="20.0">
-                     <color>
-                        <Color opacity="0.5992366671562195" />
-                     </color>
-                  </DropShadow>
+                  <DropShadow height="20.0" offsetY="2.0" radius="9.5" width="20.0" />
                </effect>
             </Label>
          </children>
