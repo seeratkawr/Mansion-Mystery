@@ -19,8 +19,8 @@
       </ImageView>
       <TextField fx:id="txtInput" layoutY="561.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the cleaner, Alex" />
       <Button fx:id="btnSend" layoutX="751.0" layoutY="561.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
-      <TextArea fx:id="txtaChat" editable="false" layoutX="66.0" layoutY="103.0" prefHeight="106.0" prefWidth="292.0" />
-      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="68.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+      <TextArea fx:id="txtaChat" editable="false" layoutX="66.0" layoutY="92.0" prefHeight="122.0" prefWidth="292.0" />
+      <ImageView fx:id="loadingIndicator" fitHeight="59.0" fitWidth="55.0" layoutX="68.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/broom.png" />
          </image>
