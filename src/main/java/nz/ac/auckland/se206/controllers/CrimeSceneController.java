@@ -77,39 +77,7 @@ public class CrimeSceneController {
 
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
-    App.playSound("button.mp3");
-    System.out.println("Guessing button clicked");
-
-    List<Boolean> canGuessList = App.verifyCanGuess();
-    Boolean canGuess = canGuessList.get(2);
-    Boolean enoughCluesViewed = canGuessList.get(1);
-    Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
-
-    if (canGuess) {
-      App.openGuessingScene();
-    } else {
-      if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
-        lbPopup2.setVisible(true);
-      } else if (!enoughSuspectsTalkedTo) {
-        lbPopup.setText("  You need to talk to all suspects before making a guess.");
-        lbPopup.setVisible(true);
-      } else if (!enoughCluesViewed) {
-        lbPopup.setText("  You need to view at least 1 clue before making a guess.");
-        lbPopup.setVisible(true);
-      }
-
-      Timer timer = new Timer();
-      App.addTimer(timer);
-      timer.schedule(
-          new TimerTask() {
-            @Override
-            public void run() {
-              lbPopup.setVisible(false);
-              lbPopup2.setVisible(false);
-            }
-          },
-          4000);
-    }
+    App.handleGuess(lbPopup, lbPopup2);
   }
 
   @FXML

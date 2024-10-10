@@ -97,30 +97,6 @@ public class KitchenController {
 
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
-    App.playSound("button.mp3"); // Play button click sound
-    System.out.println("Guessing button clicked");
-
-    // verifyCanGuess() returns a list of booleans in the format
-    // [enoughSuspectsTalkedTo, enoughCluesViewed, canGuess]
-    List<Boolean> canGuessList = App.verifyCanGuess();
-    Boolean canGuess = canGuessList.get(2);
-    Boolean enoughCluesViewed = canGuessList.get(1);
-    Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
-
-    // Verify if the user can guess
-    if (canGuess) {
-      App.openGuessingScene(); // Open the guessing scene
-    } else {
-      // Update the popup message based on the user's progress
-      if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
-        lbPopup2.setVisible(true);
-      } else if (!enoughSuspectsTalkedTo) {
-        lbPopup.setText("You need to talk to all suspects before making a guess.");
-        lbPopup.setVisible(true);
-      } else if (!enoughCluesViewed) {
-        lbPopup.setText("You need to view at least 1 clue before making a guess.");
-        lbPopup.setVisible(true);
-      }
-    }
+    App.handleGuess(lbPopup, lbPopup2);
   }
 }
