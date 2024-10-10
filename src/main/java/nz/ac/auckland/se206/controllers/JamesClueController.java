@@ -23,7 +23,7 @@ public class JamesClueController {
     // Play mouse click sound
     App.playSound("mouseclick.mp3");
     // Open the laptop scene
-    App.openLaptop(event);
+    App.openSuspectLaptop(event);
   }
 
   // Getter for the timer label

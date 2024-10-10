@@ -23,7 +23,7 @@ public class AlexClueController {
     // Play mouse click sound
     App.playSound("mouseclick.mp3");
     // Open the laptop screen
-    App.openLaptop(event);
+    App.openSuspectLaptop(event);
   }
 
   // Getter for the timer label

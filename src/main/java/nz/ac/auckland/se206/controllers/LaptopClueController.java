@@ -1,47 +1,51 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
-
+import java.util.HashMap;
+import java.util.Map;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 // Controller class for the Laptop Clue scene
 public class LaptopClueController {
   @FXML private Button backButton; // Button to go back to the previous scene
-  @FXML private Button signInButton; 
   @FXML private Label timerLabel; // Label to display the timer
-  @FXML private Label lbPopup;
-  @FXML private TextField txtInput;
+  @FXML private ImageView topLeftDog;
+  @FXML private ImageView topRightDog;
+  @FXML private ImageView bottomLeftDog;
+  @FXML private ImageView bottomRightDog;
+
+  private final Map<ImageView, Double> maxRotations = new HashMap<>();
+  private final Map<ImageView, Double> currentRotations = new HashMap<>();
 
   // Getter for the timer label
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  // Method called when the controller is initialized
   @FXML
-  public void initialize() {
-        txtInput.setOnKeyPressed(
-        event -> {
-          switch (event.getCode()) {
-            case ENTER:
-              signInButton.fire(); // Trigger the send button programmatically
-              break;
-            default:
-              break;
-          }
-        });
+  private void initialize() {
+    maxRotations.put(topLeftDog, 90.0);
+    maxRotations.put(topRightDog, 180.0);
+    maxRotations.put(bottomLeftDog, 180.0);
+    maxRotations.put(bottomRightDog, 270.0);
+
+    currentRotations.put(topLeftDog, 0.0);
+    currentRotations.put(topRightDog, 0.0);
+    currentRotations.put(bottomLeftDog, 0.0);
+    currentRotations.put(bottomRightDog, 0.0);
   }
 
   // Method called when the back button is clicked
   @FXML
-  private void onGoBack(ActionEvent event) {
+  private void onGoBackCrimeScene(ActionEvent event) {
     System.out.println("Back button clicked");
     try {
       // Go back to the crime scene
@@ -53,35 +57,38 @@ public class LaptopClueController {
   }
 
   @FXML
-  private void onSignIn(ActionEvent event) {
-    System.out.println("Sign in button clicked");
-    try {
-      App.playSound("mouseclick.mp3");
-      // Get the username from the text field
-      String username = txtInput.getText().toLowerCase();
-      System.out.println("typed in: " + username);
-      if (username.equals("james")) {
-        App.openLaptopClue(event, "/fxml/jamesClue.fxml");
-      } else if (username.equals("maria")) {
-        App.openLaptopClue(event, "/fxml/mariaClue.fxml");
-      } else if (username.equals("alex")) {
-        App.openLaptopClue(event, "/fxml/alexClue.fxml");
-      } else {
-              // Display popup message for 2 seconds
-              lbPopup.setVisible(true);
-              Timer timer = new Timer();
-              App.addTimer(timer); // Store timer in App.java for garbage collection
-              timer.schedule(
-                  new TimerTask() {
-                    @Override
-                    public void run() {
-                      lbPopup.setVisible(false); // Hide popup message after 2 seconds
-                    }
-                  },
-                  2000);
+  private void rotateImage(MouseEvent event) {
+    ImageView clickedImage = (ImageView) event.getSource();
+
+    double currentRotation = currentRotations.get(clickedImage);
+    double maxRotation = maxRotations.get(clickedImage);
+
+    if (currentRotation < maxRotation) {
+      RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.5), clickedImage);
+      rotateTransition.setFromAngle(currentRotation);
+      rotateTransition.setToAngle(currentRotation + 90);
+      rotateTransition.setOnFinished(
+          e -> {
+            currentRotations.put(clickedImage, currentRotation + 90);
+
+            if (allImagesAtMaxRotation()) {
+              try {
+                App.openSuspectLaptop(event);
+              } catch (IOException e1) {
+                e1.printStackTrace();
+              }
             }
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-        }
+          });
+      rotateTransition.play();
+    }
+  }
+
+  private boolean allImagesAtMaxRotation() {
+    for (ImageView imageView : maxRotations.keySet()) {
+      if (currentRotations.get(imageView) < maxRotations.get(imageView)) {
+        return false;
       }
+    }
+    return true;
+  }
+}
