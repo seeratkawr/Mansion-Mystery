@@ -12,6 +12,9 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
+/**
+ * Controller class for handling the suspect laptop screen.
+ */
 public class SuspectLaptopController {
   @FXML private Button backButton;
   @FXML private Circle alexCircle;
@@ -32,7 +35,8 @@ public class SuspectLaptopController {
   }
 
   /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
+   * Initializes the controller class. This method is called
+   * after the FXML fields are injected.
    */
   @FXML
   public void initialize() {
@@ -42,8 +46,8 @@ public class SuspectLaptopController {
   }
 
   /**
-   * Method called when a suspect circle is clicked. Opens the laptop clue scene for the corresponding
-   * suspect.
+   * Method called when a suspect circle is clicked.
+   * Opens the laptop clue scene for the corresponding suspect.
    * 
    * @param event The mouse event that triggered the method
    */

@@ -12,12 +12,20 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
+/**
+ * Controller class for handling the backstory scene.
+ */
 public class BackstoryController {
-  @FXML private Label backstory1;
-  @FXML private Label backstory2;
-  @FXML private Label backstory3;
-  @FXML private Button openCrimeScene;
-  @FXML private Label timerLabel;
+  @FXML
+  private Label backstory1;
+  @FXML
+  private Label backstory2;
+  @FXML
+  private Label backstory3;
+  @FXML
+  private Button openCrimeScene;
+  @FXML
+  private Label timerLabel;
 
   private boolean crimeSceneOpened = false;
 
@@ -31,7 +39,8 @@ public class BackstoryController {
   }
 
   /**
-   * Method called when the open crime scene button is clicked. Opens the crime scene.
+   * Method called when the open crime scene button is clicked. Opens the crime
+   * scene.
    *
    * @param event The action event that triggered the method
    * @throws IOException If an I/O error occurs
@@ -43,7 +52,8 @@ public class BackstoryController {
   }
 
   /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
+   * Initializes the controller class. This method is called after the FXML fields
+   * are injected.
    */
   @FXML
   private void initialize() {
@@ -53,12 +63,9 @@ public class BackstoryController {
     backstory3.setOpacity(0.0);
 
     // Set up fade transitions for each backstory label
-    FadeTransition fade1 =
-        createFadeTransition(backstory1, Duration.seconds(1), Duration.seconds(0));
-    FadeTransition fade2 =
-        createFadeTransition(backstory2, Duration.seconds(1), Duration.seconds(2));
-    FadeTransition fade3 =
-        createFadeTransition(backstory3, Duration.seconds(1), Duration.seconds(4));
+    FadeTransition fade1 = createFadeTransition(backstory1, Duration.seconds(1), Duration.seconds(0));
+    FadeTransition fade2 = createFadeTransition(backstory2, Duration.seconds(1), Duration.seconds(2));
+    FadeTransition fade3 = createFadeTransition(backstory3, Duration.seconds(1), Duration.seconds(4));
 
     // Play the fade transitions in sequence
     fade1.play();
@@ -69,7 +76,7 @@ public class BackstoryController {
     Timer timer = new Timer();
     App.addTimer(timer);
     timer.schedule(
-      // Timer task to run after 15 seconds
+        // Timer task to run after 15 seconds
         new TimerTask() {
           @Override
           public void run() {
@@ -93,9 +100,9 @@ public class BackstoryController {
   /**
    * Creates a fade transition for a label with the specified duration and delay.
    *
-   * @param label The label to apply the fade transition to
+   * @param label    The label to apply the fade transition to
    * @param duration The duration of the fade transition
-   * @param delay The delay before the fade transition starts
+   * @param delay    The delay before the fade transition starts
    * @return The fade transition
    */
   private FadeTransition createFadeTransition(Label label, Duration duration, Duration delay) {

@@ -13,6 +13,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 
+/**
+ * The SafeKeypadController class is responsible for handling the interactions and logic for the safe
+ * keypad scene in the application. It manages the user input and validates the code entered by the
+ * user to open the safe.
+ */
 public class SafeKeypadController {
 
   // FXML injected fields

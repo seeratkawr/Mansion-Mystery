@@ -7,7 +7,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-// Controller class for handling the Maria Clue scene
+/*
+ * Controller class for handling the Maria Clue screen.
+ */
 public class MariaClueController {
 
   // FXML injected Label element for displaying the timer
@@ -17,7 +19,12 @@ public class MariaClueController {
   @FXML private Circle circleButton2;
   @FXML private Circle circleButton3;
 
-  // Method to handle the closing of the clue window
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   * 
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
     // Open the laptop scene
@@ -26,7 +33,11 @@ public class MariaClueController {
     App.playSound("mouseclick.mp3");
   }
 
-  // Getter method for the timer label
+  /**
+   * Getter for the timer label.
+   * 
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }

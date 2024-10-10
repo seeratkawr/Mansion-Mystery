@@ -64,7 +64,7 @@ public class GameOverController {
     }
 
     // Enable the button after 10 seconds
-    javafx.animation.PauseTransition pauseTransition =
+    PauseTransition pauseTransition =
         new PauseTransition(javafx.util.Duration.seconds(5));
     pauseTransition.setOnFinished(
         e -> {
@@ -79,8 +79,8 @@ public class GameOverController {
   /**
    * Restarts the game when the continue button is clicked.
    *
-   * @param event
-   * @throws IOException
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs when opening the game lost scene
    */
   @FXML
   private void onClickedContinue(ActionEvent event) throws IOException {

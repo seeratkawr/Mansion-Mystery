@@ -1,9 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 
+/**
+ * Controller class for handling the crime scene screen.
+ */
 public class CrimeSceneController {
 
   @FXML private ImageView map;
@@ -29,6 +29,11 @@ public class CrimeSceneController {
   @FXML private Rectangle backstoryRectangle;
   @FXML private ImageView closeButton;
 
+  /**
+   * Getter for the timer label.
+   *
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
@@ -39,6 +44,7 @@ public class CrimeSceneController {
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
+      // Open the map scene and set the last scene to the crime scene
       App.playSound("map.mp3");
       App.openMap(event, "/images/Study.png");
       MapController.setLastScene("crimeScene");
@@ -54,6 +60,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onLaptopClicked(MouseEvent event) {
+    // Add the laptop to the clues viewed list
     App.addCluesViewed("laptop");
     try {
       App.openLaptop(event);
@@ -69,6 +76,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onDrawersClicked(MouseEvent event) {
+    // Add the drawers to the clues viewed list
     App.addCluesViewed("drawer");
     try {
       App.playSound("draweropen.mp3");
@@ -85,6 +93,7 @@ public class CrimeSceneController {
    */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
+    // Add the safe to the clues viewed list
     App.addCluesViewed("safe");
     try {
       App.openSafe(event);

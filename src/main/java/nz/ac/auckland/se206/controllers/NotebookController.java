@@ -10,6 +10,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 
+/**
+ * Controller class for handling the notebook screen.
+ */
 public class NotebookController {
 
   @FXML private Pane bookPane;
@@ -69,7 +72,7 @@ public class NotebookController {
   }
 
   /**
-   * Getter for the timer label.
+   * Getter for the timer label for the notebook screen (page 2).
    *
    * @return The timer label
    */
@@ -78,7 +81,7 @@ public class NotebookController {
   }
 
   /**
-   * Makes an item draggable.
+   * Makes an item draggable by the user on the screen using mouse events.
    *
    * @param item The item to make draggable
    */
@@ -156,7 +159,7 @@ public class NotebookController {
       double notebookMaxX,
       double notebookMinY,
       double notebookMaxY) {
-        // Calculate the center of the item
+    // Calculate the center of the item
     double itemCenterX = item.getLayoutX() + item.getFitWidth() / 2;
     double itemCenterY = item.getLayoutY() + item.getFitHeight() / 2;
 

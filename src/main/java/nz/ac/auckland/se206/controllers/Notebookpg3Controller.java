@@ -31,7 +31,8 @@ public class Notebookpg3Controller {
   }
 
   /**
-   * Method to handle the event when the exit button is clicked.
+   * Method to handle the event when the exit button is clicked
+   * to go back to the drawers.
    * 
    * @param event The action event that triggered the method
    * @throws IOException If an I/O error occurs
@@ -59,7 +60,7 @@ public class Notebookpg3Controller {
 
   /**
    * Method to handle the event when the go back to crime scene button is clicked.
-   * 
+   *
    * @param event The action event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -74,7 +75,7 @@ public class Notebookpg3Controller {
 
   /**
    * Getter for the timer label for the notebook page.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {

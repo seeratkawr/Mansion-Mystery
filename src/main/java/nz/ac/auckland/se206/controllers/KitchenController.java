@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import java.util.List;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,20 +21,22 @@ import nz.ac.auckland.se206.App;
  */
 public class KitchenController {
 
-  @FXML private TextArea txtaChat; // Text area for chat messages
-  @FXML private TextField txtInput; // Text field for user input
-  @FXML private Button btnSend; // Button to send messages
-  @FXML private ImageView loadingIndicator; // Loading indicator image
-  @FXML private Label timerLabel; // Label to display the timer
-  @FXML private ImageView mapImage; // Image view for the map
-  @FXML private Label lbPopup; // Label for popup message
+  @FXML private TextArea txtaChat; 
+  @FXML private TextField txtInput; 
+  @FXML private Button btnSend;
+  @FXML private ImageView loadingIndicator;
+  @FXML private ImageView mapImage; 
+  @FXML private Label lbPopup; 
   @FXML private Label lbPopup2;
+  @FXML private Label timerLabel;
 
-  private String profession; // Profession of the character
-  private TranslateTransition translateTransition; // Animation for loading indicator
+  private String profession; 
+  private TranslateTransition translateTransition;
   private static boolean initialMessageShown = false;
 
-  // Initialize method called after FXML fields are populated
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   public void initialize() {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/spatula.png")));
@@ -47,6 +48,7 @@ public class KitchenController {
     txtaChat.setWrapText(true); // Enable text wrapping in chat area
     txtaChat.setEditable(false);
 
+    // Display the initial message
     if (!initialMessageShown) {
       App.initialTypedOutMessage(
           "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?",
@@ -70,31 +72,50 @@ public class KitchenController {
         });
   }
 
-  // Get the timer label
+  /**
+   * Method to get the chat area.
+   * 
+   * @return The chat area
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  // Handle map click event
+  /**
+   * Method to handle the event when the user clicks on the map image.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
+      // Play sound and open map scene
       App.playSound("map.mp3");
       App.openMap(event, "/images/Kitchen.png");
       MapController.setLastScene("kitchen");
     } catch (IOException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
     System.out.println("Map clicked");
   }
 
-  // Handle send message button click event
+  /**
+   * Method to handle the event when the user clicks on the send button to send a message.
+   * 
+   * @param event
+   * @throws IOException
+   */
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
     App.handleGpt(profession, txtInput, txtaChat, loadingIndicator, translateTransition, null);
   }
 
+  /**
+   * Method to handle the event when the user clicks on the submit button to make a guess.
+   * 
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
     App.handleGuess(lbPopup, lbPopup2);

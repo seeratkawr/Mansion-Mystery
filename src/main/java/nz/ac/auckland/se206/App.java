@@ -515,7 +515,7 @@ public class App extends Application {
               return null;
             }
           };
-          // Create a new thread to run the background task
+      // Create a new thread to run the background task
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
@@ -608,7 +608,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to add a suspect to the list of suspects talked to
+   * This method is called to add a suspect to the list of suspects talked to.
    *
    * @param suspect the suspect to add to the list
    */
@@ -618,7 +618,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to add a clue to the list of clues viewed
+   * This method is called to add a clue to the list of clues viewed.
    *
    * @param clue the clue to add to the list
    */
@@ -733,7 +733,7 @@ public class App extends Application {
 
   /**
    * This method is called to add a timer to the list of active timers so that they can be stopped
-   * when the application is closed
+   * when the application is closed.
    *
    * @param timer the timer to add to the list
    */
@@ -743,7 +743,7 @@ public class App extends Application {
 
   /**
    * This method is called to add a thread to the list of active threads so that they can be stopped
-   * when the application is closed
+   * when the application is closed.
    *
    * @param thread the thread to add to the list
    */
@@ -752,13 +752,13 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @param lbPopup the label to display the popup message
    * @param lbPopup2 the label to display the popup message
    * @throws InterruptedException if there is an error stopping the threads
    */
-  public static void handleGuess(Label lbPopup, Label lbPopup2) throws IOException{
+  public static void handleGuess(Label lbPopup, Label lbPopup2) throws IOException {
     App.playSound("button.mp3");
     System.out.println("Guessing button clicked");
 
@@ -800,7 +800,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @throws InterruptedException if there is an error stopping the threads
    */
@@ -879,7 +879,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application
+   * is closed.
    * 
    * @param message the message to display in the text area
    * @param textArea the text area to display the message
@@ -904,7 +905,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @param message the message to display in the text area
    * @param txtaChat the text area to display the message
@@ -930,7 +931,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @param profession the profession to set
    * @param txtaChat the text area to display the chat
@@ -978,7 +979,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @param msg the chat message to add
    * @return the chat message to return
@@ -999,7 +1000,7 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
    * @param profession the profession to get the system prompt for
    * @return the system prompt for the profession
@@ -1030,36 +1031,33 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
-   * 
-   * @param event the ActionEvent that triggers the opening of the guessing scene
+   * This method is called to stop all active timers and threads when the application is closed.
    */
   public static String getCurrentProfession() {
     return profession;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
-   * @param event the ActionEvent that triggers the opening of the guessing scene
+   * @param profession the profession to set as the current profession
    */
   private static void setCurrentProfession(String profession) {
     App.profession = profession;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
-   * @param event the ActionEvent that triggers the opening of the guessing scene
+   * @param chosenSuspect the chosen suspect to set as the current suspect
    */
   public static void setChosenSuspect(String chosenSuspect) {
     App.chosenSuspect = chosenSuspect;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed
+   * This method is called to stop all active timers and threads when the application is closed.
    * 
-   * @param event the ActionEvent that triggers the opening of the guessing scene
    */
   public static String getChosenSuspect() {
     return chosenSuspect;

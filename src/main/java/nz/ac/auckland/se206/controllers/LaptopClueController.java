@@ -13,7 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
-// Controller class for the Laptop Clue scene
+/**
+ * Controller class for handling the laptop clue screen.
+ */
 public class LaptopClueController {
   @FXML private Button backButton; // Button to go back to the previous scene
   @FXML private Label timerLabel; // Label to display the timer

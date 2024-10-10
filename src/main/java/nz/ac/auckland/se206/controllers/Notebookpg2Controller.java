@@ -8,6 +8,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
 
+/**
+ * Controller class for handling the second page of the notebook.
+ */
 public class Notebookpg2Controller {
 
   // FXML annotations to link with the corresponding elements in the FXML file
@@ -16,7 +19,8 @@ public class Notebookpg2Controller {
   @FXML private Label timerLabel;
 
   /**
-   * Method to handle the event when the middle page is clicked.
+   * Method to handle the event when the middle page is clicked
+   * to navigate to the next page.
    * 
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
@@ -57,8 +61,8 @@ public class Notebookpg2Controller {
   /**
    * Method to handle the event when the book is clicked.
    * 
-   * @param event
-   * @throws IOException
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
    */
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {

@@ -7,7 +7,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-// Controller class for handling the James Clue scene
+/**
+ * Controller class for handling the James Clue screen.
+ */
 public class JamesClueController {
 
   // FXML injected Label for displaying the timer
@@ -30,7 +32,7 @@ public class JamesClueController {
 
   /**
    * Getter for the timer label.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {

@@ -52,8 +52,8 @@ public class GuessingController {
   private Timeline guessingTimerCheckTimeline;
 
   /**
-   * This method is called after the FXML fields are injected. It initializes the controller and sets
-   * up the game logic.
+   * This method is called after the FXML fields are injected.
+   * It initializes the controller and sets up the game logic.
    */
   @FXML
   private void initialize() {

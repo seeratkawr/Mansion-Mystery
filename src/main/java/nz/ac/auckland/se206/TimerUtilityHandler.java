@@ -3,11 +3,14 @@ package nz.ac.auckland.se206;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Label;
 
+/**
+ * Utility class to handle the timer for the game.
+ */
 public class TimerUtilityHandler {
 
   /** 
   * Method to set the timer for the game.
-  
+  *
   * @param timer The timer object
   * @param timerLabel The label to display the timer
   **/

@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206;
 
-/** A class for a time object that can be incremented and decremented. */
+/**
+ * A class for a time object that can be incremented and decremented.
+ */
 public class Time {
   private int minutes; // Stores the minutes part of the time
   private int seconds; // Stores the seconds part of the time
@@ -16,7 +18,9 @@ public class Time {
     this.seconds = seconds;
   }
 
-  /** Increments the time by one second. */
+  /**
+   * Increments the time by one second.
+   */
   public void incrementTime() {
     seconds = seconds + 1; // Increment seconds by 1
     if (seconds == 60) { // If seconds reach 60, reset to 0 and increment minutes
@@ -25,7 +29,9 @@ public class Time {
     }
   }
 
-  /** Decrements the time by one second. */
+  /**
+   * Decrements the time by one second.
+   */
   public void decrementTime() {
     seconds = seconds - 1; // Decrement seconds by 1
     if (seconds == -1) { // If seconds go below 0, set to 59 and decrement minutes
@@ -35,7 +41,7 @@ public class Time {
   }
 
   /**
-   * Returns the minutes of the time.
+   * Returns the minutes of the time as an integer.
    *
    * @return the minutes of the time
    */
@@ -44,7 +50,7 @@ public class Time {
   }
 
   /**
-   * Returns the seconds of the time.
+   * Returns the seconds of the time as an integer.
    *
    * @return the seconds of the time
    */
