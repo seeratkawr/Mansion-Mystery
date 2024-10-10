@@ -34,9 +34,9 @@ public class BackstoryController {
   @FXML
   private void initialize() {
     // Initially hide the backstory labels
-    backstory1.setVisible(false);
-    backstory2.setVisible(false);
-    backstory3.setVisible(false);
+    backstory1.setOpacity(0.0);
+    backstory2.setOpacity(0.0);
+    backstory3.setOpacity(0.0);
 
     // Set up fade transitions for each backstory label
     FadeTransition fade1 =
@@ -51,6 +51,7 @@ public class BackstoryController {
     fade2.play();
     fade3.play();
 
+    // Timer to automatically open the crime scene if not opened manually
     Timer timer = new Timer();
     App.addTimer(timer);
     timer.schedule(
@@ -75,10 +76,9 @@ public class BackstoryController {
 
   private FadeTransition createFadeTransition(Label label, Duration duration, Duration delay) {
     FadeTransition fade = new FadeTransition(duration, label);
-    fade.setFromValue(0.0);
-    fade.setToValue(1.0);
-    fade.setDelay(delay);
-    fade.setOnFinished(e -> label.setVisible(true)); // Ensure label is visible after fade-in
+    fade.setFromValue(0.0); // Start from fully transparent
+    fade.setToValue(1.0); // End at fully visible
+    fade.setDelay(delay); // Add delay to control when the fade starts
     return fade;
   }
 }

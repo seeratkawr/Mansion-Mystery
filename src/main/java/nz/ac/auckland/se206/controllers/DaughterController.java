@@ -25,6 +25,9 @@ public class DaughterController {
   @FXML private Label lbPopup; // Label for popup message
   @FXML private Label lbPopup2;
 
+  private static boolean initialMessageShown =
+      false; // Flag to check if the initial message is shown
+
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
 
@@ -43,9 +46,14 @@ public class DaughterController {
     translateTransition.setAutoReverse(true);
     daughterText.setEditable(false); // Make text area non-editable
     daughterText.setWrapText(true); // Enable text wrapping
-    daughterText.setText(
-        "Hi detective. I assume you should already know who I am, but just in case, I'm Maria, the"
-            + " daughter of the owner of this mansion. What do you want anyway?");
+
+    if (!initialMessageShown) {
+      App.initialTypedOutMessage(
+          "Hi detective. I assume you should already know who I am, but just in case, "
+              + "I'm Maria, the daughter of the owner of this mansion. What do you want anyway?",
+          daughterText);
+      initialMessageShown = true;
+    }
 
     App.setProfession("Daughter", daughterText, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();
@@ -114,4 +122,7 @@ public class DaughterController {
       }
     }
   }
+
+  // Method to type out the message character by character
+
 }

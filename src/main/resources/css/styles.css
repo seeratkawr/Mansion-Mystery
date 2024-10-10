@@ -491,3 +491,29 @@
 #results {
   -fx-text-fill: #000000;
 }
+
+/* Style for the scroll bar */
+.scroll-bar {
+  -fx-background: #f0f0f0; /* Background color of the scroll bar */
+  -fx-pref-width: 12; /* Preferred width for vertical scroll bar */
+}
+
+/* Style for the thumb (the draggable part of the scroll bar) */
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+  -fx-background-color: #0078d7; /* Color of the thumb */
+  -fx-background-radius: 6; /* Rounded corners for the thumb */
+}
+
+/* Style for the track (the area the thumb slides on) */
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+  -fx-background-color: #e0e0e0; /* Color of the track */
+  -fx-background-radius: 6; /* Rounded corners for the track */
+}
+
+/* Optional: Style for the hover effect on the thumb */
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+  -fx-background-color: #005ea6; /* Darker color on hover */
+}
