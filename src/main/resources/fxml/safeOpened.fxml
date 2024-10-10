@@ -5,15 +5,28 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="safePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SafeOpenedController">
    <children>
       <ImageView fitHeight="603.0" fitWidth="975.0" layoutX="-15.0">
          <image>
-            <Image url="@../images/safeOpened.png" />
+            <Image url="@../images/open%20safe.png" />
          </image>
       </ImageView>
       <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
+      <ImageView fx:id="magnifyingGlass" fitHeight="230.0" fitWidth="206.0" layoutX="40.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/mag.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hairImage" fitHeight="58.0" fitWidth="76.0" layoutX="364.0" layoutY="167.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hair.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="msgLabel" fill="WHITE" layoutX="298.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Looks like a long strand of hair!" />
+      <Text fx:id="msgLabel1" fill="WHITE" layoutX="14.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Take a peek in the safe!" />
    </children>
 </AnchorPane>
