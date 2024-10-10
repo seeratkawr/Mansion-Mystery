@@ -2,11 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="laptopPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LaptopClueController">
@@ -17,32 +15,31 @@
          </image>
       </ImageView>
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
-      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#ffffffd2" height="427.0" layoutX="92.0" layoutY="91.0" stroke="TRANSPARENT" strokeType="INSIDE" width="661.0" />
-      <Label layoutX="147.0" layoutY="133.0" prefHeight="58.0" prefWidth="141.0" style="-fx-font-size: 40px; -fx-font-family: System;" text="Sign in">
+      <ImageView fx:id="topLeftDog" fitHeight="200.0" fitWidth="200.0" layoutX="222.5" layoutY="125.0" onMouseClicked="#rotateImage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/topLeftDog.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="topRightDog" fitHeight="200.0" fitWidth="200.0" layoutX="422.5" layoutY="125.0" onMouseClicked="#rotateImage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/topRightDog.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bottomLeftDog" fitHeight="200.0" fitWidth="200.0" layoutX="222.5" layoutY="325.0" onMouseClicked="#rotateImage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bottomLeftDog.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bottomRightDog" fitHeight="200.0" fitWidth="200.0" layoutX="422.5" layoutY="325.0" onMouseClicked="#rotateImage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bottomRightDog.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="224.0" layoutY="49.0" text="Tap on the images to rotate them into the correct orientation">
          <font>
-            <Font name="System Bold" size="48.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="147.0" layoutY="217.0" prefHeight="45.0" prefWidth="214.0" style="-fx-font-size: 23px; -fx-font-family: System;" text="Username">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtInput" layoutX="147.0" layoutY="260.0" prefHeight="45.0" prefWidth="307.0" />
-      <Button fx:id="backButton" layoutX="532.0" layoutY="448.0" mnemonicParsing="false" onAction="#onGoBack" text="Cancel">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="signInButton" layoutX="634.0" layoutY="448.0" mnemonicParsing="false" onAction="#onSignIn" text="Sign In">
-         <font>
-            <Font name="System Bold Italic" size="17.0" />
-         </font>
-      </Button>
-      <Label fx:id="lbPopup" alignment="CENTER" layoutX="276.0" layoutY="216.0" prefHeight="134.0" prefWidth="294.0" style="-fx-font-size: 23px; -fx-font-family: System; -fx-background-color: white; -fx-background-radius: 15px; -fx-text-fill: #d33e3e; -fx-border-color: #d33e3e; -fx-border-width: 2px; -fx-border-radius: 15px;" text="Error: Invalid Username Try again." textAlignment="CENTER" textFill="#d33e3e" visible="false" wrapText="true">
-         <font>
-            <Font name="System Bold" size="48.0" />
-         </font>
-      </Label>
+      <Button layoutX="724.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
    </children>
 </AnchorPane>
