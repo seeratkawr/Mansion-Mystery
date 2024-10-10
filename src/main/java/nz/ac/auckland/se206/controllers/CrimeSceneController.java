@@ -33,6 +33,9 @@ public class CrimeSceneController {
     return timerLabel;
   }
 
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
@@ -44,6 +47,11 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Method called when the laptop is clicked. Opens the laptop scene.
+   *
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onLaptopClicked(MouseEvent event) {
     App.addCluesViewed("laptop");
@@ -54,6 +62,11 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Method called when the drawers are clicked. Opens the drawers scene.
+   *
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onDrawersClicked(MouseEvent event) {
     App.addCluesViewed("drawer");
@@ -65,6 +78,11 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Method called when the bookshelf safe is clicked. Opens the safe scene.
+   *
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onBookshelfSafeClicked(MouseEvent event) {
     App.addCluesViewed("safe");
@@ -75,51 +93,34 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Method called when the backstory button is clicked. Displays the backstory and disables the
+   * guessing button.
+   *
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
-    App.playSound("button.mp3");
-    System.out.println("Guessing button clicked");
-
-    List<Boolean> canGuessList = App.verifyCanGuess();
-    Boolean canGuess = canGuessList.get(2);
-    Boolean enoughCluesViewed = canGuessList.get(1);
-    Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
-
-    if (canGuess) {
-      App.openGuessingScene();
-    } else {
-      if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
-        lbPopup2.setVisible(true);
-      } else if (!enoughSuspectsTalkedTo) {
-        lbPopup.setText("  You need to talk to all suspects before making a guess.");
-        lbPopup.setVisible(true);
-      } else if (!enoughCluesViewed) {
-        lbPopup.setText("  You need to view at least 1 clue before making a guess.");
-        lbPopup.setVisible(true);
-      }
-
-      Timer timer = new Timer();
-      App.addTimer(timer);
-      timer.schedule(
-          new TimerTask() {
-            @Override
-            public void run() {
-              lbPopup.setVisible(false);
-              lbPopup2.setVisible(false);
-            }
-          },
-          4000);
-    }
+    App.handleGuess(lbPopup, lbPopup2);
   }
 
+  /**
+   * Method called when the backstory button is clicked. Displays the backstory and disables the
+   * guessing button.
+   *
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onCloseClicked(MouseEvent event) {
+
+    // Close the backstory and enable the guessing button
     backstory1.setVisible(false);
     backstory2.setVisible(false);
     backstory3.setVisible(false);
     backstoryRectangle.setVisible(false);
     closeButton.setVisible(false);
 
+    // Enable the map and clues
     map.setMouseTransparent(false);
     laptopRectangle.setMouseTransparent(false);
     bookshelfSafeRectangle.setMouseTransparent(false);

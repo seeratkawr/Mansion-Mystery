@@ -6,7 +6,8 @@ import javafx.scene.control.Label;
 public class TimerUtilityHandler {
 
   /** 
-  * Method to set the timer for the game
+  * Method to set the timer for the game.
+  
   * @param timer The timer object
   * @param timerLabel The label to display the timer
   **/

@@ -15,7 +15,12 @@ public class Notebookpg3Controller {
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
 
-  // Method to handle the event when the middle page is clicked
+  /**
+   * Method to handle the event when the middle page is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGoMiddlePage(MouseEvent event) throws IOException {
     // Play page flip sound
@@ -25,7 +30,12 @@ public class Notebookpg3Controller {
     App.goToPage(event, "notebookpg2");
   }
 
-  // Method to handle the event when the exit button is clicked
+  /**
+   * Method to handle the event when the exit button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
     // Play button click sound
@@ -34,7 +44,11 @@ public class Notebookpg3Controller {
     App.goToDrawers(event);
   }
 
-  // Method to handle the event when the book is clicked
+  /**
+   * Method to handle the event when the book is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onClickedBook(MouseEvent event) {
     System.out.println("Book clicked");
@@ -43,7 +57,12 @@ public class Notebookpg3Controller {
     mainPane.setVisible(false);
   }
 
-  // Method to handle the event when the back button is clicked
+  /**
+   * Method to handle the event when the go back to crime scene button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     // Play button click sound
@@ -53,7 +72,11 @@ public class Notebookpg3Controller {
     App.openCrimeScene();
   }
 
-  // Getter method for the timer label
+  /**
+   * Getter for the timer label for the notebook page.
+   * 
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }

@@ -44,7 +44,7 @@ public class NoteBookpg1Controller {
   }
 
   /**
-   * Gets the timer label.
+   * Gets the timer label for the notebook page.
    *
    * @return the timer label
    */

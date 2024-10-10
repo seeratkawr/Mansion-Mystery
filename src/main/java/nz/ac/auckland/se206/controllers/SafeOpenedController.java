@@ -52,6 +52,7 @@ public class SafeOpenedController {
   void initialize() {
     assert safePane != null
         : "fx:id=\"safePane\" was not injected: check your FXML file 'safeOpened.fxml'.";
+        // Hide the hair image initially until the magnifying glass is in the correct position
     makeMagnifyingGlassDraggable();
     hairImage.setVisible(false);
     msgLabel.setVisible(false);

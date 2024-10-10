@@ -15,7 +15,12 @@ public class Notebookpg2Controller {
   @FXML private Pane mainPane;
   @FXML private Label timerLabel;
 
-  // Method to handle the event when the user clicks to go to the last page
+  /**
+   * Method to handle the event when the middle page is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGoLastPage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3"); // Play page flip sound
@@ -23,7 +28,12 @@ public class Notebookpg2Controller {
     App.goToPage(event, "notebookpg3"); // Navigate to the last page
   }
 
-  // Method to handle the event when the book is clicked
+  /**
+   * Method to handle the event when the exit button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onClickedBook(MouseEvent event) {
     System.out.println("Book clicked"); // Log action
@@ -32,14 +42,24 @@ public class Notebookpg2Controller {
     mainPane.setVisible(false);
   }
 
-  // Method to handle the event when the exit book button is clicked
+  /**
+   * Method to handle the event when the back button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onExitBook(ActionEvent event) throws IOException {
     App.playSound("button.mp3"); // Play button click sound
     App.goToDrawers(event); // Navigate to the drawers
   }
 
-  // Method to handle the event when the user clicks to go back to the crime scene
+  /**
+   * Method to handle the event when the book is clicked.
+   * 
+   * @param event
+   * @throws IOException
+   */
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     App.playSound("button.mp3"); // Play button click sound
@@ -47,7 +67,12 @@ public class Notebookpg2Controller {
     App.openCrimeScene(); // Navigate to the crime scene
   }
 
-  // Method to handle the event when the user clicks to go to the first page
+  /**
+   * Method to handle the event when the first page button is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGoFirstPage(MouseEvent event) throws IOException {
     App.playSound("pageflip.mp3"); // Play page flip sound
@@ -55,7 +80,11 @@ public class Notebookpg2Controller {
     App.goToPage(event, "notebookpg1"); // Navigate to the first page
   }
 
-  // Getter for the timer label
+  /**
+   * Getter method for the timer label for the notebook page.
+   * 
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel; // Getter for the timer label
   }

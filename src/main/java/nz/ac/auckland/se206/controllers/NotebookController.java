@@ -17,11 +17,18 @@ public class NotebookController {
   @FXML private Label timerLabel;
   @FXML private Rectangle rectangleBook;
 
-  @FXML private ImageView item1, item2, item3, item4, item5;
+  @FXML private ImageView item1;
+  @FXML private ImageView item2;
+  @FXML private ImageView item3;
+  @FXML private ImageView item4;
+  @FXML private ImageView item5;
 
   private double startX;
   private double startY;
 
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   public void initialize() {
     makeDraggable(item1);
@@ -32,6 +39,12 @@ public class NotebookController {
     rectangleBook.setDisable(true); // Initially disable the notebook interaction
   }
 
+  /**
+   * Method called when the notebook is clicked. Opens the notebook scene.
+   *
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onClickedBook(MouseEvent event) throws IOException {
     if (!rectangleBook.isDisabled()) {
@@ -42,6 +55,12 @@ public class NotebookController {
     }
   }
 
+  /**
+   * Method called when the go back button is clicked. Goes back to the crime scene.
+   *
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
@@ -49,10 +68,20 @@ public class NotebookController {
     App.openCrimeScene();
   }
 
+  /**
+   * Getter for the timer label.
+   *
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  /**
+   * Makes an item draggable.
+   *
+   * @param item The item to make draggable
+   */
   private void makeDraggable(ImageView item) {
     item.setOnMouseEntered(
         event -> {
@@ -90,6 +119,9 @@ public class NotebookController {
         });
   }
 
+  /**
+   * Checks if any items are overlapping the notebook area and disables the notebook if so.
+   */
   private void checkIfItemsAreOutOfTheWay() {
     double notebookMinX = rectangleBook.getLayoutX();
     double notebookMaxX = rectangleBook.getLayoutX() + rectangleBook.getWidth();
@@ -108,13 +140,23 @@ public class NotebookController {
     }
   }
 
+  /**
+   * Checks if an item is overlapping the notebook area.
+   *
+   * @param item The item to check
+   * @param notebookMinX The minimum x-coordinate of the notebook area
+   * @param notebookMaxX The maximum x-coordinate of the notebook area
+   * @param notebookMinY The minimum y-coordinate of the notebook area
+   * @param notebookMaxY The maximum y-coordinate of the notebook area
+   * @return True if the item is overlapping the notebook area, false otherwise
+   */
   private boolean isOverlapping(
       ImageView item,
       double notebookMinX,
       double notebookMaxX,
       double notebookMinY,
       double notebookMaxY) {
-
+        // Calculate the center of the item
     double itemCenterX = item.getLayoutX() + item.getFitWidth() / 2;
     double itemCenterY = item.getLayoutY() + item.getFitHeight() / 2;
 
