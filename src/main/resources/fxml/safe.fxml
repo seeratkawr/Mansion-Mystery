@@ -14,7 +14,7 @@
             <Image url="@../images/safe.png" />
          </image>
       </ImageView>
-      <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
+      <Button layoutX="706.0" layoutY="25.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Go back" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="77.0" layoutX="356.0" layoutY="104.0" onMouseClicked="#onClickedFingerprint" stroke="TRANSPARENT" strokeType="INSIDE" width="224.0" />
       <Rectangle fx:id="rectangleKeypad" arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="131.0" layoutX="367.0" layoutY="290.0" onMouseClicked="#onClickedKeypad" stroke="TRANSPARENT" strokeType="INSIDE" width="90.0" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />

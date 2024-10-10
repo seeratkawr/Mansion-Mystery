@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane fx:id="laptopPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="laptopPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SuspectLaptopController">
    <children>
       <ImageView fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,6 +18,6 @@
       <Circle fx:id="mariaCircle" fill="DODGERBLUE" layoutX="422.5" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="alexCircle" fill="DODGERBLUE" layoutX="595.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
-      <Button layoutX="730.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#onGoBackSafe" prefHeight="38.0" prefWidth="109.0" text="Go back" />
+      <Button layoutX="713.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
    </children>
 </AnchorPane>

@@ -21,7 +21,7 @@ public class MariaClueController {
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
     // Open the laptop scene
-    App.openLaptop(event);
+    App.openSuspectLaptop(event);
     // Play mouse click sound
     App.playSound("mouseclick.mp3");
   }

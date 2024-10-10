@@ -54,6 +54,7 @@ import nz.ac.auckland.se206.controllers.Notebookpg3Controller;
 import nz.ac.auckland.se206.controllers.SafeController;
 import nz.ac.auckland.se206.controllers.SafeKeypadController;
 import nz.ac.auckland.se206.controllers.SafeOpenedController;
+import nz.ac.auckland.se206.controllers.SuspectLaptopController;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 // this is a test comment to test github flows
@@ -415,7 +416,7 @@ public class App extends Application {
    * @param path the path to the FXML file for the laptop clue scene
    * @throws IOException if there is an error loading the FXML file
    */
-  public static void openLaptopClue(ActionEvent event, String path) throws IOException {
+  public static void openLaptopClue(MouseEvent event, String path) throws IOException {
     // Load the specified FXML file for the laptop clue
     FXMLLoader loader = new FXMLLoader(App.class.getResource(path));
     Parent laptopClueView = loader.load();
@@ -439,6 +440,20 @@ public class App extends Application {
     AnchorPane laptopPane =
         (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
     laptopPane.getChildren().add(laptopClueView);
+  }
+
+  public static void openSuspectLaptop(MouseEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/suspectLaptop.fxml"));
+    Parent root = loader.load();
+
+    SuspectLaptopController controller = loader.getController();
+    timerLabel = controller.getTimerLabel();
+    TimerUtilityHandler.setTimer(timer, timerLabel);
+
+    scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
   }
 
   /**

@@ -35,7 +35,7 @@ public class LaptopClueController {
     maxRotations.put(topLeftDog, 90.0);
     maxRotations.put(topRightDog, 180.0);
     maxRotations.put(bottomLeftDog, 180.0);
-    maxRotations.put(bottomRightDog, 180.0);
+    maxRotations.put(bottomRightDog, 270.0);
 
     currentRotations.put(topLeftDog, 0.0);
     currentRotations.put(topRightDog, 0.0);
@@ -45,7 +45,7 @@ public class LaptopClueController {
 
   // Method called when the back button is clicked
   @FXML
-  private void onGoBack(ActionEvent event) {
+  private void onGoBackCrimeScene(ActionEvent event) {
     System.out.println("Back button clicked");
     try {
       // Go back to the crime scene
@@ -70,12 +70,16 @@ public class LaptopClueController {
       rotateTransition.setOnFinished(
           e -> {
             currentRotations.put(clickedImage, currentRotation + 90);
+
+            if (allImagesAtMaxRotation()) {
+              try {
+                App.openSuspectLaptop(event);
+              } catch (IOException e1) {
+                e1.printStackTrace();
+              }
+            }
           });
       rotateTransition.play();
-
-      if (allImagesAtMaxRotation()) {
-        
-      }
     }
   }
 
