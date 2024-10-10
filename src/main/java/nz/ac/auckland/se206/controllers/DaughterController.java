@@ -80,16 +80,17 @@ public class DaughterController {
   /**
    * Method to get the chat area of the daughter scene.
    * 
-   * @return
+   * @return The chat area of the daughter scene
    */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
   /**
-   * Method to handle the event when the user clicks on the map. It plays the map sound and opens the map
+   * Method to handle the event when the user clicks on the map.
+   * It plays the map sound and opens the map.
    * 
-   * @param event
+   * @param event The mouse event that triggered the method
    */
   @FXML
   private void onMapClicked(MouseEvent event) {
@@ -103,9 +104,10 @@ public class DaughterController {
   }
 
   /**
-   * Method to handle the event when the user clicks on the send button. It sends the message to the AI
+   * Method to handle the event when the user clicks on the send button.
+   * It sends the message to the AI.
    * 
-   * @param event
+   * @param event The action event that triggered the method
    */
   @FXML
   private void onSendMessage(ActionEvent event) {
@@ -113,10 +115,11 @@ public class DaughterController {
   }
 
   /**
-   * Method to handle the event when the user clicks on the chef rectangle. It sets the chosen suspect
+   * Method to handle the event when the user clicks on the chef rectangle.
+   * It sets the chosen suspect.
    * 
-   * @param event
-   * @throws IOException
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
    */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
