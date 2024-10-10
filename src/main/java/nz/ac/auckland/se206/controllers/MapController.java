@@ -11,7 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-// Controller class for the Map view
+/*
+ * Controller class for handling the map screen.
+ */
 public class MapController {
 
   // Field to store the last scene
@@ -31,17 +33,29 @@ public class MapController {
   @FXML private Circle daughterCircle;
   @FXML private Circle cleanerCircle;
 
-  // Getter for the timer label
+  /**
+   * Gets the label for the timer on the map screen.
+   * 
+   * @return The timer label on the map screen
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  // Method to change the background image
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   public void changeBackground(String path) {
     background.setImage(new Image(path));
   }
 
-  // Event handler for the exit button click
+  /**
+   * Method called when the exit button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   */
   @FXML
   private void onExitClicked(ActionEvent event) {
     try {
@@ -53,7 +67,11 @@ public class MapController {
     System.out.println("Exit Map clicked");
   }
 
-  // Event handler for the kitchen area click
+  /**
+   * Method called when the kitchen area is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onKitchenClicked(MouseEvent event) {
     try {
@@ -68,7 +86,11 @@ public class MapController {
     }
   }
 
-  // Event handler for the daughter area click
+  /**
+   * Method called when the daughter area is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onDaughterClicked(MouseEvent event) {
     try {
@@ -82,7 +104,11 @@ public class MapController {
     }
   }
 
-  // Event handler for the cleaner area click
+  /**
+   * Method called when the cleaner area is clicked.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onCleanerClicked(MouseEvent event) {
     try {
@@ -96,7 +122,11 @@ public class MapController {
     }
   }
 
-  // Event handler for the study button click
+  /**
+   * Method called when the study button is clicked.
+   * 
+   * @param event The action event that triggered the method
+   */
   @FXML
   private void onStudyClicked(ActionEvent event) {
     try {

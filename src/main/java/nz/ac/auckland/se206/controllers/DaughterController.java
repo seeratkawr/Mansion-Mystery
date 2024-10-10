@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import java.util.List;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,28 +14,34 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
-// Controller class for the Daughter scene
+/**
+ * The DaughterController class is responsible for handling the user interactions and game logic for the
+ * daughter character. It manages the UI components, handles user input, and communicates with the AI to
+ * process the user's messages.
+ */
 public class DaughterController {
-  @FXML private Button btnSend; // Button to send the message
-  @FXML private TextField txtInput; // Text field for user input
-  @FXML private TextArea daughterText; // Text area to display chat messages
-  @FXML private ImageView loadingIndicator; // Loading indicator image
-  @FXML private Label timerLabel; // Label to display the timer
-  @FXML private Label lbPopup; // Label for popup message
+  @FXML private TextArea daughterText;
+  @FXML private TextField txtInput; 
+  @FXML private Button btnSend; 
+  @FXML private ImageView loadingIndicator; 
+  @FXML private Label lbPopup;
   @FXML private Label lbPopup2;
+  @FXML private Label timerLabel; 
 
   private static boolean initialMessageShown =
       false; // Flag to check if the initial message is shown
 
-  private String profession; // Profession of the character
-  private TranslateTransition translateTransition; // Animation for loading indicator
+  private String profession; 
+  private TranslateTransition translateTransition; 
 
-  // Initialize method called after the FXML fields are populated
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   public void initialize() {
-    loadingIndicator.setVisible(false); // Hide loading indicator initially
+    loadingIndicator.setVisible(false); 
     loadingIndicator.setImage(
         new Image(
-            getClass().getResourceAsStream("/images/bear.png"))); // Set loading indicator image
+            getClass().getResourceAsStream("/images/bear.png"))); 
     translateTransition =
         new TranslateTransition(
             Duration.seconds(2), loadingIndicator); // Create translate transition animation
@@ -47,6 +52,7 @@ public class DaughterController {
     daughterText.setEditable(false); // Make text area non-editable
     daughterText.setWrapText(true); // Enable text wrapping
 
+    // Display the initial message
     if (!initialMessageShown) {
       App.initialTypedOutMessage(
           "Hi detective. I assume you should already know who I am, but just in case, "
@@ -71,12 +77,21 @@ public class DaughterController {
         });
   }
 
-  // Getter for the timer label
+  /**
+   * Method to get the chat area of the daughter scene.
+   * 
+   * @return The chat area of the daughter scene
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  // Event handler for map click
+  /**
+   * Method to handle the event when the user clicks on the map.
+   * It plays the map sound and opens the map.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {
@@ -88,17 +103,27 @@ public class DaughterController {
     }
   }
 
-  // Event handler for send button click
+  /**
+   * Method to handle the event when the user clicks on the send button.
+   * It sends the message to the AI.
+   * 
+   * @param event The action event that triggered the method
+   */
   @FXML
   private void onSendMessage(ActionEvent event) {
     App.handleGpt(profession, txtInput, daughterText, loadingIndicator, translateTransition, null);
   }
 
+  /**
+   * Method to handle the event when the user clicks on the chef rectangle.
+   * It sets the chosen suspect.
+   * 
+   * @param event The mouse event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onGuessClicked(ActionEvent event) throws IOException {
     App.handleGuess(lbPopup, lbPopup2);
   }
-
-  // Method to type out the message character by character
 
 }

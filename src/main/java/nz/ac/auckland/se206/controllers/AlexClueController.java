@@ -17,7 +17,9 @@ public class AlexClueController {
   @FXML private Circle circleButton2;
   @FXML private Circle circleButton3;
 
-  // Method to handle the close clue action
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
     // Play mouse click sound
@@ -26,7 +28,11 @@ public class AlexClueController {
     App.openSuspectLaptop(event);
   }
 
-  // Getter for the timer label
+  /**
+   * Getter for the timer label.
+   * 
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }

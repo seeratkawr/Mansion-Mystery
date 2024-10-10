@@ -24,7 +24,7 @@ public class SafeController {
   @FXML private Rectangle rectangleKeypad;
 
   /**
-   * Gets the timer label.
+   * Gets the timer label for the safe scene screen timer.
    *
    * @return the timer label
    */
@@ -32,7 +32,9 @@ public class SafeController {
     return timerLabel;
   }
 
-  /** This method initializes the controller. */
+  /**
+   * This method initializes the controller.
+   */
   @FXML
   private void initialize() {
     // Ensure that the safePane is injected properly
