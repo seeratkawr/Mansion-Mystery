@@ -7,9 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-/*
- * Controller class for handling the Maria Clue screen.
- */
+/** Controller class for handling the Maria Clue screen. */
 public class MariaClueController {
 
   // FXML injected Label element for displaying the timer

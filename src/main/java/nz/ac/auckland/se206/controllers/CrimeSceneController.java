@@ -10,9 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 
-/**
- * Controller class for handling the crime scene screen.
- */
+/** Controller class for handling the crime scene screen. */
 public class CrimeSceneController {
 
   @FXML private ImageView map;
@@ -38,9 +36,7 @@ public class CrimeSceneController {
     return timerLabel;
   }
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   @FXML
   private void onMapClicked(MouseEvent event) {
     try {

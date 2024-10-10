@@ -138,12 +138,20 @@ public class App extends Application {
    *
    * @throws IOException if the FXML file is not found
    */
-  public static void openGameLost() throws IOException {
+  public static void openGameLost(String result) throws IOException {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameLost.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
+
+    if (result.equals("chef") || result.equals("cleaner")) {
+      playSound("gameOverLost.mp3");
+    } else if (result.equals("daughter")) {
+      playSound("gameOverWon.mp3");
+    } else if (result.equals("timeOver")) {
+      playSound("gameOverTime.mp3");
+    }
   }
 
   /**
@@ -1146,8 +1154,7 @@ public class App extends Application {
                         timerCheckTimeline.stop();
                       } else {
                         // If the player cannot guess, open the game lost scene
-                        App.playSound("gameOverNoTime.mp3");
-                        openGameLost();
+                        openGameLost("timeOver");
                         System.out.println("Game lost scene opened.");
                         timerCheckTimeline.stop();
                       }

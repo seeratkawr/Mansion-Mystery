@@ -14,7 +14,8 @@
   /* Make the text slanted */
 }
 
-#msgLabel, #msgLabel1{
+#msgLabel,
+#msgLabel1 {
   -fx-font-family: "serif", "Cursive";
   -fx-font-size: 16px;
   -fx-text-fill: white;
@@ -368,10 +369,10 @@
 }
 
 
-#drawerRectangle:hover, #kitchenCircle:hover,
+#drawerRectangle:hover,
+#kitchenCircle:hover,
 #cleanerCircle:hover,
-#daughterCircle:hover
- {
+#daughterCircle:hover {
   -fx-fill: rgba(200, 200, 200, 0.3);
   -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.7), 10, 0, 0, 0);
   /* Golden glow effect */
@@ -382,12 +383,12 @@
   -fx-scale-y: 1.05;
 }
 
-#btnToStudy:hover{
+#btnToStudy:hover {
   -fx-background-color: rgba(139, 141, 56, 0.8);
   /* Lighter version of #5c5e25 with transparency */
   -fx-cursor: hand;
   -fx-opacity: 0.8;
-  
+
 
   /* Slight transparency on hover */
 }
@@ -441,7 +442,7 @@
 #rectangle9:hover,
 #rectangle0:hover,
 #rectangleClear:hover,
-#rectangleBook:hover{
+#rectangleBook:hover {
   -fx-fill: rgba(70, 70, 70, 0.3);
   /* Light transparent color */
   -fx-cursor: hand;
@@ -518,29 +519,37 @@
 
 /* Style for the scroll bar */
 .scroll-bar {
-  -fx-background: #f0f0f0; /* Background color of the scroll bar */
-  -fx-pref-width: 12; /* Preferred width for vertical scroll bar */
+  -fx-background: #f0f0f0;
+  /* Background color of the scroll bar */
+  -fx-pref-width: 12;
+  /* Preferred width for vertical scroll bar */
 }
 
 /* Style for the thumb (the draggable part of the scroll bar) */
 .scroll-bar:horizontal .thumb,
 .scroll-bar:vertical .thumb {
-  -fx-background-color: #0078d7; /* Color of the thumb */
-  -fx-background-radius: 6; /* Rounded corners for the thumb */
+  -fx-background-color: #0078d7;
+  /* Color of the thumb */
+  -fx-background-radius: 6;
+  /* Rounded corners for the thumb */
 }
 
 /* Style for the track (the area the thumb slides on) */
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track {
-  -fx-background-color: #e0e0e0; /* Color of the track */
-  -fx-background-radius: 6; /* Rounded corners for the track */
+  -fx-background-color: #e0e0e0;
+  /* Color of the track */
+  -fx-background-radius: 6;
+  /* Rounded corners for the track */
 }
 
 #magnifyingGlass:hover {
   cursor: move !important;
 }
+
 /* Optional: Style for the hover effect on the thumb */
 .scroll-bar:horizontal .thumb:hover,
 .scroll-bar:vertical .thumb:hover {
-  -fx-background-color: #005ea6; /* Darker color on hover */
+  -fx-background-color: #005ea6;
+  /* Darker color on hover */
 }

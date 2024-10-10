@@ -6,14 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
 
+/** Controller class for handling the start game screen. */
 public class StartGameController {
 
   @FXML private Button startButton; // Button to start the game
 
-  /**
-   * Initializes the controller class. This method is called
-   * after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   public void initialize() {
     App.playSound("startGameAudio.mp3");
   }

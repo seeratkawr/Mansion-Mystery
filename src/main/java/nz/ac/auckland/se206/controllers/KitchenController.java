@@ -100,8 +100,8 @@ public class KitchenController {
   /**
    * Method to handle the event when the user clicks on the send button to send a message.
    *
-   * @param event
-   * @throws IOException
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
    */
   @FXML
   private void onSendMessage(ActionEvent event) throws IOException {
