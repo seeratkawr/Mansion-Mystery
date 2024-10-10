@@ -15,33 +15,29 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 
 /**
- * The DaughterController class is responsible for handling the user interactions and game logic for the
- * daughter character. It manages the UI components, handles user input, and communicates with the AI to
- * process the user's messages.
+ * The DaughterController class is responsible for handling the user interactions and game logic for
+ * the daughter character. It manages the UI components, handles user input, and communicates with
+ * the AI to process the user's messages.
  */
 public class DaughterController {
-  @FXML private TextArea daughterText;
-  @FXML private TextField txtInput; 
-  @FXML private Button btnSend; 
-  @FXML private ImageView loadingIndicator; 
-  @FXML private Label lbPopup;
-  @FXML private Label lbPopup2;
-  @FXML private Label timerLabel; 
-
   private static boolean initialMessageShown =
       false; // Flag to check if the initial message is shown
 
-  private String profession; 
-  private TranslateTransition translateTransition; 
+  @FXML private TextArea daughterText;
+  @FXML private TextField txtInput;
+  @FXML private Button btnSend;
+  @FXML private ImageView loadingIndicator;
+  @FXML private Label lbPopup;
+  @FXML private Label lbPopup2;
+  @FXML private Label timerLabel;
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  private String profession;
+  private TranslateTransition translateTransition;
+
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   public void initialize() {
-    loadingIndicator.setVisible(false); 
-    loadingIndicator.setImage(
-        new Image(
-            getClass().getResourceAsStream("/images/bear.png"))); 
+    loadingIndicator.setVisible(false);
+    loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/bear.png")));
     translateTransition =
         new TranslateTransition(
             Duration.seconds(2), loadingIndicator); // Create translate transition animation
@@ -79,7 +75,7 @@ public class DaughterController {
 
   /**
    * Method to get the chat area of the daughter scene.
-   * 
+   *
    * @return The chat area of the daughter scene
    */
   public Label getTimerLabel() {
@@ -87,9 +83,9 @@ public class DaughterController {
   }
 
   /**
-   * Method to handle the event when the user clicks on the map.
-   * It plays the map sound and opens the map.
-   * 
+   * Method to handle the event when the user clicks on the map. It plays the map sound and opens
+   * the map.
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -104,9 +100,9 @@ public class DaughterController {
   }
 
   /**
-   * Method to handle the event when the user clicks on the send button.
-   * It sends the message to the AI.
-   * 
+   * Method to handle the event when the user clicks on the send button. It sends the message to the
+   * AI.
+   *
    * @param event The action event that triggered the method
    */
   @FXML
@@ -115,9 +111,9 @@ public class DaughterController {
   }
 
   /**
-   * Method to handle the event when the user clicks on the chef rectangle.
-   * It sets the chosen suspect.
-   * 
+   * Method to handle the event when the user clicks on the chef rectangle. It sets the chosen
+   * suspect.
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -125,5 +121,4 @@ public class DaughterController {
   private void onGuessClicked(ActionEvent event) throws IOException {
     App.handleGuess(lbPopup, lbPopup2);
   }
-
 }

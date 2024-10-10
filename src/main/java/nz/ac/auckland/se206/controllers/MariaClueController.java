@@ -21,7 +21,7 @@ public class MariaClueController {
 
   /**
    * Initializes the controller class. This method is called after the FXML fields are injected.
-   * 
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -35,7 +35,7 @@ public class MariaClueController {
 
   /**
    * Getter for the timer label.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {

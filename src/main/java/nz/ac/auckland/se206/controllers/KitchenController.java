@@ -20,23 +20,21 @@ import nz.ac.auckland.se206.App;
  * kitchen scene.
  */
 public class KitchenController {
+  private static boolean initialMessageShown = false;
 
-  @FXML private TextArea txtaChat; 
-  @FXML private TextField txtInput; 
+  @FXML private TextArea txtaChat;
+  @FXML private TextField txtInput;
   @FXML private Button btnSend;
   @FXML private ImageView loadingIndicator;
-  @FXML private ImageView mapImage; 
-  @FXML private Label lbPopup; 
+  @FXML private ImageView mapImage;
+  @FXML private Label lbPopup;
   @FXML private Label lbPopup2;
   @FXML private Label timerLabel;
 
-  private String profession; 
+  private String profession;
   private TranslateTransition translateTransition;
-  private static boolean initialMessageShown = false;
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   public void initialize() {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
     loadingIndicator.setImage(new Image(getClass().getResourceAsStream("/images/spatula.png")));
@@ -74,7 +72,7 @@ public class KitchenController {
 
   /**
    * Method to get the chat area.
-   * 
+   *
    * @return The chat area
    */
   public Label getTimerLabel() {
@@ -83,7 +81,7 @@ public class KitchenController {
 
   /**
    * Method to handle the event when the user clicks on the map image.
-   * 
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -101,7 +99,7 @@ public class KitchenController {
 
   /**
    * Method to handle the event when the user clicks on the send button to send a message.
-   * 
+   *
    * @param event
    * @throws IOException
    */
@@ -112,7 +110,7 @@ public class KitchenController {
 
   /**
    * Method to handle the event when the user clicks on the submit button to make a guess.
-   * 
+   *
    * @param event The action event that triggered the method
    * @throws IOException If an I/O error occurs
    */

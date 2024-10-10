@@ -17,9 +17,7 @@ public class AlexClueController {
   @FXML private Circle circleButton2;
   @FXML private Circle circleButton3;
 
-  /**
-   * Initializes the controller class. This method is called after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   @FXML
   private void closeClue(MouseEvent event) throws IOException {
     // Play mouse click sound
@@ -30,7 +28,7 @@ public class AlexClueController {
 
   /**
    * Getter for the timer label.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {

@@ -8,9 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
 
-/**
- * Controller class for handling the second page of the notebook.
- */
+/** Controller class for handling the second page of the notebook. */
 public class Notebookpg2Controller {
 
   // FXML annotations to link with the corresponding elements in the FXML file
@@ -19,9 +17,8 @@ public class Notebookpg2Controller {
   @FXML private Label timerLabel;
 
   /**
-   * Method to handle the event when the middle page is clicked
-   * to navigate to the next page.
-   * 
+   * Method to handle the event when the middle page is clicked to navigate to the next page.
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -34,9 +31,8 @@ public class Notebookpg2Controller {
 
   /**
    * Method to handle the event when the exit button is clicked.
-   * 
+   *
    * @param event The action event that triggered the method
-   * @throws IOException If an I/O error occurs
    */
   @FXML
   private void onClickedBook(MouseEvent event) {
@@ -48,7 +44,7 @@ public class Notebookpg2Controller {
 
   /**
    * Method to handle the event when the back button is clicked.
-   * 
+   *
    * @param event The action event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -60,7 +56,7 @@ public class Notebookpg2Controller {
 
   /**
    * Method to handle the event when the book is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -73,7 +69,7 @@ public class Notebookpg2Controller {
 
   /**
    * Method to handle the event when the first page button is clicked.
-   * 
+   *
    * @param event The mouse event that triggered the method
    * @throws IOException If an I/O error occurs
    */
@@ -86,7 +82,7 @@ public class Notebookpg2Controller {
 
   /**
    * Getter method for the timer label for the notebook page.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {

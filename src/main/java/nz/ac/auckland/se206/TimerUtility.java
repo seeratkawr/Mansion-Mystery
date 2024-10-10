@@ -8,22 +8,24 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 
 /**
- * The TimerUtility class is responsible for managing the timer in the application. It initializes the
- * timer with a specified duration and updates the timer label every second. The timer can be started,
- * paused, and reset. The class also provides methods to check if the timer has finished, get the time
- * remaining in seconds, and format the time in minutes and seconds.
+ * The TimerUtility class is responsible for managing the timer in the application. It initializes
+ * the timer with a specified duration and updates the timer label every second. The timer can be
+ * started, paused, and reset. The class also provides methods to check if the timer has finished,
+ * get the time remaining in seconds, and format the time in minutes and seconds.
  */
 public class TimerUtility {
+
   private Timeline timeline;
-  private IntegerProperty timeSeconds; 
-  private int duration; 
+  private IntegerProperty timeSeconds;
+  private int duration;
   private Label timerLabel;
 
   /**
-   * Constructor for the TimerUtility class.
-   * 
-   * @param duration
-   * @param timerLabel
+   * Constructor for the TimerUtility class. Initializes the timer with the given duration and binds
+   * the timer label.
+   *
+   * @param duration the duration of the timer in seconds
+   * @param timerLabel the label that displays the remaining time
    */
   public TimerUtility(int duration, Label timerLabel) {
     this.duration = duration;
@@ -56,10 +58,10 @@ public class TimerUtility {
   }
 
   /**
-   * Method to format the time in minutes and seconds.
-   * 
-   * @param totalSeconds
-   * @return
+   * Formats the time into minutes and seconds.
+   *
+   * @param totalSeconds the total time in seconds
+   * @return the formatted time as a string in "MM:SS" format
    */
   public String formatTime(int totalSeconds) {
     int minutes = totalSeconds / 60;
@@ -67,23 +69,17 @@ public class TimerUtility {
     return String.format("%02d:%02d", minutes, seconds);
   }
 
-  /**
-   * Start the timer from the beginning of the duration.
-   */
+  /** Starts the timer from the beginning of the specified duration. */
   public void start() {
     timeline.playFromStart();
   }
 
-  /**
-   * Pause the timer at the current time remaining value.
-   */
+  /** Pauses the timer at the current remaining time. */
   public void pause() {
     timeline.pause();
   }
 
-  /**
-   * Stop the timer and reset the time to the initial duration.
-   */
+  /** Stops the timer and resets it to the initial duration. */
   public void reset() {
     timeline.stop();
     timeSeconds.set(duration);
@@ -91,36 +87,36 @@ public class TimerUtility {
   }
 
   /**
-   * Getter method for the timeSeconds property.
-   * 
-   * @return The timeSeconds property
+   * Returns the time remaining property, which is an IntegerProperty.
+   *
+   * @return the timeSeconds property representing the remaining time in seconds
    */
   public IntegerProperty timeSecondsProperty() {
     return timeSeconds;
   }
 
   /**
-   * Getter method for the timer label.
-   * 
-   * @return The timer label
+   * Updates the timer label with a new label.
+   *
+   * @param timerLabel the new label to display the remaining time
    */
   public void setTimerLabel(Label timerLabel) {
     this.timerLabel = timerLabel;
   }
 
   /**
-   * Method to check if the timer has finished.
-   * 
-   * @return True if the timer has finished, false otherwise
+   * Checks if the timer has finished.
+   *
+   * @return true if the timer has finished (time is zero), false otherwise
    */
   public boolean isFinished() {
     return timeSeconds.get() == 0;
   }
 
   /**
-   * Method to get the time remaining in seconds.
-   * 
-   * @return The time remaining in seconds
+   * Gets the time remaining in seconds.
+   *
+   * @return the remaining time in seconds
    */
   public int getSecondsLeft() {
     return timeSeconds.get();
