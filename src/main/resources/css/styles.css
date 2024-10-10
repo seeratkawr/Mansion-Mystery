@@ -77,6 +77,7 @@
   -fx-scale-x: 1.05;
   /* Slight scaling on hover */
   -fx-scale-y: 1.05;
+  -fx-cursor: hand;
 }
 
 
