@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
 
+/** Controller class for handling the start game screen. */
 public class StartGameController {
 
   @FXML private Button startButton; // Button to start the game

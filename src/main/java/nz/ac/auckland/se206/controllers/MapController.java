@@ -11,9 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-/*
- * Controller class for handling the map screen.
- */
+/** Controller class for handling the map screen. */
 public class MapController {
 
   // Field to store the last scene
@@ -45,7 +43,7 @@ public class MapController {
   /**
    * Initializes the controller class. This method is called after the FXML fields are injected.
    *
-   * @param event The mouse event that triggered the method
+   * @param path The path to the background image
    */
   public void changeBackground(String path) {
     background.setImage(new Image(path));

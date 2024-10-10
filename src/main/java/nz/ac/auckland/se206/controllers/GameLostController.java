@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import nz.ac.auckland.se206.App;
 
-/**
- * Controller class for handling the game lost screen.
- */
+/** Controller class for handling the game lost screen. */
 public class GameLostController {
 
   // Reference to the restart button in the FXML file

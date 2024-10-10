@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
 
+/** Controller class for handling the third page of the notebook screen. */
 public class Notebookpg3Controller {
 
   // FXML annotations to link with the corresponding elements in the FXML file

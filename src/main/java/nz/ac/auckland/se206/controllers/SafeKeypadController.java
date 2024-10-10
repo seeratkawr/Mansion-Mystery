@@ -48,7 +48,7 @@ public class SafeKeypadController {
   private int codeLength = password.size();
 
   /**
-   * Gets the timer label.
+   * Gets the label for the timer on the safe keypad screen.
    *
    * @return the timer label
    */

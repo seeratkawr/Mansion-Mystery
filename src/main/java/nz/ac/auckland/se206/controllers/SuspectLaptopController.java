@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-// nz.ac.auckland.se206.controllers.SuspectLaptopController
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,9 +11,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import nz.ac.auckland.se206.App;
 
-/**
- * Controller class for handling the suspect laptop screen.
- */
+/** Controller class for handling the suspect laptop screen. */
 public class SuspectLaptopController {
   @FXML private Button backButton;
   @FXML private Circle alexCircle;
@@ -27,17 +24,14 @@ public class SuspectLaptopController {
 
   /**
    * Getter for the timer label.
-   * 
+   *
    * @return The timer label
    */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
-  /**
-   * Initializes the controller class. This method is called
-   * after the FXML fields are injected.
-   */
+  /** Initializes the controller class. This method is called after the FXML fields are injected. */
   @FXML
   public void initialize() {
     jamesCircle.setFill(new ImagePattern(new Image("/images/chef.jpg")));
@@ -46,9 +40,9 @@ public class SuspectLaptopController {
   }
 
   /**
-   * Method called when a suspect circle is clicked.
-   * Opens the laptop clue scene for the corresponding suspect.
-   * 
+   * Method called when a suspect circle is clicked. Opens the laptop clue scene for the
+   * corresponding suspect.
+   *
    * @param event The mouse event that triggered the method
    */
   @FXML
@@ -73,7 +67,7 @@ public class SuspectLaptopController {
   /**
    * Method called when the back button is clicked. Closes the current scene and goes back to the
    * crime scene.
-   *  
+   *
    * @param event The action event that triggered the method
    */
   @FXML
