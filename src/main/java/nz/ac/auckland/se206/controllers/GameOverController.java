@@ -35,7 +35,9 @@ public class GameOverController {
   private String result;
   private String chosenThief;
 
-  /** Initializes the controller class. */
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   private void initialize() {
     result = App.getAiGameResult();
@@ -43,17 +45,19 @@ public class GameOverController {
 
     typeOutMessage();
 
+    // Disable the button initially
     continueButton.setDisable(true);
     continueButton.setVisible(false);
 
+    // Set the image and name of the chosen suspect
     if (chosenThief.equals("the chef James")) {
       selectedSuspect.setImage(new Image("/images/chef.jpg"));
       selectedSuspectName.setText("The chef, James");
-
+      // Set the image and name of the chosen suspect
     } else if (chosenThief.equals("the cleaner Alex")) {
       selectedSuspect.setImage(new Image("/images/cleaner.jpg"));
       selectedSuspectName.setText("The cleaner, Alex");
-
+      // Set the image and name of the chosen suspect
     } else if (chosenThief.equals("the daughter Maria")) {
       selectedSuspect.setImage(new Image("/images/daughter.jpg"));
       selectedSuspectName.setText("The daughter, Maria");
@@ -73,7 +77,7 @@ public class GameOverController {
   }
 
   /**
-   * Restarts the game
+   * Restarts the game when the continue button is clicked.
    *
    * @param event
    * @throws IOException
@@ -84,7 +88,9 @@ public class GameOverController {
     App.openGameLost();
   }
 
-  // Helper method to simulate typed-out text effect
+  /**
+   * Types out the message in the text area character by character with a delay.
+   */
   private void typeOutMessage() {
     final int[] currentIndex = {0};
     Timeline timeline = new Timeline();

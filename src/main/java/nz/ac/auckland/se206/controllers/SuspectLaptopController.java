@@ -22,10 +22,18 @@ public class SuspectLaptopController {
   @FXML private Circle hoverCircle2;
   @FXML private Circle hoverCircle3;
 
+  /**
+   * Getter for the timer label.
+   * 
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   public void initialize() {
     jamesCircle.setFill(new ImagePattern(new Image("/images/chef.jpg")));
@@ -33,9 +41,16 @@ public class SuspectLaptopController {
     alexCircle.setFill(new ImagePattern(new Image("/images/cleaner.jpg")));
   }
 
+  /**
+   * Method called when a suspect circle is clicked. Opens the laptop clue scene for the corresponding
+   * suspect.
+   * 
+   * @param event The mouse event that triggered the method
+   */
   @FXML
   private void onCircleClicked(MouseEvent event) {
     try {
+      // Open the laptop clue scene for the corresponding suspect
       if (event.getTarget() == jamesCircle || event.getTarget() == hoverCircle1) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/jamesClue.fxml");
@@ -51,6 +66,12 @@ public class SuspectLaptopController {
     }
   }
 
+  /**
+   * Method called when the back button is clicked. Closes the current scene and goes back to the
+   * crime scene.
+   *  
+   * @param event The action event that triggered the method
+   */
   @FXML
   private void onGoBackCrimeScene(ActionEvent event) {
     try {

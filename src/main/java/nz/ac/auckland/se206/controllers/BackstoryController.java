@@ -21,16 +21,30 @@ public class BackstoryController {
 
   private boolean crimeSceneOpened = false;
 
+  /**
+   * Getter for the timer label.
+   *
+   * @return The timer label
+   */
   public Label getTimerLabel() {
     return timerLabel;
   }
 
+  /**
+   * Method called when the open crime scene button is clicked. Opens the crime scene.
+   *
+   * @param event The action event that triggered the method
+   * @throws IOException If an I/O error occurs
+   */
   @FXML
   private void onOpenCrimeScene(ActionEvent event) throws IOException {
     App.openCrimeScene();
     crimeSceneOpened = true;
   }
 
+  /**
+   * Initializes the controller class. This method is called after the FXML fields are injected.
+   */
   @FXML
   private void initialize() {
     // Initially hide the backstory labels
@@ -55,12 +69,14 @@ public class BackstoryController {
     Timer timer = new Timer();
     App.addTimer(timer);
     timer.schedule(
+      // Timer task to run after 15 seconds
         new TimerTask() {
           @Override
           public void run() {
             Platform.runLater(
                 () -> {
                   try {
+                    // Open the crime scene if it has not been opened
                     if (!crimeSceneOpened) {
                       App.openCrimeScene();
                       timer.cancel();
@@ -74,6 +90,14 @@ public class BackstoryController {
         15000);
   }
 
+  /**
+   * Creates a fade transition for a label with the specified duration and delay.
+   *
+   * @param label The label to apply the fade transition to
+   * @param duration The duration of the fade transition
+   * @param delay The delay before the fade transition starts
+   * @return The fade transition
+   */
   private FadeTransition createFadeTransition(Label label, Duration duration, Duration delay) {
     FadeTransition fade = new FadeTransition(duration, label);
     fade.setFromValue(0.0); // Start from fully transparent

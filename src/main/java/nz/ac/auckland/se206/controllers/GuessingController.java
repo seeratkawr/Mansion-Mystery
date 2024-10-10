@@ -51,6 +51,10 @@ public class GuessingController {
   private TimerUtility timer;
   private Timeline guessingTimerCheckTimeline;
 
+  /**
+   * This method is called after the FXML fields are injected. It initializes the controller and sets
+   * up the game logic.
+   */
   @FXML
   private void initialize() {
     loadingIndicator.setVisible(false); // Hide loading indicator initially
@@ -101,7 +105,10 @@ public class GuessingController {
         });
   }
 
-  /** This method is called to enable game over mode */
+  /**
+   * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
+   * chef and updates the selected suspect label.
+   */
   public void enableGameOver() {
     lbTimesUp.setDisable(false);
     btnResults.setDisable(false);
@@ -109,7 +116,10 @@ public class GuessingController {
     btnResults.setVisible(true);
   }
 
-  /** This method is called to check the timer */
+  /**
+   * This method is called when the user clicks on the chef rectangle. It sets the chosen suspect to
+   * chef and updates the selected suspect label.
+   */
   private void timeUpCheck() {
     guessingTimerCheckTimeline =
         new Timeline(
@@ -229,7 +239,9 @@ public class GuessingController {
     }
   }
 
-  /** This method shows the text field and submit button. */
+  /**
+   * This method is called when the user clicks the see results button. This button is presented
+   */
   private void showTextField() {
     txtInput.setDisable(false);
     txtInput.setVisible(true);
@@ -238,10 +250,13 @@ public class GuessingController {
     lbExplain.setVisible(true);
   }
 
-  /** This method cleans up and cancels all active threads. */
+  /**
+   * This method cleans up and cancels all active threads.
+   */
   private void cleanUpThreads() {
     timer.reset();
     if (!threads.isEmpty()) {
+      // Interrupt all active threads
       for (Thread thread : threads) {
         thread.interrupt();
       }

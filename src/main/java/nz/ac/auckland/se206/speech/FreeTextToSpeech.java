@@ -32,7 +32,7 @@ public class FreeTextToSpeech {
   }
 
   /**
-   * Speaks the given sentence in input.
+   * Speaks the given sentence in input text using the synthesizer.
    *
    * @param text A string to speak.
    */

@@ -146,24 +146,33 @@ public class App extends Application {
   /**
    * Opens the crime scene.
    *
-   * @param event the action event that triggered this method
    * @throws IOException if the FXML file is not found
    */
   public static void openCrimeScene() throws IOException {
+    // Load the crime scene FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/crimescene.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the crime scene
     CrimeSceneController controller = loader.getController();
     timerLabel = controller.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
     sceneStack.push(scene);
   }
 
+  /**
+   * Opens the crime scene.
+   *
+   * @param event the action event that triggered this method
+   * @throws IOException if the FXML file is not found
+   */
   public static void openBackstory(ActionEvent event) throws IOException {
+    // Load the backstory FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/backstory.fxml"));
     Parent root = loader.load();
     scene = new Scene(root);
@@ -442,14 +451,23 @@ public class App extends Application {
     laptopPane.getChildren().add(laptopClueView);
   }
 
+  /**
+   * Opens the suspect laptop scene when a mouse event is triggered.
+   *
+   * @param event the MouseEvent that triggers the opening of the suspect laptop scene
+   * @throws IOException if there is an error loading the FXML file
+   */
   public static void openSuspectLaptop(MouseEvent event) throws IOException {
+    // Load the suspect laptop FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/suspectLaptop.fxml"));
     Parent root = loader.load();
 
+    // Get the controller associated with the suspect laptop scene
     SuspectLaptopController controller = loader.getController();
     timerLabel = controller.getTimerLabel();
     TimerUtilityHandler.setTimer(timer, timerLabel);
 
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     stage.setScene(scene);
@@ -497,6 +515,7 @@ public class App extends Application {
               return null;
             }
           };
+          // Create a new thread to run the background task
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.setDaemon(true);
       backgroundThread.start();
@@ -505,6 +524,9 @@ public class App extends Application {
     }
   }
 
+  /**
+   * Stops the currently playing sound.
+   */
   public static void stopSound() {
     if (mediaPlayer != null) {
       mediaPlayer.stop();
@@ -729,18 +751,28 @@ public class App extends Application {
     activeThreads.add(thread);
   }
 
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param lbPopup the label to display the popup message
+   * @param lbPopup2 the label to display the popup message
+   * @throws InterruptedException if there is an error stopping the threads
+   */
   public static void handleGuess(Label lbPopup, Label lbPopup2) throws IOException{
     App.playSound("button.mp3");
     System.out.println("Guessing button clicked");
 
+    // Check if the player can make a guess
     List<Boolean> canGuessList = App.verifyCanGuess();
     Boolean canGuess = canGuessList.get(2);
     Boolean enoughCluesViewed = canGuessList.get(1);
     Boolean enoughSuspectsTalkedTo = canGuessList.get(0);
 
+    // Display a popup message if the player cannot make a guess
     if (canGuess) {
       App.openGuessingScene();
     } else {
+      // Display a popup message if the player cannot make a guess
       if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
         lbPopup2.setVisible(true);
       } else if (!enoughSuspectsTalkedTo) {
@@ -751,12 +783,14 @@ public class App extends Application {
         lbPopup.setVisible(true);
       }
 
+      // Hide the popup message after 4 seconds
       Timer timer = new Timer();
       App.addTimer(timer);
       timer.schedule(
           new TimerTask() {
             @Override
             public void run() {
+              // Hide the popup message
               lbPopup.setVisible(false);
               lbPopup2.setVisible(false);
             }
@@ -765,7 +799,11 @@ public class App extends Application {
     }
   }
 
-  // Event handler for send button click
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @throws InterruptedException if there is an error stopping the threads
+   */
   public static void handleGpt(
       String profession,
       TextField txtInput,
@@ -840,6 +878,12 @@ public class App extends Application {
     thread.start();
   }
 
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param message the message to display in the text area
+   * @param textArea the text area to display the message
+   */
   public static void initialTypedOutMessage(String message, TextArea textArea) {
     final StringBuilder displayedText = new StringBuilder(); // To hold the displayed characters
     Timeline timeline = new Timeline();
@@ -859,7 +903,12 @@ public class App extends Application {
     timeline.play(); // Start the typing effect
   }
 
-  // Helper method to simulate typed-out text effect
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param message the message to display in the text area
+   * @param txtaChat the text area to display the message
+   */
   private static void typeOutMessage(String message, TextArea txtaChat) {
     final int[] currentIndex = {0};
     Timeline timeline = new Timeline();
@@ -880,7 +929,14 @@ public class App extends Application {
     timeline.play();
   }
 
-  // Method to set the profession and initialize chat completion request
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param profession the profession to set
+   * @param txtaChat the text area to display the chat
+   * @param loadingIndicator the loading indicator to show while loading
+   * @param translateTransition the translate transition to play while loading
+   */
   public static void setProfession(
       String profession,
       TextArea txtaChat,
@@ -921,7 +977,13 @@ public class App extends Application {
     }
   }
 
-  // Method to run GPT chat completion request
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param msg the chat message to add
+   * @return the chat message to return
+   * @throws ApiProxyException if there is an error with the API proxy
+   */
   public static ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
@@ -936,7 +998,12 @@ public class App extends Application {
     }
   }
 
-  // Method to get the system prompt based on the profession
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param profession the profession to get the system prompt for
+   * @return the system prompt for the profession
+   */
   public static String getSystemPrompt(String profession) {
     Map<String, String> map = new HashMap<>();
     map.put("profession", profession);
@@ -957,26 +1024,43 @@ public class App extends Application {
       throw new IllegalStateException("Unexpected profession: " + profession);
     }
 
+    // Get the prompt from the file
     String prompt = PromptEngineering.getPrompt(promptFileName, map);
     return prompt;
   }
 
-  // Method to get the current profession
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
   public static String getCurrentProfession() {
     return profession;
   }
 
-  // Method to set the current profession
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
   private static void setCurrentProfession(String profession) {
     App.profession = profession;
   }
 
-  // Method to set the chosen suspect
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
   public static void setChosenSuspect(String chosenSuspect) {
     App.chosenSuspect = chosenSuspect;
   }
 
-  // Method to get the chosen suspect
+  /**
+   * This method is called to stop all active timers and threads when the application is closed
+   * 
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
   public static String getChosenSuspect() {
     return chosenSuspect;
   }
