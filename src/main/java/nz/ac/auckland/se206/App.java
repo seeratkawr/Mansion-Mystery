@@ -906,7 +906,7 @@ public class App extends Application {
             protected Void call() throws Exception {
               // Create a system message and get the response from GPT
               ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt(profession));
-              ChatMessage response = runGpt(systemMessage);
+              runGpt(systemMessage);
               return null;
             }
           };

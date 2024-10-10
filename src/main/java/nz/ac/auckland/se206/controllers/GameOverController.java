@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,7 +61,7 @@ public class GameOverController {
 
     // Enable the button after 10 seconds
     javafx.animation.PauseTransition pauseTransition =
-        new javafx.animation.PauseTransition(javafx.util.Duration.seconds(5));
+        new PauseTransition(javafx.util.Duration.seconds(5));
     pauseTransition.setOnFinished(
         e -> {
           // Assuming there is a button to enable, replace 'yourButton' with the actual button
