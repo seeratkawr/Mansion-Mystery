@@ -91,10 +91,10 @@ public class CrimeSceneController {
       if (!enoughSuspectsTalkedTo && !enoughCluesViewed) {
         lbPopup2.setVisible(true);
       } else if (!enoughSuspectsTalkedTo) {
-        lbPopup.setText("You need to talk to all suspects before making a guess.");
+        lbPopup.setText("  You need to talk to all suspects before making a guess.");
         lbPopup.setVisible(true);
       } else if (!enoughCluesViewed) {
-        lbPopup.setText("You need to view at least 1 clue before making a guess.");
+        lbPopup.setText("  You need to view at least 1 clue before making a guess.");
         lbPopup.setVisible(true);
       }
 
