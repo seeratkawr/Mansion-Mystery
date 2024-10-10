@@ -17,7 +17,11 @@ public class NotebookController {
   @FXML private Label timerLabel;
   @FXML private Rectangle rectangleBook;
 
-  @FXML private ImageView item1, item2, item3, item4, item5;
+  @FXML private ImageView item1;
+  @FXML private ImageView item2;
+  @FXML private ImageView item3;
+  @FXML private ImageView item4;
+  @FXML private ImageView item5;
 
   private double startX;
   private double startY;
