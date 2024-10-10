@@ -26,14 +26,14 @@
          </image>
       </ImageView>
       <Polygon fill="WHITE" layoutX="456.0" layoutY="256.0" points="48.0, -83.66665649414062, 30.0, -100.33332824707031, -5.33331298828125, -52.33332824707031" stroke="WHITE" strokeType="INSIDE" />
-      <Button fx:id="guessingButton" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
-      <Label fx:id="timerLabel" layoutX="158.0" layoutY="24.0" prefHeight="33.0" prefWidth="51.5" />
-      <Label fx:id="lbPopup2" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false">
+      <Button fx:id="guessingButton" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
+      <Label fx:id="timerLabel" layoutX="148.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
+      <Label fx:id="lbPopup2" layoutX="14.0" layoutY="56.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbPopup" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" visible="false">
+      <Label fx:id="lbPopup" layoutX="14.0" layoutY="56.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" visible="false" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>

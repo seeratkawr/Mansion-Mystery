@@ -26,14 +26,14 @@
       <TextField fx:id="txtInput" layoutY="560.0" prefHeight="43.0" prefWidth="750.0" promptText="Chat with the daughter, Maria" />
       <Button fx:id="btnSend" layoutX="751.0" layoutY="560.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="43.0" prefWidth="95.0" text="Send" />
       <Polygon fill="WHITE" layoutX="403.0" layoutY="286.0" points="47.999969482421875, -124.13850402832031, 66.66665649414062, -101.47184753417969, 5.333343505859375, -76.13850402832031" stroke="WHITE" strokeType="INSIDE" />
-      <Label fx:id="timerLabel" layoutX="158.0" layoutY="24.0" prefHeight="33.0" prefWidth="51.5" />
-      <Button fx:id="guessingButton" layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
-      <Label fx:id="lbPopup2" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false">
+      <Label fx:id="timerLabel" layoutX="148.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
+      <Button fx:id="guessingButton" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGuessClicked" text="Make My Guess" />
+      <Label fx:id="lbPopup2" layoutX="14.0" layoutY="56.0" maxHeight="1.7976931348623157E308" prefHeight="63.0" prefWidth="377.0" text="You need to talk to all suspects and view at least one clue before making a guess." visible="false" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lbPopup" layoutX="24.0" layoutY="66.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" visible="false">
+      <Label fx:id="lbPopup" layoutX="14.0" layoutY="56.0" maxHeight="1.7976931348623157E308" prefHeight="51.0" prefWidth="377.0" visible="false" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
