@@ -30,6 +30,7 @@ public class CleanerController {
   @FXML private Label lbPopup; // Label for popup message
   @FXML private Label lbPopup2;
 
+  private static boolean initialMessageShown = false;
   private String profession; // Profession of the character
   private TranslateTransition translateTransition; // Animation for loading indicator
 
@@ -44,9 +45,14 @@ public class CleanerController {
     translateTransition.setAutoReverse(true);
     txtaChat.setEditable(false);
     txtaChat.setWrapText(true);
-    txtaChat.setText(
-        "Oh, hi detective! I’m Alex. Just, uh, doing my cleaning duties here in the mansion. It’s a"
-            + " bit overwhelming with everything going on, you know?");
+
+    if (!initialMessageShown) {
+      App.initialTypedOutMessage(
+          "Oh, hi detective! I’m Alex. Just, uh, doing my cleaning duties here in the mansion. It’s"
+              + " a bit overwhelming with everything going on, you know?",
+          txtaChat);
+      initialMessageShown = true;
+    }
 
     App.setProfession("Cleaner", txtaChat, loadingIndicator, translateTransition);
     profession = App.getCurrentProfession();

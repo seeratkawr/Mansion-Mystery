@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="845.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BackstoryController">
    <children>
       <ImageView fitHeight="603.0" fitWidth="845.0" pickOnBounds="true" preserveRatio="true">
@@ -14,9 +13,9 @@
             <Image url="@../images/backstory.png" />
          </image>
       </ImageView>
-      <Label fx:id="backstory1" layoutX="42.0" layoutY="168.0" prefHeight="103.0" prefWidth="397.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. " textAlignment="CENTER" wrapText="true" />
-      <Label fx:id="backstory3" layoutX="42.0" layoutY="279.0" prefHeight="103.0" prefWidth="387.0" text=" Do you have what it takes to catch the mansion thief?" wrapText="true" />
-      <Label fx:id="backstory2" layoutX="42.0" layoutY="225.0" prefHeight="112.0" prefWidth="387.0" text="Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. " textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+      <Label fx:id="backstory1" layoutX="41.0" layoutY="156.0" prefHeight="103.0" prefWidth="397.0" text="A priceless diamond necklace has mysteriously vanished from the mansion owner’s hidden safe in the study. " textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="backstory3" layoutX="42.0" layoutY="291.0" prefHeight="91.0" prefWidth="387.0" text=" Do you have what it takes to catch the mansion thief?" wrapText="true" />
+      <Label fx:id="backstory2" layoutX="42.0" layoutY="223.0" prefHeight="112.0" prefWidth="387.0" text="Now, three prime suspects are under the spotlight: the rebellious daughter with a mysterious past, the mansion cleaner facing desperate circumstances, and the chef with secrets of his own. " textAlignment="CENTER" textFill="WHITE" wrapText="true" />
       <Button fx:id="openCrimeScene" layoutX="144.0" layoutY="376.0" mnemonicParsing="false" onAction="#onOpenCrimeScene" opacity="0.0" prefHeight="41.0" prefWidth="191.0" text="Button" />
       <Label fx:id="timerLabel" layoutX="12.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
    </children>
