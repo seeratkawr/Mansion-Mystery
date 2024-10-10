@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,8 +37,14 @@
                </font>
             </Text>
             <Polygon fx:id="triangle" fill="#8b5e51" layoutX="109.0" layoutY="312.0" onMouseClicked="#onGoFirstPage" points="0.0, 11.66668701171875, -43.5, -25.93450927734375, 2.288818359375E-5, -63.99995422363281" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0" />
-            <Label fx:id="nextpage" layoutX="727.0" layoutY="331.0" text="Last page" />
-            <Label fx:id="nextpage" layoutX="36.0" layoutY="333.0" text="Previous page" />
+            <Label fx:id="nextpage" layoutX="727.0" layoutY="331.0" style="-fx-font-weight: bold;" text="Last page">
+               <effect>
+                  <DropShadow offsetY="2.0" />
+               </effect></Label>
+            <Label fx:id="nextpage" layoutX="26.0" layoutY="333.0" style="-fx-font-weight: bold;" text="Previous page">
+               <effect>
+                  <DropShadow offsetY="2.0" />
+               </effect></Label>
          </children>
       </Pane>
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
