@@ -18,6 +18,9 @@ public class SuspectLaptopController {
   @FXML private Circle mariaCircle;
   @FXML private Circle jamesCircle;
   @FXML private Label timerLabel;
+  @FXML private Circle hoverCircle1;
+  @FXML private Circle hoverCircle2;
+  @FXML private Circle hoverCircle3;
 
   public Label getTimerLabel() {
     return timerLabel;
@@ -33,13 +36,13 @@ public class SuspectLaptopController {
   @FXML
   private void onCircleClicked(MouseEvent event) {
     try {
-      if (event.getTarget() == jamesCircle) {
+      if (event.getTarget() == jamesCircle || event.getTarget() == hoverCircle1) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/jamesClue.fxml");
-      } else if (event.getTarget() == mariaCircle) {
+      } else if (event.getTarget() == mariaCircle || event.getTarget() == hoverCircle2) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/mariaClue.fxml");
-      } else if (event.getTarget() == alexCircle) {
+      } else if (event.getTarget() == alexCircle || event.getTarget() == hoverCircle3) {
         App.playSound("mouseclick.mp3");
         App.openLaptopClue(event, "/fxml/alexClue.fxml");
       }
