@@ -18,7 +18,7 @@
       <Circle fx:id="mariaCircle" fill="DODGERBLUE" layoutX="422.5" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="alexCircle" fill="DODGERBLUE" layoutX="595.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="timerLabel" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="51.5" />
-      <Button layoutX="713.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
+      <Button layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGoBackCrimeScene" prefHeight="38.0" prefWidth="109.0" text="Go back" />
       <Circle fx:id="hoverCircle1" fill="TRANSPARENT" layoutX="250.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="#ffffff00" strokeType="INSIDE" />
       <Circle fx:id="hoverCircle2" fill="TRANSPARENT" layoutX="422.5" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="#ffffff00" strokeType="INSIDE" />
       <Circle fx:id="hoverCircle3" fill="TRANSPARENT" layoutX="595.0" layoutY="296.0" onMouseClicked="#onCircleClicked" radius="51.0" stroke="#ffffff00" strokeType="INSIDE" />
