@@ -94,6 +94,7 @@ public class App extends Application {
   private static TimerUtility timer;
   private static Timer warningTimer;
   private static Timeline timerCheckTimeline;
+  private static Timeline timeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
   private static Label timerLabel;
@@ -101,6 +102,9 @@ public class App extends Application {
   private static String profession;
   private static String chosenSuspect;
   private static ChatCompletionRequest chatCompletionRequest;
+  private static DaughterController daughterController;
+  private static CleanerController cleanerController;
+  private static KitchenController kitchenController;
 
   /**
    * The main method that launches the JavaFX application.
@@ -575,14 +579,17 @@ public class App extends Application {
       DaughterController daughterController = loader.getController();
       timerLabel = daughterController.getTimerLabel();
       TimerUtilityHandler.setTimer(timer, timerLabel);
+      setDaughterController(daughterController);
     } else if (fxml.equals("kitchen")) {
       KitchenController kitchenController = loader.getController();
       timerLabel = kitchenController.getTimerLabel();
       TimerUtilityHandler.setTimer(timer, timerLabel);
+      setKitchenController(kitchenController);
     } else if (fxml.equals("cleaner")) {
       CleanerController cleanerController = loader.getController();
       timerLabel = cleanerController.getTimerLabel();
       TimerUtilityHandler.setTimer(timer, timerLabel);
+      setCleanerController(cleanerController);
     }
 
     // Create a new scene with the loaded root node
@@ -698,6 +705,9 @@ public class App extends Application {
     cluesViewed.clear();
     timer.reset();
     timerStarted = false;
+    cleanerController.setInitialMessageShown(false);
+    daughterController.setInitialMessageShown(false);
+    kitchenController.setInitialMessageShown(false);
 
     Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     currentStage.close();
@@ -847,10 +857,7 @@ public class App extends Application {
       return;
     }
 
-    // Clear the chat area and append the user message
-    if (txtaChat != null) {
-      txtaChat.clear();
-    }
+    // Clear the text field
     txtInput.clear();
 
     ChatMessage userMessage =
@@ -910,8 +917,16 @@ public class App extends Application {
    * @param textArea the text area to display the message
    */
   public static void initialTypedOutMessage(String message, TextArea textArea) {
+    textArea.clear();
+    // Stop the current timeline if it is still running
+    if (timeline != null) {
+      System.out.println("Stopping current timeline");
+      timeline.stop();
+      timeline = null;
+    }
+
     final StringBuilder displayedText = new StringBuilder(); // To hold the displayed characters
-    Timeline timeline = new Timeline();
+    timeline = new Timeline();
 
     // Set up keyframes for each character in the message
     for (int i = 0; i < message.length(); i++) {
@@ -935,8 +950,16 @@ public class App extends Application {
    * @param txtaChat the text area to display the message
    */
   private static void typeOutMessage(String message, TextArea txtaChat) {
+    txtaChat.clear();
+    // Stop the current timeline if it is still running
+    if (timeline != null) {
+      System.out.println("Stopping current timeline");
+      timeline.stop();
+      timeline = null;
+    }
+    
     final int[] currentIndex = {0};
-    Timeline timeline = new Timeline();
+    timeline = new Timeline();
     // Add a keyframe for each character to be typed
     KeyFrame keyFrame =
         new KeyFrame(
@@ -1077,9 +1100,40 @@ public class App extends Application {
     App.chosenSuspect = chosenSuspect;
   }
 
-  /** This method is called to stop all active timers and threads when the application is closed. */
+  /**
+   * This method is called to stop all active timers and threads when the application is closed.
+   * 
+   * @return the chosen suspect
+   */
   public static String getChosenSuspect() {
     return chosenSuspect;
+  }
+
+  /**
+   * This method is called to stop all active timers and threads when the application is closed.
+   *
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
+  private static void setCleanerController(CleanerController cleanerController){
+      App.cleanerController = cleanerController;
+  }
+  
+  /**
+   * This method is called to stop all active timers and threads when the application is closed.
+   *
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
+  private static void setDaughterController(DaughterController daughterController){
+      App.daughterController = daughterController;
+  }
+
+  /**
+   * This method is called to stop all active timers and threads when the application is closed.
+   *
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
+  private static void setKitchenController(KitchenController kitchenController){
+      App.kitchenController = kitchenController;
   }
 
   /**

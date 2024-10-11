@@ -53,6 +53,10 @@ public class CleanerController {
               + " a bit overwhelming with everything going on, you know?",
           txtaChat);
       initialMessageShown = true;
+    } else {
+      App.initialTypedOutMessage(
+          "Uh, hi again. How can I help you?",
+          txtaChat);
     }
 
     // Set the profession to Cleaner
@@ -81,6 +85,15 @@ public class CleanerController {
     return timerLabel;
   }
 
+  /**
+   * Setter method for the initial message shown flag to indicate if the initial message is shown.
+   *
+   * @return The initial message shown flag
+   */
+  public void setInitialMessageShown(boolean initialMessageShown) {
+    CleanerController.initialMessageShown = initialMessageShown;
+  }
+  
   /**
    * Method called when the map is clicked. Opens the map scene.
    *

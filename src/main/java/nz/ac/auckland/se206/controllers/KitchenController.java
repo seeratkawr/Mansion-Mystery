@@ -52,6 +52,10 @@ public class KitchenController {
           "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?",
           txtaChat);
       initialMessageShown = true;
+    } else {
+      App.initialTypedOutMessage(
+          "Oh, hey again! Did you need anything else from me?",
+          txtaChat);
     }
 
     App.setProfession("Chef", txtaChat, loadingIndicator, translateTransition);
@@ -78,7 +82,16 @@ public class KitchenController {
   public Label getTimerLabel() {
     return timerLabel;
   }
-
+  
+  /**
+   * Setter method for the initial message shown flag to indicate if the initial message is shown.
+   *
+   * @return The initial message shown flag
+   */
+  public void setInitialMessageShown(boolean initialMessageShown) {
+    KitchenController.initialMessageShown = initialMessageShown;
+  }
+  
   /**
    * Method to handle the event when the user clicks on the map image.
    *

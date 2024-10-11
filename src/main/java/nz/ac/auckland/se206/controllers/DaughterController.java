@@ -55,6 +55,10 @@ public class DaughterController {
               + "I'm Maria, the daughter of the owner of this mansion. What do you want anyway?",
           daughterText);
       initialMessageShown = true;
+    } else {
+      App.initialTypedOutMessage(
+          "Oh, you're back. What do you want now?",
+          daughterText);
     }
 
     App.setProfession("Daughter", daughterText, loadingIndicator, translateTransition);
@@ -80,6 +84,15 @@ public class DaughterController {
    */
   public Label getTimerLabel() {
     return timerLabel;
+  }
+
+  /**
+   * Setter method for the initial message shown flag to indicate if the initial message is shown.
+   *
+   * @return The initial message shown flag
+   */
+  public void setInitialMessageShown(boolean initialMessageShown) {
+    DaughterController.initialMessageShown = initialMessageShown;
   }
 
   /**
