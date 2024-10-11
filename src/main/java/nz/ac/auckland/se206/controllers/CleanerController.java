@@ -53,6 +53,10 @@ public class CleanerController {
               + " a bit overwhelming with everything going on, you know?",
           txtaChat);
       initialMessageShown = true;
+    } else {
+      App.initialTypedOutMessage(
+          "Uh, hi again. How can I help you?",
+          txtaChat);
     }
 
     // Set the profession to Cleaner

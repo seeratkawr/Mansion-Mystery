@@ -52,6 +52,10 @@ public class KitchenController {
           "Hi detective! I'm John, the chef here. Nice to meet you! What brings you here?",
           txtaChat);
       initialMessageShown = true;
+    } else {
+      App.initialTypedOutMessage(
+          "Oh, hey again! Did you need anything else from me?",
+          txtaChat);
     }
 
     App.setProfession("Chef", txtaChat, loadingIndicator, translateTransition);
