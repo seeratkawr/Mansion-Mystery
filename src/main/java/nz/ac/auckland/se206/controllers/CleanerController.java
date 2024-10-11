@@ -88,7 +88,7 @@ public class CleanerController {
   /**
    * Setter method for the initial message shown flag to indicate if the initial message is shown.
    *
-   * @return The initial message shown flag
+   * @param initialMessageShown The flag to indicate if the initial message is shown
    */
   public void setInitialMessageShown(boolean initialMessageShown) {
     CleanerController.initialMessageShown = initialMessageShown;

@@ -64,23 +64,30 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  * application.
  */
 /**
- * The App class serves as the main entry point for the JavaFX application. It provides methods to
- * manage scenes, handle game state, and interact with various controllers. The class includes
- * methods to open different scenes, play sounds, manage timers, and verify game conditions.
+ * The App class serves as the main entry point for the JavaFX application. It
+ * provides methods to
+ * manage scenes, handle game state, and interact with various controllers. The
+ * class includes
+ * methods to open different scenes, play sounds, manage timers, and verify game
+ * conditions.
  *
- * <p>Key functionalities include:
+ * <p>
+ * Key functionalities include:
  *
  * <ul>
- *   <li>Launching the JavaFX application
- *   <li>Setting the root of the scene
- *   <li>Opening various game scenes
- *   <li>Managing timers and threads
- *   <li>Playing and stopping sounds
- *   <li>Verifying game conditions for making guesses
+ * <li>Launching the JavaFX application
+ * <li>Setting the root of the scene
+ * <li>Opening various game scenes
+ * <li>Managing timers and threads
+ * <li>Playing and stopping sounds
+ * <li>Verifying game conditions for making guesses
  * </ul>
  *
- * <p>Note: The class relies on several FXML files located in the "src/main/resources/fxml"
- * directory and sound files located in the "/sounds/" directory within the application's resources.
+ * <p>
+ * Note: The class relies on several FXML files located in the
+ * "src/main/resources/fxml"
+ * directory and sound files located in the "/sounds/" directory within the
+ * application's resources.
  */
 public class App extends Application {
 
@@ -126,7 +133,8 @@ public class App extends Application {
   }
 
   /**
-   * Loads the FXML file and returns the associated node. The method expects that the file is
+   * Loads the FXML file and returns the associated node. The method expects that
+   * the file is
    * located in "src/main/resources/fxml".
    *
    * @param fxml the name of the FXML file (without extension)
@@ -143,12 +151,15 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   public static void openGameLost(String result) throws IOException {
+    // Load the game lost FXML file
     FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/gameLost.fxml"));
     Parent root = loader.load();
+    // Create a new scene with the loaded root node
     scene = new Scene(root);
     primaryStage.setScene(scene);
     primaryStage.show();
 
+    // Play the appropriate sound based on the result of the AI game or timer
     if (result.equals("chef") || result.equals("cleaner")) {
       playSound("gameOverLost.mp3");
     } else if (result.equals("daughter")) {
@@ -228,16 +239,15 @@ public class App extends Application {
       warningTimer = new Timer();
       activeTimers.add(warningTimer);
       // play warning sound when timer is up
-      TimerTask task =
-          new TimerTask() {
-            public void run() {
-              Platform.runLater(
-                  () -> {
-                    System.out.println("1 minute and 30 seconds left");
-                    App.playSound("timerWarningAudio.mp3");
-                  });
-            }
-          };
+      TimerTask task = new TimerTask() {
+        public void run() {
+          Platform.runLater(
+              () -> {
+                System.out.println("1 minute and 30 seconds left");
+                App.playSound("timerWarningAudio.mp3");
+              });
+        }
+      };
       warningTimer.schedule(task, 210000);
     } else {
       // If the timer is already started, just update the timer label
@@ -247,10 +257,11 @@ public class App extends Application {
   }
 
   /**
-   * Opens the map view when a mouse event occurs and sets up the necessary components.
+   * Opens the map view when a mouse event occurs and sets up the necessary
+   * components.
    *
    * @param event the MouseEvent that triggers the opening of the map
-   * @param path the path to the background image for the map
+   * @param path  the path to the background image for the map
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openMap(MouseEvent event, String path) throws IOException {
@@ -275,8 +286,10 @@ public class App extends Application {
   }
 
   /**
-   * Opens the drawer by loading the notebook.fxml file and setting up the scene. This method
-   * initializes the NotebookController, retrieves the timer label, and sets the timer using the
+   * Opens the drawer by loading the notebook.fxml file and setting up the scene.
+   * This method
+   * initializes the NotebookController, retrieves the timer label, and sets the
+   * timer using the
    * TimerUtilityHandler. It then updates the stage with the new scene.
    *
    * @param event the MouseEvent that triggers the drawer to open
@@ -301,10 +314,11 @@ public class App extends Application {
   }
 
   /**
-   * Navigates to a specific page in the notebook based on the provided FXML file name.
+   * Navigates to a specific page in the notebook based on the provided FXML file
+   * name.
    *
    * @param event the MouseEvent that triggers the navigation
-   * @param fxml the name of the FXML file (without extension) to load
+   * @param fxml  the name of the FXML file (without extension) to load
    * @throws IOException if the FXML file cannot be loaded
    */
   public static void goToPage(MouseEvent event, String fxml) throws IOException {
@@ -381,7 +395,8 @@ public class App extends Application {
   /**
    * Opens the "safe opened" scene when a specific mouse event occurs.
    *
-   * @param event the MouseEvent that triggers the opening of the "safe opened" scene
+   * @param event the MouseEvent that triggers the opening of the "safe opened"
+   *              scene
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openSafeOpened(MouseEvent event) throws IOException {
@@ -404,7 +419,8 @@ public class App extends Application {
   /**
    * Opens the safe keypad scene when a mouse event is triggered.
    *
-   * @param event the MouseEvent that triggers the opening of the safe keypad scene
+   * @param event the MouseEvent that triggers the opening of the safe keypad
+   *              scene
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openSafeKeypad(MouseEvent event) throws IOException {
@@ -452,8 +468,9 @@ public class App extends Application {
   /**
    * Opens a laptop clue scene based on the provided path.
    *
-   * @param event the MouseEvent that triggers the opening of the laptop clue scene
-   * @param path the path to the FXML file for the laptop clue scene
+   * @param event the MouseEvent that triggers the opening of the laptop clue
+   *              scene
+   * @param path  the path to the FXML file for the laptop clue scene
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openLaptopClue(MouseEvent event, String path) throws IOException {
@@ -477,15 +494,15 @@ public class App extends Application {
     }
 
     // Add the loaded laptop clue view to the laptop pane
-    AnchorPane laptopPane =
-        (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
+    AnchorPane laptopPane = (AnchorPane) ((Node) event.getSource()).getScene().lookup("#laptopPane");
     laptopPane.getChildren().add(laptopClueView);
   }
 
   /**
    * Opens the suspect laptop scene when a mouse event is triggered.
    *
-   * @param event the MouseEvent that triggers the opening of the suspect laptop scene
+   * @param event the MouseEvent that triggers the opening of the suspect laptop
+   *              scene
    * @throws IOException if there is an error loading the FXML file
    */
   public static void openSuspectLaptop(MouseEvent event) throws IOException {
@@ -516,36 +533,38 @@ public class App extends Application {
   }
 
   /**
-   * Plays a sound file in the background to avoid blocking the main application thread.
+   * Plays a sound file in the background to avoid blocking the main application
+   * thread.
    *
-   * @param soundFileName the name of the sound file to be played. The file should be located in the
-   *     "/sounds/" directory within the application's resources.
+   * @param soundFileName the name of the sound file to be played. The file should
+   *                      be located in the
+   *                      "/sounds/" directory within the application's resources.
    * @throws Exception if there is an error loading or playing the sound file.
    */
   public static void playSound(String soundFileName) {
     stopSound();
     try {
 
-      // Create a background task to play the sound to prevent blocking the application thread
-      Task<Void> backgroundTask =
-          new Task<>() {
-            @Override
-            protected Void call() {
+      // Create a background task to play the sound to prevent blocking the
+      // application thread
+      Task<Void> backgroundTask = new Task<>() {
+        @Override
+        protected Void call() {
 
-              // Construct the file path to your sound file
-              String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
+          // Construct the file path to your sound file
+          String soundPath = App.class.getResource("/sounds/" + soundFileName).toExternalForm();
 
-              // Create a Media object with the sound file
-              Media sound = new Media(soundPath);
+          // Create a Media object with the sound file
+          Media sound = new Media(soundPath);
 
-              // Create a MediaPlayer to play the sound
-              mediaPlayer = new MediaPlayer(sound);
+          // Create a MediaPlayer to play the sound
+          mediaPlayer = new MediaPlayer(sound);
 
-              // Play the sound
-              mediaPlayer.play();
-              return null;
-            }
-          };
+          // Play the sound
+          mediaPlayer.play();
+          return null;
+        }
+      };
       // Create a new thread to run the background task
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.setDaemon(true);
@@ -566,7 +585,7 @@ public class App extends Application {
    * Opens the suspect scene based on the provided FXML file name.
    *
    * @param event the MouseEvent that triggers the opening of the suspect scene
-   * @param fxml the name of the FXML file (without extension) to load
+   * @param fxml  the name of the FXML file (without extension) to load
    * @throws IOException if the FXML file cannot be loaded
    */
   public static void openSuspect(MouseEvent event, String fxml) throws IOException {
@@ -602,13 +621,17 @@ public class App extends Application {
   }
 
   /**
-   * Verifies if the player can make a guess based on the number of suspects talked to and clues
+   * Verifies if the player can make a guess based on the number of suspects
+   * talked to and clues
    * viewed.
    *
-   * @return a list of booleans indicating the conditions for guessing: - First element: true if 3
-   *     suspects have been talked to, false otherwise. - Second element: true if at least 1 clue
-   *     has been viewed, false otherwise. - Third element: true if both conditions are met, false
-   *     otherwise.
+   * @return a list of booleans indicating the conditions for guessing: - First
+   *         element: true if 3
+   *         suspects have been talked to, false otherwise. - Second element: true
+   *         if at least 1 clue
+   *         has been viewed, false otherwise. - Third element: true if both
+   *         conditions are met, false
+   *         otherwise.
    */
   public static List<Boolean> verifyCanGuess() {
     List<Boolean> result = new ArrayList<>();
@@ -693,7 +716,8 @@ public class App extends Application {
   }
 
   /**
-   * Restarts the game by clearing the game state and reinitializing the application.
+   * Restarts the game by clearing the game state and reinitializing the
+   * application.
    *
    * @param event the ActionEvent that triggers the game restart
    * @throws IOException if there is an error during the restart process
@@ -767,7 +791,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to add a timer to the list of active timers so that they can be stopped
+   * This method is called to add a timer to the list of active timers so that
+   * they can be stopped
    * when the application is closed.
    *
    * @param timer the timer to add to the list
@@ -777,7 +802,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to add a thread to the list of active threads so that they can be stopped
+   * This method is called to add a thread to the list of active threads so that
+   * they can be stopped
    * when the application is closed.
    *
    * @param thread the thread to add to the list
@@ -787,9 +813,10 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
-   * @param lbPopup the label to display the popup message
+   * @param lbPopup  the label to display the popup message
    * @param lbPopup2 the label to display the popup message
    * @throws InterruptedException if there is an error stopping the threads
    */
@@ -835,7 +862,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
    * @throws InterruptedException if there is an error stopping the threads
    */
@@ -860,48 +888,46 @@ public class App extends Application {
     // Clear the text field
     txtInput.clear();
 
-    ChatMessage userMessage =
-        new ChatMessage(
-            "user",
-            txtaChat != null
-                ? message
-                : "SELECTED USER: "
-                    + chosenSuspect
-                    + "USER MESSAGE: "
-                    + message); // Create a user message
+    ChatMessage userMessage = new ChatMessage(
+        "user",
+        txtaChat != null
+            ? message
+            : "SELECTED USER: "
+                + chosenSuspect
+                + "USER MESSAGE: "
+                + message); // Create a user message
 
     loadingIndicator.setVisible(true);
     translateTransition.play();
 
     // Task to handle chat completion request in a background thread
-    Task<Void> task =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            ChatMessage response = runGpt(userMessage);
+    Task<Void> task = new Task<Void>() {
+      @Override
+      protected Void call() throws Exception {
+        ChatMessage response = runGpt(userMessage);
 
-            // Set the AI game result if this method called by guessingController
-            if (txtaChat == null) {
-              App.setAiGameResult(response.getContent());
-            }
-            // Show the "typed-out" text effect and stop the loading indicator
-            Platform.runLater(
-                () -> {
-                  if (txtaChat != null) {
-                    typeOutMessage(response.getContent(), txtaChat);
-                  } else {
-                    try {
-                      App.openGameOver(event);
-                    } catch (IOException e) {
-                      e.printStackTrace();
-                    }
-                  }
-                  loadingIndicator.setVisible(false);
-                  translateTransition.stop();
-                });
-            return null;
-          }
-        };
+        // Set the AI game result if this method called by guessingController
+        if (txtaChat == null) {
+          App.setAiGameResult(response.getContent());
+        }
+        // Show the "typed-out" text effect and stop the loading indicator
+        Platform.runLater(
+            () -> {
+              if (txtaChat != null) {
+                typeOutMessage(response.getContent(), txtaChat);
+              } else {
+                try {
+                  App.openGameOver(event);
+                } catch (IOException e) {
+                  e.printStackTrace();
+                }
+              }
+              loadingIndicator.setVisible(false);
+              translateTransition.stop();
+            });
+        return null;
+      }
+    };
 
     // Start the task in a new thread
     Thread thread = new Thread(task);
@@ -911,9 +937,10 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
-   * @param message the message to display in the text area
+   * @param message  the message to display in the text area
    * @param textArea the text area to display the message
    */
   public static void initialTypedOutMessage(String message, TextArea textArea) {
@@ -931,22 +958,22 @@ public class App extends Application {
     // Set up keyframes for each character in the message
     for (int i = 0; i < message.length(); i++) {
       final int index = i;
-      KeyFrame keyFrame =
-          new KeyFrame(
-              Duration.millis(30 * index), // Delay for each character (adjust speed as needed)
-              event -> {
-                displayedText.append(message.charAt(index)); // Add the next character
-                textArea.setText(displayedText.toString()); // Update the TextArea
-              });
+      KeyFrame keyFrame = new KeyFrame(
+          Duration.millis(30 * index), // Delay for each character (adjust speed as needed)
+          event -> {
+            displayedText.append(message.charAt(index)); // Add the next character
+            textArea.setText(displayedText.toString()); // Update the TextArea
+          });
       timeline.getKeyFrames().add(keyFrame); // Add each keyframe to the timeline
     }
     timeline.play(); // Start the typing effect
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
-   * @param message the message to display in the text area
+   * @param message  the message to display in the text area
    * @param txtaChat the text area to display the message
    */
   private static void typeOutMessage(String message, TextArea txtaChat) {
@@ -957,19 +984,18 @@ public class App extends Application {
       timeline.stop();
       timeline = null;
     }
-    
-    final int[] currentIndex = {0};
+
+    final int[] currentIndex = { 0 };
     timeline = new Timeline();
     // Add a keyframe for each character to be typed
-    KeyFrame keyFrame =
-        new KeyFrame(
-            Duration.millis(30),
-            event -> {
-              if (currentIndex[0] < message.length()) {
-                txtaChat.appendText(String.valueOf(message.charAt(currentIndex[0])));
-                currentIndex[0]++;
-              }
-            });
+    KeyFrame keyFrame = new KeyFrame(
+        Duration.millis(30),
+        event -> {
+          if (currentIndex[0] < message.length()) {
+            txtaChat.appendText(String.valueOf(message.charAt(currentIndex[0])));
+            currentIndex[0]++;
+          }
+        });
 
     // Set the number of keyframes to the length of the message
     timeline.getKeyFrames().add(keyFrame);
@@ -978,11 +1004,12 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
-   * @param profession the profession to set
-   * @param txtaChat the text area to display the chat
-   * @param loadingIndicator the loading indicator to show while loading
+   * @param profession          the profession to set
+   * @param txtaChat            the text area to display the chat
+   * @param loadingIndicator    the loading indicator to show while loading
    * @param translateTransition the translate transition to play while loading
    */
   public static void setProfession(
@@ -996,24 +1023,22 @@ public class App extends Application {
     // Initialize chat completion request
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
-      chatCompletionRequest =
-          new ChatCompletionRequest(config)
-              .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.4)
-              .setMaxTokens(txtaChat != null ? 260 : 190);
+      chatCompletionRequest = new ChatCompletionRequest(config)
+          .setN(1)
+          .setTemperature(0.2)
+          .setTopP(0.4)
+          .setMaxTokens(txtaChat != null ? 260 : 190);
 
       // Task to handle initial chat completion request in a background thread
-      Task<Void> task =
-          new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-              // Create a system message and get the response from GPT
-              ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt(profession));
-              runGpt(systemMessage);
-              return null;
-            }
-          };
+      Task<Void> task = new Task<Void>() {
+        @Override
+        protected Void call() throws Exception {
+          // Create a system message and get the response from GPT
+          ChatMessage systemMessage = new ChatMessage("system", getSystemPrompt(profession));
+          runGpt(systemMessage);
+          return null;
+        }
+      };
 
       // Start the task in a new thread
       Thread thread = new Thread(task);
@@ -1026,7 +1051,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
    * @param msg the chat message to add
    * @return the chat message to return
@@ -1047,7 +1073,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
    * @param profession the profession to get the system prompt for
    * @return the system prompt for the profession
@@ -1077,13 +1104,17 @@ public class App extends Application {
     return prompt;
   }
 
-  /** This method is called to stop all active timers and threads when the application is closed. */
+  /**
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
+   */
   public static String getCurrentProfession() {
     return profession;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to set the current profession based on the user input
+   * in the guessing scene.
    *
    * @param profession the profession to set as the current profession
    */
@@ -1092,7 +1123,8 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to set the chosen suspect from the user input in the
+   * guessing scene.
    *
    * @param chosenSuspect the chosen suspect to set as the current suspect
    */
@@ -1101,46 +1133,52 @@ public class App extends Application {
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
-   * 
-   * @return the chosen suspect
+   * This method gets the chosen suspect from the user input in the
+   * guessing scene.
+   *
+   * @return the chosen suspect from the user input
    */
   public static String getChosenSuspect() {
     return chosenSuspect;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
    * @param event the ActionEvent that triggers the opening of the guessing scene
    */
-  private static void setCleanerController(CleanerController cleanerController){
-      App.cleanerController = cleanerController;
-  }
-  
-  /**
-   * This method is called to stop all active timers and threads when the application is closed.
-   *
-   * @param event the ActionEvent that triggers the opening of the guessing scene
-   */
-  private static void setDaughterController(DaughterController daughterController){
-      App.daughterController = daughterController;
+  private static void setCleanerController(CleanerController cleanerController) {
+    App.cleanerController = cleanerController;
   }
 
   /**
-   * This method is called to stop all active timers and threads when the application is closed.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
    *
    * @param event the ActionEvent that triggers the opening of the guessing scene
    */
-  private static void setKitchenController(KitchenController kitchenController){
-      App.kitchenController = kitchenController;
+  private static void setDaughterController(DaughterController daughterController) {
+    App.daughterController = daughterController;
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   * This method is called to stop all active timers and threads when the
+   * application is closed.
+   *
+   * @param event the ActionEvent that triggers the opening of the guessing scene
+   */
+  private static void setKitchenController(KitchenController kitchenController) {
+    App.kitchenController = kitchenController;
+  }
+
+  /**
+   * This method is invoked when the application starts. It loads and shows the
+   * "room" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not
+   *                     found
    */
   @Override
   public void start(final Stage stage) throws IOException {
@@ -1183,41 +1221,41 @@ public class App extends Application {
   }
 
   /**
-   * Starts a task to periodically check the timer status. If the timer has finished, it will either
+   * Starts a task to periodically check the timer status. If the timer has
+   * finished, it will either
    * open the guessing scene or the game lost scene based on the game state.
    */
   private void startTimerCheckTask() {
-    timerCheckTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.seconds(1),
-                event -> {
-                  if (timer != null && timer.isFinished()) {
-                    // Handle the case when the timer has finished
-                    System.out.println("Timer has finished.");
-                    // You might want to perform specific actions or show a notification
-                    try {
-                      // Check if the player can guess based on the number
-                      // of suspects talked to and clues viewed
-                      if (verifyCanGuess().get(0).equals(true)
-                          && verifyCanGuess().get(1).equals(true)
-                          && verifyCanGuess().get(2).equals(true)) {
-                        App.playSound("guessingAudio.mp3");
-                        openGuessingScene();
-                        System.out.println("Guessing scene opened.");
-                        timerCheckTimeline.stop();
-                      } else {
-                        // If the player cannot guess, open the game lost scene
-                        openGameLost("timeOver");
-                        System.out.println("Game lost scene opened.");
-                        timerCheckTimeline.stop();
-                      }
-                    } catch (IOException e) {
-                      // Handle any IO exceptions that occur
-                      e.printStackTrace();
-                    }
+    timerCheckTimeline = new Timeline(
+        new KeyFrame(
+            Duration.seconds(1),
+            event -> {
+              if (timer != null && timer.isFinished()) {
+                // Handle the case when the timer has finished
+                System.out.println("Timer has finished.");
+                // You might want to perform specific actions or show a notification
+                try {
+                  // Check if the player can guess based on the number
+                  // of suspects talked to and clues viewed
+                  if (verifyCanGuess().get(0).equals(true)
+                      && verifyCanGuess().get(1).equals(true)
+                      && verifyCanGuess().get(2).equals(true)) {
+                    App.playSound("guessingAudio.mp3");
+                    openGuessingScene();
+                    System.out.println("Guessing scene opened.");
+                    timerCheckTimeline.stop();
+                  } else {
+                    // If the player cannot guess, open the game lost scene
+                    openGameLost("timeOver");
+                    System.out.println("Game lost scene opened.");
+                    timerCheckTimeline.stop();
                   }
-                }));
+                } catch (IOException e) {
+                  // Handle any IO exceptions that occur
+                  e.printStackTrace();
+                }
+              }
+            }));
     timerCheckTimeline.setCycleCount(Timeline.INDEFINITE);
     timerCheckTimeline.play();
   }

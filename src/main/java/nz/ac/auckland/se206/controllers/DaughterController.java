@@ -89,7 +89,7 @@ public class DaughterController {
   /**
    * Setter method for the initial message shown flag to indicate if the initial message is shown.
    *
-   * @return The initial message shown flag
+   * @param initialMessageShown The initial message shown flag
    */
   public void setInitialMessageShown(boolean initialMessageShown) {
     DaughterController.initialMessageShown = initialMessageShown;

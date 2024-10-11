@@ -62,7 +62,7 @@ public class GameOverController {
     }
 
     // Enable the button after 10 seconds
-    PauseTransition pauseTransition = new PauseTransition(javafx.util.Duration.seconds(5));
+    PauseTransition pauseTransition = new PauseTransition(Duration.seconds(5));
     pauseTransition.setOnFinished(
         e -> {
           // Assuming there is a button to enable, replace 'yourButton' with the actual button
@@ -83,8 +83,10 @@ public class GameOverController {
   private void onClickedContinue(ActionEvent event) throws IOException {
     App.playSound("button.mp3");
 
+    // Set the string to display in the game lost screen
     String result = "";
 
+    // Set the result based on the chosen suspect to display in the game lost screen
     if (chosenThief.equals("the chef James")) {
       result = "chef";
     } else if (chosenThief.equals("the cleaner Alex")) {
