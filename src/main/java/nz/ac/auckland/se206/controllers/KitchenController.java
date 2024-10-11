@@ -78,7 +78,16 @@ public class KitchenController {
   public Label getTimerLabel() {
     return timerLabel;
   }
-
+  
+  /**
+   * Setter method for the initial message shown flag to indicate if the initial message is shown.
+   *
+   * @return The initial message shown flag
+   */
+  public void setInitialMessageShown(boolean initialMessageShown) {
+    KitchenController.initialMessageShown = initialMessageShown;
+  }
+  
   /**
    * Method to handle the event when the user clicks on the map image.
    *

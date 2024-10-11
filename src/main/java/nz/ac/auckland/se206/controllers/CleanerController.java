@@ -82,6 +82,15 @@ public class CleanerController {
   }
 
   /**
+   * Setter method for the initial message shown flag to indicate if the initial message is shown.
+   *
+   * @return The initial message shown flag
+   */
+  public void setInitialMessageShown(boolean initialMessageShown) {
+    CleanerController.initialMessageShown = initialMessageShown;
+  }
+  
+  /**
    * Method called when the map is clicked. Opens the map scene.
    *
    * @param event The mouse event that triggered the method
