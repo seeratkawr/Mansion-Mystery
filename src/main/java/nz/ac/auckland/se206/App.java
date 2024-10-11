@@ -94,6 +94,7 @@ public class App extends Application {
   private static TimerUtility timer;
   private static Timer warningTimer;
   private static Timeline timerCheckTimeline;
+  private static Timeline timeline;
   private static List<Timer> activeTimers = new ArrayList<>();
   private static List<Thread> activeThreads = new ArrayList<>();
   private static Label timerLabel;
@@ -856,10 +857,7 @@ public class App extends Application {
       return;
     }
 
-    // Clear the chat area and append the user message
-    if (txtaChat != null) {
-      txtaChat.clear();
-    }
+    // Clear the text field
     txtInput.clear();
 
     ChatMessage userMessage =
@@ -919,8 +917,16 @@ public class App extends Application {
    * @param textArea the text area to display the message
    */
   public static void initialTypedOutMessage(String message, TextArea textArea) {
+    textArea.clear();
+    // Stop the current timeline if it is still running
+    if (timeline != null) {
+      System.out.println("Stopping current timeline");
+      timeline.stop();
+      timeline = null;
+    }
+
     final StringBuilder displayedText = new StringBuilder(); // To hold the displayed characters
-    Timeline timeline = new Timeline();
+    timeline = new Timeline();
 
     // Set up keyframes for each character in the message
     for (int i = 0; i < message.length(); i++) {
@@ -944,8 +950,16 @@ public class App extends Application {
    * @param txtaChat the text area to display the message
    */
   private static void typeOutMessage(String message, TextArea txtaChat) {
+    txtaChat.clear();
+    // Stop the current timeline if it is still running
+    if (timeline != null) {
+      System.out.println("Stopping current timeline");
+      timeline.stop();
+      timeline = null;
+    }
+    
     final int[] currentIndex = {0};
-    Timeline timeline = new Timeline();
+    timeline = new Timeline();
     // Add a keyframe for each character to be typed
     KeyFrame keyFrame =
         new KeyFrame(
