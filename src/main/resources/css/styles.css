@@ -171,6 +171,20 @@
   /* Make the text slanted */
 }
 
+.text-area .scroll-bar:vertical {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+    -fx-opacity: 0;
+}
+
+.text-area .scroll-bar .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 0;
+    -fx-thumb-width: 0;
+    -fx-opacity: 0;
+}
+
 #txtaChat {
   -fx-background-color: #FFFFFF;
   /* Background color changed to white */
